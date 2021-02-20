@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2021 at 10:42 AM
+-- Generation Time: Feb 20, 2021 at 10:55 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tbl_bank` (
-  `id` int(11) NOT NULL,
   `bank_name` varchar(50) NOT NULL,
   `acc_no` varchar(254) NOT NULL,
   `acc_name` varchar(50) NOT NULL,
@@ -48,7 +47,6 @@ CREATE TABLE `tbl_bank` (
 --
 
 CREATE TABLE `tbl_currency` (
-  `id` int(11) NOT NULL,
   `currency_unit` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -59,7 +57,6 @@ CREATE TABLE `tbl_currency` (
 --
 
 CREATE TABLE `tbl_customer` (
-  `customer_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `physical_address` varchar(100) NOT NULL,
@@ -74,7 +71,6 @@ CREATE TABLE `tbl_customer` (
 --
 
 CREATE TABLE `tbl_supplier` (
-  `supplier_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `tel_no` varchar(100) NOT NULL,
@@ -90,55 +86,27 @@ CREATE TABLE `tbl_supplier` (
 -- Indexes for table `tbl_bank`
 --
 ALTER TABLE `tbl_bank`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`bank_name`,`acc_no`);
 
 --
 -- Indexes for table `tbl_currency`
 --
 ALTER TABLE `tbl_currency`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`currency_unit`);
 
 --
 -- Indexes for table `tbl_customer`
 --
 ALTER TABLE `tbl_customer`
-  ADD PRIMARY KEY (`customer_id`);
+  ADD PRIMARY KEY (`name`,`email`);
 
 --
 -- Indexes for table `tbl_supplier`
 --
 ALTER TABLE `tbl_supplier`
-  ADD PRIMARY KEY (`supplier_id`),
+  ADD PRIMARY KEY (`name`,`email`),
   ADD UNIQUE KEY `name` (`name`),
   ADD UNIQUE KEY `email` (`email`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tbl_bank`
---
-ALTER TABLE `tbl_bank`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tbl_currency`
---
-ALTER TABLE `tbl_currency`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tbl_customer`
---
-ALTER TABLE `tbl_customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tbl_supplier`
---
-ALTER TABLE `tbl_supplier`
-  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
