@@ -194,28 +194,10 @@ include "../includes/base_page/shared_top_tags.php"
 
 
   window.addEventListener('DOMContentLoaded', (event) => {
-    let opt = document.createElement("option");
-    opt.appendChild(document.createTextNode("-- Select Currency --"));
-    opt.setAttribute("value", "");
-    opt.setAttribute("disabled", "");
-    opt.setAttribute("selected", "");
-    currency.appendChild(opt);
 
+    initSelectElement("#currency", "-- Select Currency --");
+    populateSelectElement("#currency", '../includes/load_currency.php', "name");
 
-    fetch('../includes/load_currency.php')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        data.forEach((value) => {
-          let opt = document.createElement("option");
-          opt.appendChild(document.createTextNode(value['name']));
-          opt.value = value['name'];
-          currency.appendChild(opt);
-        });
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
   });
 </script>
 
