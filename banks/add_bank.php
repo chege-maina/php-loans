@@ -34,7 +34,7 @@ include "../includes/base_page/shared_top_tags.php"
 
       <div class="column">
         <label for="account_number" class="label">Account Name</label>
-        <div class="control">
+        <div class="control commify">
           <input type="text" name="account_number" id="account_number" class="input" required placeholder="Account name">
         </div>
       </div>
@@ -43,7 +43,7 @@ include "../includes/base_page/shared_top_tags.php"
 
     <div class="columns">
 
-      <div class="column">
+      <div class="column commify">
         <label for="opening_balance" class="label">Opening Balance</label>
         <div class="control">
           <input type="number" name="opening_balance" id="opening_balance" class="input" required placeholder="Opening balance">
