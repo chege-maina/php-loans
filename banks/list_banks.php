@@ -2,7 +2,7 @@
 include "../includes/base_page/shared_top_tags.php"
 ?>
 
-<div class="block title">List of Banks</div>
+<div class="block title">Manage Banks</div>
 
 <div class="box">
 
