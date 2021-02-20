@@ -10,3 +10,11 @@ tbl_suppliers - PK supplier_id, PK name, PK email, tel_no, postal_address, physi
 tbl_payments - PK supplier, PK bank, PK cheque_no, amount, date, cheque_type
 
 tbl_receipts - PK customer, PK bank, PK cheque_no, amount, date, cheque_type
+
+
+<----SIDE NAV---->
+Dashboard
+Bank->Add Bank->Manage Banks
+Suppliers->Add Supplier->Manage Suppliers
+Customers->Add Customer->Manage Customers
+Transactions->Payments->Receipts
