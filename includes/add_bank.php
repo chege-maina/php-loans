@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $od_limit = sanitize_input($_POST["od_limit"]);
   $id_interest = sanitize_input($_POST["id_interest"]);
   $over_limit = sanitize_input($_POST["over_limit"]);
+  $branch = sanitize_input($_POST["branch"]);
   $late_charges = sanitize_input($_POST["late_charges"]);
 
   if ($stmt = $con->prepare('SELECT bank_name FROM tbl_bank WHERE bank_name = ? and acc_no =?')) {
@@ -38,8 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->store_result();
     if ($stmt->num_rows == 0) {
       if ($stmt = $con->prepare('INSERT INTO tbl_bank (bank_name, acc_no, acc_name, 
-      currency, opening_bal, clear_days, od_limit, id_interest, over_limit, late_charges) VALUES (?,?,?,?,?,?,?,?,?,?)')) {
-        $stmt->bind_param('ssssssssss', $bank_name, $acc_no, $acc_name, $currency, $opening_bal, $clear_days, $od_limit, $id_interest, $over_limit, $late_charges);
+      currency, opening_bal, clear_days, od_limit, id_interest, over_limit, late_charges, branch_name) VALUES (?,?,?,?,?,?,?,?,?,?,?)')) {
+        $stmt->bind_param('sssssssssss', $bank_name, $acc_no, $acc_name, $currency, $opening_bal, $clear_days, $od_limit, $id_interest, $over_limit, $late_charges, $branch);
 
         if ($stmt->execute()) {
           $responseArray = array(
