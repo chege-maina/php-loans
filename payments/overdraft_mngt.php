@@ -76,9 +76,8 @@ include "../includes/base_page/shared_top_tags.php"
         <tbody id="table_body">
         </tbody>
       </table>
-
-      <div class="columns">
-        <div class="column text-right fw-bold">
+      <div class="field is-grouped is-grouped-right">
+        <div class="column-left bold">
           Total
           <div class="column">
             <input type="number" class="input" name="total" id="total" required>
