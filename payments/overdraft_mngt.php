@@ -25,11 +25,11 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
       </div>
       <div class="column">
-        <label for="branch_name" class="label">Select Branch Name</label>
+        <label for="branch_name" class="label">Select Bank Name</label>
         <div class="select is-fullwidth">
           <div class="control">
             <select>
-              <option value="#">-- Select Branch Name --</option>
+              <option value="#">-- Select Bank Name --</option>
             </select>
           </div>
         </div>
@@ -56,7 +56,6 @@ include "../includes/base_page/shared_top_tags.php"
             <th>CR</th>
             <th>Balance</th>
             <th>OD Interest</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody id="table_body">
