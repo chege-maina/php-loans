@@ -72,24 +72,46 @@ include "../includes/base_page/shared_top_tags.php"
 
     <div class="columns">
 
-      <div class="column">
+      <div class="column is-fullwidth">
         <label for="overdraft_interest" class="label">Overdraft Interest</label>
-        <div class="control">
-          <input type="number" name="overdraft_interest" id="overdraft_interest" class="input" required placeholder="Overdraft interest" max="100">
+        <div class="field has-addons">
+          <p class="control">
+            <input type="number" name="overdraft_interest" id="overdraft_interest" class="input" required placeholder="Overdraft interest" max="100">
+          </p>
+          <p>
+            <a class="button is-static">%</a>
+          </p>
         </div>
       </div>
 
-      <div class="column">
+
+      <div class="column is-fullwidth">
         <label for="overlimit_interest" class="label">Overdraft Limit Interest</label>
-        <div class="control">
-          <input type="number" name="overlimit_interest" id="overlimit_interest" class="input" required placeholder="Overdraft Limit interest" max="100">
+        <div class="field has-addons">
+          <p class="control">
+            <input type="number" name="overlimit_interest" id="overlimit_interest" class="input" required placeholder="Overdraft Limit interest" max="100">
+          </p>
+          <p class="control">
+            <a>
+              <a class="button is-static">%</a>
+            </a>
+          </p>
         </div>
       </div>
 
-      <div class="column">
+      <div class="column is-fullwidth">
         <label for="late_payment_charges" class="label">Late Payment Charges</label>
         <div class="control">
-          <input type="number" name="late_payment_charges" id="late_payment_charges" class="input" required placeholder="Late payment charges" max="100">
+          <div class="field has-addons">
+            <p class="control">
+              <input type="number" name="late_payment_charges" id="late_payment_charges" class="input" required placeholder="Late payment charges" max="100">
+            </p>
+            <p class="control">
+              <a>
+                <a class="button is-static">%</a>
+              </a>
+            </p>
+          </div>
         </div>
       </div>
 
