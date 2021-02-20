@@ -11,7 +11,7 @@ include "../includes/base_page/shared_top_tags.php"
     <div class="card-content">
       <!-- Content is to start here -->
       <div class="columns">
-        <div class="column is-vcentered">
+        <div class="column">
           <label for="supplier" class="label">Select Supplier</label>
           <div class="select is-fullwidth  ">
             <div class="control">
@@ -60,7 +60,7 @@ include "../includes/base_page/shared_top_tags.php"
             <select id="cheque_type" required>
               <option value disabled selected>-- Select Cheque Type --</option>
               <option value="inhouse">Inhouse</option>
-              <option value="interbank">Interbank--</option>
+              <option value="interbank">Interbank</option>
             </select>
           </div>
         </div>
