@@ -14,28 +14,28 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column">
         <label for="bank_name" class="label">Name</label>
         <div class="control">
-          <input type="text" name="bank_name" id="bank_name" class="input" required>
+          <input type="text" name="bank_name" id="bank_name" class="input" required placeholder="Bank name">
         </div>
       </div>
 
       <div class="column">
         <label for="branch_name" class="label">Branch</label>
         <div class="control">
-          <input type="text" name="branch_name" id="branch_name" class="input" required>
+          <input type="text" name="branch_name" id="branch_name" class="input" required placeholder="Branch name">
         </div>
       </div>
 
       <div class="column">
         <label for="account_number" class="label">Account Number</label>
         <div class="control">
-          <input type="text" name="account_number" id="account_number" class="input" required>
+          <input type="text" name="account_number" id="account_number" class="input" required placeholder="Account number">
         </div>
       </div>
 
       <div class="column">
         <label for="account_number" class="label">Account Name</label>
         <div class="control">
-          <input type="text" name="account_number" id="account_number" class="input" required>
+          <input type="text" name="account_number" id="account_number" class="input" required placeholder="Account name">
         </div>
       </div>
 
@@ -46,21 +46,21 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column">
         <label for="opening_balance" class="label">Opening Balance</label>
         <div class="control">
-          <input type="text" name="opening_balance" id="opening_balance" class="input" required>
+          <input type="number" name="opening_balance" id="opening_balance" class="input" required placeholder="Opening balance">
         </div>
       </div>
 
       <div class="column">
         <label for="currency" class="label">Currency</label>
         <div class="control">
-          <input type="text" name="currency" id="currency" class="input" required>
+          <input type="number" name="currency" id="currency" class="input" required placeholder="Currency">
         </div>
       </div>
 
       <div class="column">
         <label for="cheque_clear_days" class="label">Cheque Clear Days</label>
         <div class="control">
-          <input type="text" name="cheque_clear_days" id="cheque_clear_days" class="input" required>
+          <input type="text" name="cheque_clear_days" id="cheque_clear_days" class="input" required placeholder="Cheque clear days">
         </div>
       </div>
 
@@ -71,28 +71,28 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column">
         <label for="overdraft_interest" class="label">Overdraft Interest</label>
         <div class="control">
-          <input type="text" name="overdraft_interest" id="overdraft_interest" class="input" required>
+          <input type="text" name="overdraft_interest" id="overdraft_interest" class="input" required placeholder="Overdraft interest">
         </div>
       </div>
 
       <div class="column">
         <label for="overlimit_interest" class="label">Overlimit Interest</label>
         <div class="control">
-          <input type="text" name="overlimit_interest" id="overlimit_interest" class="input" required>
+          <input type="text" name="overlimit_interest" id="overlimit_interest" class="input" required placeholder="Overlimit interest">
         </div>
       </div>
 
       <div class="column">
         <label for="late_payment_charges" class="label">Late Payment Charges</label>
         <div class="control">
-          <input type="text" name="late_payment_charges" id="late_payment_charges" class="input" required>
+          <input type="text" name="late_payment_charges" id="late_payment_charges" class="input" required placeholder="Late payment charges">
         </div>
       </div>
 
       <div class="column">
         <label for="overdraft_limit" class="label">Overdraft Limit</label>
         <div class="control">
-          <input type="text" name="overdraft_limit" id="overdraft_limit" class="input" required>
+          <input type="text" name="overdraft_limit" id="overdraft_limit" class="input" required placeholder="Overdraft charges">
         </div>
       </div>
 
