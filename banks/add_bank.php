@@ -2,6 +2,8 @@
 include "../includes/base_page/shared_top_tags.php"
 ?>
 
+<div id="alert-div">
+</div>
 <div class="block title">
   Add New Bank
 </div>
@@ -127,7 +129,6 @@ include "../includes/base_page/shared_top_tags.php"
   const overdraft_limit = document.querySelector("#overdraft_limit");
   const late_payment_charges = document.querySelector("#late_payment_charges");
 
-
   function submitForm() {
 
     console.log("Submitting");
@@ -151,6 +152,15 @@ include "../includes/base_page/shared_top_tags.php"
       .then(response => response.json())
       .then(result => {
         console.log('Success:', result);
+        if (result["message"] === "success") {
+          showSuccessAlert("Record stored successfuly")
+        } else {
+          showDangerAlert("Record not inserted")
+        }
+
+        window.setTimeout(() => {
+          location.reload()
+        }, 2500);
       })
       .catch(error => {
         console.error('Error:', error);
