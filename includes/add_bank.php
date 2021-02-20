@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->store_result();
     if ($stmt->num_rows == 0) {
       if ($stmt = $con->prepare('INSERT INTO tbl_bank (bank_name, acc_no, acc_name, 
-      currency, opening_bal, clear_days, od_limit, id_interest, over_limit, late_charges, branch) VALUES (?,?,?,?,?,?,?,?,?,?,?)')) {
+      currency, opening_bal, clear_days, od_limit, id_interest, over_limit, late_charges, branch_name) VALUES (?,?,?,?,?,?,?,?,?,?,?)')) {
         $stmt->bind_param('sssssssssss', $bank_name, $acc_no, $acc_name, $currency, $opening_bal, $clear_days, $od_limit, $id_interest, $over_limit, $late_charges, $branch);
 
         if ($stmt->execute()) {
