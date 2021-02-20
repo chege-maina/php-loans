@@ -96,7 +96,7 @@
             let opt = document.createElement("option");
             opt.appendChild(document.createTextNode(value[key_name]));
             opt.value = value[key_name];
-            currency.appendChild(opt);
+            elem.appendChild(opt);
           });
         })
         .catch((error) => {
