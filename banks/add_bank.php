@@ -119,6 +119,22 @@ include "../includes/base_page/shared_top_tags.php"
     opt.setAttribute("disabled", "");
     opt.setAttribute("selected", "");
     currency.appendChild(opt);
+
+
+    fetch('../includes/load_currency.php')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        data.forEach((value) => {
+          let opt = document.createElement("option");
+          opt.appendChild(document.createTextNode(value['name']));
+          opt.value = value['name'];
+          currency.appendChild(opt);
+        });
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   });
 </script>
 
