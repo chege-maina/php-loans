@@ -13,4 +13,4 @@ include '../includes/base_page/navbar_shared.php'
     include '../includes/base_page/sidenav_shared.php'
     ?>
   </div>
-  <div class="col pl-3">
+  <div class="col pl-3 is-11">
