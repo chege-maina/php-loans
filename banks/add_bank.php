@@ -76,9 +76,9 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
 
       <div class="column">
-        <label for="overlimit_interest" class="label">Overlimit Interest</label>
+        <label for="overlimit_interest" class="label">Overdraft Limit Interest</label>
         <div class="control">
-          <input type="number" name="overlimit_interest" id="overlimit_interest" class="input" required placeholder="Overlimit interest">
+          <input type="number" name="overlimit_interest" id="overlimit_interest" class="input" required placeholder="Overdraft Limit interest">
         </div>
       </div>
 
