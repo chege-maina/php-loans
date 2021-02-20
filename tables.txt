@@ -1,0 +1,12 @@
+tbl_bank - PK bank_name, PK acc_no, branch, acc_name, currency, opening_bal, clear_days, od_limit, od_interest, over_limit,
+late_charges
+
+tbl_currency - PK currency_unit
+
+tbl_customers - PK customer_id, PK name, PK email, tel_no, postal_address, physical_address
+
+tbl_suppliers - PK supplier_id, PK name, PK email, tel_no, postal_address, physical_address
+
+tbl_payments - PK supplier, PK bank, PK cheque_no, amount, date, cheque_type
+
+tbl_receipts - PK customer, PK bank, PK cheque_no, amount, date, cheque_type
