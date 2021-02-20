@@ -29,6 +29,9 @@ include "../includes/base_page/shared_top_tags.php"
                     <input name="physical_address" id="sup_physical_address" class="input is-link" type="text" placeholder="Physical Address" required>
                 </div>
             </div>
+            <div class="column">
+                <button class="button is-success is-light">Success</button>
+            </div>
         </div>
     </div>
 </form>
