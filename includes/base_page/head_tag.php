@@ -40,8 +40,13 @@
       alert_div.innerHTML = text
     }
 
+
+    let alert_div;
+    window.addEventListener('DOMContentLoaded', (event) => {
+      alert_div = document.querySelector("#alert-div");
+    });
+
     function showDangerAlert(message) {
-      const alert_div = document.querySelector("#alert-div");
       let text = `
 <article class="message is-danger mb-3">
   <div class="message-body">
@@ -52,6 +57,11 @@
       alert_div.innerHTML = text
     }
 
+    function removeAlert(wait_time = 2500) {
+      window.setTimeout(() => {
+        alert_div.innerHTML = "";
+      }, wait_time);
+    }
 
     function reloadPage(wait_time = 2500) {
       window.setTimeout(() => {

@@ -2,8 +2,6 @@
 include "../includes/base_page/shared_top_tags.php"
 ?>
 
-<div id="alert-div">
-</div>
 <div class="block title">
   Add New Bank
 </div>
@@ -159,11 +157,13 @@ include "../includes/base_page/shared_top_tags.php"
           let msg = !("desc" in result) || result["desc"].trim() === "" ?
             "Record not stored" : result["desc"];
           showDangerAlert(msg);
+          removeAlert();
         }
       })
       .catch(error => {
         console.log(error)
         showDangerAlert("Could not send data to server");
+        removeAlert();
         // reloadPage(5000);
       });
 
