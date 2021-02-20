@@ -8,9 +8,9 @@ include '../includes/base_page/navbar_shared.php'
 
 <div class="columns">
 
-  <div class="col pl-5 has-background-white-ter mr-0">
+  <div class="column pl-5 has-background-white-ter mr-0 is-2">
     <?php
     include '../includes/base_page/sidenav_shared.php'
     ?>
   </div>
-  <div class="col pl-3 is-11">
+  <div class="column pl-3">
