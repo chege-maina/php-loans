@@ -29,6 +29,39 @@
           </a>
         </div>
       </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Suppliers
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="../banks/add_bank.php">
+            Add Supplier
+          </a>
+        </div>
+      </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Customers
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="../banks/add_bank.php">
+            Add Customer
+          </a>
+        </div>
+      </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Transactions
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="../banks/add_bank.php">
+            Payments
+          </a>
+        </div>
+      </div>
       <!-- ============================================================================= -->
 
     </div>
