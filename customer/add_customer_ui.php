@@ -30,7 +30,7 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
       </div>
       <div class="column">
-        <button class="button is-success is-light">Submit</button>
+        <button class="button is-success ">Submit</button>
       </div>
     </div>
   </div>
