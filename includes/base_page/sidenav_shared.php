@@ -5,7 +5,7 @@
   <ul class="menu-list">
     <li><a>Dashboard</a></li>
     <li><a>Suppliers</a>
-      <a href="/supplier/add_supplier_ui.php">Add Supplier</a>
+      <a href="../supplier/add_supplier_ui.php">Add Supplier</a>
     </li>
   </ul>
   <p class="menu-label">
