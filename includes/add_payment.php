@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $date = sanitize_input($_POST["date"]);
   $cheque_type = sanitize_input($_POST["cheque_type"]);
 
-  if ($stmt = $con->prepare('SELECT name FROM tbl_payments WHERE supplier_name = ? and bank_name =? and cheque_no =?')) {
+  if ($stmt = $con->prepare('SELECT supplier_name FROM tbl_payments WHERE supplier_name = ? and bank_name =? and cheque_no =?')) {
     // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
     $stmt->bind_param('sss', $name, $email, $cheque_no);
     $stmt->execute();
