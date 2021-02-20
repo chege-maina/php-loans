@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2021 at 10:55 AM
+-- Generation Time: Feb 20, 2021 at 11:16 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -67,6 +67,36 @@ CREATE TABLE `tbl_customer` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_payments`
+--
+
+CREATE TABLE `tbl_payments` (
+  `supplier_name` varchar(50) NOT NULL,
+  `bank_name` varchar(50) NOT NULL,
+  `cheque_no` varchar(100) NOT NULL,
+  `amount` varchar(100) NOT NULL,
+  `date` date NOT NULL,
+  `cheque_type` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_receipts`
+--
+
+CREATE TABLE `tbl_receipts` (
+  `customer_name` varchar(50) NOT NULL,
+  `bank_name` varchar(50) NOT NULL,
+  `cheque_no` varchar(100) NOT NULL,
+  `amount` varchar(100) NOT NULL,
+  `date` date NOT NULL,
+  `cheque_type` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_supplier`
 --
 
@@ -99,6 +129,18 @@ ALTER TABLE `tbl_currency`
 --
 ALTER TABLE `tbl_customer`
   ADD PRIMARY KEY (`name`,`email`);
+
+--
+-- Indexes for table `tbl_payments`
+--
+ALTER TABLE `tbl_payments`
+  ADD PRIMARY KEY (`supplier_name`,`bank_name`,`cheque_no`);
+
+--
+-- Indexes for table `tbl_receipts`
+--
+ALTER TABLE `tbl_receipts`
+  ADD PRIMARY KEY (`customer_name`,`bank_name`,`cheque_no`);
 
 --
 -- Indexes for table `tbl_supplier`
