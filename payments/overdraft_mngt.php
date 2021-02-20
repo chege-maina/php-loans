@@ -76,12 +76,16 @@ include "../includes/base_page/shared_top_tags.php"
         <tbody id="table_body">
         </tbody>
       </table>
-      <div class="field is-grouped is-grouped-right">
-        <div class="column-left bold">
-          Total
-          <div class="column">
+      <div class="field has-addons has-addons-centered is-grouped is-grouped-right">
+        <p class="control">
+          <a class="button is-info is-light">
+            Total
+          </a>
+        </p>
+        <div class="column-left ">
+          <p class="control">
             <input type="number" class="input" name="total" id="total" required>
-          </div>
+          </p>
         </div>
       </div>
       <!-- Content ends here -->
