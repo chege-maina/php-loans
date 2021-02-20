@@ -11,6 +11,11 @@
   -->
   <script src="../external/autoNumeric/autoNumeric.min.js"></script>
   <link rel="stylesheet" href="../external/bulma/bulma.min.css">
+
+  <script src="../external/datatable/jquery-3.5.1.js"></script>
+  <link rel="stylesheet" href="../external/datatable/dataTables.bulma.min.css">
+  <script src="../external/datatable/jquery.dataTables.min.js"></script>
+  <script src="../external/datatable/dataTables.bulma.min.js"></script>
 </head>
 
 <body class="has-navbar-fixed-top">

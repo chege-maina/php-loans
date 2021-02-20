@@ -27,6 +27,9 @@
           <a class="navbar-item" href="../banks/add_bank.php">
             Add Bank
           </a>
+          <a class="navbar-item" href="../banks/list_banks.php">
+            List Banks
+          </a>
         </div>
       </div>
       <div class="navbar-item has-dropdown is-hoverable">
