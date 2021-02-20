@@ -75,7 +75,9 @@
         </div>
       </div>
       <!-- ============================================================================= -->
-
+      <a class="navbar-item" href="../payments/overdraft_mngt.php">
+        Overdraft Management
+      </a>
     </div>
   </div>
 </nav>
