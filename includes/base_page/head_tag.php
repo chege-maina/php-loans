@@ -33,7 +33,7 @@
     function showSuccessAlert(message) {
       const alert_div = document.querySelector("#alert-div");
       let text = `
-<article class="message is-success mb-3">
+<article class="message is-success mt-3">
   <div class="message-body">
   <strong>Success: </strong> ${message}
   </div>
@@ -50,7 +50,7 @@
 
     function showDangerAlert(message) {
       let text = `
-<article class="message is-danger mb-3">
+<article class="message is-danger mt-3">
   <div class="message-body">
   <strong>Error: </strong> ${message}
   </div>

@@ -12,7 +12,9 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="column">
           <label for="supplier_name" class="label">Name*</label>
           <div class="field">
-            <input class="input" type="text" id="supplier_name" name="supplier_name" placeholder="Name" required>
+            <div class="control">
+              <input class="input" type="text" id="supplier_name" name="supplier_name" placeholder="Name" required>
+            </div>
           </div>
         </div>
 
@@ -20,7 +22,7 @@ include "../includes/base_page/shared_top_tags.php"
           <label for="email" class="label">Email*</label>
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="email" id="email" name="email" placeholder="Email">
+              <input class="input" type="email" id="email" name="email" required placeholder="Email">
               <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
               </span>
@@ -61,6 +63,38 @@ include "../includes/base_page/shared_top_tags.php"
 
   function submitForm() {
     console.log("submitting");
+
+
+    const formData = new FormData();
+    formData.append("name", supplier_name.value);
+    formData.append("email", email.value);
+    formData.append("tel_no", sup_tel.value);
+    formData.append("postal_address", sup_postal.value);
+    formData.append("physical_address", sup_physical_address.value);
+
+    fetch('../includes/add_supplier.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+        if (result["message"] === "success") {
+          showSuccessAlert("Record stored successfuly");
+          reloadPage();
+        } else {
+          let msg = !("desc" in result) || result["desc"].trim() === "" ?
+            "Record not stored" : result["desc"];
+          showDangerAlert(msg);
+          removeAlert();
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        showDangerAlert("Could not send data to server");
+        removeAlert();
+      });
+
     return false;
   }
 </script>
