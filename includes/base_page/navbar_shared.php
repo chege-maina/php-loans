@@ -79,4 +79,3 @@
     </div>
   </div>
 </nav>
-<div class="container is-fluid mt-5 pl-0 pt-2">
