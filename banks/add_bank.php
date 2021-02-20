@@ -8,7 +8,7 @@ include "../includes/base_page/shared_top_tags.php"
 
 <div class="box">
 
-  <form action="#" method="post">
+  <form id="form_tag" onsubmit="return submitForm();">
     <div class="columns">
 
       <div class="column">
@@ -28,14 +28,14 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column">
         <label for="account_number" class="label">Account Number</label>
         <div class="control">
-          <input type="text" name="account_number" id="account_number" class="input" required placeholder="Account number">
+          <input type="number" name="account_number" id="account_number" class="input" required placeholder="Account number">
         </div>
       </div>
 
       <div class="column">
         <label for="account_number" class="label">Account Name</label>
         <div class="control commify">
-          <input type="text" name="account_number" id="account_number" class="input" required placeholder="Account name">
+          <input type="text" name="account_name" id="account_name" class="input" required placeholder="Account name">
         </div>
       </div>
 
@@ -111,7 +111,55 @@ include "../includes/base_page/shared_top_tags.php"
 </div>
 
 <script>
+  const form_tag = document.querySelector("#form_tag");
+
+  const bank_name = document.querySelector("#bank_name");
+  const branch_name = document.querySelector("#branch_name");
+  const account_number = document.querySelector("#account_number");
+  const account_name = document.querySelector("#account_name");
+
+  const opening_balance = document.querySelector("#opening_balance");
+  const cheque_clear_days = document.querySelector("#cheque_clear_days");
   const currency = document.querySelector("#currency");
+
+  const overdraft_interest = document.querySelector("#overdraft_interest");
+  const overlimit_interest = document.querySelector("#overlimit_interest");
+  const overdraft_limit = document.querySelector("#overdraft_limit");
+  const late_payment_charges = document.querySelector("#late_payment_charges");
+
+
+  function submitForm() {
+
+    console.log("Submitting");
+    const formData = new FormData();
+    formData.append("bank_name", bank_name.value);
+    formData.append("branch", branch_name.value);
+    formData.append("acc_no", account_number.value);
+    formData.append("acc_name", account_name.value);
+    formData.append("currency", currency.value);
+    formData.append("opening_bal", opening_balance.value);
+    formData.append("clear_days", cheque_clear_days.value);
+    formData.append("od_limit", overdraft_limit.value);
+    formData.append("id_interest", overlimit_interest.value);
+    formData.append("over_limit", overdraft_limit.value);
+    formData.append("late_charges", late_payment_charges.value);
+
+    fetch('../includes/add_bank.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+    return false;
+  }
+
+
   window.addEventListener('DOMContentLoaded', (event) => {
     let opt = document.createElement("option");
     opt.appendChild(document.createTextNode("-- Select Currency --"));
