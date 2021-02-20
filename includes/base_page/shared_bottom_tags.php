@@ -1,3 +1,4 @@
+<div id="alert-div"></div>
 </div>
 </div>
 
