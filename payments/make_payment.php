@@ -13,20 +13,20 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="columns">
         <div class="column is-vcentered">
           <label for="supplier" class="label">Select Supplier</label>
-          <div class="select is-link is-normal  ">
+          <div class="select is-fullwidth  ">
             <div class="control">
               <select>
-                <option value="#">Select Supplier</option>
+                <option value="#">-- Select Supplier --</option>
               </select>
             </div>
           </div>
         </div>
         <div class="column">
           <label for="bank" class="label">Select Bank</label>
-          <div class="select is-link is-normal">
+          <div class="select is-fullwidth">
             <div class="control">
               <select>
-                <option value="#">Select Bank</option>
+                <option value="#">-- Select Bank --</option>
               </select>
             </div>
           </div>
@@ -57,10 +57,10 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
 
         <div class="column">
-          <label for="payment_type" class="label">Select Payment Type</label>
-          <div class="select is-link is-normal">
+          <label for="payment_type" class="label">Select Cheque Type</label>
+          <div class="select is-fullwidth">
             <select>
-              <option value="#">Select Payment</option>
+              <option value="#">-- Select Cheque Type --</option>
             </select>
           </div>
         </div>
