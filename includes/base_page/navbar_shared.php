@@ -38,7 +38,7 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="../banks/add_bank.php">
+          <a class="navbar-item" href="../supplier/add_supplier_ui.php">
             Add Supplier
           </a>
           <a class="navbar-item" href="../banks/list_banks.php">
@@ -52,7 +52,7 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="../banks/add_bank.php">
+          <a class="navbar-item" href="../customer/add_customer_ui.php">
             Add Customer
           </a>
           <a class="navbar-item" href="../banks/list_banks.php">
@@ -66,7 +66,7 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="../banks/add_bank.php">
+          <a class="navbar-item" href="../payments/make_payment.php">
             Payments
           </a>
           <a class="navbar-item" href="../banks/list_banks.php">
