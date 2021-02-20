@@ -21,12 +21,12 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: bank_loans_db
+      MYSQL_DATABASE: bank_loans
     ports:
       - 3306:3306
     volumes:
       - ./mysql-data:/var/lib/mysql
-      # - ./database/msl_db.sql:/docker-entrypoint-initdb.d/start.sql
+      - ./database/loans.sql:/docker-entrypoint-initdb.d/start.sql
 
   phpmyadmin:
     depends_on:
