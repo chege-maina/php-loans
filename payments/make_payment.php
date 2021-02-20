@@ -58,6 +58,9 @@ include "../includes/base_page/shared_top_tags.php"
           <label for="payment_type" class="label">Select Cheque Type</label>
           <div class="select is-fullwidth" required>
             <select id="cheque_type" required>
+              <option value disabled selected>-- Select Cheque Type --</option>
+              <option value="inhouse">Inhouse</option>
+              <option value="interbank">Interbank--</option>
             </select>
           </div>
         </div>
@@ -128,8 +131,8 @@ include "../includes/base_page/shared_top_tags.php"
 
 
     // TODO: Fetch from the right table
-    initSelectElement("#cheque_type", "-- Select Cheque Type --");
-    populateSelectElement("#cheque_type", "../includes/load_currency.php", "name");
+    // initSelectElement("#cheque_type", "-- Select Cheque Type --");
+    // populateSelectElement("#cheque_type", "../includes/load_currency.php", "name");
   });
 </script>
 
