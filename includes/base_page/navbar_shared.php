@@ -69,7 +69,7 @@
           <a class="navbar-item" href="../payments/make_payment.php">
             Payments
           </a>
-          <a class="navbar-item" href="../banks/list_banks.php">
+          <a class="navbar-item" href="../receipts/receive_payment.php">
             Receipts
           </a>
         </div>
