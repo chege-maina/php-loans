@@ -9,7 +9,7 @@ include "../includes/base_page/shared_top_tags.php"
 <div class="card">
   <div class="card-content">
     <!-- Content is to start here -->
-    <div class="columns">
+    <div class="columns ">
       <div class="column">
         <label for="date" class="label">To</label>
         <!-- autofill current date  -->
@@ -34,13 +34,28 @@ include "../includes/base_page/shared_top_tags.php"
           </div>
         </div>
       </div>
-      <div class="column-auto d-flex align-items-end">
-        <div class="column">
-          <label for="branch" class="label"> </label>
-          <div class="control">
+      <div class="column-auto ">
+        <div class="control">
+          <div class="column">
+            <label for="branch" class="label"> </label>
             <button class="button is-info">Search</button>
           </div>
         </div>
+      </div>
+    </div>
+    <hr>
+    <div class="columns">
+      <div class="column">
+        <label for="bank_name" class="label">Bank Name*</label>
+        <input name="bank_name" id="bank_name" class="input" type="text" placeholder="bank name" required readonly>
+      </div>
+      <div class="column">
+        <label for="acc_name" class="label">Account Name*</label>
+        <input name="acc_name" id="acc_name" class="input" type="text" placeholder="account name" required readonly>
+      </div>
+      <div class="column">
+        <label for="acc_number" class="label">Account Number*</label>
+        <input name="acc_number" id="acc_number" class="input" type="text" placeholder="account number" required readonly>
       </div>
     </div>
     <hr>
@@ -61,10 +76,18 @@ include "../includes/base_page/shared_top_tags.php"
         <tbody id="table_body">
         </tbody>
       </table>
-    </div>
-    <!-- Content ends here -->
-  </div>
 
-  <?php
-  include "../includes/base_page/shared_bottom_tags.php"
-  ?>
+      <div class="columns">
+        <div class="column text-right fw-bold">
+          Total
+          <div class="column">
+            <input type="number" class="input" name="total" id="total" required>
+          </div>
+        </div>
+      </div>
+      <!-- Content ends here -->
+    </div>
+
+    <?php
+    include "../includes/base_page/shared_bottom_tags.php"
+    ?>
