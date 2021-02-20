@@ -28,7 +28,7 @@
             Add Bank
           </a>
           <a class="navbar-item" href="../banks/list_banks.php">
-            List Banks
+            Manage Banks
           </a>
         </div>
       </div>
@@ -41,6 +41,9 @@
           <a class="navbar-item" href="../banks/add_bank.php">
             Add Supplier
           </a>
+          <a class="navbar-item" href="../banks/list_banks.php">
+            Manage Suppliers
+          </a>
         </div>
       </div>
       <div class="navbar-item has-dropdown is-hoverable">
@@ -52,6 +55,9 @@
           <a class="navbar-item" href="../banks/add_bank.php">
             Add Customer
           </a>
+          <a class="navbar-item" href="../banks/list_banks.php">
+            Manage Customers
+          </a>
         </div>
       </div>
       <div class="navbar-item has-dropdown is-hoverable">
@@ -62,6 +68,9 @@
         <div class="navbar-dropdown">
           <a class="navbar-item" href="../banks/add_bank.php">
             Payments
+          </a>
+          <a class="navbar-item" href="../banks/list_banks.php">
+            Receipts
           </a>
         </div>
       </div>
