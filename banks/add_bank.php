@@ -53,8 +53,12 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column">
         <label for="currency" class="label">Currency</label>
         <div class="control">
-          <input type="number" name="currency" id="currency" class="input" required placeholder="Currency">
+          <div class="select is-fullwidth">
+            <select id="currency" name="currency">
+            </select>
+          </div>
         </div>
+
       </div>
 
       <div class="column">
@@ -105,6 +109,18 @@ include "../includes/base_page/shared_top_tags.php"
     </div>
   </form>
 </div>
+
+<script>
+  const currency = document.querySelector("#currency");
+  window.addEventListener('DOMContentLoaded', (event) => {
+    let opt = document.createElement("option");
+    opt.appendChild(document.createTextNode("-- Select Currency --"));
+    opt.setAttribute("value", "");
+    opt.setAttribute("disabled", "");
+    opt.setAttribute("selected", "");
+    currency.appendChild(opt);
+  });
+</script>
 
 <?php
 include "../includes/base_page/shared_bottom_tags.php"
