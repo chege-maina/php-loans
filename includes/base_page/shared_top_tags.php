@@ -6,7 +6,7 @@ include '../includes/base_page/head_tag.php'
 include '../includes/base_page/navbar_shared.php'
 ?>
 
-<div class="container">
+<div class="container mt-5">
   <!--
 <div class="container is-fluid mt-5 pl-0 pt-2">
   <div class="columns">
