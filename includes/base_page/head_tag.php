@@ -51,4 +51,11 @@
 `
       alert_div.innerHTML = text
     }
+
+
+    function reloadPage(wait_time = 2500) {
+      window.setTimeout(() => {
+        location.reload()
+      }, wait_time);
+    }
   </script>

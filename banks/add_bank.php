@@ -153,17 +153,18 @@ include "../includes/base_page/shared_top_tags.php"
       .then(result => {
         console.log('Success:', result);
         if (result["message"] === "success") {
-          showSuccessAlert("Record stored successfuly")
+          showSuccessAlert("Record stored successfuly");
+          reloadPage();
         } else {
-          showDangerAlert("Record not inserted")
+          let msg = !("desc" in result) || result["desc"].trim() === "" ?
+            "Record not stored" : result["desc"];
+          showDangerAlert(msg);
         }
-
-        window.setTimeout(() => {
-          location.reload()
-        }, 2500);
       })
       .catch(error => {
-        console.error('Error:', error);
+        console.log(error)
+        showDangerAlert("Could not send data to server");
+        // reloadPage(5000);
       });
 
     return false;
