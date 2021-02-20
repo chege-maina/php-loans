@@ -5,7 +5,7 @@ include "../includes/base_page/shared_top_tags.php"
 <div class="block title">
   Receive Payment
 </div>
-<form action="#" method="post">
+<form onsubmit="return submitForm();">
   <div class="card">
 
     <div class="card-content">
@@ -89,6 +89,64 @@ include "../includes/base_page/shared_top_tags.php"
     initSelectElement("#bank", "-- Select Bank --");
     populateSelectElement("#bank", "../includes/load_bank.php", "name");
   });
+
+
+  const customer = document.querySelector("#customer");
+  const bank = document.querySelector("#bank");
+  const p_date = document.querySelector("#p_date");
+  const cheque_number = document.querySelector("#cheque_number");
+  const amount_banked = document.querySelector("#amount_banked");
+  const cheque_type = document.querySelector("#cheque_type");
+
+  function submitForm() {
+
+    console.log("submitting");
+
+
+    const formData = new FormData();
+
+    console.log("====================================");
+    console.log("customer_name", customer.value);
+    console.log("bank_name", bank.value);
+    console.log("date", p_date.value);
+    console.log("cheque_type", cheque_type.value);
+    console.log("cheque_no", cheque_number.value);
+    console.log("amount", amount_banked.value);
+    console.log("====================================");
+
+
+    formData.append("customer_name", customer.value);
+    formData.append("bank_name", bank.value);
+    formData.append("date", p_date.value);
+    formData.append("cheque_type", cheque_type.value);
+    formData.append("cheque_no", cheque_number.value);
+    formData.append("amount", amount_banked.value);
+
+    fetch('../includes/add_receipt.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+        if (result["message"] === "success") {
+          showSuccessAlert("Record stored successfuly");
+          reloadPage();
+        } else {
+          let msg = !("desc" in result) || result["desc"].trim() === "" ?
+            "Record not stored" : result["desc"];
+          showDangerAlert(msg);
+          removeAlert();
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        showDangerAlert("Could not send data to server");
+        removeAlert();
+      });
+
+    return false;
+  }
 </script>
 
 <?php

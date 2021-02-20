@@ -80,7 +80,7 @@ include "../includes/base_page/shared_top_tags.php"
   const p_date = document.querySelector("#p_date");
   const cheque_number = document.querySelector("#cheque_number");
   const amount_paid = document.querySelector("#amount_paid");
-  const change_type = document.querySelector("#change_type");
+  const cheque_type = document.querySelector("#cheque_type");
 
   function submitForm() {
 
@@ -88,6 +88,16 @@ include "../includes/base_page/shared_top_tags.php"
 
 
     const formData = new FormData();
+
+    console.log("====================================");
+    console.log("supplier_name", supplier.value);
+    console.log("bank_name", bank.value);
+    console.log("date", p_date.value);
+    console.log("cheque_type", cheque_type.value);
+    console.log("cheque_no", cheque_number.value);
+    console.log("amount", amount_paid.value);
+    console.log("====================================");
+
     formData.append("supplier_name", supplier.value);
     formData.append("bank_name", bank.value);
     formData.append("date", p_date.value);
