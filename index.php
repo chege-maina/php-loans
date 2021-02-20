@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include 'includes/base_page/head_tag.php'
+?>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Qubes</title>
-</head>
+<h1>New System Hello</h1>
+<h1>Awesomeness</h1>
+<h1>Awesomeness</h1>
 
-<body>
-  <h1>New System Hello</h1>
-</body>
-
-</html>
+<?php
+include 'includes/base_page/footer_content.php'
+?>
