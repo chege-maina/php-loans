@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $amount = sanitize_input($_POST["amount"]);
   $date = sanitize_input($_POST["date"]);
   $cheque_type = sanitize_input($_POST["cheque_type"]);
+  $stat = "pay";
 
   if ($stmt = $con->prepare('SELECT supplier_name FROM tbl_payments WHERE supplier_name = ? and bank_name =? and cheque_no =?')) {
     // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
@@ -30,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->store_result();
     if ($stmt->num_rows == 0) {
       if ($stmt = $con->prepare('INSERT INTO tbl_payments (supplier_name, bank_name, cheque_no, 
-      amount, date, cheque_type) VALUES (?,?,?,?,?,?)')) {
-        $stmt->bind_param('ssssss', $supplier_name, $bank_name, $cheque_no, $amount, $date, $cheque_type);
+      amount, date, cheque_type, pay_type) VALUES (?,?,?,?,?,?,?)')) {
+        $stmt->bind_param('sssssss', $supplier_name, $bank_name, $cheque_no, $amount, $date, $cheque_type, $stat);
 
         if ($stmt->execute()) {
           $responseArray = array(
