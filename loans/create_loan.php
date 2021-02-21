@@ -44,7 +44,7 @@ include "../includes/base_page/shared_top_tags.php"
     <div class="columns">
       <div class="column">
         <label for="amt_dis" class="label">Amount Disbursed*</label>
-        <input name="amt_dis" id="amt_dis" class="input" type="text" placeholder="Amount Disbursed" required>
+        <input name="amt_dis" id="amt_dis" class="input" type="number" placeholder="Amount Disbursed" required>
       </div>
       <div class="column is-fullwidth">
         <label for="payment_period" class="label">Payment Period*</label>
@@ -65,7 +65,7 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
       <div class="column">
         <label for="next_payment" class="label">Next Payment*</label>
-        <input name="next_payment" id="next_payment" class="input" type="text" placeholder="Next Payment" required>
+        <input name="next_payment" id="next_payment" class="input" type="numbe" placeholder="Next Payment" required>
       </div>
     </div>
 
