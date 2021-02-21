@@ -12,11 +12,10 @@ include "../includes/base_page/shared_top_tags.php"
     <div class="columns ">
 
       <div class="column">
-        <label for="bank_name" class="label">Select Bank*</label>
-        <div class="select is-fullwidth">
+        <label for="bank" class="label">Select Bank</label>
+        <div class="select is-fullwidth required">
           <div class="control">
-            <select>
-              <option value="#">-- Select Bank --</option>
+            <select id="bank" required>
             </select>
           </div>
         </div>
@@ -123,3 +122,15 @@ include "../includes/base_page/shared_top_tags.php"
 <?php
 include "../includes/base_page/shared_bottom_tags.php"
 ?>
+
+<script>
+  const bank = document.querySelector("#bank");
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+    initSelectElement("#bank", "-- Select Bank --");
+    populateSelectElement("#bank", "../includes/load_bank.php", "name");
+
+
+
+  });
+</script>

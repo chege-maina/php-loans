@@ -46,7 +46,7 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column">
         <label for="opening_balance" class="label">Opening Balance</label>
         <div class="control commify">
-          <input type="text" class="input" required placeholder="Opening balance" data-commify="opening_balance">
+          <input type="number" class="input" required placeholder="Opening balance" data-commify="opening_balance">
         </div>
       </div>
 
