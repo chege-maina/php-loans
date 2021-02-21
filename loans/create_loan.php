@@ -22,18 +22,18 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
 
       <div class="column">
-        <label for="date" class="label">Date of Disbursment*</label>
+        <label for="d_date" class="label">Date of Disbursment*</label>
         <!-- autofill current date  -->
         <div class="control">
-          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date" class="input is-link" required>
+          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="d_date" class="input is-link" required>
         </div>
       </div>
 
       <div class="column">
-        <label for="date" class="label">First Repayment Date*</label>
+        <label for="r_date" class="label">First Repayment Date*</label>
         <!-- autofill current date  -->
         <div class="control">
-          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date" class="input is-link" required>
+          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="r_date" class="input is-link" required>
         </div>
       </div>
     </div>
@@ -101,10 +101,9 @@ include "../includes/base_page/shared_top_tags.php"
 
       <div class="column">
         <label for="loan_category" class="label">Loan Category*</label>
-        <div class="select is-fullwidth">
+        <div class="select is-fullwidth required">
           <div class="control">
-            <select>
-              <option value="#">-- Loan Category --</option>
+            <select id="loan_category" required>
             </select>
           </div>
         </div>
@@ -125,10 +124,80 @@ include "../includes/base_page/shared_bottom_tags.php"
 
 <script>
   const bank = document.querySelector("#bank");
+  const d_date = document.querySelector("#d_date");
+  const r_date = document.querySelector("#r_date");
+  const amt_dis = document.querySelector("#amt_dis");
+  const payment_period = document.querySelector("#payment_period");
+  const repayment_amount = document.querySelector("#repayment_amount");
+  const next_payment = document.querySelector("#next_payment");
+  const interest_rate = document.querySelector("#interest_rate");
+  const charges = document.querySelector("#charges");
+  const loan_category = document.querySelector("#loan_category");
+
+  function submitForm() {
+
+    console.log("submitting");
+
+
+    const formData = new FormData();
+
+    console.log("====================================");
+    console.log("", bank.value);
+    console.log("", d_date.value);
+    console.log("", r_date.value);
+    console.log("", amt_dis.value);
+    console.log("", payment_period.value);
+    console.log("", repayment_amount.value);
+    console.log("", next_payment.value);
+    console.log("", interest_rate.value);
+    console.log("", charges.value);
+    console.log("", loan_category.value);
+    console.log("====================================");
+
+    formData.append("", bank.value);
+    formData.append("", d_date.value);
+    formData.append("", r_date.value);
+    formData.append("", amt_dis.value);
+    formData.append("", payment_period.value);
+    formData.append("", repayment_amount.value);
+    formData.append("", next_payment.value);
+    formData.append("", interest_rate.value);
+    formData.append("", charges.value);
+    formData.append("", loan_category.value);
+
+    fetch('../includes/add_payment.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+        if (result["message"] === "success") {
+          showSuccessAlert("Record stored successfuly");
+          reloadPage();
+        } else {
+          let msg = !("desc" in result) || result["desc"].trim() === "" ?
+            "Record not stored" : result["desc"];
+          showDangerAlert(msg);
+          removeAlert();
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        showDangerAlert("Could not send data to server");
+        removeAlert();
+      });
+
+    return false;
+  }
 
   window.addEventListener('DOMContentLoaded', (event) => {
     initSelectElement("#bank", "-- Select Bank --");
     populateSelectElement("#bank", "../includes/load_bank.php", "name");
+
+
+    initSelectElement("#loan_category", "-- Select Loan Category --");
+    populateSelectElement("#loan_category", "../includes/#.php", "loan_category");
 
 
 
