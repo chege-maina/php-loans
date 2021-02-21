@@ -1,4 +1,4 @@
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+<nav class="navbar is-fixed-top has-background-info-light " role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item is-size-3" href="https://bulma.io">
       <h1 clas="">Qubes</h1>
@@ -11,7 +11,7 @@
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
+  <div id="navbarBasicExample" class="navbar-menu has-background-info-light">
     <div class="navbar-start">
       <a class="navbar-item">
         Home
@@ -23,7 +23,7 @@
           Banks
         </a>
 
-        <div class="navbar-dropdown">
+        <div class="navbar-dropdown has-background-link-light">
           <a class="navbar-item" href="../banks/add_bank.php">
             Add Bank
           </a>
@@ -37,7 +37,7 @@
           Suppliers
         </a>
 
-        <div class="navbar-dropdown">
+        <div class="navbar-dropdown has-background-link-light">
           <a class="navbar-item" href="../supplier/add_supplier_ui.php">
             Add Supplier
           </a>
@@ -51,7 +51,7 @@
           Customers
         </a>
 
-        <div class="navbar-dropdown">
+        <div class="navbar-dropdown has-background-link-light">
           <a class="navbar-item" href="../customer/add_customer_ui.php">
             Add Customer
           </a>
@@ -65,7 +65,7 @@
           Transactions
         </a>
 
-        <div class="navbar-dropdown">
+        <div class="navbar-dropdown has-background-link-light">
           <a class="navbar-item" href="../payments/make_payment.php">
             Payments
           </a>
@@ -84,7 +84,7 @@
           Loans
         </a>
 
-        <div class="navbar-dropdown">
+        <div class="navbar-dropdown has-background-link-light">
           <a class="navbar-item" href="../loans/create_loan.php">
             Create New Loan
           </a>
