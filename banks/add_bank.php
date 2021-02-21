@@ -28,13 +28,13 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column">
         <label for="account_number" class="label">Account Number</label>
         <div class="control">
-          <input type="number" name="account_number" id="account_number" class="input" required placeholder="Account number">
+          <input type="number" class="input" id="account_number" required placeholder="Account number">
         </div>
       </div>
 
       <div class="column">
         <label for="account_number" class="label">Account Name</label>
-        <div class="control commify">
+        <div class="control">
           <input type="text" name="account_name" id="account_name" class="input" required placeholder="Account name">
         </div>
       </div>
@@ -43,10 +43,10 @@ include "../includes/base_page/shared_top_tags.php"
 
     <div class="columns">
 
-      <div class="column commify">
+      <div class="column">
         <label for="opening_balance" class="label">Opening Balance</label>
-        <div class="control">
-          <input type="number" name="opening_balance" id="opening_balance" class="input" required placeholder="Opening balance">
+        <div class="control commify">
+          <input type="text" class="input" required placeholder="Opening balance" data-commify="opening_balance">
         </div>
       </div>
 
@@ -137,10 +137,9 @@ include "../includes/base_page/shared_top_tags.php"
 
   const bank_name = document.querySelector("#bank_name");
   const branch_name = document.querySelector("#branch_name");
-  const account_number = document.querySelector("#account_number");
   const account_name = document.querySelector("#account_name");
+  const account_number = document.querySelector("#account_number");
 
-  const opening_balance = document.querySelector("#opening_balance");
   const cheque_clear_days = document.querySelector("#cheque_clear_days");
   const currency = document.querySelector("#currency");
 
@@ -148,6 +147,8 @@ include "../includes/base_page/shared_top_tags.php"
   const overlimit_interest = document.querySelector("#overlimit_interest");
   const overdraft_limit = document.querySelector("#overdraft_limit");
   const late_payment_charges = document.querySelector("#late_payment_charges");
+
+  let opening_balance;
 
   function submitForm() {
 
@@ -197,6 +198,10 @@ include "../includes/base_page/shared_top_tags.php"
 
     initSelectElement("#currency", "-- Select Currency --");
     populateSelectElement("#currency", '../includes/load_currency.php', "name");
+
+    commifyAll();
+    opening_balance = document.querySelector("#opening_balance");
+
 
   });
 </script>

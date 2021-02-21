@@ -18,17 +18,46 @@
   <link rel="stylesheet" href="../external/datatable/dataTables.bulma.min.css">
   <script src="../external/datatable/jquery.dataTables.min.js"></script>
   <script src="../external/datatable/dataTables.bulma.min.js"></script>
+  <style>
+    .hide-this {
+      display: none;
+    }
+  </style>
 </head>
 
 <body class="has-navbar-fixed-top">
 
   <script>
-    // window.addEventListener('DOMContentLoaded', (event) => {
-    // const numbers = document.querySelectorAll(".commify");
-    // numbers.forEach((element) => {
-    // console.log(element.childNodes);
-    // });
-    // });
+    let commifyAll = () => {
+      const numbers = document.querySelectorAll(".commify");
+      numbers.forEach((element) => {
+
+        const h_e = new AutoNumeric(element.childNodes[1], {
+          currencySymbol: '',
+          minimumValue: 0
+        });
+
+        const real_input = document.createElement("input");
+        real_input.setAttribute("type", "number");
+        real_input.setAttribute("id", element.childNodes[1].dataset.commify);
+        real_input.setAttribute("type", "number");
+        real_input.classList.add("hide-this");
+        element.appendChild(real_input);
+
+        element.childNodes[1].addEventListener("keyup", () => {
+          real_input.value = h_e.getNumericString();
+        });
+
+        // Sample expected element layout
+        // <div class="column">
+        // <label for="account_number" class="label">Account Number</label>
+        // <div class="control commify">
+        // <input type="text" class="input" required placeholder="Account number" data-commify="account_number">
+        // </div>
+
+        console.log(element.childNodes[1].dataset);
+      });
+    }
 
     function showSuccessAlert(message) {
       const alert_div = document.querySelector("#alert-div");
