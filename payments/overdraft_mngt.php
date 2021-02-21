@@ -12,17 +12,17 @@ include "../includes/base_page/shared_top_tags.php"
     <!-- Content is to start here -->
     <div class="columns ">
       <div class="column">
-        <label for="date" class="label">To</label>
-        <!-- autofill current date  -->
-        <div class="control">
-          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date" class="input">
-        </div>
-      </div>
-      <div class="column">
         <label for="date" class="label">From</label>
         <!-- autofill current date  -->
         <div class="control">
-          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date" class="input">
+          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date_from" class="input">
+        </div>
+      </div>
+      <div class="column">
+        <label for="date" class="label">To</label>
+        <!-- autofill current date  -->
+        <div class="control">
+          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date_to" class="input">
         </div>
       </div>
       <div class="column">
@@ -38,7 +38,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="control">
           <div class="column">
             <label for="branch" class="label"> </label>
-            <button class="button is-info">Search</button>
+            <button class="button is-info" onclick="getOverDrafts()">Search</button>
           </div>
         </div>
       </div>
@@ -97,6 +97,35 @@ include "../includes/base_page/shared_top_tags.php"
     initSelectElement("#bank_name", "-- Select Bank --");
     populateSelectElement("#bank_name", "../includes/load_bank.php", "name");
   });
+
+  const date_from = document.querySelector('#date_from');
+  const date_to = document.querySelector('#date_to');
+  const bank_name = document.querySelector('#bank_name');
+
+  function getOverDrafts() {
+    if (!bank_name.value) {
+      bank_name.focus();
+      return;
+    }
+    console.log("sending");
+
+    const formData = new FormData();
+    formData.append("date1", date_from.value);
+    formData.append("date2", date_to.value);
+    formData.append("bank", bank_name.value);
+
+    fetch('../includes/overdraft_management.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
 </script>
 
 <?php
