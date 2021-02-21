@@ -85,7 +85,7 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item" href="../customer/add_customer_ui.php">
+          <a class="navbar-item" href="../loans/create_loan.php">
             Create New Loan
           </a>
           <a class="navbar-item" href="../banks/list_banks.php">
