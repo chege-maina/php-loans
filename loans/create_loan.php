@@ -26,7 +26,7 @@ include "../includes/base_page/shared_top_tags.php"
         <label for="date" class="label">Date of Disbursment*</label>
         <!-- autofill current date  -->
         <div class="control">
-          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date" class="input is-link" readonly>
+          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date" class="input is-link" required>
         </div>
       </div>
 
@@ -44,7 +44,7 @@ include "../includes/base_page/shared_top_tags.php"
     <div class="columns">
       <div class="column">
         <label for="amt_dis" class="label">Amount Disbursed*</label>
-        <input name="amt_dis" id="amt_dis" class="input" type="text" placeholder="Amount Disbursed" required readonly>
+        <input name="amt_dis" id="amt_dis" class="input" type="text" placeholder="Amount Disbursed" required>
       </div>
       <div class="column is-fullwidth">
         <label for="payment_period" class="label">Payment Period*</label>
@@ -61,11 +61,11 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
       <div class="column">
         <label for="repayment_amount" class="label">Repayment Amount*</label>
-        <input name="repayment_amount" id="repayment_amount" class="input" type="text" placeholder="Repayment Amount" required readonly>
+        <input name="repayment_amount" id="repayment_amount" class="input" type="number" placeholder="Repayment Amount" required>
       </div>
       <div class="column">
         <label for="next_payment" class="label">Next Payment*</label>
-        <input name="next_payment" id="next_payment" class="input" type="text" placeholder="Next Payment" required readonly>
+        <input name="next_payment" id="next_payment" class="input" type="text" placeholder="Next Payment" required>
       </div>
     </div>
 
