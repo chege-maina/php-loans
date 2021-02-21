@@ -167,16 +167,16 @@ include "../includes/base_page/shared_top_tags.php"
           table_body.appendChild(tr);
         });
 
-        const tr = document.createElement("tr");
+        // const tr = document.createElement("tr");
 
-        const col_span = document.createElement("th");
-        col_span.setAttribute("colspan", 5);
+        // const col_span = document.createElement("th");
+        // col_span.setAttribute("colspan", 5);
 
-        const total_sum = document.createElement("th");
-        total_sum.appendChild(document.createTextNode("Pesa Mingi"));
+        // const total_sum = document.createElement("th");
+        // total_sum.appendChild(document.createTextNode("Pesa Mingi"));
 
-        tr.append(col_span, total_sum);
-        table_foot.appendChild(tr);
+        // tr.append(col_span, total_sum);
+        // table_foot.appendChild(tr);
       })
       .catch(error => {
         console.error('Error:', error);
