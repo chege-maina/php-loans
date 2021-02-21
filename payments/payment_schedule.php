@@ -61,7 +61,7 @@ include "../includes/base_page/shared_top_tags.php"
 <script>
   window.addEventListener('DOMContentLoaded', (event) => {
     initSelectElement("#bank_name", "-- Select Bank --");
-    populateSelectElement("#bank_name", "../includes/load_bank.php", "name");
+    populateSelectElement("#bank_name", "../includes/load_bank_schedule.php", "name");
   });
 </script>
 
