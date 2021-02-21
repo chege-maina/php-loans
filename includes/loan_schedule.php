@@ -9,7 +9,7 @@ $query2 = "SELECT * FROM tbl_loans WHERE bank_name='$bank' and status='pending'"
 $result2 = mysqli_query($conn, $query2);
 $response = array();
 if ($row2 = mysqli_fetch_assoc($result2)) {
-  $acc_name = $row2['acc_name'];
+  $period = $row2['period'];
   $acc_no = $row2['acc_no'];
 
 
