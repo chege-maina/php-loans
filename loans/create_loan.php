@@ -54,7 +54,7 @@ include "../includes/base_page/shared_top_tags.php"
           </p>
           <p class="control">
             <a>
-              <a class="button is-static">Days</a>
+              <a class="button is-static">Months</a>
             </a>
           </p>
         </div>
