@@ -63,13 +63,12 @@ include "../includes/base_page/shared_top_tags.php"
       <table class="table is-hoverable is-fullwidth">
         <thead>
           <tr>
-            <th>Date Banked</th>
+            <th>Opening Balance</th>
             <th>Value Date</th>
-            <th>Details</th>
             <th>DR</th>
             <th>CR</th>
             <th>Balance</th>
-            <th>OD Interest</th>
+            <th>OD Daily Interest</th>
           </tr>
         </thead>
         <tbody id="table_body">
