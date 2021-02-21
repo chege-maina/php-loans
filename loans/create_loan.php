@@ -30,7 +30,7 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
 
       <div class="column">
-        <label for="date" class="label">Repayment Date*</label>
+        <label for="date" class="label">First Repayment Date*</label>
         <!-- autofill current date  -->
         <div class="control">
           <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date" class="input is-link" required>
@@ -59,11 +59,11 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
       </div>
       <div class="column">
-        <label for="repayment_amount" class="label">Repayment Amount*</label>
+        <label for="repayment_amount" class="label">Monthly Installment*</label>
         <input name="repayment_amount" id="repayment_amount" class="input" type="number" placeholder="Repayment Amount" required>
       </div>
       <div class="column">
-        <label for="next_payment" class="label">Next Payment*</label>
+        <label for="next_payment" class="label">Next Payment Installment*</label>
         <input name="next_payment" id="next_payment" class="input" type="number" placeholder="Next Payment" required>
       </div>
     </div>
@@ -72,7 +72,7 @@ include "../includes/base_page/shared_top_tags.php"
 
     <div class="columns">
       <div class="column is-fullwidth">
-        <label for="interest_rate" class="label">Interest Rate*</label>
+        <label for="interest_rate" class="label">Interest Rate %pa*</label>
         <div class="field has-addons">
           <p class="control">
             <input type="number" name="interest_rate" id="interest_rate" class="input" required placeholder="Interest Rate" max="100" required>
