@@ -65,7 +65,7 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
       <div class="column">
         <label for="next_payment" class="label">Next Payment*</label>
-        <input name="next_payment" id="next_payment" class="input" type="numbe" placeholder="Next Payment" required>
+        <input name="next_payment" id="next_payment" class="input" type="number" placeholder="Next Payment" required>
       </div>
     </div>
 
