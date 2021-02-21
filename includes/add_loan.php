@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $next_installment = sanitize_input($_POST["next_installment"]);
   $interest = sanitize_input($_POST["interest"]);
   $loan_category = sanitize_input($_POST["loan_category"]);
+  $late_repayment = sanitize_input($_POST["late_repayment"]);
 
   if ($stmt = $con->prepare('SELECT bank_name FROM tbl_loans WHERE bank_name = ? and dis_date =?')) {
     // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
@@ -37,8 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->store_result();
     if ($stmt->num_rows == 0) {
       if ($stmt = $con->prepare('INSERT INTO tbl_loans (bank_name, dis_date, first_date, 
-      amount, period, installment, next_installment, interest, loan_category) VALUES (?,?,?,?,?,?,?,?,?)')) {
-        $stmt->bind_param('sssssssss', $bank_name, $dis_date, $first_date, $amount, $period, $installment, $next_installment, $interest, $loan_category);
+      amount, period, installment, next_installment, interest, loan_category, late_repayment) VALUES (?,?,?,?,?,?,?,?,?,?)')) {
+        $stmt->bind_param('ssssssssss', $bank_name, $dis_date, $first_date, $amount, $period, $installment, $next_installment, $interest, $loan_category, $late_repayment);
 
         if ($stmt->execute()) {
           $responseArray = array(
