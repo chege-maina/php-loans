@@ -66,7 +66,6 @@ include "../includes/base_page/shared_top_tags.php"
             <th>Date Banked</th>
             <th>Value Date</th>
             <th>Details</th>
-            <th>Cheque Number</th>
             <th>DR</th>
             <th>CR</th>
             <th>Balance</th>
