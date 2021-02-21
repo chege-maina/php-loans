@@ -74,10 +74,25 @@
           </a>
         </div>
       </div>
+
       <!-- ============================================================================= -->
       <a class="navbar-item" href="../payments/overdraft_mngt.php">
         Overdraft Management
       </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Loans
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="../customer/add_customer_ui.php">
+            Create New Loan
+          </a>
+          <a class="navbar-item" href="../banks/list_banks.php">
+            Loan Payment Schedule
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
