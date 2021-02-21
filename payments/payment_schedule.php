@@ -31,17 +31,9 @@ include "../includes/base_page/shared_top_tags.php"
     </div>
     <hr>
     <div class="columns">
-      <div class="column">
-        <label for="loan_number" class="label">Loan Number</label>
-        <input name="loan_number" id="loan_number" class="input" type="number" placeholder="Loan Number" required readonly>
-      </div>
-      <div class="column">
+      <div class="column is-4">
         <label for="bank_name" class="label">Bank Name*</label>
         <input name="bank_name" id="acc_name" class="input" type="text" placeholder="Bank Name" required readonly>
-      </div>
-      <div class="column">
-        <label for="bank_acc" class="label">Bank Account*</label>
-        <input name="bank_acc" id="bank_acc" class="input" type="text" placeholder="Bank Account" required readonly>
       </div>
     </div>
     <hr>
