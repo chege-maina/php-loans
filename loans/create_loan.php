@@ -87,7 +87,7 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
 
       <div class="column is-fullwidth">
-        <label for="charges" class="label">Charges*</label>
+        <label for="charges" class="label">Late Repayment Charges*</label>
         <div class="field has-addons">
           <p class="control">
             <input type="number" name="charges" id="charges" class="input" required placeholder="Charges" max="100" required>
