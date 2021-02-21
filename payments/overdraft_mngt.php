@@ -47,7 +47,7 @@ include "../includes/base_page/shared_top_tags.php"
     <div class="columns">
       <div class="column">
         <label for="bank_name" class="label">Bank Name*</label>
-        <input name="bank_name" id="bank_name" class="input" type="text" placeholder="bank name" required readonly>
+        <input name="bank_name" id="bank_name_data" class="input" type="text" placeholder="bank name" required readonly>
       </div>
       <div class="column">
         <label for="acc_name" class="label">Account Name*</label>
@@ -101,6 +101,10 @@ include "../includes/base_page/shared_top_tags.php"
   const date_from = document.querySelector('#date_from');
   const date_to = document.querySelector('#date_to');
   const bank_name = document.querySelector('#bank_name');
+  const bank_name_data = document.querySelector('#bank_name_data');
+  const acc_name = document.querySelector('#acc_name');
+  const acc_number = document.querySelector('#acc_number');
+  const table_body = document.querySelector('#table_body');
 
   function getOverDrafts() {
     if (!bank_name.value) {
@@ -120,7 +124,19 @@ include "../includes/base_page/shared_top_tags.php"
       })
       .then(response => response.json())
       .then(result => {
-        console.log('Success:', result);
+        if (result.length <= 0) {
+          // TODO(c3n7): Show an appropriate alert
+          return;
+        }
+        result = result[0];
+        bank_name_data.value = result.bank;
+        acc_name.value = result.acc_name;
+        acc_number.value = result.acc_no;
+        console.log(result.table_items);
+
+        result.table_items.forEach((value) => {
+          console.log(value);
+        })
       })
       .catch(error => {
         console.error('Error:', error);
