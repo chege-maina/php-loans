@@ -6,6 +6,7 @@ include "../includes/base_page/shared_top_tags.php"
 <div class="block title">
   Overdraft Management
 </div>
+
 <div class="card">
   <div class="card-content">
     <!-- Content is to start here -->
@@ -14,22 +15,21 @@ include "../includes/base_page/shared_top_tags.php"
         <label for="date" class="label">To</label>
         <!-- autofill current date  -->
         <div class="control">
-          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date" class="input is-link">
+          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date" class="input">
         </div>
       </div>
       <div class="column">
         <label for="date" class="label">From</label>
         <!-- autofill current date  -->
         <div class="control">
-          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date" class="input is-link">
+          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date" class="input">
         </div>
       </div>
       <div class="column">
         <label for="branch_name" class="label">Select Bank Name</label>
         <div class="select is-fullwidth">
           <div class="control">
-            <select>
-              <option value="#">-- Select Bank Name --</option>
+            <select id="bank_name" required>
             </select>
           </div>
         </div>
@@ -83,7 +83,7 @@ include "../includes/base_page/shared_top_tags.php"
             <input type="number" class="input" name="total" id="total" required>
           </p>
           <p class="control">
-            <a class="button is-static is-info is-light">
+            <a class="button is-info">
               Total
             </a>
           </p>
@@ -91,7 +91,16 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
       <!-- Content ends here -->
     </div>
+  </div>
+</div>
 
-    <?php
-    include "../includes/base_page/shared_bottom_tags.php"
-    ?>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    initSelectElement("#bank_name", "-- Select Bank --");
+    populateSelectElement("#bank_name", "../includes/load_bank.php", "name");
+  });
+</script>
+
+<?php
+include "../includes/base_page/shared_bottom_tags.php"
+?>
