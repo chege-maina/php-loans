@@ -67,7 +67,7 @@ include "../includes/base_page/shared_top_tags.php"
             <th>Value Date</th>
             <th>DR</th>
             <th>CR</th>
-            <th>Balance</th>
+            <th>Closing Balance</th>
             <th>OD Daily Interest</th>
           </tr>
         </thead>
