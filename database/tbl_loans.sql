@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2021 at 09:12 PM
+-- Generation Time: Feb 21, 2021 at 09:20 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -37,7 +37,8 @@ CREATE TABLE `tbl_loans` (
   `installment` varchar(100) NOT NULL,
   `next_installment` varchar(100) NOT NULL,
   `interest` varchar(100) NOT NULL,
-  `loan_category` varchar(100) NOT NULL
+  `loan_category` varchar(100) NOT NULL,
+  `status` varchar(15) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
