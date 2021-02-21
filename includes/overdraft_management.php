@@ -53,6 +53,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($row6 = mysqli_fetch_assoc($result6)) {
         $total_receipt = $row6['sum(amount)'];
       }
+      if (is_null($cr)) {
+        $cr = 0;
+      }
+      if (is_null($dr)) {
+        $dr = 0;
+      }
 
       $opening_bal = $opening_bal + $total_receipt - $total_pay;
       $closing_bal = $opening_bal + $dr - $cr;
