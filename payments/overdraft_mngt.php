@@ -60,7 +60,7 @@ include "../includes/base_page/shared_top_tags.php"
     </div>
     <hr>
     <div class="table-container">
-      <table class="table is-hoverable is-fullwidth">
+      <table class="table is-hoverable is-fullwidth is-striped">
         <thead>
           <tr>
             <th>Opening Balance</th>
@@ -73,6 +73,8 @@ include "../includes/base_page/shared_top_tags.php"
         </thead>
         <tbody id="table_body">
         </tbody>
+        <tfoot id="table_foot">
+        </tfoot>
       </table>
       <div class="column">
         <div class="field has-addons has-addons-centered is-grouped is-grouped-right">
@@ -105,6 +107,8 @@ include "../includes/base_page/shared_top_tags.php"
   const acc_name = document.querySelector('#acc_name');
   const acc_number = document.querySelector('#acc_number');
   const table_body = document.querySelector('#table_body');
+  const table_foot = document.querySelector('#table_foot');
+
 
   function getOverDrafts() {
     if (!bank_name.value) {
@@ -133,10 +137,46 @@ include "../includes/base_page/shared_top_tags.php"
         acc_name.value = result.acc_name;
         acc_number.value = result.acc_no;
         console.log(result.table_items);
+        let cumulative_sum = 0;
 
         result.table_items.forEach((value) => {
           console.log(value);
-        })
+
+          const tr = document.createElement("tr");
+
+          const opening_bal = document.createElement("td");
+          opening_bal.appendChild(document.createTextNode(value["opening_bal"]));
+
+          const value_date = document.createElement("td");
+          value_date.appendChild(document.createTextNode(value["value_date"]));
+
+          const dr = document.createElement("td");
+          dr.appendChild(document.createTextNode(value["dr"]));
+
+          const cr = document.createElement("td");
+          cr.appendChild(document.createTextNode(value["cr"]));
+
+          const closing_bal = document.createElement("td");
+          closing_bal.appendChild(document.createTextNode(value["closing_bal"]));
+
+          const od_interest = document.createElement("td");
+          od_interest.appendChild(document.createTextNode(value["od_interest"]));
+
+          tr.append(opening_bal,
+            value_date, dr, cr, closing_bal, od_interest);
+          table_body.appendChild(tr);
+        });
+
+        const tr = document.createElement("tr");
+
+        const col_span = document.createElement("th");
+        col_span.setAttribute("colspan", 5);
+
+        const total_sum = document.createElement("th");
+        total_sum.appendChild(document.createTextNode("Pesa Mingi"));
+
+        tr.append(col_span, total_sum);
+        table_foot.appendChild(tr);
       })
       .catch(error => {
         console.error('Error:', error);
