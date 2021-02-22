@@ -62,12 +62,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       $opening_bal = $opening_bal + $total_receipt - $total_pay;
       $closing_bal = $opening_bal + $dr - $cr;
-
-      if ($closing_bal > $od_limit) {
-        $interest = $closing_bal * ($id_interest + $over) / 100;
+      if ($closing_bal < 0) {
+        $negative_num = abs($closing_bal);
+        if ($negative_num > $od_limit) {
+          $interest = $negative_num * ($id_interest + $over) / 100;
+        } else {
+          $interest = $negative_num * $id_interest / 100;
+        }
       } else {
-        $interest = $closing_bal * $id_interest / 100;
+        $interest = 0;
       }
+
 
       $date_value = date('Y-m-d', strtotime($date . ' + ' . $clear_days . ' days'));
 
