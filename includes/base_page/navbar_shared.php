@@ -88,6 +88,9 @@
           <a class="navbar-item" href="../loans/create_loan.php">
             Create New Loan
           </a>
+          <a class="navbar-item" href="../loans/create_loan.php">
+            Pay Loan
+          </a>
           <a class="navbar-item" href="../payments/payment_schedule.php">
             Loan Payment Schedule
           </a>
