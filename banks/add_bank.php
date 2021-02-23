@@ -40,7 +40,7 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
 
     </div>
-
+    <hr>
     <div class="columns">
 
       <div class="column">
@@ -49,7 +49,13 @@ include "../includes/base_page/shared_top_tags.php"
           <input type="text" class="input" required placeholder="Opening balance" data-commify="opening_balance">
         </div>
       </div>
-
+      <div class="column">
+        <label for="date" class="label"> As of Date</label>
+        <!-- autofill current date  -->
+        <div class="control">
+          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="p_date" class="input is-link" required>
+        </div>
+      </div>
       <div class="column">
         <label for="currency" class="label">Currency</label>
         <div class="control">
@@ -69,7 +75,7 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
 
     </div>
-
+    <hr>
     <div class="columns">
 
       <div class="column is-fullwidth">
