@@ -43,7 +43,10 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
       </div>
     </div>
-    <hr>
+  </div>
+</div>
+<div class="card mt-1">
+  <div class="card-content">
     <div class="columns">
       <div class="column">
         <label for="bank_name" class="label">Bank Name*</label>
