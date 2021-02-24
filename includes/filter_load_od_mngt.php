@@ -4,6 +4,7 @@ header("Content-type:application/json");
 
 include_once 'dbconnect.php';
 
+
 $query = "SELECT * FROM tbl_bank ORDER BY bank_name ASC";
 
 $result = mysqli_query($conn, $query);

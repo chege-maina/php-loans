@@ -76,9 +76,24 @@
       </div>
 
       <!-- ============================================================================= -->
-      <a class="navbar-item" href="../payments/overdraft_mngt.php">
-        Overdraft Management
-      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Bank Book
+        </a>
+        <div class="navbar-dropdown has-background-link-light">
+
+          <a class="navbar-item" href="../payments/overdraft_mngt1.php">
+            Post Daily Transactions
+          </a>
+          <a class="navbar-item" href="../payments/payment_schedule.php">
+            Overdraft Management
+          </a>
+          <a class="navbar-item" href="../payments/payment_schedule.php">
+            Cheques Banked
+          </a>
+        </div>
+      </div>
+
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           Loans
