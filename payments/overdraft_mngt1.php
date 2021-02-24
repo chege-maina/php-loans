@@ -53,36 +53,6 @@ include "../includes/base_page/shared_top_tags.php"
     </div>
 
     <div class="columns">
-      <div class="column has-text-right has-text-weight-bold">
-        Sub Total</div>
-      <div class="column is-3">
-        <div class="control">
-          <input class="input" type="text" readonly id="sub_total" />
-        </div>
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column has-text-right has-text-weight-bold">
-        16% VAT
-      </div>
-      <div class="column is-3">
-        <div class="control">
-          <input class="input" type="text" readonly id="tax" />
-        </div>
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column has-text-right has-text-weight-bold">
-        Total Amount
-      </div>
-      <div class="column is-3">
-        <div class="control">
-          <input class="input" type="text" readonly id="amount" />
-        </div>
-      </div>
-    </div>
-
-    <div class="columns">
       <div class="column">
         <button class="button is-link">Submit</button>
       </div>
