@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2021 at 10:33 AM
+-- Generation Time: Feb 24, 2021 at 11:07 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -38,16 +38,17 @@ CREATE TABLE `tbl_bank` (
   `od_limit` varchar(100) NOT NULL,
   `id_interest` varchar(100) NOT NULL,
   `over_limit` varchar(100) NOT NULL,
-  `late_charges` varchar(100) NOT NULL
+  `late_charges` varchar(100) NOT NULL,
+  `opening_date` date NOT NULL DEFAULT '0001-01-01'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_bank`
 --
 
-INSERT INTO `tbl_bank` (`bank_name`, `branch_name`, `acc_no`, `acc_name`, `currency`, `opening_bal`, `clear_days`, `od_limit`, `id_interest`, `over_limit`, `late_charges`) VALUES
-('EQUITY BANK', 'KARATINA', '255445666', 'JUMANJI2', 'KSHS', '200', '3', '400', '12', '3', '3'),
-('EQUITY BANK', 'KARATINA', '52656663456', 'JUMANJI', 'KSHS', '150000', '7', '1000000', '4', '1000000', '3');
+INSERT INTO `tbl_bank` (`bank_name`, `branch_name`, `acc_no`, `acc_name`, `currency`, `opening_bal`, `clear_days`, `od_limit`, `id_interest`, `over_limit`, `late_charges`, `opening_date`) VALUES
+('EQUITY BANK', 'KARATINA', '255445666', 'JUMANJI2', 'KSHS', '20', '3', '400', '12', '3', '3', '2021-02-21'),
+('KCB', 'RUIRU', '625556', 'JUMANJI', 'KSHS', '1000', '2', '1000000', '11', '1000000', '5', '2021-02-14');
 
 -- --------------------------------------------------------
 
@@ -86,7 +87,9 @@ CREATE TABLE `tbl_customer` (
 --
 
 INSERT INTO `tbl_customer` (`name`, `email`, `physical_address`, `postal_address`, `tel_no`) VALUES
-('Byron Mcmillan', 'pahu@mailinator.com', 'Quae non cillum a et', 'Cum dolorem facilis', '+1 (436) 351-2876');
+('Bo Mejia', 'xadywyzo@mailinator.com', 'Laborum Deleniti sa', 'Tempora aliquip eu e', '+1 (429) 739-3701'),
+('Byron Mcmillan', 'pahu@mailinator.com', 'Quae non cillum a et', 'Cum dolorem facilis', '+1 (436) 351-2876'),
+('Dieter Davis', 'lariwodeko@mailinator.com', 'Ut exercitationem ea', 'Ex cumque dolores qu', '+1 (865) 348-8737');
 
 -- --------------------------------------------------------
 
@@ -129,7 +132,7 @@ CREATE TABLE `tbl_payments` (
   `date` date NOT NULL,
   `cheque_type` varchar(50) NOT NULL,
   `pay_type` varchar(20) NOT NULL,
-  `status` varchar(15) NOT NULL DEFAULT 'pending'
+  `status` varchar(30) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -137,10 +140,12 @@ CREATE TABLE `tbl_payments` (
 --
 
 INSERT INTO `tbl_payments` (`supplier_name`, `bank_name`, `cheque_no`, `amount`, `date`, `cheque_type`, `pay_type`, `status`) VALUES
+('Bo Mejia', 'KCB', '6666', '850000', '2021-02-19', 'inhouse', 'receipt', 'pending'),
 ('Byron Mcmillan', 'EQUITY BANK', '833', '67', '2016-03-22', 'inhouse', 'receipt', 'pending'),
 ('Rajah Velasquez', 'EQUITY BANK', '342', '82', '2016-03-21', 'interbank', 'pay', 'pending'),
 ('Rajah Velasquez', 'EQUITY BANK', '478', '12', '2016-03-22', 'interbank', 'pay', 'pending'),
-('Rajah Velasquez', 'EQUITY BANK', '965', '4', '2016-03-22', 'interbank', 'pay', 'pending');
+('Rajah Velasquez', 'EQUITY BANK', '965', '4', '2016-03-22', 'interbank', 'pay', 'pending'),
+('Rajah Velasquez', 'KCB', '7', '950000', '2021-02-19', 'interbank', 'pay', 'pending');
 
 -- --------------------------------------------------------
 
@@ -161,7 +166,9 @@ CREATE TABLE `tbl_supplier` (
 --
 
 INSERT INTO `tbl_supplier` (`name`, `email`, `tel_no`, `postal_address`, `physical_address`) VALUES
-('Rajah Velasquez', 'zeryg@mailinator.com', '+1 (117) 557-9511', 'Non rerum officia is', 'Cumque amet possimu');
+('Rajah Velasquez', 'zeryg@mailinator.com', '+1 (117) 557-9511', 'Non rerum officia is', 'Cumque amet possimu'),
+('Hyatt Butler', 'zuqolipano@mailinator.com', '+1 (392) 516-3484', 'Dolor aute ipsa qui', 'Doloremque necessita'),
+('Gail Mccall', 'byrejaryhu@mailinator.com', '+1 (705) 244-1687', 'Enim eum impedit in', 'Laboris rem sunt est');
 
 --
 -- Indexes for dumped tables
