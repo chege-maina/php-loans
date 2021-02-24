@@ -11,8 +11,8 @@ include "../includes/base_page/shared_top_tags.php"
   <div class="card-content">
     <div class="columns">
       <div class="column">
-        <label for="date" class="label">Date</label>
-        <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date_from" class="input has-background-info-light" readonly>
+        <label for="r_date" class="label">Date</label>
+        <input type="date" id="r_date" class="input has-background-info-light" readonly>
       </div>
       <div class="column">
         <label for="bank_name" class="label">Bank</label>
@@ -61,19 +61,30 @@ include "../includes/base_page/shared_top_tags.php"
 </div>
 
 <script>
+  const date = document.querySelector('#date');
+  const bank_name = document.querySelector('#bank_name');
+  const table_body = document.querySelector('#table_body');
+  const table_foot = document.querySelector('#table_foot');
   window.addEventListener('DOMContentLoaded', (event) => {
+
+    if (sessionStorage.length <= 0) {
+      window.history.back();
+    }
+
+    bank_row = JSON.parse(sessionStorage.getItem('bank_row'));
+    // Clear data
+    sessionStorage.clear();
+
+
+    const formData = new FormData();
+    console.log(bank_row);
+
+
+    r_date.value = bank_row["date"];
+    bank_name.value = bank_row["bank"];
 
 
   });
-
-  const date_from = document.querySelector('#date_from');
-  const date_to = document.querySelector('#date_to');
-  const bank_name = document.querySelector('#bank_name');
-  const bank_name_data = document.querySelector('#bank_name_data');
-  const acc_name = document.querySelector('#acc_name');
-  const acc_number = document.querySelector('#acc_number');
-  const table_body = document.querySelector('#table_body');
-  const table_foot = document.querySelector('#table_foot');
 </script>
 
 <?php
