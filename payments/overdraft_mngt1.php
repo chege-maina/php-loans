@@ -20,7 +20,7 @@ include "../includes/base_page/shared_top_tags.php"
           </div>
         </div>
       </div>
-      <div class="column-auto py-5">
+      <div class="column-auto pt-5">
         <div class="control">
           <div class="column">
             <label for="branch" class="label"> </label>
@@ -51,86 +51,104 @@ include "../includes/base_page/shared_top_tags.php"
       </table>
       <!-- Content ends here -->
     </div>
+
+    <div class="columns">
+      <div class="column has-text-right">
+        Sub Total</div>
+      <div class="column is-3">
+        <div class="control">
+          <input class="input" type="text" readonly id="sub_total" />
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column has-text-right">
+        16% VAT
+      </div>
+      <div class="column is-3">
+        <div class="control">
+          <input class="input" type="text" readonly id="tax" />
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column has-text-right">
+        Total Amount
+      </div>
+      <div class="column is-3">
+        <div class="control">
+          <input class="input" type="text" readonly id="amount" />
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
 <script>
-  window.addEventListener('DOMContentLoaded', (event) => {
-    initSelectElement("#bank_name", "-- Select Bank --");
-    populateSelectElement("#bank_name", "../includes/load_bank.php", "name");
-  });
-
   const bank_name = document.querySelector('#bank_name');
-  const bank_name_data = document.querySelector('#bank_name_data');
+  const sub_total = document.querySelector("#sub_total");
+  const tax = document.querySelector("#tax");
+  const amount = document.querySelector("#amount");
   const table_body = document.querySelector('#table_body');
   const table_foot = document.querySelector('#table_foot');
 
 
-  function getOverDrafts() {
-    if (!bank_name.value) {
-      bank_name.focus();
-      return;
-    }
-    console.log("sending");
+  let updateTable = (data) => {
+    table_body.innerHTML = "";
+    data.forEach(value => {
+      const this_row = document.createElement("tr");
 
+      const date = document.createElement("td");
+      date.appendChild(document.createTextNode(value["date"]));
+      date.classList.add("align-middle");
+
+      const pendingtr = document.createElement("td");
+      pendingtr.appendChild(document.createTextNode(value["pendingtr"]));
+      pendingtr.classList.add("align-middle");
+
+      const bank = document.createElement("td");
+      bank.appendChild(document.createTextNode(value["bank"]));
+      bank.classList.add("align-middle");
+
+      const req_actions = document.createElement("td");
+      const btn = document.createElement("button");
+      btn.setAttribute("onclick", "detailedView(" + value["req_no"] + ")");
+      btn.appendChild(document.createTextNode("Manage"));
+      btn.classList.add("btn", "btn-falcon-primary", "btn-sm");
+      req_actions.appendChild(btn);
+
+      this_row.append(date, pendingtr, bank, req_actions);
+      table_body.appendChild(this_row);
+    });
+
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    initSelectElement("#bank_name", "-- Select Bank --");
+    populateSelectElement("#bank_name", "../includes/load_bank.php", "name");
+
+    //load data at the bottom 
     const formData = new FormData();
-    formData.append("bank", bank_name.value);
-
-    fetch('../includes/overdraft_management.php', {
+    //  formData.append("req_no", reqNo)
+    fetch('../includes/#.php', {
         method: 'POST',
         body: formData
       })
       .then(response => response.json())
       .then(result => {
-        if (result.length <= 0) {
-          // TODO(c3n7): Show an appropriate alert
-          return;
-        }
-        result = result[0];
-        bank_name_data.value = result.bank;
-        console.log(result.table_items);
-        let cumulative_sum = 0;
+        data = result[0];
+        sub_total.value = data["sub_total"];
+        tax.value = data["tax"];
+        amount.value = data["amount"];
+        // Nested fetch start
+        // fetchTableItems();
+        // Nested fetch end
 
-        result.table_items.forEach((value) => {
-          console.log(value);
-
-          const tr = document.createElement("tr");
-
-          const value_date = document.createElement("td");
-          value_date.appendChild(document.createTextNode(value["date"]));
-
-          const dr = document.createElement("td");
-          dr.appendChild(document.createTextNode(value["pendingtr"]));
-
-          const cr = document.createElement("td");
-          cr.appendChild(document.createTextNode(value["cr"]));
-
-          const closing_bal = document.createElement("td");
-          closing_bal.appendChild(document.createTextNode(value["bank"]));
-
-          const od_interest = document.createElement("td");
-          od_interest.appendChild(document.createTextNode(value["action"]));
-
-          tr.append(opening_bal,
-            value_date, dr, cr, closing_bal, od_interest);
-          table_body.appendChild(tr);
-        });
-
-        // const tr = document.createElement("tr");
-
-        // const col_span = document.createElement("th");
-        // col_span.setAttribute("colspan", 5);
-
-        // const total_sum = document.createElement("th");
-        // total_sum.appendChild(document.createTextNode("Pesa Mingi"));
-
-        // tr.append(col_span, total_sum);
-        // table_foot.appendChild(tr);
       })
       .catch(error => {
         console.error('Error:', error);
       });
-  }
+  });
 </script>
 
 <?php
