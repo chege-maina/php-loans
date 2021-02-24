@@ -58,10 +58,12 @@ include "../includes/base_page/shared_top_tags.php"
   const bank_name = document.querySelector('#bank_name');
   const table_body = document.querySelector('#table_body');
   const table_foot = document.querySelector('#table_foot');
+  let table_items = [];
 
 
   let updateTable = (data) => {
     table_body.innerHTML = "";
+    let i = 0;
     data.forEach(value => {
       const this_row = document.createElement("tr");
 
@@ -80,7 +82,8 @@ include "../includes/base_page/shared_top_tags.php"
       const req_actions = document.createElement("td");
       const btn = document.createElement("button");
 
-      btn.setAttribute("onclick", "detailedView(" + value["bank_name"] + ")");
+      btn.setAttribute("onclick", "detailedView(" + i + ")");
+      i++;
       btn.appendChild(document.createTextNode("Manage"));
       btn.classList.add("button", "is-small", "is-info");
       req_actions.appendChild(btn);
@@ -91,9 +94,9 @@ include "../includes/base_page/shared_top_tags.php"
 
   }
 
-  function detailedView(bank_name) {
-    console.log("Bank Name: ", bank_name);
-    sessionStorage.setItem('bank_name', bank_name);
+  function detailedView(i) {
+    console.log(table_items[i]);
+    sessionStorage.setItem('bank_row', JSON.stringify(table_items[i]));
     window.location.href = "overdaft_mngt2.php";
   }
 
@@ -107,6 +110,7 @@ include "../includes/base_page/shared_top_tags.php"
       .then(response => response.json())
       .then(data => {
         console.log(data);
+        table_items = data
         updateTable(data);
       })
       .catch((error) => {
