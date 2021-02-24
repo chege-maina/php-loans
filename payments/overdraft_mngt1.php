@@ -83,6 +83,9 @@ include "../includes/base_page/shared_top_tags.php"
       const btn = document.createElement("button");
 
       btn.setAttribute("onclick", "detailedView(" + i + ")");
+      if (i > 0) {
+        btn.setAttribute("disabled", "");
+      }
       i++;
       btn.appendChild(document.createTextNode("Manage"));
       btn.classList.add("button", "is-small", "is-info");
