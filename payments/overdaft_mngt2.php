@@ -15,8 +15,8 @@ include "../includes/base_page/shared_top_tags.php"
         <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date_from" class="input has-background-info-light" readonly>
       </div>
       <div class="column">
-        <label for="bank" class="label">Bank</label>
-        <input name="bank" id="bank" class="input has-background-info-light" type="text" placeholder="Bank Name" required readonly>
+        <label for="bank_name" class="label">Bank</label>
+        <input name="bank_name" id="bank_name" class="input has-background-info-light" type="text" placeholder="Bank Name" required readonly>
       </div>
       <div class="column">
         <label for="opening_balance" class="label">Opening Balance</label>
@@ -62,8 +62,8 @@ include "../includes/base_page/shared_top_tags.php"
 
 <script>
   window.addEventListener('DOMContentLoaded', (event) => {
-    initSelectElement("#bank_name", "-- Select Bank --");
-    populateSelectElement("#bank_name", "../includes/load_bank.php", "name");
+
+
   });
 
   const date_from = document.querySelector('#date_from');
@@ -74,80 +74,6 @@ include "../includes/base_page/shared_top_tags.php"
   const acc_number = document.querySelector('#acc_number');
   const table_body = document.querySelector('#table_body');
   const table_foot = document.querySelector('#table_foot');
-
-
-  function getOverDrafts() {
-    if (!bank_name.value) {
-      bank_name.focus();
-      return;
-    }
-    console.log("sending");
-
-    const formData = new FormData();
-    formData.append("date1", date_from.value);
-    formData.append("date2", date_to.value);
-    formData.append("bank", bank_name.value);
-
-    fetch('../includes/overdraft_management.php', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(result => {
-        if (result.length <= 0) {
-          // TODO(c3n7): Show an appropriate alert
-          return;
-        }
-        result = result[0];
-        bank_name_data.value = result.bank;
-        acc_name.value = result.acc_name;
-        acc_number.value = result.acc_no;
-        console.log(result.table_items);
-        let cumulative_sum = 0;
-
-        result.table_items.forEach((value) => {
-          console.log(value);
-
-          const tr = document.createElement("tr");
-
-          const opening_bal = document.createElement("td");
-          opening_bal.appendChild(document.createTextNode(value["opening_bal"]));
-
-          const value_date = document.createElement("td");
-          value_date.appendChild(document.createTextNode(value["value_date"]));
-
-          const dr = document.createElement("td");
-          dr.appendChild(document.createTextNode(value["dr"]));
-
-          const cr = document.createElement("td");
-          cr.appendChild(document.createTextNode(value["cr"]));
-
-          const closing_bal = document.createElement("td");
-          closing_bal.appendChild(document.createTextNode(value["closing_bal"]));
-
-          const od_interest = document.createElement("td");
-          od_interest.appendChild(document.createTextNode(value["od_interest"]));
-
-          tr.append(opening_bal,
-            value_date, dr, cr, closing_bal, od_interest);
-          table_body.appendChild(tr);
-        });
-
-        // const tr = document.createElement("tr");
-
-        // const col_span = document.createElement("th");
-        // col_span.setAttribute("colspan", 5);
-
-        // const total_sum = document.createElement("th");
-        // total_sum.appendChild(document.createTextNode("Pesa Mingi"));
-
-        // tr.append(col_span, total_sum);
-        // table_foot.appendChild(tr);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }
 </script>
 
 <?php

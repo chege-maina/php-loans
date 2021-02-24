@@ -51,21 +51,11 @@ include "../includes/base_page/shared_top_tags.php"
       </table>
       <!-- Content ends here -->
     </div>
-
-    <div class="columns">
-      <div class="column">
-        <button class="button is-link">Submit</button>
-      </div>
-    </div>
-
   </div>
 </div>
 
 <script>
   const bank_name = document.querySelector('#bank_name');
-  const sub_total = document.querySelector("#sub_total");
-  const tax = document.querySelector("#tax");
-  const amount = document.querySelector("#amount");
   const table_body = document.querySelector('#table_body');
   const table_foot = document.querySelector('#table_foot');
 
@@ -79,9 +69,9 @@ include "../includes/base_page/shared_top_tags.php"
       date.appendChild(document.createTextNode(value["date"]));
       date.classList.add("align-middle");
 
-      const pendingtr = document.createElement("td");
-      pendingtr.appendChild(document.createTextNode(value["pendingtr"]));
-      pendingtr.classList.add("align-middle");
+      const trans = document.createElement("td");
+      trans.appendChild(document.createTextNode(value["trans"]));
+      trans.classList.add("align-middle");
 
       const bank = document.createElement("td");
       bank.appendChild(document.createTextNode(value["bank"]));
@@ -89,52 +79,37 @@ include "../includes/base_page/shared_top_tags.php"
 
       const req_actions = document.createElement("td");
       const btn = document.createElement("button");
-      //****//
-      btn.setAttribute("onclick", "detailedView(" + value["req_no"] + ")");
+
+      btn.setAttribute("onclick", "detailedView(" + value["bank_name"] + ")");
       btn.appendChild(document.createTextNode("Manage"));
-      btn.classList.add("btn", "btn-falcon-primary", "btn-sm");
+      btn.classList.add("button", "is-small", "is-info");
       req_actions.appendChild(btn);
 
-      this_row.append(date, pendingtr, bank, req_actions);
+      this_row.append(date, trans, bank, req_actions);
       table_body.appendChild(this_row);
     });
 
   }
+
+  function detailedView(bank_name) {
+    console.log("Bank Name: ", bank_name);
+    sessionStorage.setItem('bank_name', bank_name);
+    window.location.href = "overdaft_mngt2.php";
+  }
+
   //load the table
-  window.addEventListener('DOMContentLoaded', (event) => {
-    fetch('../includes/#.php')
-      .then(response => response.json())
-      .then(data => {
-        updateTable(data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  });
 
   window.addEventListener('DOMContentLoaded', (event) => {
     initSelectElement("#bank_name", "-- Select Bank --");
     populateSelectElement("#bank_name", "../includes/load_bank.php", "name");
 
-    //load three fields at the bottom 
-    const formData = new FormData();
-    //  formData.append("req_no", reqNo)
-    fetch('../includes/#.php', {
-        method: 'POST',
-        body: formData
-      })
+    fetch('../includes/load_od_mngt.php')
       .then(response => response.json())
-      .then(result => {
-        data = result[0];
-        sub_total.value = data["sub_total"];
-        tax.value = data["tax"];
-        amount.value = data["amount"];
-        // Nested fetch start
-        // fetchTableItems();
-        // Nested fetch end
-
+      .then(data => {
+        console.log(data);
+        updateTable(data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error:', error);
       });
   });
