@@ -12,7 +12,7 @@ include "../includes/base_page/shared_top_tags.php"
     <!-- Content is to start here -->
     <div class="columns ">
       <div class="column is-4">
-        <label for="branch_name" class="label">Select Bank Name</label>
+        <label for="bank_name" class="label">Select Bank Name</label>
         <div class="select is-fullwidth">
           <div class="control">
             <select id="bank_name" required>
@@ -23,8 +23,8 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column-auto pt-5">
         <div class="control">
           <div class="column">
-            <label for="branch" class="label"> </label>
-            <button class="button is-info" onclick="getOverDrafts()">Filter</button>
+            <label for="bank" class="label"> </label>
+            <button class="button is-info" onclick="filterRequisitions()">Filter</button>
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@ include "../includes/base_page/shared_top_tags.php"
     </div>
 
     <div class="columns">
-      <div class="column has-text-right">
+      <div class="column has-text-right has-text-weight-bold">
         Sub Total</div>
       <div class="column is-3">
         <div class="control">
@@ -62,7 +62,7 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
     </div>
     <div class="columns">
-      <div class="column has-text-right">
+      <div class="column has-text-right has-text-weight-bold">
         16% VAT
       </div>
       <div class="column is-3">
@@ -72,13 +72,19 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
     </div>
     <div class="columns">
-      <div class="column has-text-right">
+      <div class="column has-text-right has-text-weight-bold">
         Total Amount
       </div>
       <div class="column is-3">
         <div class="control">
           <input class="input" type="text" readonly id="amount" />
         </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <button class="button is-link">Submit</button>
       </div>
     </div>
 
@@ -113,6 +119,7 @@ include "../includes/base_page/shared_top_tags.php"
 
       const req_actions = document.createElement("td");
       const btn = document.createElement("button");
+      //****//
       btn.setAttribute("onclick", "detailedView(" + value["req_no"] + ")");
       btn.appendChild(document.createTextNode("Manage"));
       btn.classList.add("btn", "btn-falcon-primary", "btn-sm");
@@ -123,11 +130,23 @@ include "../includes/base_page/shared_top_tags.php"
     });
 
   }
+  //load the table
+  window.addEventListener('DOMContentLoaded', (event) => {
+    fetch('../includes/#.php')
+      .then(response => response.json())
+      .then(data => {
+        updateTable(data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  });
+
   window.addEventListener('DOMContentLoaded', (event) => {
     initSelectElement("#bank_name", "-- Select Bank --");
     populateSelectElement("#bank_name", "../includes/load_bank.php", "name");
 
-    //load data at the bottom 
+    //load three fields at the bottom 
     const formData = new FormData();
     //  formData.append("req_no", reqNo)
     fetch('../includes/#.php', {
@@ -149,6 +168,26 @@ include "../includes/base_page/shared_top_tags.php"
         console.error('Error:', error);
       });
   });
+
+
+  function filterRequisitions() {
+    const formData = new FormData();
+
+    formData.append("bank", bank.value);
+    console.log(branch);
+
+    fetch('../includes/#.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        updateTable(result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
 </script>
 
 <?php
