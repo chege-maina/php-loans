@@ -57,6 +57,11 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
       <!-- Content ends here -->
     </div>
+    <div class="columns">
+      <div class="column ">
+        <button class="button is-link">Submit</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -78,11 +83,24 @@ include "../includes/base_page/shared_top_tags.php"
 
     const formData = new FormData();
     console.log(bank_row);
-
-
+    //stored data in the defined constant variables
     r_date.value = bank_row["date"];
     bank_name.value = bank_row["bank"];
 
+    fetch('../includes/load_od_mngt.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+        result.forEach(value => {
+          console.log(value);
+
+          r_date.value = value["date"];
+          bank_name.value = value["bank"];
+        })
+      });
 
   });
 </script>
