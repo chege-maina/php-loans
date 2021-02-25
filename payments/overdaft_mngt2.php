@@ -116,7 +116,7 @@ include "../includes/base_page/shared_top_tags.php"
   window.addEventListener('DOMContentLoaded', (event) => {
 
     if (sessionStorage.length <= 0) {
-      window.history.back();
+      location.href = "overdraft_mngt1.php"
     }
 
     bank_row = JSON.parse(sessionStorage.getItem('bank_row'));
