@@ -47,20 +47,71 @@ include "../includes/base_page/shared_top_tags.php"
     </div>
     <div class="columns">
       <div class="column ">
-        <button class="button is-link">Submit</button>
+        <button class="button is-link" onclick="submitForm();">Submit</button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  const date = document.querySelector('#date');
+  const r_date = document.querySelector('#r_date');
   const bank_name = document.querySelector('#bank_name');
   const table_body = document.querySelector('#table_body');
   const table_foot = document.querySelector('#table_foot');
   const opening_balance = document.querySelector("#opening_balance");
+  let table_items = [];
+
   let opening_bals = [];
   let closing_bal = 0;
+
+  const submitForm = () => {
+    console.log("Submitting");
+
+    const sendable_table_items = [];
+    table_items.forEach(item => {
+      sendable_table_items.push({
+        p_details: item.details,
+        p_cheque_no: item.cheque_no,
+        p_value_date: item.value_date,
+        p_dr: item.money_in,
+        p_cr: item.money_out,
+        p_balance: item.balance,
+      })
+    });
+
+    const formData = new FormData();
+    formData.append("banking_date", r_date.value);
+    formData.append("bank_name", bank_name.value);
+    formData.append("opening_bal", opening_balance.value);
+    formData.append("closing_bal", closing_bal);
+    formData.append("table_items", JSON.stringify(sendable_table_items));
+
+    fetch('../includes/add_transactions.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(result => {
+        console.log('Success:', result);
+        if (result["message"] === "success") {
+          showSuccessAlert("Record stored successfuly");
+          reloadPage();
+        } else {
+          let msg = !("desc" in result) || result["desc"].trim() === "" ?
+            "Record not stored" : result["desc"];
+          showDangerAlert(msg);
+          removeAlert();
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        showDangerAlert("Could not send data to server");
+        removeAlert();
+      });
+
+
+  }
+
 
   window.addEventListener('DOMContentLoaded', (event) => {
 
@@ -70,7 +121,7 @@ include "../includes/base_page/shared_top_tags.php"
 
     bank_row = JSON.parse(sessionStorage.getItem('bank_row'));
     // Clear data
-    // sessionStorage.clear();
+    sessionStorage.clear();
 
     //stored data in the defined constant variables
     r_date.value = bank_row["date"];
@@ -90,6 +141,7 @@ include "../includes/base_page/shared_top_tags.php"
         console.log('Success:', result);
         opening_balance.value = result.opening_bal;
         opening_bals[0] = Number(result.opening_bal);
+        table_items = result.table_items;
         updateTable(result.table_items);
       })
       .catch(error => {
@@ -131,6 +183,7 @@ include "../includes/base_page/shared_top_tags.php"
         details.classList.add("align-middle");
 
         let bl = opening_bals[i] + Number(row.money_in) - Number(row.money_out);
+        table_items[i]["balance"] = bl;
         i++;
         opening_bals[i] = bl;
         closing_bal = bl;
