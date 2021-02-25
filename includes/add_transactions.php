@@ -16,7 +16,7 @@ details, cheque_no, value_date, dr, cr, balance) VALUES('" . $bank_name . "','" 
     mysqli_query($conn, $mysql);
   }
   $responseArray = array(
-    "message" => "Daily Transaction Posted Successfully.."
+    "message" => "success"
   );
 
   mysqli_close($conn);
