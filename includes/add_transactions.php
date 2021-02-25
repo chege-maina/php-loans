@@ -18,7 +18,7 @@ details, cheque_no, value_date, dr, cr, balance) VALUES('" . $bank_name . "','" 
   $responseArray = array(
     "message" => "Daily Transaction Posted Successfully.."
   );
-  echo json_encode($message);
+
   mysqli_close($conn);
 } else {
   $responseArray = array(
@@ -26,3 +26,4 @@ details, cheque_no, value_date, dr, cr, balance) VALUES('" . $bank_name . "','" 
     "desc" => "Fields Required"
   );
 }
+echo json_encode($responseArray);
