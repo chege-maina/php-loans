@@ -15,6 +15,12 @@ while ($row = mysqli_fetch_assoc($result)) {
   $bank = $row['bank_name'];
   $counter = 0;
 
+  $query3 = "SELECT banking_date FROM tbl_od_transactions WHERE bank_name='$bank' ORDER BY banking_date DESC";
+  $result3 = mysqli_query($conn, $query3);
+  if ($row3 = mysqli_fetch_assoc($result3)) {
+    $open_date = $row3['banking_date'];
+    $open_date = date('Y-m-d', strtotime($open_date . ' + 1 days'));
+  }
   while ($open_date < $date_chk) {
     $query2 = "SELECT count(bank_name) FROM tbl_payments WHERE bank_name='$bank' and date='$open_date' and status='pending'";
     $result2 = mysqli_query($conn, $query2);
