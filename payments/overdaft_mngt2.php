@@ -91,7 +91,7 @@ include "../includes/base_page/shared_top_tags.php"
     formData.append("bank", bank_row["bank"]);
 
     return;
-    fetch('../includes/', {
+    fetch('../includes/load_banking_dates.php', {
         method: 'POST',
         body: formData
       })
