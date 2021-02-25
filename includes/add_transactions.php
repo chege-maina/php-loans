@@ -15,8 +15,14 @@ details, cheque_no, value_date, dr, cr, balance) VALUES('" . $bank_name . "','" 
 '" . $value["p_value_date"] . "','" . $value["p_dr"] . "','" . $value["p_cr"] . "', '" . $value["p_balance"] . "')";
     mysqli_query($conn, $mysql);
   }
-  $message = "Daily Transaction Posted Successfully..";
+  $responseArray = array(
+    "message" => "Daily Transaction Posted Successfully.."
+  );
   echo json_encode($message);
   mysqli_close($conn);
 } else {
+  $responseArray = array(
+    "message" => "error",
+    "desc" => "Fields Required"
+  );
 }
