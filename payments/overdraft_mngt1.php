@@ -125,10 +125,8 @@ include "../includes/base_page/shared_top_tags.php"
   function filterRequisitions() {
     const formData = new FormData();
 
-    formData.append("bank", bank.value);
-    console.log(branch);
-
-    fetch('../includes/#.php', {
+    formData.append("bank", bank_name.value);
+    fetch('../includes/filter_load_od_mngt.php', {
         method: 'POST',
         body: formData
       })
