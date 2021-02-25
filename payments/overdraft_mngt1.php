@@ -132,6 +132,7 @@ include "../includes/base_page/shared_top_tags.php"
       })
       .then(response => response.json())
       .then(result => {
+        table_items = result;
         updateTable(result);
       })
       .catch(error => {
