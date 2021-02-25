@@ -70,6 +70,8 @@ include "../includes/base_page/shared_top_tags.php"
   const bank_name = document.querySelector('#bank_name');
   const table_body = document.querySelector('#table_body');
   const table_foot = document.querySelector('#table_foot');
+  const opening_balance = document.querySelector("#opening_balance");
+
   window.addEventListener('DOMContentLoaded', (event) => {
 
     if (sessionStorage.length <= 0) {
@@ -80,8 +82,6 @@ include "../includes/base_page/shared_top_tags.php"
     // Clear data
     // sessionStorage.clear();
 
-
-    console.log(bank_row);
     //stored data in the defined constant variables
     r_date.value = bank_row["date"];
     bank_name.value = bank_row["bank"];
@@ -90,18 +90,26 @@ include "../includes/base_page/shared_top_tags.php"
     formData.append("date", bank_row["date"]);
     formData.append("bank", bank_row["bank"]);
 
-    return;
     fetch('../includes/load_banking_dates.php', {
         method: 'POST',
         body: formData
       })
       .then(response => response.json())
       .then(result => {
+        result = result[0];
         console.log('Success:', result);
+        opening_balance.value = result.opening_bal;
+        updateTable(result.table_items);
       })
       .catch(error => {
         console.error('Error:', error);
       });
+
+    function updateTable(data) {
+      data.forEach(row => {
+        console.log("row", row)
+      });
+    }
   });
 </script>
 
