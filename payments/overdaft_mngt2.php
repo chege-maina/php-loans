@@ -83,6 +83,9 @@ include "../includes/base_page/shared_top_tags.php"
 
     const formData = new FormData();
     console.log(bank_row);
+
+    formData.append("req_no", reqNo)
+
     //stored data in the defined constant variables
     r_date.value = bank_row["date"];
     bank_name.value = bank_row["bank"];
