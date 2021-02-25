@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2021 at 11:07 AM
+-- Generation Time: Feb 25, 2021 at 06:05 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -121,6 +121,26 @@ INSERT INTO `tbl_loans` (`bank_name`, `dis_date`, `first_date`, `amount`, `perio
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_od_transactions`
+--
+
+CREATE TABLE `tbl_od_transactions` (
+  `cheque_no` varchar(254) NOT NULL,
+  `bank_name` varchar(100) NOT NULL,
+  `details` varchar(254) NOT NULL,
+  `banking_date` date NOT NULL,
+  `value_date` date NOT NULL,
+  `dr` varchar(100) NOT NULL,
+  `cr` varchar(100) NOT NULL,
+  `balance` varchar(100) NOT NULL,
+  `opening_bal` varchar(100) NOT NULL,
+  `closing_bal` varchar(100) NOT NULL,
+  `status` varchar(15) NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_payments`
 --
 
@@ -197,6 +217,12 @@ ALTER TABLE `tbl_customer`
 --
 ALTER TABLE `tbl_loans`
   ADD PRIMARY KEY (`bank_name`,`dis_date`);
+
+--
+-- Indexes for table `tbl_od_transactions`
+--
+ALTER TABLE `tbl_od_transactions`
+  ADD PRIMARY KEY (`cheque_no`,`bank_name`,`details`);
 
 --
 -- Indexes for table `tbl_payments`
