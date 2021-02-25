@@ -90,7 +90,7 @@ include "../includes/base_page/shared_top_tags.php"
         method: 'POST',
         body: formData
       })
-      .then(response => response.text())
+      .then(response => response.json())
       .then(result => {
         console.log('Success:', result);
         if (result["message"] === "success") {
