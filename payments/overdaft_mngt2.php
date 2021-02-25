@@ -78,30 +78,30 @@ include "../includes/base_page/shared_top_tags.php"
 
     bank_row = JSON.parse(sessionStorage.getItem('bank_row'));
     // Clear data
-    sessionStorage.clear();
+    // sessionStorage.clear();
 
 
-    const formData = new FormData();
     console.log(bank_row);
     //stored data in the defined constant variables
     r_date.value = bank_row["date"];
     bank_name.value = bank_row["bank"];
 
-    fetch('../includes/load_od_mngt.php', {
+    const formData = new FormData();
+    formData.append("date", bank_row["date"]);
+    formData.append("bank", bank_row["bank"]);
+
+    return;
+    fetch('../includes/', {
         method: 'POST',
         body: formData
       })
       .then(response => response.json())
       .then(result => {
         console.log('Success:', result);
-        result.forEach(value => {
-          console.log(value);
-
-          r_date.value = value["date"];
-          bank_name.value = value["bank"];
-        })
+      })
+      .catch(error => {
+        console.error('Error:', error);
       });
-
   });
 </script>
 
