@@ -30,6 +30,7 @@ include "../includes/base_page/shared_top_tags.php"
           <tr>
             <th>Banking Date</th>
             <th>CHR No#</th>
+            <th>CHR Amt</th>
             <th>Supplier/Customer</th>
             <th>Value Date</th>
             <th>Money In</th>
@@ -71,6 +72,8 @@ include "../includes/base_page/shared_top_tags.php"
   const table_body = document.querySelector('#table_body');
   const table_foot = document.querySelector('#table_foot');
   const opening_balance = document.querySelector("#opening_balance");
+  let opening_bals = [];
+  let closing_bal = 0;
 
   window.addEventListener('DOMContentLoaded', (event) => {
 
@@ -99,6 +102,7 @@ include "../includes/base_page/shared_top_tags.php"
         result = result[0];
         console.log('Success:', result);
         opening_balance.value = result.opening_bal;
+        opening_bals[0] = Number(result.opening_bal);
         updateTable(result.table_items);
       })
       .catch(error => {
@@ -106,8 +110,51 @@ include "../includes/base_page/shared_top_tags.php"
       });
 
     function updateTable(data) {
+
+      let i = 0;
       data.forEach(row => {
         console.log("row", row)
+
+        let banking_date = document.createElement("td");
+        banking_date.appendChild(document.createTextNode(row["banking_date"]));
+        banking_date.classList.add("align-middle");
+
+        let cheque_no = document.createElement("td");
+        cheque_no.appendChild(document.createTextNode(row["cheque_no"]));
+        cheque_no.classList.add("align-middle");
+
+        let money_in = document.createElement("td");
+        money_in.appendChild(document.createTextNode(row["money_in"]));
+        money_in.classList.add("align-middle");
+
+        let money_out = document.createElement("td");
+        money_out.appendChild(document.createTextNode(row["money_out"]));
+        money_out.classList.add("align-middle");
+
+        let value_date = document.createElement("td");
+        value_date.appendChild(document.createTextNode(row["value_date"]));
+        value_date.classList.add("align-middle");
+
+        let amount = document.createElement("td");
+        amount.appendChild(document.createTextNode(row["amount"]));
+        amount.classList.add("align-middle");
+
+        let details = document.createElement("td");
+        details.appendChild(document.createTextNode(row["details"]));
+        details.classList.add("align-middle");
+
+        let bl = opening_bals[i] + Number(row.money_in) - Number(row.money_out);
+        i++;
+        opening_bals[i] = bl;
+        closing_bal = bl;
+        let balance = document.createElement("td");
+        balance.appendChild(document.createTextNode(bl));
+        balance.classList.add("align-middle");
+
+        let t_row = document.createElement("tr");
+        t_row.append(banking_date, cheque_no, amount, details, value_date, money_in, money_out, balance);
+
+        table_body.appendChild(t_row);
       });
     }
   });
