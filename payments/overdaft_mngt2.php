@@ -43,19 +43,6 @@ include "../includes/base_page/shared_top_tags.php"
         <tfoot id="table_foot">
         </tfoot>
       </table>
-      <div class="column">
-        <div class="field has-addons has-addons-centered is-grouped is-grouped-right">
-
-          <p class="control">
-            <input type="number" class="input" name="total" id="total" required>
-          </p>
-          <p class="control">
-            <a class="button is-info">
-              Total
-            </a>
-          </p>
-        </div>
-      </div>
       <!-- Content ends here -->
     </div>
     <div class="columns">
@@ -149,13 +136,23 @@ include "../includes/base_page/shared_top_tags.php"
         closing_bal = bl;
         let balance = document.createElement("td");
         balance.appendChild(document.createTextNode(bl));
-        balance.classList.add("align-middle");
+        balance.classList.add("align-middle", "has-text-right");
 
         let t_row = document.createElement("tr");
         t_row.append(banking_date, cheque_no, amount, details, value_date, money_in, money_out, balance);
 
         table_body.appendChild(t_row);
       });
+
+      let closing_label = document.createElement("th");
+      closing_label.setAttribute("colspan", 7);
+      closing_label.classList.add("has-text-right");
+      closing_label.appendChild(document.createTextNode("Closing Balance"));
+
+      let closing_amt = document.createElement("th");
+      closing_amt.classList.add("has-text-right");
+      closing_amt.appendChild(document.createTextNode(closing_bal));
+      table_foot.append(closing_label, closing_amt);
     }
   });
 </script>
