@@ -85,7 +85,7 @@
           <a class="navbar-item" href="../payments/overdraft_mngt1.php">
             Post Daily Transactions
           </a>
-          <a class="navbar-item" href="../payments/payment_schedule.php">
+          <a class="navbar-item" href="../payments/overdraft_mngt.php">
             Overdraft Management
           </a>
           <a class="navbar-item" href="../payments/payment_schedule.php">

@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $date = $_POST["date"];
   $bank = $_POST["bank"];
 
-  $query = "SELECT * FROM tbl_bank";
+  $query = "SELECT * FROM tbl_bank WHERE bank_name='$bank'";
   $result = mysqli_query($conn, $query);
   $response = array();
   if ($row = mysqli_fetch_assoc($result)) {
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result3 = mysqli_query($conn, $query3);
     if ($row3 = mysqli_fetch_assoc($result3)) {
 
-      $open_bal = $row3['opening_bal'];
+      $open_bal = $row3['closing_bal'];
     }
     $valid_date = $date;
     $money_out = 0;
