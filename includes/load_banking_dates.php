@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $open_bal = $row['opening_bal'];
     $clear_days = $row['clear_days'];
 
-    $query3 = "SELECT banking_date, opening_bal FROM tbl_od_transactions WHERE bank_name='$bank' ORDER BY banking_date DESC";
+    $query3 = "SELECT banking_date, closing_bal FROM tbl_od_transactions WHERE bank_name='$bank' ORDER BY banking_date DESC";
     $result3 = mysqli_query($conn, $query3);
     if ($row3 = mysqli_fetch_assoc($result3)) {
 
