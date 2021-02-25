@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2021 at 07:39 AM
+-- Generation Time: Feb 25, 2021 at 04:19 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -39,7 +39,7 @@ CREATE TABLE `tbl_bank` (
   `id_interest` varchar(100) NOT NULL,
   `over_limit` varchar(100) NOT NULL,
   `late_charges` varchar(100) NOT NULL,
-  `opening_date` date NOT NULL DEFAULT '0001-01-01'
+  `opening_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -48,7 +48,8 @@ CREATE TABLE `tbl_bank` (
 
 INSERT INTO `tbl_bank` (`bank_name`, `branch_name`, `acc_no`, `acc_name`, `currency`, `opening_bal`, `clear_days`, `od_limit`, `id_interest`, `over_limit`, `late_charges`, `opening_date`) VALUES
 ('EQUITY BANK', 'KARATINA', '255445666', 'JUMANJI2', 'KSHS', '20', '3', '400', '12', '3', '3', '2021-02-07'),
-('KCB', 'RUIRU', '625556', 'JUMANJI', 'KSHS', '1000', '2', '1000000', '11', '1000000', '5', '2021-01-14');
+('KCB', 'RUIRU', '625556', 'JUMANJI', 'KSHS', '1000', '2', '1000000', '11', '1000000', '5', '2021-01-14'),
+('Mannix Merrill', 'Richard Miranda', '510', 'Russell Walter', 'KSHS', '1000', '2', '82000', '34', '82000', '2', '2021-02-01');
 
 -- --------------------------------------------------------
 
@@ -143,7 +144,10 @@ CREATE TABLE `tbl_od_transactions` (
 --
 
 INSERT INTO `tbl_od_transactions` (`cheque_no`, `bank_name`, `details`, `banking_date`, `value_date`, `dr`, `cr`, `balance`, `opening_bal`, `closing_bal`, `status`) VALUES
-('3334', 'KCB', 'hggu', '2021-02-16', '2021-02-18', '353532', '235353', '235253', '2343', '2343', 'pending'),
+('0', 'EQUITY BANK', 'NONE', '2021-02-07', '2021-02-07', '0', '0', '20', '20', '20', 'pending'),
+('0', 'EQUITY BANK', 'NONE', '2021-02-08', '2021-02-08', '0', '0', '20', '20', '20', 'pending'),
+('0', 'EQUITY BANK', 'NONE', '2021-02-09', '2021-02-09', '0', '0', '20', '20', '20', 'pending'),
+('3334', 'KCB', 'hggu', '2021-02-22', '2021-02-18', '353532', '235353', '235253', '2343', '2343', 'pending'),
 ('5555', 'KCB', 'SSSSS', '2021-02-17', '2021-02-19', '4000', '2000', '1000', '5000', '3000', 'pending');
 
 -- --------------------------------------------------------
@@ -169,11 +173,15 @@ CREATE TABLE `tbl_payments` (
 
 INSERT INTO `tbl_payments` (`supplier_name`, `bank_name`, `cheque_no`, `amount`, `date`, `cheque_type`, `pay_type`, `status`) VALUES
 ('Bo Mejia', 'KCB', '6666', '850000', '2021-02-22', 'inhouse', 'receipt', 'pending'),
+('Bo Mejia', 'Mannix Merrill', '5567', '600', '2021-02-10', 'interbank', 'receipt', 'pending'),
+('Bo Mejia', 'Mannix Merrill', '76567', '250', '2021-02-23', 'inhouse', 'receipt', 'pending'),
 ('Byron Mcmillan', 'EQUITY BANK', '833', '67', '2016-03-22', 'inhouse', 'receipt', 'pending'),
+('Hyatt Butler', 'Mannix Merrill', '556767', '500', '2021-02-18', 'interbank', 'pay', 'pending'),
 ('Rajah Velasquez', 'EQUITY BANK', '342', '82', '2016-03-21', 'interbank', 'pay', 'pending'),
 ('Rajah Velasquez', 'EQUITY BANK', '478', '12', '2016-03-22', 'interbank', 'pay', 'pending'),
 ('Rajah Velasquez', 'EQUITY BANK', '965', '4', '2016-03-22', 'interbank', 'pay', 'pending'),
-('Rajah Velasquez', 'KCB', '7', '950000', '2021-02-22', 'interbank', 'pay', 'pending');
+('Rajah Velasquez', 'KCB', '7', '950000', '2021-02-22', 'interbank', 'pay', 'pending'),
+('Rajah Velasquez', 'Mannix Merrill', '55667', '250', '2021-02-10', 'inhouse', 'pay', 'pending');
 
 -- --------------------------------------------------------
 
@@ -230,7 +238,7 @@ ALTER TABLE `tbl_loans`
 -- Indexes for table `tbl_od_transactions`
 --
 ALTER TABLE `tbl_od_transactions`
-  ADD PRIMARY KEY (`cheque_no`,`bank_name`,`details`);
+  ADD PRIMARY KEY (`cheque_no`,`bank_name`,`details`,`banking_date`);
 
 --
 -- Indexes for table `tbl_payments`
