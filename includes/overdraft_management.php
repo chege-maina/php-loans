@@ -44,7 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($balance < 0) {
         $negative_num = abs($balance);
         if ($negative_num > $od_limit) {
-          $interest = $negative_num * ($id_interest + $over) / 100;
+          $number_on = $negative_num - $od_limit;
+          $interest = $number_on * ($id_interest + $over) / 100;
+          $interest = ($od_limit * $id_interest / 100) + $interest;
         } else {
           $interest = $negative_num * $id_interest / 100;
         }
