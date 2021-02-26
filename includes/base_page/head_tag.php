@@ -34,7 +34,7 @@
 
         const h_e = new AutoNumeric(element.childNodes[1], {
           currencySymbol: '',
-          minimumValue: 0
+          // minimumValue: 0
         });
 
         const real_input = document.createElement("input");
