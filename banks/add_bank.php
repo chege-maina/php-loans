@@ -153,7 +153,7 @@ include "../includes/base_page/shared_top_tags.php"
   const overlimit_interest = document.querySelector("#overlimit_interest");
   const overdraft_limit = document.querySelector("#overdraft_limit");
   const late_payment_charges = document.querySelector("#late_payment_charges");
-  const p_date = document.querySelector("#date");
+  const p_date = document.querySelector("#p_date");
 
 
   let opening_balance;
