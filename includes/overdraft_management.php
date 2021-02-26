@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $date = $row['banking_date'];
       $balance = $row['closing_bal'];
 
-      $query3 = "SELECT sum(dr), sum(cr) FROM tbl_od_transactions WHERE value_date ='$date'";
+      $query3 = "SELECT sum(dr), sum(cr) FROM tbl_od_transactions WHERE bank_name='$bank' and value_date ='$date'";
       $result3 = mysqli_query($conn, $query3);
       if ($row3 = mysqli_fetch_assoc($result3)) {
         $cr = $row3['sum(cr)'];
