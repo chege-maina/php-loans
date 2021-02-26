@@ -78,6 +78,7 @@ include "../includes/base_page/shared_top_tags.php"
         <tfoot id="table_foot">
         </tfoot>
       </table>
+      <!--
       <div class="column">
         <div class="field has-addons has-addons-centered is-grouped is-grouped-right">
 
@@ -91,6 +92,7 @@ include "../includes/base_page/shared_top_tags.php"
           </p>
         </div>
       </div>
+    -->
       <!-- Content ends here -->
     </div>
   </div>
@@ -130,6 +132,8 @@ include "../includes/base_page/shared_top_tags.php"
       })
       .then(response => response.json())
       .then(result => {
+        console.log(result);
+        // return;
         if (result.length <= 0) {
           // TODO(c3n7): Show an appropriate alert
           return;
@@ -146,11 +150,8 @@ include "../includes/base_page/shared_top_tags.php"
 
           const tr = document.createElement("tr");
 
-          const opening_bal = document.createElement("td");
-          opening_bal.appendChild(document.createTextNode(value["opening_bal"]));
-
-          const value_date = document.createElement("td");
-          value_date.appendChild(document.createTextNode(value["value_date"]));
+          const p_date = document.createElement("td");
+          p_date.appendChild(document.createTextNode(value["date"]));
 
           const dr = document.createElement("td");
           dr.appendChild(document.createTextNode(value["dr"]));
@@ -159,13 +160,13 @@ include "../includes/base_page/shared_top_tags.php"
           cr.appendChild(document.createTextNode(value["cr"]));
 
           const closing_bal = document.createElement("td");
-          closing_bal.appendChild(document.createTextNode(value["closing_bal"]));
+          closing_bal.appendChild(document.createTextNode(value["balance"]));
 
           const od_interest = document.createElement("td");
           od_interest.appendChild(document.createTextNode(value["od_interest"]));
 
-          tr.append(opening_bal,
-            value_date, dr, cr, closing_bal, od_interest);
+          tr.append(p_date,
+            dr, cr, closing_bal, od_interest);
           table_body.appendChild(tr);
         });
 
