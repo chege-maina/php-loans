@@ -153,6 +153,8 @@ include "../includes/base_page/shared_top_tags.php"
   const overlimit_interest = document.querySelector("#overlimit_interest");
   const overdraft_limit = document.querySelector("#overdraft_limit");
   const late_payment_charges = document.querySelector("#late_payment_charges");
+  const p_date = document.querySelector("#date");
+
 
   let opening_balance;
 
@@ -170,6 +172,7 @@ include "../includes/base_page/shared_top_tags.php"
     formData.append("od_limit", overdraft_limit.value);
     formData.append("id_interest", overlimit_interest.value);
     formData.append("over_limit", overdraft_limit.value);
+    formData.append("date", p_date.value);
     formData.append("late_charges", late_payment_charges.value);
 
     fetch('../includes/add_bank.php', {
