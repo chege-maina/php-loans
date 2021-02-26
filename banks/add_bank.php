@@ -163,7 +163,6 @@ include "../includes/base_page/shared_top_tags.php"
     console.log("Submitting");
     const formData = new FormData();
     formData.append("bank_name", bank_name.value);
-    formData.append("branch", branch_name.value);
     formData.append("acc_no", account_number.value);
     formData.append("acc_name", account_name.value);
     formData.append("currency", currency.value);
@@ -172,6 +171,7 @@ include "../includes/base_page/shared_top_tags.php"
     formData.append("od_limit", overdraft_limit.value);
     formData.append("id_interest", overlimit_interest.value);
     formData.append("over_limit", overdraft_limit.value);
+    formData.append("branch", branch_name.value);
     formData.append("date", p_date.value);
     formData.append("late_charges", late_payment_charges.value);
 
