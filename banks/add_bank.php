@@ -169,8 +169,8 @@ include "../includes/base_page/shared_top_tags.php"
     formData.append("opening_bal", opening_balance.value);
     formData.append("clear_days", cheque_clear_days.value);
     formData.append("od_limit", overdraft_limit.value);
-    formData.append("id_interest", overlimit_interest.value);
-    formData.append("over_limit", overdraft_limit.value);
+    formData.append("id_interest", overdraft_interest.value);
+    formData.append("over_limit", overlimit_interest.value);
     formData.append("branch", branch_name.value);
     formData.append("date", p_date.value);
     formData.append("late_charges", late_payment_charges.value);
