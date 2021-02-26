@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $clear_days = $row2['clear_days'];
 
 
-    $query = "SELECT date FROM tbl_payments WHERE bank_name='$bank' and date>='$start_date' and date<= '$end_date' GROUP BY date";
+    $query = "SELECT banking_date, closing_bal FROM tbl_od_transactions WHERE bank_name='$bank' and banking_date>='$start_date' and banking_date<= '$end_date' GROUP BY banking_date ORDER BY banking_date ASC";
     $result = mysqli_query($conn, $query);
     $response2 = array();
     while ($row = mysqli_fetch_assoc($result)) {
@@ -31,39 +31,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $cr = 0;
       $total_receipt = 0;
       $total_pay = 0;
-      $date = $row['date'];
+      $date = $row['banking_date'];
+      $balance = $row['closing_bal'];
 
-      $query3 = "SELECT sum(amount) FROM tbl_payments WHERE date ='$date' and pay_type='pay'";
+      $query3 = "SELECT sum(dr), sum(cr) FROM tbl_od_transactions WHERE value_date ='$date'";
       $result3 = mysqli_query($conn, $query3);
       if ($row3 = mysqli_fetch_assoc($result3)) {
-        $cr = $row3['sum(amount)'];
-      }
-      $query4 = "SELECT sum(amount) FROM tbl_payments WHERE date ='$date' and pay_type='receipt'";
-      $result4 = mysqli_query($conn, $query4);
-      if ($row4 = mysqli_fetch_assoc($result4)) {
-        $dr = $row4['sum(amount)'];
-      }
-      $query5 = "SELECT sum(amount) FROM tbl_payments WHERE date <'$date' and pay_type='pay'";
-      $result5 = mysqli_query($conn, $query5);
-      if ($row5 = mysqli_fetch_assoc($result5)) {
-        $total_pay = $row5['sum(amount)'];
-      }
-      $query6 = "SELECT sum(amount) FROM tbl_payments WHERE date <'$date' and pay_type='receipt'";
-      $result6 = mysqli_query($conn, $query6);
-      if ($row6 = mysqli_fetch_assoc($result6)) {
-        $total_receipt = $row6['sum(amount)'];
-      }
-      if (is_null($cr)) {
-        $cr = 0;
-      }
-      if (is_null($dr)) {
-        $dr = 0;
+        $cr = $row3['sum(cr)'];
+        $dr = $row3['sum(dr)'];
       }
 
-      $opening_bal = $opening_bal + $total_receipt - $total_pay;
-      $closing_bal = $opening_bal + $dr - $cr;
-      if ($closing_bal < 0) {
-        $negative_num = abs($closing_bal);
+      if ($balance < 0) {
+        $negative_num = abs($balance);
         if ($negative_num > $od_limit) {
           $interest = $negative_num * ($id_interest + $over) / 100;
         } else {
@@ -73,19 +52,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $interest = 0;
       }
 
-
-      $date_value = date('Y-m-d', strtotime($date . ' + ' . $clear_days . ' days'));
-
-      $date_value = date('Y-m-d', strtotime($date . ' + ' . $clear_days . ' days'));
-
       array_push(
         $response2,
         array(
-          'opening_bal' => $opening_bal,
-          'value_date' => $date_value,
+          'date' => $date,
           'dr' => $dr,
           'cr' => $cr,
-          'closing_bal' => $closing_bal,
+          'balance' => $balance,
           'od_interest' => $interest
         )
       );
