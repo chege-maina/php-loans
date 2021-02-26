@@ -66,11 +66,10 @@ include "../includes/base_page/shared_top_tags.php"
       <table class="table is-hoverable is-fullwidth is-striped">
         <thead>
           <tr>
-            <th>Opening Balance</th>
-            <th>Value Date</th>
+            <th>Date</th>
             <th>DR</th>
             <th>CR</th>
-            <th>Closing Balance</th>
+            <th>Running Balance</th>
             <th>OD Daily Interest</th>
           </tr>
         </thead>
