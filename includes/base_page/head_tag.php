@@ -88,6 +88,19 @@
       alert_div.innerHTML = text
     }
 
+    function showInfoAlert(message) {
+      let text = `
+<article class="message is-warning mt-3">
+  <div class="message-body">
+  <strong>Error: </strong> ${message}
+  </div>
+</article>
+`
+      alert_div.innerHTML = text
+    }
+
+
+
     function removeAlert(wait_time = 2500) {
       window.setTimeout(() => {
         alert_div.innerHTML = "";
