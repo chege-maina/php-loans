@@ -4,7 +4,7 @@ include "../includes/base_page/shared_top_tags.php"
 
 
 <div class="block title">
-  Overdraft Management
+  Post Daily Transactions
 </div>
 
 <div class="card">
