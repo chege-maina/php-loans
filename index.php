@@ -137,22 +137,27 @@
 <body>
 
   <div class="container mt-5" style="min-height: 100vh; display: flex; justify-content: center; align-items: center;">
-    <form class="box" action="" onsubmit="return submitForm();" style="min-height:10vh; min-width: 30vw;">
-      <label for="email">Email</label>
-      <div class="control">
-        <input type="email" name="email" id="email" class="input">
+    <div style="min-height:10vh; min-width: 30vw;">
+      <div class="box">
+        <h1 class="subtitle is-1 has-text-centered mx-1">Qubes</h1>
+        <form action="" onsubmit="return submitForm();">
+          <label for="email">Email</label>
+          <div class="control">
+            <input type="email" name="email" id="email" class="input">
+          </div>
+          <label for="password">Password</label>
+          <div class="control">
+            <input type="password" name="password" id="password" class="input">
+          </div>
+          <div class="field mt-2">
+            <div class="control">
+              <button id="submit" class="button is-link" type="submit">Log In</button>
+            </div>
+          </div>
+        </form>
       </div>
-      <label for="password">Password</label>
-      <div class="control">
-        <input type="password" name="password" id="password" class="input">
-      </div>
-      <div class="field mt-2">
-        <div class="control">
-          <button id="submit" class="button is-link" type="submit">Log In</button>
-        </div>
-      </div>
-    </form>
-    <div id="alert-div"></div>
+      <div id="alert-div"></div>
+    </div>
   </div>
 
   <script>
