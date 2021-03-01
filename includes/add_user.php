@@ -15,27 +15,22 @@ function sanitize_input($data)
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $bank_name = sanitize_input($_POST["bank_name"]);
-  $dis_date = sanitize_input($_POST["dis_date"]);
-  $first_date = sanitize_input($_POST["first_date"]);
-  $amount = sanitize_input($_POST["amount"]);
-  $period = sanitize_input($_POST["period"]);
-  $installment = sanitize_input($_POST["installment"]);
-  $next_installment = sanitize_input($_POST["next_installment"]);
-  $interest = sanitize_input($_POST["interest"]);
-  $loan_category = sanitize_input($_POST["loan_category"]);
-  $late_repayment = sanitize_input($_POST["late_repayment"]);
+  $email = sanitize_input($_POST["email"]);
+  $password = sanitize_input($_POST["password"]);
+  $designation = sanitize_input($_POST["designation"]);
+  $first_name = sanitize_input($_POST["first_name"]);
+  $last_name = sanitize_input($_POST["last_name"]);
 
-  if ($stmt = $con->prepare('SELECT bank_name FROM tbl_loans WHERE bank_name = ? and dis_date =?')) {
+  if ($stmt = $con->prepare('SELECT email FROM tbl_user WHERE email = ?')) {
     // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
-    $stmt->bind_param('ss', $bank_name, $dis_date);
+    $stmt->bind_param('s', $email);
     $stmt->execute();
     // Store the result so we can check if the account exists in the database.
     $stmt->store_result();
     if ($stmt->num_rows == 0) {
-      if ($stmt = $con->prepare('INSERT INTO tbl_loans (bank_name, dis_date, first_date, 
-      amount, period, installment, next_installment, interest, loan_category, late_repayment) VALUES (?,?,?,?,?,?,?,?,?,?)')) {
-        $stmt->bind_param('ssssssssss', $bank_name, $dis_date, $first_date, $amount, $period, $installment, $next_installment, $interest, $loan_category, $late_repayment);
+      if ($stmt = $con->prepare('INSERT INTO tbl_user (email, password, designation, 
+      first_name, last_name) VALUES (?,?,?,?,?)')) {
+        $stmt->bind_param('sssss', $email, $password, $designation, $first_name, $last_name);
 
         if ($stmt->execute()) {
           $responseArray = array(
@@ -57,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
       echo json_encode(array(
         "message" => "error",
-        "desc" => "Loan Already exists.."
+        "desc" => "User Already exists.."
       ));
     }
   } else {
