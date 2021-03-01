@@ -55,7 +55,7 @@ include "../includes/base_page/shared_top_tags.php"
 
       <div class="column">
         <div class="field">
-          <label class="label">Next Payment</label>
+          <label class="label">Next Payment Date</label>
           <div class="control">
             <input class="input" type="text">
           </div>
@@ -64,7 +64,7 @@ include "../includes/base_page/shared_top_tags.php"
 
       <div class="column">
         <div class="field">
-          <label class="label">Amount</label>
+          <label class="label">Installment</label>
           <div class="control">
             <input class="input" type="text">
           </div>

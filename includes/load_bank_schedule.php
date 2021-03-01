@@ -6,7 +6,7 @@ include_once 'dbconnect.php';
 session_start();
 
 
-$query = "SELECT * FROM tbl_loans WHERE status='pending'";
+$query = "SELECT * FROM tbl_bank";
 
 $result = mysqli_query($conn, $query);
 $response = array();
