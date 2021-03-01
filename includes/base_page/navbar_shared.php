@@ -125,6 +125,19 @@
           </a>
         </div>
       </div>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Users
+        </a>
+
+        <div class="navbar-dropdown has-background-link-light">
+          <a class="navbar-item" href="../auth/add_user.php">
+            Add User
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 </nav>
