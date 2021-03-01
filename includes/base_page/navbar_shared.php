@@ -42,7 +42,7 @@
             Profile
           </a>
           <a class="navbar-item" href="../banks/list_banks.php">
-            Manage Profile
+            View Profile
           </a>
         </div>
       </div>
