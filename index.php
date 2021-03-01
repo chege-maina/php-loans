@@ -23,128 +23,121 @@
       display: none;
     }
   </style>
+
+  <script>
+    let commifyAll = () => {
+      const numbers = document.querySelectorAll(".commify");
+      numbers.forEach((element) => {
+
+        const h_e = new AutoNumeric(element.childNodes[1], {
+          currencySymbol: '',
+          // minimumValue: 0
+        });
+
+        const real_input = document.createElement("input");
+        real_input.setAttribute("type", "number");
+        real_input.setAttribute("id", element.childNodes[1].dataset.commify);
+        real_input.setAttribute("type", "number");
+        real_input.classList.add("hide-this");
+        element.appendChild(real_input);
+
+        element.childNodes[1].addEventListener("keyup", () => {
+          real_input.value = h_e.getNumericString();
+        });
+
+        // Sample expected element layout
+        // <div class="column">
+        // <label for="account_number" class="label">Account Number</label>
+        // <div class="control commify">
+        // <input type="text" class="input" required placeholder="Account number" data-commify="account_number">
+        // </div>
+
+        console.log(element.childNodes[1].dataset);
+      });
+    }
+
+    function showSuccessAlert(message) {
+      const alert_div = document.querySelector("#alert-div");
+      let text = `
+<article class="message is-success mt-3">
+  <div class="message-body">
+  <strong>Success: </strong> ${message}
+  </div>
+</article>
+`
+      alert_div.innerHTML = text
+    }
+
+
+    let alert_div;
+    window.addEventListener('DOMContentLoaded', (event) => {
+      alert_div = document.querySelector("#alert-div");
+    });
+
+    function showDangerAlert(message) {
+      let text = `
+<article class="message is-danger mt-3">
+  <div class="message-body">
+  <strong>Error: </strong> ${message}
+  </div>
+</article>
+`
+      alert_div.innerHTML = text
+    }
+
+    function removeAlert(wait_time = 2500) {
+      window.setTimeout(() => {
+        alert_div.innerHTML = "";
+      }, wait_time);
+    }
+
+    function reloadPage(wait_time = 2500) {
+      window.setTimeout(() => {
+        location.reload()
+      }, wait_time);
+    }
+
+
+    function initSelectElement(elem, init_text = "-- Select --") {
+      elem = document.querySelector(elem);
+      let opt = document.createElement("option");
+      opt.appendChild(document.createTextNode(init_text));
+      opt.setAttribute("value", "");
+      opt.setAttribute("disabled", "");
+      opt.setAttribute("selected", "");
+      elem.appendChild(opt);
+    }
+
+    function populateSelectElement(elem, url_path, key_name, testing = false) {
+      elem = document.querySelector(elem);
+
+      fetch(url_path)
+        .then(response => response.json())
+        .then(data => {
+          if (testing) {
+            console.log(url_path, data);
+            return;
+          }
+          data.forEach((value) => {
+            let opt = document.createElement("option");
+            opt.appendChild(document.createTextNode(value[key_name]));
+            opt.value = value[key_name];
+            elem.appendChild(opt);
+          });
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+
+    }
+  </script>
+
 </head>
 
-<body class="has-navbar-fixed-top">
+<body>
 
-  <nav class="navbar is-fixed-top has-background-info-light " role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item is-size-3" href="https://bulma.io">
-        <h1 clas="">Qubes</h1>
-      </a>
-
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu has-background-info-light">
-      <div class="navbar-start">
-        <a class="navbar-item">
-          Home
-        </a>
-
-        <!-- ============================================================================= -->
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Banks
-          </a>
-
-          <div class="navbar-dropdown has-background-link-light">
-            <a class="navbar-item" href="banks/add_bank.php">
-              Add Bank
-            </a>
-            <a class="navbar-item" href="banks/list_banks.php">
-              Manage Banks
-            </a>
-          </div>
-        </div>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Suppliers
-          </a>
-
-          <div class="navbar-dropdown has-background-link-light">
-            <a class="navbar-item" href="supplier/add_supplier_ui.php">
-              Add Supplier
-            </a>
-            <a class="navbar-item" href="banks/list_banks.php">
-              Manage Suppliers
-            </a>
-          </div>
-        </div>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Customers
-          </a>
-
-          <div class="navbar-dropdown has-background-link-light">
-            <a class="navbar-item" href="customer/add_customer_ui.php">
-              Add Customer
-            </a>
-            <a class="navbar-item" href="banks/list_banks.php">
-              Manage Customers
-            </a>
-          </div>
-        </div>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Transactions
-          </a>
-
-          <div class="navbar-dropdown has-background-link-light">
-            <a class="navbar-item" href="payments/make_payment.php">
-              Payments
-            </a>
-            <a class="navbar-item" href="receipts/receive_payment.php">
-              Receipts
-            </a>
-          </div>
-        </div>
-
-        <!-- ============================================================================= -->
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Bank Book
-          </a>
-          <div class="navbar-dropdown has-background-link-light">
-
-            <a class="navbar-item" href="payments/overdraft_mngt1.php">
-              Post Daily Transactions
-            </a>
-            <a class="navbar-item" href="payments/overdraft_mngt.php">
-              Overdraft Management
-            </a>
-            <a class="navbar-item" href="payments/payment_schedule.php">
-              Cheques Banked
-            </a>
-          </div>
-        </div>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Loans
-          </a>
-
-          <div class="navbar-dropdown has-background-link-light">
-            <a class="navbar-item" href="loans/create_loan.php">
-              Create New Loan
-            </a>
-            <a class="navbar-item" href="loans/create_loan.php">
-              Pay Loan
-            </a>
-            <a class="navbar-item" href="payments/payment_schedule.php">
-              Loan Payment Schedule
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-  <div class="container mt-5">
-    <form class="box" action="">
+  <div class="container mt-5" style="min-height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <form class="box" action="" onsubmit="return submitForm();" style="min-height:10vh; min-width: 30vw;">
       <label for="email">Email</label>
       <div class="control">
         <input type="email" name="email" id="email" class="input">
@@ -153,7 +146,7 @@
       <div class="control">
         <input type="password" name="password" id="password" class="input">
       </div>
-      <div class="field">
+      <div class="field mt-2">
         <div class="control">
           <button id="submit" class="button is-link" type="submit">Log In</button>
         </div>
@@ -163,62 +156,34 @@
   </div>
 
   <script>
-    $(document).ready(function() {
-      $('#btn_submit').click(function(e) {
-        e.preventDefault();
-        var name = $('#email').val();
-        var passw = $('#password').val();
-        var data1 = {
-          email: name,
-          password: passw
-        }
-
-        if (name == '' || passw == '') {
-          alert("Please complete the login form!")
-        } else {
-          var conf = confirm("Do You Want to Log into Dashboard?")
-          if (conf) {
-            $.ajax({
-              url: "includes/authenticate.php",
-              method: "POST",
-              data: data1,
-              success: function(data) {
-                $('#loginfrm')[0].reset();
-                if (data == 'Dashboard1') {
-                  window.location.replace("products/add-product-ui.php");
-                } else if (data == 'Dashboard2') {
-                  window.location.replace("purchase_requisitions/warehouse_add_pr.php");
-                } else {
-                  alert(data)
-                }
-
-                //console.log('response:' + data);
-              }
-            })
-
-          }
-        }
-      })
+    const email = document.querySelector("#email");
+    const password = document.querySelector("#password");
 
 
-    })
-
-    window.addEventListener('DOMContentLoaded', (event) => {
-
+    function submitForm() {
       const formData = new FormData();
+      formData.append("email", email.value);
+      formData.append("password", password.value);
       fetch('includes/authenticate.php', {
           method: 'POST',
           body: formData
         })
-        .then(response => response.json())
+        .then(response => response.text())
         .then(result => {
-          console.log('Success:', result);
+          if (result === 'Incorrect password!' ||
+            result === 'Incorrect Email Address!') {
+            showDangerAlert(result);
+          } else {
+            showSuccessAlert("Logged in successfuly");
+          }
         })
         .catch(error => {
           console.error('Error:', error);
         });
+      return false;
+    }
 
-    });
+    window.addEventListener('DOMContentLoaded', (event) => {});
   </script>
 </body>
 
