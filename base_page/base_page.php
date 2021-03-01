@@ -2,18 +2,14 @@
 include "../includes/base_page/shared_top_tags.php"
 ?>
 
-<div class="columns">
-  <div class="column">
-    First column
-  </div>
-  <div class="column">
-    Second column
-  </div>
-  <div class="column">
-    Third column
-  </div>
-  <div class="column">
-    Fourth column
+<div class="container" style="max-height: 80vh;">
+  <div class="columns">
+    <div class="column">
+      <h1 class="subtitle is-1 has-text-centered">Page Under Construction</h1>
+      <figure class="image">
+        <img src="../external/assets/hugo-under-construction.png">
+      </figure>
+    </div>
   </div>
 </div>
 
