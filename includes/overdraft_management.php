@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $start_date = $_POST["date1"];
   $end_date = $_POST["date2"];
   $bank = $_POST["bank"];
+  $balance = 'mm';
 
   $query2 = "SELECT * FROM tbl_bank WHERE bank_name='$bank'";
   $result2 = mysqli_query($conn, $query2);
@@ -32,7 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $total_receipt = 0;
       $total_pay = 0;
       $date = $row['banking_date'];
-      $balance = $row['closing_bal'];
+      if ($balance === 'mm') {
+        $balance = $row['closing_bal'];
+      }
 
       $query3 = "SELECT sum(dr), sum(cr) FROM tbl_od_transactions WHERE bank_name='$bank' and value_date ='$date'";
       $result3 = mysqli_query($conn, $query3);
@@ -40,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cr = $row3['sum(cr)'];
         $dr = $row3['sum(dr)'];
       }
+      $balance = ($balance + $dr) - $cr;
 
       if ($balance < 0) {
         $negative_num = abs($balance);
