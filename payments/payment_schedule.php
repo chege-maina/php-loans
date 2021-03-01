@@ -30,7 +30,7 @@ include "../includes/base_page/shared_top_tags.php"
     <hr>
     <div class="columns">
       <div class="column is-4">
-        <label for=" branch_name" class="label">Select Loan</label>
+        <label for=" branch_name" class="label">Select Loan Disbursement Date</label>
         <div class="field has-addons">
           <div class="control is-expanded">
             <div class="select is-fullwidth">
