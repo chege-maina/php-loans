@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Store the result so we can check if the account exists in the database.
     $stmt->store_result();
     if ($stmt->num_rows == 0) {
+      $password = password_hash($password, PASSWORD_DEFAULT);
       if ($stmt = $con->prepare('INSERT INTO tbl_user (email, password, designation, 
       first_name, last_name) VALUES (?,?,?,?,?)')) {
         $stmt->bind_param('sssss', $email, $password, $designation, $first_name, $last_name);
