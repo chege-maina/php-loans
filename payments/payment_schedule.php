@@ -12,30 +12,66 @@ include "../includes/base_page/shared_top_tags.php"
     <!-- Content is to start here -->
     <div class="columns ">
       <div class="column is-4">
-        <label for=" branch_name" class="label">Select Bank Name</label>
-        <div class="select is-fullwidth">
-          <div class="control">
-            <select id="bank_name" required>
-            </select>
+        <label for=" branch_name" class="label">Select Bank</label>
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <div class="select is-fullwidth">
+              <select name="bank_name" id="bank_name">
+              </select>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="column-auto pt-5">
-        <div class="control">
-          <div class="column">
-            <label for="branch" class="label"> </label>
-            <button class="button is-info">Search</button>
+          <div class="control">
+            <button type="button" class="button is-info">Select</button>
           </div>
         </div>
       </div>
     </div>
+
     <hr>
     <div class="columns">
       <div class="column is-4">
-        <label for="bank_name" class="label">Bank Name*</label>
-        <input name="bank_name" id="acc_name" class="input" type="text" placeholder="Bank Name" required readonly>
+        <label for=" branch_name" class="label">Select Loan</label>
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <div class="select is-fullwidth">
+              <select name="bank_loan">
+              </select>
+            </div>
+          </div>
+          <div class="control">
+            <button type="button" class="button is-info">Select</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <label class="label">Balance</label>
+          <div class="control">
+            <input class="input" type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <label class="label">Next Payment</label>
+          <div class="control">
+            <input class="input" type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="field">
+          <label class="label">Amount</label>
+          <div class="control">
+            <input class="input" type="text">
+          </div>
+        </div>
       </div>
     </div>
+
     <hr>
     <div class="table-container">
       <table class="table is-hoverable is-fullwidth">
