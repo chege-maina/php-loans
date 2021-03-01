@@ -34,6 +34,20 @@
       </div>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
+          Company Profile
+        </a>
+
+        <div class="navbar-dropdown has-background-link-light">
+          <a class="navbar-item" href="../company_profile/profile.php">
+            Profile
+          </a>
+          <a class="navbar-item" href="../banks/list_banks.php">
+            View Profile
+          </a>
+        </div>
+      </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
           Suppliers
         </a>
 

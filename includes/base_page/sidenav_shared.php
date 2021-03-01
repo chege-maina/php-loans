@@ -4,6 +4,9 @@
   </p>
   <ul class="menu-list">
     <li><a>Dashboard</a></li>
+    <li><a>Company Profile</a>
+      <a href="../company_profile/profile.php">Profile</a>
+    </li>
     <li><a>Suppliers</a>
       <a href="../supplier/add_supplier_ui.php">Add Supplier</a>
     </li>
