@@ -144,11 +144,82 @@
     </div>
   </nav>
   <div class="container mt-5">
-
-
-
+    <form class="box" action="">
+      <label for="email">Email</label>
+      <div class="control">
+        <input type="email" name="email" id="email" class="input">
+      </div>
+      <label for="password">Password</label>
+      <div class="control">
+        <input type="password" name="password" id="password" class="input">
+      </div>
+      <div class="field">
+        <div class="control">
+          <button id="submit" class="button is-link" type="submit">Log In</button>
+        </div>
+      </div>
+    </form>
     <div id="alert-div"></div>
   </div>
+
+  <script>
+    $(document).ready(function() {
+      $('#btn_submit').click(function(e) {
+        e.preventDefault();
+        var name = $('#email').val();
+        var passw = $('#password').val();
+        var data1 = {
+          email: name,
+          password: passw
+        }
+
+        if (name == '' || passw == '') {
+          alert("Please complete the login form!")
+        } else {
+          var conf = confirm("Do You Want to Log into Dashboard?")
+          if (conf) {
+            $.ajax({
+              url: "includes/authenticate.php",
+              method: "POST",
+              data: data1,
+              success: function(data) {
+                $('#loginfrm')[0].reset();
+                if (data == 'Dashboard1') {
+                  window.location.replace("products/add-product-ui.php");
+                } else if (data == 'Dashboard2') {
+                  window.location.replace("purchase_requisitions/warehouse_add_pr.php");
+                } else {
+                  alert(data)
+                }
+
+                //console.log('response:' + data);
+              }
+            })
+
+          }
+        }
+      })
+
+
+    })
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+
+      const formData = new FormData();
+      fetch('includes/authenticate.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(result => {
+          console.log('Success:', result);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+
+    });
+  </script>
 </body>
 
 </html>
