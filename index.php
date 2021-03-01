@@ -139,15 +139,17 @@
   <div class="container mt-5" style="min-height: 100vh; display: flex; justify-content: center; align-items: center;">
     <div style="min-height:10vh; min-width: 30vw;">
       <div class="box">
-        <h1 class="subtitle is-1 has-text-centered mx-1">Qubes</h1>
-        <form action="" onsubmit="return submitForm();">
+        <h1 class="subtitle is-1 has-text-centered px-1">Qubes</h1>
+        <form onsubmit="return submitForm();">
           <label for="email">Email</label>
           <div class="control">
             <input type="email" name="email" id="email" class="input">
           </div>
-          <label for="password">Password</label>
-          <div class="control">
-            <input type="password" name="password" id="password" class="input">
+          <div class="field mt-3">
+            <label for="password">Password</label>
+            <div class="control">
+              <input type="password" name="password" id="password" class="input">
+            </div>
           </div>
           <div class="field mt-2">
             <div class="control">
@@ -180,6 +182,9 @@
             showDangerAlert(result);
           } else {
             showSuccessAlert("Logged in successfuly");
+            window.setTimeout(() => {
+              window.location.replace("base_page/base_page.php");
+            }, 1500);
           }
         })
         .catch(error => {
