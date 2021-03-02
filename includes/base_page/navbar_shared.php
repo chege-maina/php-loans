@@ -55,8 +55,11 @@
           <a class="navbar-item" href="../supplier/add_supplier_ui.php">
             Add Supplier
           </a>
-          <a class="navbar-item" href="../banks/edit_supplier.php">
+          <a class="navbar-item" href="../supplier/edit_supplier.php">
             Manage Suppliers
+          </a>
+          <a class="navbar-item" href="../supplier/list_supplier.php">
+            List Suppliers
           </a>
         </div>
       </div>
@@ -69,8 +72,11 @@
           <a class="navbar-item" href="../customer/add_customer_ui.php">
             Add Customer
           </a>
-          <a class="navbar-item" href="../banks/edit_customer.php">
+          <a class="navbar-item" href="../customer/edit_customer.php">
             Manage Customers
+          </a>
+          <a class="navbar-item" href="../customer/list_customer.php">
+            List Customers
           </a>
         </div>
       </div>
