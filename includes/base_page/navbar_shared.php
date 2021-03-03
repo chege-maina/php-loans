@@ -90,7 +90,7 @@
           <a class="navbar-item" href="../receipts/receive_payment.php">
             Receipts
           </a>
-          <a class="navbar-item" href="../payments/list_receipts.php">
+          <a class="navbar-item" href="../receipts/list_receipts.php">
             Receipts List
           </a>
         </div>
