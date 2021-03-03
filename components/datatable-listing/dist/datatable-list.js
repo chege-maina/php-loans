@@ -1026,106 +1026,8 @@ function wrap (Vue, Component) {
 // EXTERNAL MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/css-loader/dist/runtime/api.js
 var api = __webpack_require__("f202");
 
-// CONCATENATED MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/vue-style-loader/lib/listToStyles.js
-/**
- * Translates the list format produced by css-loader into something
- * easier to manipulate.
- */
-function listToStyles (parentId, list) {
-  var styles = []
-  var newStyles = {}
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i]
-    var id = item[0]
-    var css = item[1]
-    var media = item[2]
-    var sourceMap = item[3]
-    var part = {
-      id: parentId + ':' + i,
-      css: css,
-      media: media,
-      sourceMap: sourceMap
-    }
-    if (!newStyles[id]) {
-      styles.push(newStyles[id] = { id: id, parts: [part] })
-    } else {
-      newStyles[id].parts.push(part)
-    }
-  }
-  return styles
-}
-
-// CONCATENATED MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/vue-style-loader/lib/addStylesShadow.js
-
-
-function addStylesToShadowDOM (parentId, list, shadowRoot) {
-  var styles = listToStyles(parentId, list)
-  addStyles(styles, shadowRoot)
-}
-
-/*
-type StyleObject = {
-  id: number;
-  parts: Array<StyleObjectPart>
-}
-
-type StyleObjectPart = {
-  css: string;
-  media: string;
-  sourceMap: ?string
-}
-*/
-
-function addStyles (styles /* Array<StyleObject> */, shadowRoot) {
-  const injectedStyles =
-    shadowRoot._injectedStyles ||
-    (shadowRoot._injectedStyles = {})
-  for (var i = 0; i < styles.length; i++) {
-    var item = styles[i]
-    var style = injectedStyles[item.id]
-    if (!style) {
-      for (var j = 0; j < item.parts.length; j++) {
-        addStyle(item.parts[j], shadowRoot)
-      }
-      injectedStyles[item.id] = true
-    }
-  }
-}
-
-function createStyleElement (shadowRoot) {
-  var styleElement = document.createElement('style')
-  styleElement.type = 'text/css'
-  shadowRoot.appendChild(styleElement)
-  return styleElement
-}
-
-function addStyle (obj /* StyleObjectPart */, shadowRoot) {
-  var styleElement = createStyleElement(shadowRoot)
-  var css = obj.css
-  var media = obj.media
-  var sourceMap = obj.sourceMap
-
-  if (media) {
-    styleElement.setAttribute('media', media)
-  }
-
-  if (sourceMap) {
-    // https://developer.chrome.com/devtools/docs/javascript-debugging
-    // this makes source maps inside style tags work properly in Chrome
-    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
-    // http://stackoverflow.com/a/26603875
-    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
-  }
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = css
-  } else {
-    while (styleElement.firstChild) {
-      styleElement.removeChild(styleElement.firstChild)
-    }
-    styleElement.appendChild(document.createTextNode(css))
-  }
-}
+// EXTERNAL MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/vue-style-loader/lib/addStylesShadow.js + 1 modules
+var addStylesShadow = __webpack_require__("dd96");
 
 // CONCATENATED MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -1227,12 +1129,12 @@ function normalizeComponent (
   }
 }
 
-// CONCATENATED MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6205b2f2-vue-loader-template"}!/home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!/home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js??ref--0-0!/home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib??vue-loader-options!./src/components/DataTableList.vue?vue&type=template&id=65871dcc&shadow
+// CONCATENATED MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6205b2f2-vue-loader-template"}!/home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!/home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js??ref--0-0!/home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib??vue-loader-options!./src/components/DataTableList.vue?vue&type=template&id=d186c0ac&shadow
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('table',{staticClass:"table is-striped is-hoverable is-fullwidth"},[_c('thead',[_c('tr',[_c('th',{attrs:{"scope":"col"}},[_vm._v("#")]),_vm._l((_vm.header),function(item,key){return [(item.key !== 'key')?_c('th',{key:key,class:{ 'col-sm-1': item.editable },attrs:{"scope":"col"}},[_vm._v(" "+_vm._s(item.name)+" ")]):_vm._e()]}),_c('th',{attrs:{"scope":"col"}},[_vm._v("Action")])],2)]),_c('tbody',_vm._l((_vm.table_data),function(item){return _c('tr',{key:item.key,staticClass:"py-0"},[_c('th',{staticClass:"align-middle py-1",attrs:{"scope":"row"}},[_vm._v(" "+_vm._s(_vm.table_data_relative_index[item.key].index)+" ")]),_vm._l((item),function(value,key){return [(key !== 'key')?_c('td',{key:key,staticClass:"align-middle py-1"},[(_vm.header_object[key].editable)?_c('span',{staticClass:"control"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.table_data[item.key][key]),expression:"table_data[item.key][key]"}],staticClass:"input is-small",attrs:{"type":"number"},domProps:{"value":(_vm.table_data[item.key][key])},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.table_data[item.key], key, $event.target.value)}}})]):(_vm.header_object[key].computed)?_c('span',[_vm._v(_vm._s(_vm.computeField(_vm.header_object[key].operation, item.key, key)))]):_c('span',[_vm._v(_vm._s(value))])]):_vm._e()]}),_c('td',{staticClass:"align-middle py-1"},[_c('button',{staticClass:"button is-link is-small",on:{"click":function($event){return _vm.manageItem(item.key)}}},[_vm._v(" Manage ")])])],2)}),0)])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/DataTableList.vue?vue&type=template&id=65871dcc&shadow
+// CONCATENATED MODULE: ./src/components/DataTableList.vue?vue&type=template&id=d186c0ac&shadow
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
 function _arrayWithHoles(arr) {
@@ -1274,17 +1176,17 @@ function _nonIterableRest() {
 function _toArray(arr) {
   return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest();
 }
-// EXTERNAL MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/core-js/modules/es.string.split.js
-var es_string_split = __webpack_require__("ad9f");
-
-// EXTERNAL MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/core-js/modules/es.regexp.exec.js
-var es_regexp_exec = __webpack_require__("3f9f");
-
 // EXTERNAL MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/core-js/modules/web.dom-collections.for-each.js
 var web_dom_collections_for_each = __webpack_require__("0f23");
 
 // EXTERNAL MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("99f0");
+
+// EXTERNAL MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/core-js/modules/es.string.split.js
+var es_string_split = __webpack_require__("ad9f");
+
+// EXTERNAL MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/core-js/modules/es.regexp.exec.js
+var es_regexp_exec = __webpack_require__("3f9f");
 
 // EXTERNAL MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/core-js/modules/es.array.slice.js
 var es_array_slice = __webpack_require__("c851");
@@ -1365,17 +1267,6 @@ var es_number_to_fixed = __webpack_require__("ffab");
 //
 //
 /* harmony default export */ var DataTableListvue_type_script_lang_js_shadow = ({
-  mounted: function mounted() {
-    // Import the css
-    var baseurl = window.location.href.split(window.location.host)[0] + window.location.host;
-    var url = baseurl + "/external/bulma/bulma.min.css"; // Create new link Element
-
-    var link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.type = "text/css";
-    link.href = url;
-    this.$el.prepend(link);
-  },
   created: function created() {
     var _this = this;
 
@@ -1441,14 +1332,6 @@ var es_number_to_fixed = __webpack_require__("ffab");
     }
   },
   computed: {
-    baseurl: function baseurl() {
-      var url = window.location.href.split(window.location.host)[0] + window.location.host;
-      return url;
-    },
-    style: function style() {
-      var s = this.baseurl + "/external/bulma/bulma.min.css";
-      return s;
-    },
     header: function header() {
       return JSON.parse(this.json_header);
     },
@@ -1489,11 +1372,6 @@ var es_number_to_fixed = __webpack_require__("ffab");
     }
   },
   methods: {
-    import_css: function import_css() {
-      var s = document.createElement("style");
-      s.appendChild(document.createTextNode(this.style));
-      document.head.append(s);
-    },
     computeField: function computeField(expression, index, col) {
       // It computes from left to right =======>
       //so organize them in the order the calculation should be done
@@ -1568,7 +1446,12 @@ var es_number_to_fixed = __webpack_require__("ffab");
 
 
 
+function injectStyles (context) {
+  
+  var style0 = __webpack_require__("a2d9")
+if (style0.__inject__) style0.__inject__(context)
 
+}
 
 /* normalize component */
 
@@ -1577,7 +1460,7 @@ var component = normalizeComponent(
   render,
   staticRenderFns,
   false,
-  null,
+  injectStyles,
   null,
   null
   ,true
@@ -2091,6 +1974,21 @@ module.exports = Object.keys || function keys(O) {
 
 /***/ }),
 
+/***/ "882d":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("f202");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+exports.push([module.i, "@import url(https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css);"]);
+// Module
+exports.push([module.i, "", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
 /***/ "8bbf":
 /***/ (function(module, exports) {
 
@@ -2343,6 +2241,23 @@ module.exports = version && +version;
 
 /***/ }),
 
+/***/ "9f38":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("882d");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add CSS to Shadow Root
+var add = __webpack_require__("dd96").default
+module.exports.__inject__ = function (shadowRoot) {
+  add("05c8a8b3", content, shadowRoot)
+};
+
+/***/ }),
+
 /***/ "a0b7":
 /***/ (function(module, exports) {
 
@@ -2351,6 +2266,18 @@ var toString = {}.toString;
 module.exports = function (it) {
   return toString.call(it).slice(8, -1);
 };
+
+
+/***/ }),
+
+/***/ "a2d9":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_npm_global_lib_node_modules_vue_cli_service_global_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_loader_lib_loaders_stylePostLoader_js_npm_global_lib_node_modules_vue_cli_service_global_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_npm_global_lib_node_modules_vue_cli_service_global_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_npm_global_lib_node_modules_vue_cli_service_global_node_modules_cache_loader_dist_cjs_js_ref_0_0_npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_loader_lib_index_js_vue_loader_options_DataTableList_vue_vue_type_style_index_0_lang_css_shadow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("9f38");
+/* harmony import */ var _npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_npm_global_lib_node_modules_vue_cli_service_global_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_loader_lib_loaders_stylePostLoader_js_npm_global_lib_node_modules_vue_cli_service_global_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_npm_global_lib_node_modules_vue_cli_service_global_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_npm_global_lib_node_modules_vue_cli_service_global_node_modules_cache_loader_dist_cjs_js_ref_0_0_npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_loader_lib_index_js_vue_loader_options_DataTableList_vue_vue_type_style_index_0_lang_css_shadow__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_npm_global_lib_node_modules_vue_cli_service_global_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_loader_lib_loaders_stylePostLoader_js_npm_global_lib_node_modules_vue_cli_service_global_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_npm_global_lib_node_modules_vue_cli_service_global_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_npm_global_lib_node_modules_vue_cli_service_global_node_modules_cache_loader_dist_cjs_js_ref_0_0_npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_loader_lib_index_js_vue_loader_options_DataTableList_vue_vue_type_style_index_0_lang_css_shadow__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_npm_global_lib_node_modules_vue_cli_service_global_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_loader_lib_loaders_stylePostLoader_js_npm_global_lib_node_modules_vue_cli_service_global_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_npm_global_lib_node_modules_vue_cli_service_global_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_npm_global_lib_node_modules_vue_cli_service_global_node_modules_cache_loader_dist_cjs_js_ref_0_0_npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_loader_lib_index_js_vue_loader_options_DataTableList_vue_vue_type_style_index_0_lang_css_shadow__WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_npm_global_lib_node_modules_vue_cli_service_global_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_loader_lib_loaders_stylePostLoader_js_npm_global_lib_node_modules_vue_cli_service_global_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_npm_global_lib_node_modules_vue_cli_service_global_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_npm_global_lib_node_modules_vue_cli_service_global_node_modules_cache_loader_dist_cjs_js_ref_0_0_npm_global_lib_node_modules_vue_cli_service_global_node_modules_vue_loader_lib_index_js_vue_loader_options_DataTableList_vue_vue_type_style_index_0_lang_css_shadow__WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
@@ -3108,6 +3035,120 @@ module.exports = function (KEY, length, exec, sham) {
 /***/ (function(module, exports) {
 
 exports.f = Object.getOwnPropertySymbols;
+
+
+/***/ }),
+
+/***/ "dd96":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "default", function() { return /* binding */ addStylesToShadowDOM; });
+
+// CONCATENATED MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/vue-style-loader/lib/listToStyles.js
+/**
+ * Translates the list format produced by css-loader into something
+ * easier to manipulate.
+ */
+function listToStyles (parentId, list) {
+  var styles = []
+  var newStyles = {}
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    var id = item[0]
+    var css = item[1]
+    var media = item[2]
+    var sourceMap = item[3]
+    var part = {
+      id: parentId + ':' + i,
+      css: css,
+      media: media,
+      sourceMap: sourceMap
+    }
+    if (!newStyles[id]) {
+      styles.push(newStyles[id] = { id: id, parts: [part] })
+    } else {
+      newStyles[id].parts.push(part)
+    }
+  }
+  return styles
+}
+
+// CONCATENATED MODULE: /home/timo/.npm-global/lib/node_modules/@vue/cli-service-global/node_modules/vue-style-loader/lib/addStylesShadow.js
+
+
+function addStylesToShadowDOM (parentId, list, shadowRoot) {
+  var styles = listToStyles(parentId, list)
+  addStyles(styles, shadowRoot)
+}
+
+/*
+type StyleObject = {
+  id: number;
+  parts: Array<StyleObjectPart>
+}
+
+type StyleObjectPart = {
+  css: string;
+  media: string;
+  sourceMap: ?string
+}
+*/
+
+function addStyles (styles /* Array<StyleObject> */, shadowRoot) {
+  const injectedStyles =
+    shadowRoot._injectedStyles ||
+    (shadowRoot._injectedStyles = {})
+  for (var i = 0; i < styles.length; i++) {
+    var item = styles[i]
+    var style = injectedStyles[item.id]
+    if (!style) {
+      for (var j = 0; j < item.parts.length; j++) {
+        addStyle(item.parts[j], shadowRoot)
+      }
+      injectedStyles[item.id] = true
+    }
+  }
+}
+
+function createStyleElement (shadowRoot) {
+  var styleElement = document.createElement('style')
+  styleElement.type = 'text/css'
+  shadowRoot.appendChild(styleElement)
+  return styleElement
+}
+
+function addStyle (obj /* StyleObjectPart */, shadowRoot) {
+  var styleElement = createStyleElement(shadowRoot)
+  var css = obj.css
+  var media = obj.media
+  var sourceMap = obj.sourceMap
+
+  if (media) {
+    styleElement.setAttribute('media', media)
+  }
+
+  if (sourceMap) {
+    // https://developer.chrome.com/devtools/docs/javascript-debugging
+    // this makes source maps inside style tags work properly in Chrome
+    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
+    // http://stackoverflow.com/a/26603875
+    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
+  }
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild)
+    }
+    styleElement.appendChild(document.createTextNode(css))
+  }
+}
 
 
 /***/ }),
