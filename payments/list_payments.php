@@ -59,6 +59,10 @@ include "../includes/base_page/shared_top_tags.php"
   const to_date = document.querySelector("#to_date");
   const banks = document.querySelector("#banks");
 
+  window.addEventListener('DOMContentLoaded', (event) => {
+    sessionStorage.clear();
+  });
+
   let updateDateValidations = () => {
     to_date.setAttribute("min", from_date.value);
   }
@@ -72,9 +76,9 @@ include "../includes/base_page/shared_top_tags.php"
     const elem = document.createElement("datatable-list");
     elem.setAttribute("json_header", JSON.stringify(getHeaders(data)));
     elem.setAttribute("json_items", JSON.stringify(getItems(data)));
-    elem.setAttribute("manage_key", "name");
-    elem.setAttribute("manage_key_2", "email");
-    elem.setAttribute("redirect", getBaseUrl() + "/banks/edit_bank.php");
+    elem.setAttribute("manage_key", "supplier");
+    elem.setAttribute("manage_key_2", "cheque_no");
+    elem.setAttribute("redirect", getBaseUrl() + "/payments/edit_payment.php");
     elem.classList.add("is-fullwidth");
     datatable.appendChild(elem);
   }

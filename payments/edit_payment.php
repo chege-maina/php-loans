@@ -3,7 +3,7 @@ include "../includes/base_page/shared_top_tags.php"
 ?>
 
 <div class="block title">
-  Make Payment
+  Manage Payment
 </div>
 <form onsubmit="return submitForm();">
   <div class="card">
@@ -33,7 +33,7 @@ include "../includes/base_page/shared_top_tags.php"
           <label for="date" class="label">Select Payment Date</label>
           <!-- autofill current date  -->
           <div class="control">
-            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="p_date" class="input is-link" required>
+            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="p_date" class="input" required>
           </div>
         </div>
       </div>
@@ -105,6 +105,8 @@ include "../includes/base_page/shared_top_tags.php"
     formData.append("cheque_no", cheque_number.value);
     formData.append("amount", amount_paid.value);
 
+    console.warn("Add php to submit to");
+    return false;
     fetch('../includes/add_payment.php', {
         method: 'POST',
         body: formData
@@ -143,6 +145,35 @@ include "../includes/base_page/shared_top_tags.php"
     // TODO: Fetch from the right table
     // initSelectElement("#cheque_type", "-- Select Cheque Type --");
     // populateSelectElement("#cheque_type", "../includes/load_currency.php", "name");
+
+    if (this.sessionStorage.length <= 0) {
+      window.history.back();
+    }
+    const s_cheque_no = this.sessionStorage.getItem("cheque_no");
+    const s_supplier = this.sessionStorage.getItem("supplier");
+
+    cheque_number.value = s_cheque_no;
+    supplier.value = s_supplier;
+    supplier.setAttribute("disabled", "");
+    cheque_number.setAttribute("disabled", "");
+
+    const formData = new FormData();
+    formData.append("supplier_name", s_cheque_no);
+    formData.append("email", s_supplier);
+
+    console.warn("Add php to submit to");
+    return;
+    fetch('../includes/#.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   });
 </script>
 
