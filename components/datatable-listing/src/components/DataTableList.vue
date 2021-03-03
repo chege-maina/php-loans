@@ -1,51 +1,49 @@
 <template>
-  <div class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-    <table class="table table-sm table-striped table-hover">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <template v-for="(item, key) in header">
-            <th
-              scope="col"
-              v-bind:class="{ 'col-sm-1': item.editable }"
-              :key="key"
-              v-if="item.key !== 'key'"
-            >
-              {{ item.name }}
-            </th>
-          </template>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item in table_data" :key="item.key" class="py-0">
-          <th scope="row" class="align-middle py-1">
-            {{ table_data_relative_index[item.key].index }}
+  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <template v-for="(item, key) in header">
+          <th
+            scope="col"
+            v-bind:class="{ 'col-sm-1': item.editable }"
+            :key="key"
+            v-if="item.key !== 'key'"
+          >
+            {{ item.name }}
           </th>
+        </template>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in table_data" :key="item.key" class="py-0">
+        <th scope="row" class="align-middle py-1">
+          {{ table_data_relative_index[item.key].index }}
+        </th>
 
-          <template v-for="(value, key) in item">
-            <td v-bind:key="key" v-if="key !== 'key'" class="align-middle py-1">
-              <span v-if="header_object[key].editable" class="control">
-                <input
-                  class="input is-small"
-                  type="number"
-                  v-model="table_data[item.key][key]"
-                />
-              </span>
-              <span v-else-if="header_object[key].computed">{{
-                computeField(header_object[key].operation, item.key, key)
-              }}</span>
-              <span v-else>{{ value }}</span>
-            </td>
-          </template>
-
-          <td class="align-middle py-1">
-            <button class="delete" v-on:click="removeRow(item.key)"></button>
+        <template v-for="(value, key) in item">
+          <td v-bind:key="key" v-if="key !== 'key'" class="align-middle py-1">
+            <span v-if="header_object[key].editable" class="control">
+              <input
+                class="input is-small"
+                type="number"
+                v-model="table_data[item.key][key]"
+              />
+            </span>
+            <span v-else-if="header_object[key].computed">{{
+              computeField(header_object[key].operation, item.key, key)
+            }}</span>
+            <span v-else>{{ value }}</span>
           </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        </template>
+
+        <td class="align-middle py-1">
+          <button class="delete" v-on:click="removeRow(item.key)"></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
