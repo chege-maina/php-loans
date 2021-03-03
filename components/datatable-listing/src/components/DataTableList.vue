@@ -132,7 +132,6 @@ export default {
     },
     style: function () {
       let s = this.baseurl + "/external/bulma/bulma.min.css";
-      console.log("Using style", s);
       return s;
     },
     header: function () {
