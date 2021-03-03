@@ -25,7 +25,7 @@ include "../includes/base_page/shared_top_tags.php"
   }
 
   window.addEventListener('DOMContentLoaded', (event) => {
-    fetch('../includes/load_bank.php')
+    fetch('../includes/load_bank_list.php')
       .then(response => response.json())
       .then(data => {
         console.log(data);
