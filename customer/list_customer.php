@@ -33,7 +33,7 @@ include "../includes/base_page/shared_top_tags.php"
 </div>
 
 <div class="card mt-1">
-  <script src="https://unpkg.com/vue"></script>
+  <script src="../external/vue"></script>
   <script src="../components/datatable-listing/dist/datatable-list.min.js"></script>
   <div id="datatable" class="p-2">
   </div>
