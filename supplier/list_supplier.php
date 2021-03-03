@@ -44,53 +44,18 @@ include "../includes/base_page/shared_top_tags.php"
   const table_body = document.querySelector('#table_body');
   const table_foot = document.querySelector('#table_foot');
   let table_items = [];
-  let table_headers = [];
-  let table_items_c = [];
 
   let updateTable = (data) => {
-    console.log(data);
-  }
-
-  // function detailedView(i) {
-  //  console.log(table_items[i]);
-  //  sessionStorage.setItem('bank_row', JSON.stringify(table_items[i]));
-  //  window.location.href = "overdaft_mngt2.php";
-  // }
-
-  //load the table
-
-  function createItems(data) {
-    let i = 0;
-    data.forEach(row => {
-      let tmp_row = {};
-      tmp_row["key"] = i++;
-      for (key in row) {
-        tmp_row[key] = row[key];
-      }
-      table_items_c.push(tmp_row);
-    });
-    console.log("Creating items for data", table_items_c);
-  }
-
-  function createHeaders(data) {
-    if (data.length <= 0) {
-      return;
-    }
-
-    for (key in data[0]) {
-      let name = "";
-      key.split("_").forEach(value => {
-        name += " " + value;
-      });
-
-      table_headers.push({
-        name: name.trim(),
-        editable: false,
-        key: key,
-        computed: false
-      });
-    }
-    console.log("Creating headers for data", table_headers);
+    const datatable = document.querySelector("#datatable");
+    datatable.innerHTML = "";
+    const elem = document.createElement("datatable-list");
+    elem.setAttribute("json_header", JSON.stringify(getHeaders(data)));
+    elem.setAttribute("json_items", JSON.stringify(getItems(data)));
+    elem.setAttribute("manage_key", "name");
+    elem.setAttribute("manage_key_2", "email");
+    elem.setAttribute("redirect", getBaseUrl() + "/supplier/edit_supplier.php");
+    elem.classList.add("is-fullwidth");
+    datatable.appendChild(elem);
   }
 
   window.addEventListener('DOMContentLoaded', (event) => {
@@ -100,21 +65,8 @@ include "../includes/base_page/shared_top_tags.php"
     fetch('../includes/load_supplier_list.php')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         table_items = data
-        createHeaders(data);
-        createItems(data);
         updateTable(data);
-        const datatable = document.querySelector("#datatable");
-        const elem = document.createElement("datatable-list");
-        elem.setAttribute("json_header", JSON.stringify(table_headers));
-        elem.setAttribute("json_items", JSON.stringify(table_items_c));
-        elem.setAttribute("manage_key", "name");
-        elem.setAttribute("manage_key_2", "email");
-        elem.setAttribute("redirect", getBaseUrl() + "/supplier/edit_supplier.php");
-        elem.classList.add("is-fullwidth");
-        datatable.appendChild(elem);
-
       })
       .catch((error) => {
         console.error('Error:', error);
