@@ -14,6 +14,9 @@ include "../includes/base_page/shared_top_tags.php"
   let updateTable = (data) => {
     const datatable = document.querySelector("#datatable");
     datatable.innerHTML = "";
+    if (data.length <= 0) {
+      return;
+    }
     const elem = document.createElement("datatable-list");
     elem.setAttribute("json_header", JSON.stringify(getHeaders(data)));
     elem.setAttribute("json_items", JSON.stringify(getItems(data)));
