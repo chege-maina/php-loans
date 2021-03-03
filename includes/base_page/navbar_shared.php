@@ -13,7 +13,7 @@
 
   <div id="navbarBasicExample" class="navbar-menu has-background-info-light">
     <div class="navbar-start">
-      <a class="navbar-item">
+      <a class="navbar-item" href="../dashboards/main.php">
         Home
       </a>
 
