@@ -20,14 +20,15 @@ include "../includes/base_page/shared_top_tags.php"
     const elem = document.createElement("datatable-list");
     elem.setAttribute("json_header", JSON.stringify(getHeaders(data)));
     elem.setAttribute("json_items", JSON.stringify(getItems(data)));
-    elem.setAttribute("manage_key", "name");
-    elem.setAttribute("manage_key_2", "email");
+    elem.setAttribute("manage_key", "bank");
+    elem.setAttribute("manage_key_2", "acc_no");
     elem.setAttribute("redirect", getBaseUrl() + "/banks/edit_bank.php");
     elem.classList.add("is-fullwidth");
     datatable.appendChild(elem);
   }
 
   window.addEventListener('DOMContentLoaded', (event) => {
+    sessionStorage.clear();
     fetch('../includes/load_bank_list.php')
       .then(response => response.json())
       .then(data => {

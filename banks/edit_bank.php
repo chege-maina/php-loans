@@ -3,7 +3,7 @@ include "../includes/base_page/shared_top_tags.php"
 ?>
 
 <div class="block title">
-  Add New Bank
+  Edit Bank
 </div>
 
 <div class="box">
@@ -53,7 +53,7 @@ include "../includes/base_page/shared_top_tags.php"
         <label for="date" class="label"> As of Date</label>
         <!-- autofill current date  -->
         <div class="control">
-          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="p_date" class="input is-link" required>
+          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="p_date" class="input" required>
         </div>
       </div>
       <div class="column">
@@ -78,13 +78,13 @@ include "../includes/base_page/shared_top_tags.php"
     <hr>
     <div class="columns">
 
-      <div class="column is-fullwidth">
+      <div class="column">
         <label for="overdraft_interest" class="label">Overdraft Interest</label>
-        <div class="field has-addons">
-          <p class="control">
+        <div class="field has-addons is-fullwidth">
+          <p class="control is-expanded">
             <input type="number" name="overdraft_interest" id="overdraft_interest" class="input" required placeholder="Overdraft interest" max="100">
           </p>
-          <p>
+          <p class="control">
             <a class="button is-static">%</a>
           </p>
         </div>
@@ -93,8 +93,8 @@ include "../includes/base_page/shared_top_tags.php"
 
       <div class="column is-fullwidth">
         <label for="overlimit_interest" class="label">Overdraft Limit Interest</label>
-        <div class="field has-addons">
-          <p class="control">
+        <div class="field has-addons is-fullwidth">
+          <p class="control is-expanded">
             <input type="number" name="overlimit_interest" id="overlimit_interest" class="input" required placeholder="Overdraft Limit interest" max="100">
           </p>
           <p class="control">
@@ -107,17 +107,15 @@ include "../includes/base_page/shared_top_tags.php"
 
       <div class="column is-fullwidth">
         <label for="late_payment_charges" class="label">Late Payment Charges</label>
-        <div class="control">
-          <div class="field has-addons">
-            <p class="control">
-              <input type="number" name="late_payment_charges" id="late_payment_charges" class="input" required placeholder="Late payment charges" max="100">
-            </p>
-            <p class="control">
-              <a>
-                <a class="button is-static">%</a>
-              </a>
-            </p>
-          </div>
+        <div class="field has-addons is-fullwidth">
+          <p class="control is-expanded">
+            <input type="number" name="late_payment_charges" id="late_payment_charges" class="input" required placeholder="Late payment charges" max="100">
+          </p>
+          <p class="control">
+            <a>
+              <a class="button is-static">%</a>
+            </a>
+          </p>
         </div>
       </div>
 
