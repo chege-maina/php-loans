@@ -41,7 +41,7 @@
           <a class="navbar-item" href="../company_profile/profile.php">
             Profile
           </a>
-          <a class="navbar-item" href="../banks/list_banks.php">
+          <a class="navbar-item" href="../company_profile/list_profiles.php">
             View Profile
           </a>
         </div>
