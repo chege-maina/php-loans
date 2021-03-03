@@ -6,6 +6,8 @@
         <PosComponent
           v-bind:json_header="jsonHeader"
           v-bind:json_items="jsonBody"
+          manage_key="code"
+          redirect="http://localhost:5000/customer/add_customer_ui.php"
         />
       </div>
     </div>

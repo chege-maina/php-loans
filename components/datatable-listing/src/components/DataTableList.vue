@@ -1,5 +1,5 @@
 <template>
-  <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+  <table class="table is-striped is-hoverable is-fullwidth">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -39,7 +39,12 @@
         </template>
 
         <td class="align-middle py-1">
-          <button class="delete" v-on:click="removeRow(item.key)"></button>
+          <button
+            class="button is-link is-small"
+            v-on:click="manageItem(item.key)"
+          >
+            Manage
+          </button>
         </td>
       </tr>
     </tbody>
@@ -68,6 +73,20 @@ export default {
     json_items: {
       type: String,
       default: () => "[]",
+    },
+    // TODO: This can be done better
+    //e.g. using arrays
+    manage_key: {
+      type: String,
+      default: () => "",
+    },
+    manage_key_2: {
+      type: String,
+      default: () => "",
+    },
+    redirect: {
+      type: String,
+      default: () => "",
     },
   },
   data: () => ({
@@ -174,6 +193,21 @@ export default {
         replacement_table[key] = this.table_data[key];
       }
       this.table_data = replacement_table;
+    },
+    manageItem(row) {
+      window.sessionStorage.setItem(
+        this.manage_key,
+        this.table_data[row][this.manage_key]
+      );
+
+      if (this.manage_key_2 !== "") {
+        window.sessionStorage.setItem(
+          this.manage_key_2,
+          this.table_data[row][this.manage_key_2]
+        );
+      }
+
+      window.location.href = this.redirect;
     },
   },
 };

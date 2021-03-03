@@ -95,6 +95,7 @@ include "../includes/base_page/shared_top_tags.php"
   }
 
   window.addEventListener('DOMContentLoaded', (event) => {
+    this.sessionStorage.clear();
     initSelectElement("#customer_name", "-- Select Customer --");
     populateSelectElement("#customer_name", "../includes/load_customers_list.php", "name");
 
@@ -110,6 +111,9 @@ include "../includes/base_page/shared_top_tags.php"
         const elem = document.createElement("datatable-list");
         elem.setAttribute("json_header", JSON.stringify(table_headers));
         elem.setAttribute("json_items", JSON.stringify(table_items_c));
+        elem.setAttribute("manage_key", "name");
+        elem.setAttribute("manage_key_2", "email");
+        elem.setAttribute("redirect", "http://localhost:5000/customer/edit_customer.php");
         elem.classList.add("is-fullwidth");
         datatable.appendChild(elem);
 
@@ -139,6 +143,8 @@ include "../includes/base_page/shared_top_tags.php"
         const elem = document.createElement("datatable-list");
         elem.setAttribute("json_header", JSON.stringify(table_headers));
         elem.setAttribute("json_items", JSON.stringify(table_items_c));
+        elem.setAttribute("manage", "code");
+        elem.setAttribute("redirect", "http://localhost:5000/customer/add_customer_ui.php");
         elem.classList.add("is-fullwidth");
         datatable.appendChild(elem);
 
