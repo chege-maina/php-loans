@@ -1,5 +1,5 @@
 <template>
-  <table class="table is-striped is-hoverable is-fullwidth" id="main">
+  <table class="table is-striped is-hoverable is-fullwidth">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -53,20 +53,18 @@
 
 <script>
 export default {
-  beforeCreate() {
+  mounted() {
     // Import the css
     const baseurl =
       window.location.href.split(window.location.host)[0] +
       window.location.host;
-    let url = baseurl + "/external/bulma/bulma.min.css";
+    const url = baseurl + "/external/bulma/bulma.min.css";
     // Create new link Element
-    var link = document.createElement("link");
-    // set the attributes for link element
+    const link = document.createElement("link");
     link.rel = "stylesheet";
     link.type = "text/css";
     link.href = url;
-    // Append link element to HTML head
-    document.head.appendChild(link);
+    this.$el.prepend(link);
   },
   created() {
     // Init the object that will hold the table values
