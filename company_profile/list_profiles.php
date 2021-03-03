@@ -22,12 +22,13 @@ include "../includes/base_page/shared_top_tags.php"
     elem.setAttribute("json_items", JSON.stringify(getItems(data)));
     elem.setAttribute("manage_key", "name");
     elem.setAttribute("manage_key_2", "email");
-    elem.setAttribute("redirect", getBaseUrl() + "/banks/edit_bank.php");
+    elem.setAttribute("redirect", getBaseUrl() + "/company_profile/edit_profile.php");
     elem.classList.add("is-fullwidth");
     datatable.appendChild(elem);
   }
 
   window.addEventListener('DOMContentLoaded', (event) => {
+    sessionStorage.clear();
     fetch('../includes/load_company_profile.php')
       .then(response => response.json())
       .then(data => {

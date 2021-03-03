@@ -2,7 +2,7 @@
 include "../includes/base_page/shared_top_tags.php"
 ?>
 <div class="block title">
-  Create Profile
+  Edit Profile
 </div>
 <form onsubmit="return submitForm();">
   <div class="card">
@@ -72,6 +72,8 @@ include "../includes/base_page/shared_top_tags.php"
     formData.append("postal_address", sup_postal.value);
     formData.append("physical_address", sup_physical_address.value);
 
+    console.warn("Add php to submit to");
+    return false;
     fetch('../includes/add_company_profile.php', {
         method: 'POST',
         body: formData
@@ -95,8 +97,41 @@ include "../includes/base_page/shared_top_tags.php"
         removeAlert();
       });
 
+    // TODO: Clear session storage on successful submit
     return false;
   }
+
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+    if (this.sessionStorage.length <= 0) {
+      window.history.back();
+    }
+    const s_email = this.sessionStorage.getItem("email");
+    const s_name = this.sessionStorage.getItem("name");
+
+    company_name.value = s_name;
+    email.value = s_email;
+    company_name.setAttribute("disabled", "");
+    email.setAttribute("disabled", "");
+
+    const formData = new FormData();
+    formData.append("company_name", s_name);
+    formData.append("email", s_email);
+
+    console.warn("Add php to submit to");
+    return;
+    fetch('../includes/#.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  });
 </script>
 
 
