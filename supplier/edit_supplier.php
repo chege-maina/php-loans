@@ -72,6 +72,8 @@ include "../includes/base_page/shared_top_tags.php"
     formData.append("postal_address", sup_postal.value);
     formData.append("physical_address", sup_physical_address.value);
 
+    console.warn("Add php to submit to");
+    return false;
     fetch('../includes/add_supplier.php', {
         method: 'POST',
         body: formData
@@ -97,6 +99,37 @@ include "../includes/base_page/shared_top_tags.php"
 
     return false;
   }
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+    if (this.sessionStorage.length <= 0) {
+      window.history.back();
+    }
+    const s_email = this.sessionStorage.getItem("email");
+    const s_name = this.sessionStorage.getItem("name");
+
+    supplier_name.value = s_name;
+    email.value = s_email;
+    supplier_name.setAttribute("disabled", "");
+    email.setAttribute("disabled", "");
+
+    const formData = new FormData();
+    formData.append("supplier_name", s_name);
+    formData.append("email", s_email);
+
+    console.warn("Add php to submit to");
+    return;
+    fetch('../includes/#.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  });
 </script>
 
 
