@@ -146,4 +146,9 @@
         });
 
     }
+
+    function getBaseUrl() {
+      const url = window.location.href.split(window.location.host)[0] + window.location.host;
+      return url;
+    }
   </script>

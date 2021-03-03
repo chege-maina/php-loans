@@ -81,9 +81,6 @@ include "../includes/base_page/shared_top_tags.php"
     console.log("Creating headers for data", table_headers);
   }
 
-  function getBaseUrl() {
-    const url = window.location.href.split(window.location.host)[0] + window.location.host;
-  }
 
   function createItems(data) {
     let i = 0;
@@ -148,7 +145,7 @@ include "../includes/base_page/shared_top_tags.php"
         elem.setAttribute("json_header", JSON.stringify(table_headers));
         elem.setAttribute("json_items", JSON.stringify(table_items_c));
         elem.setAttribute("manage", "code");
-        elem.setAttribute("redirect", "http://localhost:5000/customer/add_customer_ui.php");
+        elem.setAttribute("redirect", getBaseUrl() + "/customer/edit_customer.php");
         elem.classList.add("is-fullwidth");
         datatable.appendChild(elem);
 

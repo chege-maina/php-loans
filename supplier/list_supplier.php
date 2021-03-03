@@ -111,7 +111,7 @@ include "../includes/base_page/shared_top_tags.php"
         elem.setAttribute("json_items", JSON.stringify(table_items_c));
         elem.setAttribute("manage_key", "name");
         elem.setAttribute("manage_key_2", "email");
-        elem.setAttribute("redirect", "http://localhost:5000/supplier/edit_supplier.php");
+        elem.setAttribute("redirect", getBaseUrl() + "/supplier/edit_supplier.php");
         elem.classList.add("is-fullwidth");
         datatable.appendChild(elem);
 
