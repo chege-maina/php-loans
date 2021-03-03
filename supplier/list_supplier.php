@@ -44,8 +44,6 @@ include "../includes/base_page/shared_top_tags.php"
   const table_body = document.querySelector('#table_body');
   const table_foot = document.querySelector('#table_foot');
   let table_items = [];
-  let table_headers = [];
-  let table_items_c = [];
 
   let updateTable = (data) => {
     const datatable = document.querySelector("#datatable");
@@ -58,49 +56,6 @@ include "../includes/base_page/shared_top_tags.php"
     elem.setAttribute("redirect", getBaseUrl() + "/supplier/edit_supplier.php");
     elem.classList.add("is-fullwidth");
     datatable.appendChild(elem);
-  }
-
-
-  // function detailedView(i) {
-  //  console.log(table_items[i]);
-  //  sessionStorage.setItem('bank_row', JSON.stringify(table_items[i]));
-  //  window.location.href = "overdaft_mngt2.php";
-  // }
-
-  //load the table
-
-  function createItems(data) {
-    let i = 0;
-    data.forEach(row => {
-      let tmp_row = {};
-      tmp_row["key"] = i++;
-      for (key in row) {
-        tmp_row[key] = row[key];
-      }
-      table_items_c.push(tmp_row);
-    });
-    console.log("Creating items for data", table_items_c);
-  }
-
-  function createHeaders(data) {
-    if (data.length <= 0) {
-      return;
-    }
-
-    for (key in data[0]) {
-      let name = "";
-      key.split("_").forEach(value => {
-        name += " " + value;
-      });
-
-      table_headers.push({
-        name: name.trim(),
-        editable: false,
-        key: key,
-        computed: false
-      });
-    }
-    console.log("Creating headers for data", table_headers);
   }
 
   window.addEventListener('DOMContentLoaded', (event) => {
