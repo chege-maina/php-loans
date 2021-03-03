@@ -148,6 +148,12 @@
     }
 
     function getBaseUrl() {
+      // HACK: This is to accomadate xampp devs
+      const path = window.location.split('/');
+      let xampp_offset = "";
+      if (path.length > 3) {
+        xampp_offset = "/" + path[1];
+      }
       const url = window.location.href.split(window.location.host)[0] + window.location.host;
       return url;
     }
