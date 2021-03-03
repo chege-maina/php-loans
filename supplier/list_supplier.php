@@ -40,11 +40,6 @@ include "../includes/base_page/shared_top_tags.php"
 </div>
 
 <script>
-  const supplier_name = document.querySelector('#supplier_name');
-  const table_body = document.querySelector('#table_body');
-  const table_foot = document.querySelector('#table_foot');
-  let table_items = [];
-
   let updateTable = (data) => {
     const datatable = document.querySelector("#datatable");
     datatable.innerHTML = "";
