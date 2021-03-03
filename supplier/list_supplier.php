@@ -48,8 +48,18 @@ include "../includes/base_page/shared_top_tags.php"
   let table_items_c = [];
 
   let updateTable = (data) => {
-    console.log(data);
+    const datatable = document.querySelector("#datatable");
+    datatable.innerHTML = "";
+    const elem = document.createElement("datatable-list");
+    elem.setAttribute("json_header", JSON.stringify(getHeaders(data)));
+    elem.setAttribute("json_items", JSON.stringify(getItems(data)));
+    elem.setAttribute("manage_key", "name");
+    elem.setAttribute("manage_key_2", "email");
+    elem.setAttribute("redirect", getBaseUrl() + "/supplier/edit_supplier.php");
+    elem.classList.add("is-fullwidth");
+    datatable.appendChild(elem);
   }
+
 
   // function detailedView(i) {
   //  console.log(table_items[i]);
@@ -100,21 +110,8 @@ include "../includes/base_page/shared_top_tags.php"
     fetch('../includes/load_supplier_list.php')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         table_items = data
-        createHeaders(data);
-        createItems(data);
         updateTable(data);
-        const datatable = document.querySelector("#datatable");
-        const elem = document.createElement("datatable-list");
-        elem.setAttribute("json_header", JSON.stringify(table_headers));
-        elem.setAttribute("json_items", JSON.stringify(table_items_c));
-        elem.setAttribute("manage_key", "name");
-        elem.setAttribute("manage_key_2", "email");
-        elem.setAttribute("redirect", getBaseUrl() + "/supplier/edit_supplier.php");
-        elem.classList.add("is-fullwidth");
-        datatable.appendChild(elem);
-
       })
       .catch((error) => {
         console.error('Error:', error);
