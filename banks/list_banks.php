@@ -29,7 +29,6 @@ include "../includes/base_page/shared_top_tags.php"
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        // return;
         table_items = data
         updateTable(data);
       })

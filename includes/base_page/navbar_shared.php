@@ -23,7 +23,7 @@
           Banks
         </a>
 
-        <div class="navbar-dropdown has-background-link-light">
+        <div class="navbar-dropdown">
           <a class="navbar-item" href="../banks/add_bank.php">
             Add Bank
           </a>
@@ -83,8 +83,15 @@
           <a class="navbar-item" href="../payments/make_payment.php">
             Payments
           </a>
+          <a class="navbar-item" href="../payments/list_payments.php">
+            Payments List
+          </a>
+          <hr class="dropdown-divider">
           <a class="navbar-item" href="../receipts/receive_payment.php">
             Receipts
+          </a>
+          <a class="navbar-item" href="../payments/list_receipts.php">
+            Receipts List
           </a>
         </div>
       </div>
