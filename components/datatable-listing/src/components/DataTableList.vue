@@ -54,10 +54,19 @@
 <script>
 export default {
   mounted() {
-    // Import the css
+    // HACK: This is to accomadate xampp devs
+    const path = window.location.pathname.split("/");
+    let xampp_offset = "";
+    if (path.length > 3) {
+      xampp_offset = "/" + path[1];
+    }
+
     const baseurl =
       window.location.href.split(window.location.host)[0] +
-      window.location.host;
+      window.location.host +
+      xampp_offset;
+
+    // Import the css
     const url = baseurl + "/external/bulma/bulma.min.css";
     // Create new link Element
     const link = document.createElement("link");
