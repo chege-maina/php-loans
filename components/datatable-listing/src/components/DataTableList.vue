@@ -1,5 +1,5 @@
 <template>
-  <table class="table is-striped is-hoverable is-fullwidth">
+  <table class="table is-striped is-hoverable is-fullwidth" id="main">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -53,6 +53,21 @@
 
 <script>
 export default {
+  beforeCreate() {
+    // Import the css
+    const baseurl =
+      window.location.href.split(window.location.host)[0] +
+      window.location.host;
+    let url = baseurl + "/external/bulma/bulma.min.css";
+    // Create new link Element
+    var link = document.createElement("link");
+    // set the attributes for link element
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = url;
+    // Append link element to HTML head
+    document.head.appendChild(link);
+  },
   created() {
     // Init the object that will hold the table values
     this.table_data = this.body_object;
@@ -109,6 +124,17 @@ export default {
     },
   },
   computed: {
+    baseurl: function () {
+      const url =
+        window.location.href.split(window.location.host)[0] +
+        window.location.host;
+      return url;
+    },
+    style: function () {
+      let s = this.baseurl + "/external/bulma/bulma.min.css";
+      console.log("Using style", s);
+      return s;
+    },
     header: function () {
       return JSON.parse(this.json_header);
     },
@@ -147,6 +173,11 @@ export default {
     },
   },
   methods: {
+    import_css() {
+      const s = document.createElement("style");
+      s.appendChild(document.createTextNode(this.style));
+      document.head.append(s);
+    },
     computeField(expression, index, col) {
       // It computes from left to right =======>
       //so organize them in the order the calculation should be done
@@ -212,6 +243,3 @@ export default {
   },
 };
 </script>
-<style>
-@import url("http://localhost:5000/external/bulma/bulma.min.css");
-</style>
