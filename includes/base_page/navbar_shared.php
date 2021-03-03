@@ -37,7 +37,7 @@
           Company Profile
         </a>
 
-        <div class="navbar-dropdown has-background-link-light">
+        <div class="navbar-dropdown">
           <a class="navbar-item" href="../company_profile/profile.php">
             Profile
           </a>
@@ -51,7 +51,7 @@
           Suppliers
         </a>
 
-        <div class="navbar-dropdown has-background-link-light">
+        <div class="navbar-dropdown">
           <a class="navbar-item" href="../supplier/add_supplier_ui.php">
             Add Supplier
           </a>
@@ -65,7 +65,7 @@
           Customers
         </a>
 
-        <div class="navbar-dropdown has-background-link-light">
+        <div class="navbar-dropdown">
           <a class="navbar-item" href="../customer/add_customer_ui.php">
             Add Customer
           </a>
@@ -79,7 +79,7 @@
           Transactions
         </a>
 
-        <div class="navbar-dropdown has-background-link-light">
+        <div class="navbar-dropdown">
           <a class="navbar-item" href="../payments/make_payment.php">
             Payments
           </a>
@@ -101,7 +101,7 @@
         <a class="navbar-link">
           Bank Book
         </a>
-        <div class="navbar-dropdown has-background-link-light">
+        <div class="navbar-dropdown">
 
           <a class="navbar-item" href="../payments/overdraft_mngt1.php">
             Post Daily Transactions
@@ -120,7 +120,7 @@
           Loans
         </a>
 
-        <div class="navbar-dropdown has-background-link-light">
+        <div class="navbar-dropdown">
           <a class="navbar-item" href="../loans/create_loan.php">
             Create New Loan
           </a>
@@ -138,7 +138,7 @@
           Users
         </a>
 
-        <div class="navbar-dropdown has-background-link-light">
+        <div class="navbar-dropdown">
           <a class="navbar-item" href="../auth/add_user.php">
             Add User
           </a>
