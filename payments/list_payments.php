@@ -12,7 +12,7 @@ include "../includes/base_page/shared_top_tags.php"
           <div class="field">
             <label class="label">From</label>
             <div class="control">
-              <input class="input" type="date" required id="from_date">
+              <input class="input" type="date" required id="from_date" onchange="updateDateValidations();">
             </div>
           </div>
         </div>
@@ -21,7 +21,7 @@ include "../includes/base_page/shared_top_tags.php"
           <div class="field">
             <label class="label">To</label>
             <div class="control">
-              <input class="input" type="date" required id="to_date">
+              <input class="input" type="date" required id="to_date" onchange="updateDateValidations();">
             </div>
           </div>
         </div>
@@ -58,6 +58,10 @@ include "../includes/base_page/shared_top_tags.php"
   const from_date = document.querySelector("#from_date");
   const to_date = document.querySelector("#to_date");
   const banks = document.querySelector("#banks");
+
+  let updateDateValidations = () => {
+    to_date.setAttribute("min", from_date.value);
+  }
 
   let updateTable = (data) => {
     const datatable = document.querySelector("#datatable");
