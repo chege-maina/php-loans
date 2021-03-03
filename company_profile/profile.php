@@ -72,7 +72,7 @@ include "../includes/base_page/shared_top_tags.php"
     formData.append("postal_address", sup_postal.value);
     formData.append("physical_address", sup_physical_address.value);
 
-    fetch('../includes/add_supplier.php', {
+    fetch('../includes/add_company_profile.php', {
         method: 'POST',
         body: formData
       })
