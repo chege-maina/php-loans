@@ -173,6 +173,8 @@ include "../includes/base_page/shared_top_tags.php"
     formData.append("date", p_date.value);
     formData.append("late_charges", late_payment_charges.value);
 
+    console.warn("Add php to submit to");
+    return false;
     fetch('../includes/add_bank.php', {
         method: 'POST',
         body: formData
@@ -209,7 +211,33 @@ include "../includes/base_page/shared_top_tags.php"
     commifyAll();
     opening_balance = document.querySelector("#opening_balance");
 
+    if (this.sessionStorage.length <= 0) {
+      window.history.back();
+    }
+    const acc_no = this.sessionStorage.getItem("acc_no");
+    const bank_nm = this.sessionStorage.getItem("bank");
+    bank_name.value = bank_nm;
+    account_number.value = acc_no;
+    bank_name.setAttribute("disabled", "");
+    account_number.setAttribute("disabled", "");
 
+    const formData = new FormData();
+    formData.append("acc_no", acc_no);
+    formData.append("bank_nm", bank_nm);
+
+    console.warn("Add php to submit to");
+    return;
+    fetch('../includes/#.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   });
 </script>
 
