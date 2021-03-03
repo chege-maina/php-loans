@@ -149,7 +149,7 @@
 
     function getBaseUrl() {
       // HACK: This is to accomadate xampp devs
-      const path = window.location.split('/');
+      const path = window.location.pathname.split('/');
       let xampp_offset = "";
       if (path.length > 3) {
         xampp_offset = "/" + path[1];
