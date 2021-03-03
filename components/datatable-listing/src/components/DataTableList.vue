@@ -53,28 +53,6 @@
 
 <script>
 export default {
-  mounted() {
-    // HACK: This is to accomadate xampp devs
-    const path = window.location.pathname.split("/");
-    let xampp_offset = "";
-    if (path.length > 3) {
-      xampp_offset = "/" + path[1];
-    }
-
-    const baseurl =
-      window.location.href.split(window.location.host)[0] +
-      window.location.host +
-      xampp_offset;
-
-    // Import the css
-    const url = baseurl + "/external/bulma/bulma.min.css";
-    // Create new link Element
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.type = "text/css";
-    link.href = url;
-    this.$el.prepend(link);
-  },
   created() {
     // Init the object that will hold the table values
     this.table_data = this.body_object;
@@ -131,16 +109,6 @@ export default {
     },
   },
   computed: {
-    baseurl: function () {
-      const url =
-        window.location.href.split(window.location.host)[0] +
-        window.location.host;
-      return url;
-    },
-    style: function () {
-      let s = this.baseurl + "/external/bulma/bulma.min.css";
-      return s;
-    },
     header: function () {
       return JSON.parse(this.json_header);
     },
@@ -179,11 +147,6 @@ export default {
     },
   },
   methods: {
-    import_css() {
-      const s = document.createElement("style");
-      s.appendChild(document.createTextNode(this.style));
-      document.head.append(s);
-    },
     computeField(expression, index, col) {
       // It computes from left to right =======>
       //so organize them in the order the calculation should be done
@@ -249,3 +212,7 @@ export default {
   },
 };
 </script>
+
+<style>
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
+</style>
