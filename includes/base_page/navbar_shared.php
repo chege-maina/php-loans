@@ -142,6 +142,9 @@
           <a class="navbar-item" href="../auth/add_user.php">
             Add User
           </a>
+          <a class="navbar-item" href="../auth/list_users.php">
+            List Users
+          </a>
         </div>
       </div>
 
