@@ -81,6 +81,10 @@ include "../includes/base_page/shared_top_tags.php"
     console.log("Creating headers for data", table_headers);
   }
 
+  function getBaseUrl() {
+    const url = window.location.href.split(window.location.host)[0] + window.location.host;
+  }
+
   function createItems(data) {
     let i = 0;
     data.forEach(row => {
@@ -113,7 +117,7 @@ include "../includes/base_page/shared_top_tags.php"
         elem.setAttribute("json_items", JSON.stringify(table_items_c));
         elem.setAttribute("manage_key", "name");
         elem.setAttribute("manage_key_2", "email");
-        elem.setAttribute("redirect", "http://localhost:5000/customer/edit_customer.php");
+        elem.setAttribute("redirect", getBaseUrl() + "/customer/edit_customer.php");
         elem.classList.add("is-fullwidth");
         datatable.appendChild(elem);
 
