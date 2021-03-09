@@ -27,20 +27,24 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
     </div>
     <div class="columns">
-      <div class="column">
-        <div class="field">
-          <label class="label">Loan Amount</label>
-          <div class="control">
-            <input class="input" type="text" id="loan_amt">
-          </div>
+      <div class="column is-fullwidth">
+        <label for="loan_amt" class="label">Loan Amount</label>
+        <div class="field has-addons">
+          <p class="control">
+            <input type="number" name="loan_amt" id="loan_amt" class="input" required placeholder="Loan Amount" readonly>
+          </p>
+          <p class="control">
+            <a>
+              <a class="button is-static">KES</a>
+            </a>
+          </p>
         </div>
       </div>
-
       <div class="column">
         <div class="field">
           <label class="label">Next Repayment Date</label>
           <div class="control">
-            <input class="input" type="text" id="next_repayment_date">
+            <input class="input" type="text" id="next_repayment_date" readonly required placeholder="Next Repayment Date">
           </div>
         </div>
       </div>
@@ -49,7 +53,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field">
           <label class="label">Disbursement Date</label>
           <div class="control">
-            <input class="input" type="text" id="disbursment_date">
+            <input class="input" type="text" id="disbursment_date" required readonly placeholder="Disbursement Date">
           </div>
         </div>
       </div>
@@ -70,12 +74,17 @@ include "../includes/base_page/shared_top_tags.php"
     </div>
 
     <div class="columns">
-      <div class="column">
-        <div class="field">
-          <label class="label">Balance</label>
-          <div class="control">
-            <input class="input" type="text" id="balance">
-          </div>
+      <div class="column is-fullwidth">
+        <label for="balance" class="label">Balance</label>
+        <div class="field has-addons">
+          <p class="control">
+            <input type="number" name="balance" id="balance" class="input" required placeholder="Balance" readonly>
+          </p>
+          <p class="control">
+            <a>
+              <a class="button is-static">KES</a>
+            </a>
+          </p>
         </div>
       </div>
 
@@ -97,7 +106,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field">
           <label class="label">Installment No</label>
           <div class="control">
-            <input class="input" type="text" id="installment_no">
+            <input class="input" type="text" id="installment_no" readonly required placeholder="Installment No">
           </div>
         </div>
       </div>
@@ -106,7 +115,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field">
           <label class="label">Installment</label>
           <div class="control">
-            <input class="input" type="text" id="installment">
+            <input class="input" type="text" id="installment" required readonly placeholder="Installment">
           </div>
         </div>
       </div>
@@ -127,7 +136,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field">
           <label class="label">Days In Arrears</label>
           <div class="control">
-            <input class="input" type="text" id="arrears">
+            <input class="input" type="number" id="arrears">
           </div>
         </div>
       </div>
@@ -183,7 +192,7 @@ include "../includes/base_page/shared_top_tags.php"
 <script>
   window.addEventListener('DOMContentLoaded', (event) => {
     initSelectElement("#bank_name", "-- Select Bank --");
-    populateSelectElement("#bank_name", "../includes/load_bank_schedule.php", "name");
+    populateSelectElement("#bank_name", "../includes/#.php", "name");
 
     initSelectElement("#payment_method", "-- Select Payment Method --");
     populateSelectElement("#payment_method", "../includes/#", "name");
