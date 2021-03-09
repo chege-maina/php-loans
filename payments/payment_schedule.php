@@ -39,7 +39,7 @@ include "../includes/base_page/shared_top_tags.php"
             </div>
           </div>
           <div class="control">
-            <button type="button" class="button is-info">Select</button>
+            <button type="button" class="button is-info" onclick="selectDisbursment()">Select</button>
           </div>
         </div>
       </div>
@@ -94,15 +94,23 @@ include "../includes/base_page/shared_top_tags.php"
   </div>
 </div>
 
+<div class="card mt-1">
+  <script src="../external/vue"></script>
+  <script src="../components/datatable-listing/dist/datatable-list.min.js"></script>
+  <div id="datatable" class="p-2">
+  </div>
+</div>
+
 <script>
   window.addEventListener('DOMContentLoaded', (event) => {
     initSelectElement("#bank_name", "-- Select Bank --");
     populateSelectElement("#bank_name", "../includes/load_bank_schedule.php", "name");
   });
 
+  const disbursment_date = document.querySelector('#disbursment_date');
+  const bank_name = document.querySelector('#bank_name');
+
   function selectBank() {
-    const disbursment_date = document.querySelector('#disbursment_date');
-    const bank_name = document.querySelector('#bank_name');
     if (!bank_name.validity.valid) {
       bank_name.focus();
     }
@@ -127,6 +135,37 @@ include "../includes/base_page/shared_top_tags.php"
         console.error('Error:', error);
       });
 
+  }
+
+  function selectDisbursment() {
+    const formData = new FormData();
+
+    fetch('../includes/loan_schedule.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        table_items = data
+        updateTable(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+
+  let updateTable = (data) => {
+    const datatable = document.querySelector("#datatable");
+    datatable.innerHTML = "";
+    if (data.length <= 0) {
+      return;
+    }
+    const elem = document.createElement("datatable-list");
+    elem.setAttribute("json_header", JSON.stringify(getHeaders(data)));
+    elem.setAttribute("json_items", JSON.stringify(getItems(data)));
+    elem.classList.add("is-fullwidth");
+    datatable.appendChild(elem);
   }
 </script>
 

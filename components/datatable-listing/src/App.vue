@@ -7,6 +7,7 @@
           v-bind:json_header="jsonHeader"
           v-bind:json_items="jsonBody"
           manage_key="code"
+          v-bind:managing="managing"
           redirect="http://localhost:5000/customer/add_customer_ui.php"
         />
       </div>
@@ -23,6 +24,7 @@ export default {
     PosComponent,
   },
   data: () => ({
+    managing: false,
     headers: [
       { name: "key", editable: false, key: "key", computed: false },
       { name: "Name", editable: false, key: "name", computed: false },

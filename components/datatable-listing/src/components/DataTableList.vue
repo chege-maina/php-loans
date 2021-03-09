@@ -13,7 +13,7 @@
             {{ item.name }}
           </th>
         </template>
-        <th scope="col">Action</th>
+        <th v-if="managing" scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -38,7 +38,7 @@
           </td>
         </template>
 
-        <td class="align-middle py-1">
+        <td class="align-middle py-1" v-if="managing">
           <button
             class="button is-link is-small"
             v-on:click="manageItem(item.key)"
@@ -76,9 +76,13 @@ export default {
     },
     // TODO: This can be done better
     //e.g. using arrays
+    managing: {
+      type: Boolean,
+      default: () => true,
+    },
     manage_key: {
       type: String,
-      default: () => "",
+      default: () => "false",
     },
     manage_key_2: {
       type: String,
