@@ -93,6 +93,7 @@ include "../includes/base_page/shared_top_tags.php"
   function selectBank() {
     if (!bank_name.validity.valid) {
       bank_name.focus();
+      return;
     }
 
     const formData = new FormData();
@@ -118,15 +119,23 @@ include "../includes/base_page/shared_top_tags.php"
   }
 
   function selectDisbursment() {
+    if (!bank_name.validity.valid) {
+      bank_name.focus();
+      return;
+    }
+    if (!disbursment_date.validity.valid) {
+      disbursment_date.focus();
+      return;
+    }
     const formData = new FormData();
-
+    formData.append("bank", bank_name.value);
+    formData.append("disbursment_date", disbursment_date.value);
     fetch('../includes/loan_schedule.php', {
         method: 'POST',
         body: formData
       })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
         table_items = data
         updateTable(data);
       })
