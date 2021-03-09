@@ -32,9 +32,11 @@
               />
             </span>
             <span v-else-if="header_object[key].computed">{{
-              computeField(header_object[key].operation, item.key, key)
+              numberWithCommas(
+                computeField(header_object[key].operation, item.key, key)
+              )
             }}</span>
-            <span v-else>{{ value }}</span>
+            <span v-else>{{ numberWithCommas(value) }}</span>
           </td>
         </template>
 
@@ -151,6 +153,14 @@ export default {
     },
   },
   methods: {
+    numberWithCommas(x) {
+      if (isNaN(x)) {
+        return x;
+      }
+      var parts = x.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+    },
     computeField(expression, index, col) {
       // It computes from left to right =======>
       //so organize them in the order the calculation should be done
