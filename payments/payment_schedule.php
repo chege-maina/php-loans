@@ -16,12 +16,12 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field has-addons">
           <div class="control is-expanded">
             <div class="select is-fullwidth">
-              <select name="bank_name" id="bank_name">
+              <select name="bank_name" id="bank_name" required>
               </select>
             </div>
           </div>
           <div class="control">
-            <button type="button" class="button is-info">Select</button>
+            <button type="button" class="button is-info" onclick="selectBank()">Select</button>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field has-addons">
           <div class="control is-expanded">
             <div class="select is-fullwidth">
-              <select name="bank_loan">
+              <select id="bank_loan" required>
               </select>
             </div>
           </div>
@@ -99,6 +99,28 @@ include "../includes/base_page/shared_top_tags.php"
     initSelectElement("#bank_name", "-- Select Bank --");
     populateSelectElement("#bank_name", "../includes/load_bank_schedule.php", "name");
   });
+
+  function selectBank() {
+    const bank_loan = document.querySelector('#bank_loan');
+    const bank_name = document.querySelector('#bank_name');
+    if (!bank_name.validity.valid) {
+      bank_name.focus();
+    }
+
+    const formData = new FormData();
+    fetch('../includes/load_loans_bank', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+  }
 </script>
 
 <?php
