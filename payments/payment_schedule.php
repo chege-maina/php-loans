@@ -71,26 +71,6 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
       </div>
     </div>
-
-    <hr>
-    <div class="table-container">
-      <table class="table is-hoverable is-fullwidth">
-        <thead>
-          <tr>
-            <th>Payment Number</th>
-            <th>Payment Date</th>
-            <th>Principle(P)</th>
-            <th>Interest(I)</th>
-            <th>Installment(P+I)</th>
-            <th>Balance</th>
-          </tr>
-        </thead>
-        <tbody id="table_body">
-        </tbody>
-      </table>
-
-      <!-- Content ends here -->
-    </div>
   </div>
 </div>
 
