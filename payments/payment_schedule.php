@@ -34,7 +34,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field has-addons">
           <div class="control is-expanded">
             <div class="select is-fullwidth">
-              <select id="bank_loan" required>
+              <select id="disbursment_date" required>
               </select>
             </div>
           </div>
@@ -101,20 +101,27 @@ include "../includes/base_page/shared_top_tags.php"
   });
 
   function selectBank() {
-    const bank_loan = document.querySelector('#bank_loan');
+    const disbursment_date = document.querySelector('#disbursment_date');
     const bank_name = document.querySelector('#bank_name');
     if (!bank_name.validity.valid) {
       bank_name.focus();
     }
 
     const formData = new FormData();
-    fetch('../includes/load_loans_bank', {
+    formData.append("bank", bank_name.value);
+    fetch('../includes/load_loans_bank.php', {
         method: 'POST',
         body: formData
       })
       .then(response => response.json())
       .then(result => {
-        console.log('Success:', result);
+        initSelectElement("#disbursment_date", "-- Select Disbursment --");
+        result.forEach((value) => {
+          let opt = document.createElement("option");
+          opt.appendChild(document.createTextNode(value["disbursment_date"]));
+          opt.value = value["disbursment_date"];
+          disbursment_date.appendChild(opt);
+        });
       })
       .catch(error => {
         console.error('Error:', error);
