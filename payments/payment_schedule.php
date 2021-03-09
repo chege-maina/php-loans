@@ -140,9 +140,9 @@ include "../includes/base_page/shared_top_tags.php"
       .then(response => response.json())
       .then(data => {
         data = data[0];
-        balance.value = data.balance_dd;
+        balance.value = numberWithCommas(data.balance_dd);
         payment_date.value = data.paymentdate_dd;
-        installment.value = data.installment_dd;
+        installment.value = numberWithCommas(data.installment_dd);
         console.log(data);
         updateTable(data.table_items);
       })
