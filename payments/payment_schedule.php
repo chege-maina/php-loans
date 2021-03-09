@@ -71,26 +71,6 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
       </div>
     </div>
-
-    <hr>
-    <div class="table-container">
-      <table class="table is-hoverable is-fullwidth">
-        <thead>
-          <tr>
-            <th>Payment Number</th>
-            <th>Payment Date</th>
-            <th>Principle(P)</th>
-            <th>Interest(I)</th>
-            <th>Installment(P+I)</th>
-            <th>Balance</th>
-          </tr>
-        </thead>
-        <tbody id="table_body">
-        </tbody>
-      </table>
-
-      <!-- Content ends here -->
-    </div>
   </div>
 </div>
 
@@ -113,6 +93,7 @@ include "../includes/base_page/shared_top_tags.php"
   function selectBank() {
     if (!bank_name.validity.valid) {
       bank_name.focus();
+      return;
     }
 
     const formData = new FormData();
@@ -138,15 +119,23 @@ include "../includes/base_page/shared_top_tags.php"
   }
 
   function selectDisbursment() {
+    if (!bank_name.validity.valid) {
+      bank_name.focus();
+      return;
+    }
+    if (!disbursment_date.validity.valid) {
+      disbursment_date.focus();
+      return;
+    }
     const formData = new FormData();
-
+    formData.append("bank", bank_name.value);
+    formData.append("disbursment_date", disbursment_date.value);
     fetch('../includes/loan_schedule.php', {
         method: 'POST',
         body: formData
       })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
         table_items = data
         updateTable(data);
       })
