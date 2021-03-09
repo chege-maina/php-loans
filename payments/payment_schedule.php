@@ -164,6 +164,7 @@ include "../includes/base_page/shared_top_tags.php"
     const elem = document.createElement("datatable-list");
     elem.setAttribute("json_header", JSON.stringify(getHeaders(data)));
     elem.setAttribute("json_items", JSON.stringify(getItems(data)));
+    elem.setAttribute("managing", false);
     elem.classList.add("is-fullwidth");
     datatable.appendChild(elem);
   }
