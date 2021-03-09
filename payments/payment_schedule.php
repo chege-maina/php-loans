@@ -48,7 +48,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field">
           <label class="label">Balance</label>
           <div class="control">
-            <input class="input" type="text">
+            <input class="input" type="text" id="balance" readonly>
           </div>
         </div>
       </div>
@@ -57,16 +57,16 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field">
           <label class="label">Next Payment Date</label>
           <div class="control">
-            <input class="input" type="text">
+            <input class="input" type="date" id="payment_date" readonly>
           </div>
         </div>
       </div>
 
       <div class="column">
         <div class="field">
-          <label class="label">Installment</label>
+          <label class="label">Next Installment</label>
           <div class="control">
-            <input class="input" type="text">
+            <input class="input" type="text" id="installment" readonly>
           </div>
         </div>
       </div>
@@ -89,6 +89,9 @@ include "../includes/base_page/shared_top_tags.php"
 
   const disbursment_date = document.querySelector('#disbursment_date');
   const bank_name = document.querySelector('#bank_name');
+  const balance = document.querySelector('#balance');
+  const payment_date = document.querySelector('#payment_date');
+  const installment = document.querySelector('#installment');
 
   function selectBank() {
     if (!bank_name.validity.valid) {
@@ -136,8 +139,12 @@ include "../includes/base_page/shared_top_tags.php"
       })
       .then(response => response.json())
       .then(data => {
-        table_items = data
-        updateTable(data);
+        data = data[0];
+        balance.value = data.balance_dd;
+        payment_date.value = data.paymentdate_dd;
+        installment.value = data.installment_dd;
+        console.log(data);
+        updateTable(data.table_items);
       })
       .catch(error => {
         console.error('Error:', error);
