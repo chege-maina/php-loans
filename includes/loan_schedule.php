@@ -66,35 +66,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
     }
   }
+  $query2 = "SELECT * FROM tbl_loan_schedule WHERE bank ='$bank' and dis_date='$dis_date' and status='pending' ORDER BY pay_no ASC LIMIT 1";
   $query = "SELECT * FROM tbl_loan_schedule WHERE bank ='$bank' and dis_date='$dis_date'";
 
-  $result = mysqli_query($conn, $query);
-  $response = array();
+  $result2 = mysqli_query($conn, $query2);
+  $response2 = array();
+  if ($row2 = mysqli_fetch_assoc($result2)) {
+    $installmentadd = round($row2['installment'], 2);
+    $pay_dateadd = $row2['pay_date'];
+    $balanceadd = $row2['balance'];
+    $principleadd = $row2['principle'];
+    $ourbalance = $principle + $balanceadd;
 
-  while ($row = mysqli_fetch_assoc($result)) {
-    $pay_number = $row['pay_no'];
-    $pay_date = $row['pay_date'];
-    $principledd = $row['principle'];
-    $interestdd = round($row['interest'], 2);
-    $installmentdd = round($row['installment'], 2);
-    $balance = $row['balance'];
-    $status = $row['status'];
+    $result = mysqli_query($conn, $query);
+    $response = array();
 
+    while ($row = mysqli_fetch_assoc($result)) {
+      $pay_number = $row['pay_no'];
+      $pay_date = $row['pay_date'];
+      $principledd = $row['principle'];
+      $interestdd = round($row['interest'], 2);
+      $installmentdd = round($row['installment'], 2);
+      $balance = $row['balance'];
+      $status = $row['status'];
+
+      array_push(
+        $response,
+        array(
+          'payment_no' => $pay_number,
+          'payment_date' => $pay_date,
+          'principle' => $principledd,
+          'interest' => $interestdd,
+          'installment' => $installmentdd,
+          'balance' => $balance,
+          'status' => $status
+        )
+      );
+    }
     array_push(
-      $response,
+      $response2,
       array(
-        'payment_no' => $pay_number,
-        'payment_date' => $pay_date,
-        'principle' => $principledd,
-        'interest' => $interestdd,
-        'installment' => $installmentdd,
-        'balance' => $balance,
-        'status' => $status
+        'paymentdate_dd' => $pay_dateadd,
+        'installment_dd' => $installmentadd,
+        'balance_dd' => $ourbalance,
+        'table_items' => $response
       )
     );
   }
 
-  echo json_encode($response);
+  echo json_encode($response2);
 } else {
   $message = "Fields have no data...";
   echo json_encode($message);
