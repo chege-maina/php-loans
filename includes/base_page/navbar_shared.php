@@ -124,7 +124,7 @@
           <a class="navbar-item" href="../loans/create_loan.php">
             Create New Loan
           </a>
-          <a class="navbar-item" href="../loans/create_loan.php">
+          <a class="navbar-item" href="../payments/loan_repayment.php">
             Pay Loan
           </a>
           <a class="navbar-item" href="../payments/payment_schedule.php">
