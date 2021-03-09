@@ -26,8 +26,9 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
       </div>
     </div>
+    <hr>
     <div class="columns">
-      <div class="column is-fullwidth">
+      <div class="column is-half">
         <label for="loan_amt" class="label">Loan Amount</label>
         <div class="field has-addons">
           <p class="control">
@@ -40,11 +41,27 @@ include "../includes/base_page/shared_top_tags.php"
           </p>
         </div>
       </div>
+      <div class="column is-half">
+        <label for="balance" class="label">Balance</label>
+        <div class="field has-addons">
+          <p class="control">
+            <input type="number" name="balance" id="balance" class="input" required placeholder="Balance" readonly>
+          </p>
+          <p class="control">
+            <a>
+              <a class="button is-static">KES</a>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="columns">
       <div class="column">
         <div class="field">
           <label class="label">Next Repayment Date</label>
           <div class="control">
-            <input class="input" type="text" id="next_repayment_date" readonly required placeholder="Next Repayment Date">
+            <input class="input" type="date" id="next_repayment_date" readonly required placeholder="Next Repayment Date">
           </div>
         </div>
       </div>
@@ -58,7 +75,7 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
       </div>
 
-      <div class="column is-fullwidth">
+      <div class="column">
         <label for="principle" class="label">Principle</label>
         <div class="field has-addons">
           <p class="control">
@@ -74,21 +91,7 @@ include "../includes/base_page/shared_top_tags.php"
     </div>
 
     <div class="columns">
-      <div class="column is-fullwidth">
-        <label for="balance" class="label">Balance</label>
-        <div class="field has-addons">
-          <p class="control">
-            <input type="number" name="balance" id="balance" class="input" required placeholder="Balance" readonly>
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">KES</a>
-            </a>
-          </p>
-        </div>
-      </div>
-
-      <div class="column is-fullwidth">
+      <div class="column">
         <label for="interest" class="label">Interest</label>
         <div class="field has-addons">
           <p class="control">
@@ -159,7 +162,7 @@ include "../includes/base_page/shared_top_tags.php"
         <label for="total" class="label">Total Amount</label>
         <div class="field has-addons">
           <p class="control">
-            <input type="number" name="total" id="total" class="input" required placeholder="Total Amount" readonly>
+            <input type="number" name="total" id="total" class="input" required placeholder="Total Amount">
           </p>
           <p class="control">
             <a>
