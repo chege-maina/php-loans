@@ -225,15 +225,15 @@ include "../includes/base_page/shared_top_tags.php"
 
     const formData = new FormData();
     formData.append("bank", bank.value);
-    formData.append("disbursment_date", disbursment_date.value);
-    formData.append("payment_date", payment_date.value);
-    formData.append("installment_no", installment_no.value);
-    return;
-    fetch('../includes/', {
+    formData.append("dis_date", disbursment_date.value);
+    formData.append("pay_date", payment_date.value);
+    formData.append("pay_no", installment_no.value);
+
+    fetch('../includes/load_loan_payment.php', {
         method: 'POST',
         body: formData
       })
-      .then(response => response.json())
+      .then(response => response.text())
       .then(result => {
         console.log('Success:', result);
       })
