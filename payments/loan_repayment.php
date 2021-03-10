@@ -117,25 +117,38 @@ include "../includes/base_page/shared_top_tags.php"
 
     <hr>
     <div class="columns ">
-      <div class="column is-3">
+      <div class="column is-4">
         <label for="tr_date" class="label">Select Transaction Date</label>
         <div class="control">
           <input class="input" type="date" id="tr_date" onchange="setDateDifference(this.value);">
         </div>
       </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
+      <div class="column is-4">
         <div class="field">
           <label class="label">Days In Arrears</label>
           <div class="control">
-            <input class="input" type="number" id="arrears">
+            <input class="input" type="number" id="arrears" readonly>
           </div>
         </div>
       </div>
+    </div>
+    <div class="columns">
 
-      <div class="column is-fullwidth">
+      <div class="column">
+        <label for="early" class="label">Early Payment</label>
+        <div class="field has-addons">
+          <p class="control">
+            <input type="number" name="early" id="early" class="input" required placeholder="Early Payment" readonly>
+          </p>
+          <p class="control">
+            <a>
+              <a class="button is-static">KES</a>
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="column">
         <label for="late_charges" class="label">Late Charges</label>
         <div class="field has-addons">
           <p class="control is-expanded">
