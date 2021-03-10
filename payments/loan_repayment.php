@@ -10,25 +10,17 @@ include "../includes/base_page/shared_top_tags.php"
 <div class="card">
   <div class="card-content ">
     <!-- Content is to start here -->
-    <div class="columns ">
-      <div class="column is-4">
-        <label for=" branch_name" class="label">Select Bank</label>
-        <div class="field has-addons">
-          <div class="control is-expanded">
-            <div class="select is-fullwidth">
-              <select name="bank_name" id="bank_name">
-              </select>
-            </div>
-          </div>
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label">Bank</label>
           <div class="control">
-            <button type="button" class="button is-info">Select</button>
+            <input class="input" type="text" id="bank" required readonly placeholder="Bank">
           </div>
         </div>
       </div>
-    </div>
-    <hr>
-    <div class="columns">
-      <div class="column is-half">
+
+      <div class="column">
         <label for="loan_amt" class="label">Loan Amount</label>
         <div class="field has-addons">
           <p class="control">
@@ -41,7 +33,7 @@ include "../includes/base_page/shared_top_tags.php"
           </p>
         </div>
       </div>
-      <div class="column is-half">
+      <div class="column">
         <label for="balance" class="label">Balance</label>
         <div class="field has-addons">
           <p class="control">
