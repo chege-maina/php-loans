@@ -209,12 +209,21 @@ include "../includes/base_page/shared_top_tags.php"
   const tr_date = document.querySelector('#tr_date');
   const arrears = document.querySelector('#arrears');
   const late_charges = document.querySelector('#late_charges');
+  let lc = 0;
   const total = document.querySelector('#total');
   const payment_method = document.querySelector('#payment_method');
 
   let setDateDifference = val => {
     const diff = ((new Date(val)).getTime() - (new Date(payment_date.value)).getTime()) / (1000 * 60 * 60 * 24)
     arrears.value = diff;
+    calcLatePaymentCharges(diff);
+  }
+
+  let calcLatePaymentCharges = (diff) => {
+    // charges = ((I / 100) * bl) / 365) * Arrear_Days
+    late_charges.value = diff > 0 ?
+      ((((lc) / 100) * Number(balance.value) / 365) * diff).toFixed(2) :
+      0;
   }
 
   window.addEventListener('DOMContentLoaded', (event) => {
@@ -242,7 +251,7 @@ include "../includes/base_page/shared_top_tags.php"
         principle.value = result.principle;
         interest.value = result.interest;
         installment.value = result.installment;
-        late_charges.value = result.charge_pc;
+        lc = result.charge_pc;
 
       })
       .catch(error => {
