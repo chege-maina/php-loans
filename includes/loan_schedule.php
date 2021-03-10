@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
     }
   }
-  $query2 = "SELECT * FROM tbl_loan_schedule WHERE bank ='$bank' and dis_date='$dis_date' and status='pending' ORDER BY pay_no ASC LIMIT 1";
+  $query2 = "SELECT * FROM tbl_loan_schedule WHERE bank ='$bank' and dis_date='$dis_date' and status='pending' ORDER BY pay_date ASC LIMIT 1";
   $query = "SELECT * FROM tbl_loan_schedule WHERE bank ='$bank' and dis_date='$dis_date'";
 
   $result2 = mysqli_query($conn, $query2);
