@@ -184,12 +184,23 @@ include "../includes/base_page/shared_top_tags.php"
 </div>
 
 <script>
-  window.addEventListener('DOMContentLoaded', (event) => {
-    initSelectElement("#bank_name", "-- Select Bank --");
-    populateSelectElement("#bank_name", "../includes/#.php", "name");
+  const bank = document.querySelector('#bank');
+  const loan_amt = document.querySelector('#loan_amt');
+  const balance = document.querySelector('#balance');
+  const payment_date = document.querySelector('#payment_date');
+  const disbursment_date = document.querySelector('#disbursment_date');
+  const principle = document.querySelector('#principle');
+  const interest = document.querySelector('#interest');
+  const installment_no = document.querySelector('#installment_no');
+  const installment = document.querySelector('#installment');
+  const tr_date = document.querySelector('#tr_date');
+  const arrears = document.querySelector('#arrears');
+  const late_charges = document.querySelector('#late_charges');
+  const total = document.querySelector('#total');
+  const payment_method = document.querySelector('#payment_method');
 
-    initSelectElement("#payment_method", "-- Select Payment Method --");
-    populateSelectElement("#payment_method", "../includes/#", "name");
+  window.addEventListener('DOMContentLoaded', (event) => {
+    // bank.value = sessionStorage.getItem("bank_name")
   });
 </script>
 
