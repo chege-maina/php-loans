@@ -130,6 +130,9 @@ include "../includes/base_page/shared_top_tags.php"
       disbursment_date.focus();
       return;
     }
+
+    sessionStorage.setItem("disbursment_date", disbursment_date.value);
+    sessionStorage.setItem("bank_name", bank_name.value);
     const formData = new FormData();
     formData.append("bank", bank_name.value);
     formData.append("disbursment_date", disbursment_date.value);
@@ -160,7 +163,10 @@ include "../includes/base_page/shared_top_tags.php"
     const elem = document.createElement("datatable-list");
     elem.setAttribute("json_header", JSON.stringify(getHeaders(data)));
     elem.setAttribute("json_items", JSON.stringify(getItems(data)));
-    elem.setAttribute("managing", false);
+    // elem.setAttribute("managing", true);
+    elem.setAttribute("manage_key", "payment_no");
+    elem.setAttribute("manage_key_2", "payment_date");
+    elem.setAttribute("redirect", getBaseUrl() + "/payments/loan_repayment.php");
     elem.classList.add("is-fullwidth");
     datatable.appendChild(elem);
   }
