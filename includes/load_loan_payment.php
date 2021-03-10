@@ -21,11 +21,11 @@ if ($row = mysqli_fetch_assoc($result)) {
     $interest = round($row['interest'], 2);
     $installment = round($row['installment'], 2);
 
-    $query2 = "SELECT * FROM tbl_loans WHERE bank = '$bank' and dis_date='$dis_date'and status='pending'";
+    $query2 = "SELECT * FROM tbl_loans WHERE bank_name = '$bank' and dis_date='$dis_date'and status='pending'";
     $result2 = mysqli_query($conn, $query2);
     if ($row2 = mysqli_fetch_assoc($result2)) {
         $loan_amt = $row2['amount'];
-        $charge_pc = $row2['late_payment'];
+        $charge_pc = $row2['late_repayment'];
     }
 
     array_push(
