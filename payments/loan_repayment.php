@@ -27,10 +27,10 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
     </div>
     <div class="columns">
-      <div class="column is-fullwidth">
+      <div class="column">
         <label for="loan_amt" class="label">Loan Amount</label>
-        <div class="field has-addons">
-          <p class="control">
+        <div class="field has-addons is-fullwidth">
+          <p class="control is-expanded">
             <input type="number" name="loan_amt" id="loan_amt" class="input" required placeholder="Loan Amount" readonly>
           </p>
           <p class="control">
@@ -61,7 +61,7 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column is-fullwidth">
         <label for="principle" class="label">Principle</label>
         <div class="field has-addons">
-          <p class="control">
+          <p class="control is-expanded">
             <input type="number" name="principle" id="principle" class="input" required placeholder="Principle" readonly>
           </p>
           <p class="control">
@@ -77,7 +77,7 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column is-fullwidth">
         <label for="balance" class="label">Balance</label>
         <div class="field has-addons">
-          <p class="control">
+          <p class="control is-expanded">
             <input type="number" name="balance" id="balance" class="input" required placeholder="Balance" readonly>
           </p>
           <p class="control">
@@ -91,7 +91,7 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column is-fullwidth">
         <label for="interest" class="label">Interest</label>
         <div class="field has-addons">
-          <p class="control">
+          <p class="control is-expanded">
             <input type="number" name="interest" id="interest" class="input" required placeholder="Interest" readonly>
           </p>
           <p class="control">
@@ -144,7 +144,7 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column is-fullwidth">
         <label for="late_charges" class="label">Late Charges</label>
         <div class="field has-addons">
-          <p class="control">
+          <p class="control is-expanded">
             <input type="number" name="late_charges" id="late_charges" class="input" required placeholder="Late Charges" readonly>
           </p>
           <p class="control">
@@ -158,7 +158,7 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column is-fullwidth">
         <label for="total" class="label">Total Amount</label>
         <div class="field has-addons">
-          <p class="control">
+          <p class="control is-expanded">
             <input type="number" name="total" id="total" class="input" required placeholder="Total Amount" readonly>
           </p>
           <p class="control">
