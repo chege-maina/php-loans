@@ -19,12 +19,6 @@ include "../includes/base_page/shared_top_tags.php"
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-    </div>
-    <div class="columns">
-=======
-
->>>>>>> 76bc965a11c983fe8214bba0c86f98f9b8e39e77
       <div class="column">
         <label for="loan_amt" class="label">Loan Amount</label>
         <div class="field has-addons is-fullwidth">
@@ -41,7 +35,7 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column">
         <label for="balance" class="label">Balance</label>
         <div class="field has-addons">
-          <p class="control">
+          <p class="control is-expanded">
             <input type="number" name="balance" id="balance" class="input" required placeholder="Balance" readonly>
           </p>
           <p class="control">
@@ -88,25 +82,7 @@ include "../includes/base_page/shared_top_tags.php"
     </div>
 
     <div class="columns">
-<<<<<<< HEAD
-      <div class="column is-fullwidth">
-        <label for="balance" class="label">Balance</label>
-        <div class="field has-addons">
-          <p class="control is-expanded">
-            <input type="number" name="balance" id="balance" class="input" required placeholder="Balance" readonly>
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">KES</a>
-            </a>
-          </p>
-        </div>
-      </div>
-
-      <div class="column is-fullwidth">
-=======
       <div class="column">
->>>>>>> 76bc965a11c983fe8214bba0c86f98f9b8e39e77
         <label for="interest" class="label">Interest</label>
         <div class="field has-addons">
           <p class="control is-expanded">
@@ -176,13 +152,8 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column is-fullwidth">
         <label for="total" class="label">Total Amount</label>
         <div class="field has-addons">
-<<<<<<< HEAD
           <p class="control is-expanded">
-            <input type="number" name="total" id="total" class="input" required placeholder="Total Amount" readonly>
-=======
-          <p class="control">
             <input type="number" name="total" id="total" class="input" required placeholder="Total Amount">
->>>>>>> 76bc965a11c983fe8214bba0c86f98f9b8e39e77
           </p>
           <p class="control">
             <a>
