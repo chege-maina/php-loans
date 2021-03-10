@@ -120,7 +120,7 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column is-3">
         <label for="tr_date" class="label">Select Transaction Date</label>
         <div class="control">
-          <input class="input" type="date" id="tr_date">
+          <input class="input" type="date" id="tr_date" onchange="setDateDifference(this.value);">
         </div>
       </div>
     </div>
@@ -198,6 +198,11 @@ include "../includes/base_page/shared_top_tags.php"
   const late_charges = document.querySelector('#late_charges');
   const total = document.querySelector('#total');
   const payment_method = document.querySelector('#payment_method');
+
+  let setDateDifference = val => {
+    const diff = ((new Date(val)).getTime() - (new Date(payment_date.value)).getTime()) / (1000 * 60 * 60 * 24)
+    console.log("Difference for", diff);
+  }
 
   window.addEventListener('DOMContentLoaded', (event) => {
     bank.value = sessionStorage.getItem("bank_name");
