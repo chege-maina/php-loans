@@ -61,7 +61,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field">
           <label class="label">Disbursement Date</label>
           <div class="control">
-            <input class="input" type="text" id="disbursment_date" required readonly placeholder="Disbursement Date">
+            <input class="input" type="date" id="disbursment_date" required readonly placeholder="Disbursement Date">
           </div>
         </div>
       </div>
@@ -187,7 +187,7 @@ include "../includes/base_page/shared_top_tags.php"
   const bank = document.querySelector('#bank');
   const loan_amt = document.querySelector('#loan_amt');
   const balance = document.querySelector('#balance');
-  const payment_date = document.querySelector('#payment_date');
+  const payment_date = document.querySelector('#next_repayment_date');
   const disbursment_date = document.querySelector('#disbursment_date');
   const principle = document.querySelector('#principle');
   const interest = document.querySelector('#interest');
@@ -200,7 +200,29 @@ include "../includes/base_page/shared_top_tags.php"
   const payment_method = document.querySelector('#payment_method');
 
   window.addEventListener('DOMContentLoaded', (event) => {
-    // bank.value = sessionStorage.getItem("bank_name")
+    bank.value = sessionStorage.getItem("bank_name");
+    disbursment_date.value = sessionStorage.getItem("disbursment_date");
+    payment_date.value = sessionStorage.getItem("payment_date");
+    installment_no.value = sessionStorage.getItem("payment_no");
+
+    const formData = new FormData();
+    formData.append("bank", bank.value);
+    formData.append("disbursment_date", disbursment_date.value);
+    formData.append("payment_date", payment_date.value);
+    formData.append("installment_no", installment_no.value);
+    return;
+    fetch('../includes/', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
   });
 </script>
 
