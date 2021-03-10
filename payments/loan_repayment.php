@@ -15,7 +15,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field">
           <label class="label">Bank</label>
           <div class="control">
-            <input class="input" type="text" id="bank" required readonly placeholder="Bank">
+            <input class="input has-background-light" type="text" id="bank" required readonly placeholder="Bank">
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@ include "../includes/base_page/shared_top_tags.php"
         <label for="loan_amt" class="label">Loan Amount</label>
         <div class="field has-addons is-fullwidth">
           <p class="control is-expanded">
-            <input type="number" name="loan_amt" id="loan_amt" class="input" required placeholder="Loan Amount" readonly>
+            <input type="number" name="loan_amt" id="loan_amt" class="input has-background-light" required placeholder="Loan Amount" readonly>
           </p>
           <p class="control">
             <a>
@@ -36,7 +36,7 @@ include "../includes/base_page/shared_top_tags.php"
         <label for="balance" class="label">Balance</label>
         <div class="field has-addons">
           <p class="control is-expanded">
-            <input type="number" name="balance" id="balance" class="input" required placeholder="Balance" readonly>
+            <input type="number" name="balance" id="balance" class="input has-background-light" required placeholder="Balance" readonly>
           </p>
           <p class="control">
             <a>
@@ -52,7 +52,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field">
           <label class="label">Next Repayment Date</label>
           <div class="control">
-            <input class="input" type="date" id="next_repayment_date" readonly required placeholder="Next Repayment Date">
+            <input class="input has-background-light" type="date" id="next_repayment_date" readonly required placeholder="Next Repayment Date">
           </div>
         </div>
       </div>
@@ -61,7 +61,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field">
           <label class="label">Disbursement Date</label>
           <div class="control">
-            <input class="input" type="date" id="disbursment_date" required readonly placeholder="Disbursement Date">
+            <input class="input has-background-light" type="date" id="disbursment_date" required readonly placeholder="Disbursement Date">
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@ include "../includes/base_page/shared_top_tags.php"
         <label for="principle" class="label">Principle</label>
         <div class="field has-addons">
           <p class="control is-expanded">
-            <input type="number" name="principle" id="principle" class="input" required placeholder="Principle" readonly>
+            <input type="number" name="principle" id="principle" class="input has-background-light" required placeholder="Principle" readonly>
           </p>
           <p class="control">
             <a>
@@ -86,7 +86,7 @@ include "../includes/base_page/shared_top_tags.php"
         <label for="interest" class="label">Interest</label>
         <div class="field has-addons">
           <p class="control is-expanded">
-            <input type="number" name="interest" id="interest" class="input" required placeholder="Interest" readonly>
+            <input type="number" name="interest" id="interest" class="input has-background-light" required placeholder="Interest" readonly>
           </p>
           <p class="control">
             <a>
@@ -100,7 +100,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field">
           <label class="label">Installment No</label>
           <div class="control">
-            <input class="input" type="text" id="installment_no" readonly required placeholder="Installment No">
+            <input class="input has-background-light" type="text" id="installment_no" readonly required placeholder="Installment No">
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="field">
           <label class="label">Installment</label>
           <div class="control">
-            <input class="input" type="text" id="installment" required readonly placeholder="Installment">
+            <input class="input has-background-light" type="text" id="installment" required readonly placeholder="Installment">
           </div>
         </div>
       </div>
@@ -117,47 +117,18 @@ include "../includes/base_page/shared_top_tags.php"
 
     <hr>
     <div class="columns ">
-      <div class="column is-4">
+      <div class="column">
         <label for="tr_date" class="label">Select Transaction Date</label>
         <div class="control">
           <input class="input" type="date" id="tr_date" onchange="setDateDifference(this.value);">
         </div>
       </div>
-      <div class="column is-4">
+      <div class="column">
         <div class="field">
           <label class="label">Days In Arrears</label>
           <div class="control">
-            <input class="input" type="number" id="arrears" readonly>
+            <input class="input has-background-light" type="number" id="arrears" readonly>
           </div>
-        </div>
-      </div>
-      <div class="column is-fullwidth">
-        <label for="paid" class="label">Amount Paid</label>
-        <div class="field has-addons">
-          <p class="control is-expanded">
-            <input type="number" name="paid" id="paid" class="input" required placeholder="Amount Paid">
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">KES</a>
-            </a>
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="columns">
-
-      <div class="column">
-        <label for="early" class="label">Early Payment</label>
-        <div class="field has-addons">
-          <p class="control is-expanded">
-            <input type="number" name="early" id="early" class="input" required placeholder="Early Payment" readonly>
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">KES</a>
-            </a>
-          </p>
         </div>
       </div>
 
@@ -165,7 +136,7 @@ include "../includes/base_page/shared_top_tags.php"
         <label for="late_charges" class="label">Late Charges</label>
         <div class="field has-addons">
           <p class="control is-expanded">
-            <input type="number" name="late_charges" id="late_charges" class="input" required placeholder="Late Charges" readonly>
+            <input type="number" name="late_charges" id="late_charges" class="input has-background-light" required placeholder="Late Charges" readonly>
           </p>
           <p class="control">
             <a>
@@ -179,7 +150,38 @@ include "../includes/base_page/shared_top_tags.php"
         <label for="total" class="label">Total Amount</label>
         <div class="field has-addons">
           <p class="control is-expanded">
-            <input type="number" name="total" id="total" class="input" required placeholder="Total Amount">
+            <input type="number" name="total" id="total" class="input has-background-light" required readonly placeholder="Total Amount">
+          </p>
+          <p class="control">
+            <a>
+              <a class="button is-static">KES</a>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+
+
+      <div class="column is-fullwidth">
+        <label for="paid" class="label">Amount Paid</label>
+        <div class="field has-addons">
+          <p class="control is-expanded">
+            <input type="number" name="paid" id="paid" class="input" required placeholder="Amount Paid">
+          </p>
+          <p class="control">
+            <a>
+              <a class="button is-static">KES</a>
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="column">
+        <label for="early" class="label">Early Payment</label>
+        <div class="field has-addons">
+          <p class="control is-expanded">
+            <input type="number" name="early" id="early" class="input" required placeholder="Early Payment" readonly>
           </p>
           <p class="control">
             <a>
