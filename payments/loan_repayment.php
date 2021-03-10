@@ -137,7 +137,7 @@ include "../includes/base_page/shared_top_tags.php"
       <div class="column">
         <label for="early" class="label">Early Payment</label>
         <div class="field has-addons">
-          <p class="control">
+          <p class="control is-expanded">
             <input type="number" name="early" id="early" class="input" required placeholder="Early Payment" readonly>
           </p>
           <p class="control">
@@ -241,7 +241,7 @@ include "../includes/base_page/shared_top_tags.php"
         balance.value = result.balance;
         principle.value = result.principle;
         interest.value = result.interest;
-        installment.value = result.installments;
+        installment.value = result.installment;
         late_charges.value = result.charge_pc;
 
       })
