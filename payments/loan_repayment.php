@@ -131,6 +131,19 @@ include "../includes/base_page/shared_top_tags.php"
           </div>
         </div>
       </div>
+      <div class="column is-fullwidth">
+        <label for="paid" class="label">Amount Paid</label>
+        <div class="field has-addons">
+          <p class="control is-expanded">
+            <input type="number" name="paid" id="paid" class="input" required placeholder="Amount Paid">
+          </p>
+          <p class="control">
+            <a>
+              <a class="button is-static">KES</a>
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
     <div class="columns">
 
