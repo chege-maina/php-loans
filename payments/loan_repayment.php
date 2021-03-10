@@ -214,7 +214,7 @@ include "../includes/base_page/shared_top_tags.php"
 
   let setDateDifference = val => {
     const diff = ((new Date(val)).getTime() - (new Date(payment_date.value)).getTime()) / (1000 * 60 * 60 * 24)
-    console.log("Difference for", diff);
+    arrears.value = diff;
   }
 
   window.addEventListener('DOMContentLoaded', (event) => {
@@ -233,9 +233,17 @@ include "../includes/base_page/shared_top_tags.php"
         method: 'POST',
         body: formData
       })
-      .then(response => response.text())
+      .then(response => response.json())
       .then(result => {
+        result = result[0];
         console.log('Success:', result);
+        loan_amt.value = result.loan_amt;
+        balance.value = result.balance;
+        principle.value = result.principle;
+        interest.value = result.interest;
+        installment.value = result.installments;
+        late_charges.value = result.charge_pc;
+
       })
       .catch(error => {
         console.error('Error:', error);
