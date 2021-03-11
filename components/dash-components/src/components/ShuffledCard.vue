@@ -2,7 +2,7 @@
   <div>
     <div class="relative h-96 w-96">
       <div
-        class="card bg-cyan-400 shadow-md inline-block w-96 h-96 rounded-3xl absolute bottom-0 transform -rotate-12"
+        class="card bg-yellow-400 shadow-md inline-block w-96 h-96 rounded-3xl absolute bottom-0 transform -rotate-12"
       ></div>
       <div
         class="card bg-indigo-400 shadow-lg inline-block w-96 h-96 rounded-3xl absolute bottom-0 transform -rotate-6"
