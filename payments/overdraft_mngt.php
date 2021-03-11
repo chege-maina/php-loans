@@ -145,6 +145,7 @@ include "../includes/base_page/shared_top_tags.php"
         console.log(result.table_items);
         let cumulative_sum = 0;
 
+        table_body.innerHTML = "";
         result.table_items.forEach((value) => {
           console.log(value);
 

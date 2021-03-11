@@ -3,7 +3,7 @@ include "../includes/base_page/shared_top_tags.php"
 ?>
 
 <div class="block title">
-  Receive Payment
+  Manage Receipt
 </div>
 <form onsubmit="return submitForm();">
   <div class="card">
@@ -36,7 +36,7 @@ include "../includes/base_page/shared_top_tags.php"
           <label for="date" class="label">Select Payment Date</label>
           <!-- autofill current date  -->
           <div class="control">
-            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="p_date" class="input is-link" required>
+            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="p_date" class="input" required>
           </div>
         </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2021 at 07:33 AM
+-- Generation Time: Mar 11, 2021 at 07:13 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -162,6 +162,22 @@ CREATE TABLE `tbl_loan_schedule` (
   `interest` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_loan_schedule`
+--
+
+INSERT INTO `tbl_loan_schedule` (`bank`, `dis_date`, `pay_date`, `balance`, `installment`, `pay_no`, `principle`, `interest`, `status`) VALUES
+('EQUITY BANK', '2021-02-01', '2021-04-30', '90000', '10833.333333333', '1', '10000', '833.33333333333', 'paid'),
+('EQUITY BANK', '2021-02-01', '2021-06-01', '80000', '10750', '2', '10000', '750', 'pending'),
+('EQUITY BANK', '2021-02-01', '2021-07-01', '70000', '10666.666666667', '3', '10000', '666.66666666667', 'pending'),
+('EQUITY BANK', '2021-02-01', '2021-07-30', '60000', '10583.333333333', '4', '10000', '583.33333333333', 'pending'),
+('EQUITY BANK', '2021-02-01', '2021-09-01', '50000', '10500', '5', '10000', '500', 'pending'),
+('EQUITY BANK', '2021-02-01', '2021-10-01', '40000', '10416.666666667', '6', '10000', '416.66666666667', 'pending'),
+('EQUITY BANK', '2021-02-01', '2021-11-01', '30000', '10333.333333333', '7', '10000', '333.33333333333', 'pending'),
+('EQUITY BANK', '2021-02-01', '2021-12-01', '20000', '10250', '8', '10000', '250', 'pending'),
+('EQUITY BANK', '2021-02-01', '2021-12-31', '10000', '10166.666666667', '9', '10000', '166.66666666667', 'pending'),
+('EQUITY BANK', '2021-02-01', '2022-02-01', '0', '10083.333333333', '10', '10000', '83.333333333333', 'pending');
 
 -- --------------------------------------------------------
 
