@@ -99,7 +99,9 @@
       alert_div.innerHTML = text
     }
 
-
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 
     function removeAlert(wait_time = 2500) {
       window.setTimeout(() => {
@@ -167,7 +169,7 @@
       for (key in data[0]) {
         let name = "";
         key.split("_").forEach(value => {
-          name += " " + value;
+          name += " " + capitalizeFirstLetter(value);
         });
 
         table_headers.push({
@@ -193,5 +195,14 @@
         table_items_c.push(tmp_row);
       });
       return table_items_c;
+    }
+
+    function numberWithCommas(x) {
+      if (isNaN(x)) {
+        return x;
+      }
+      var parts = x.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
     }
   </script>

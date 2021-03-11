@@ -50,9 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($negative_num > $od_limit) {
           $number_on = $negative_num - $od_limit;
           $interest = $number_on * ($id_interest + $over) / 100;
-          $interest = ($od_limit * $id_interest / 100) + $interest;
+          $interest = (($od_limit * $id_interest / 100) + $interest) / 365;
         } else {
-          $interest = $negative_num * $id_interest / 100;
+          $interest = ($negative_num * $id_interest / 100) / 365;
         }
       } else {
         $interest = 0;
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           'dr' => $dr,
           'cr' => $cr,
           'balance' => $balance,
-          'od_interest' => $interest
+          'od_interest' => round($interest, 2)
         )
       );
     }

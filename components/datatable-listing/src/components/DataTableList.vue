@@ -13,7 +13,7 @@
             {{ item.name }}
           </th>
         </template>
-        <th scope="col">Action</th>
+        <th v-if="managing" scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -32,13 +32,15 @@
               />
             </span>
             <span v-else-if="header_object[key].computed">{{
-              computeField(header_object[key].operation, item.key, key)
+              numberWithCommas(
+                computeField(header_object[key].operation, item.key, key)
+              )
             }}</span>
-            <span v-else>{{ value }}</span>
+            <span v-else>{{ numberWithCommas(value) }}</span>
           </td>
         </template>
 
-        <td class="align-middle py-1">
+        <td class="align-middle py-1" v-if="managing">
           <button
             class="button is-link is-small"
             v-on:click="manageItem(item.key)"
@@ -76,9 +78,13 @@ export default {
     },
     // TODO: This can be done better
     //e.g. using arrays
+    managing: {
+      type: Boolean,
+      default: () => true,
+    },
     manage_key: {
       type: String,
-      default: () => "",
+      default: () => "false",
     },
     manage_key_2: {
       type: String,
@@ -147,6 +153,14 @@ export default {
     },
   },
   methods: {
+    numberWithCommas(x) {
+      if (isNaN(x)) {
+        return x;
+      }
+      var parts = x.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+    },
     computeField(expression, index, col) {
       // It computes from left to right =======>
       //so organize them in the order the calculation should be done
