@@ -26,7 +26,7 @@ include "../includes/base_page/shared_top_tags.php"
           <label for="d_date" class="label">Date of Disbursment*</label>
           <!-- autofill current date  -->
           <div class="control">
-            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="d_date" class="input is-link" required>
+            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="d_date" class="input" required>
           </div>
         </div>
 
@@ -34,7 +34,7 @@ include "../includes/base_page/shared_top_tags.php"
           <label for="r_date" class="label">First Repayment Date*</label>
           <!-- autofill current date  -->
           <div class="control">
-            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="r_date" class="input is-link" required>
+            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="r_date" class="input" required>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@ include "../includes/base_page/shared_top_tags.php"
           </div>
         </div>
         <div class="column">
-          <label for="repayment_amount" class="label">Monthly Installment*</label>
+          <label for="repayment_amount" class="label">Fixed Repayment amount*</label>
           <input name="repayment_amount" id="repayment_amount" class="input" type="number" placeholder="Repayment Amount" required>
         </div>
         <div class="column">
@@ -75,7 +75,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="column is-fullwidth">
           <label for="interest_rate" class="label">Interest Rate %pa*</label>
           <div class="field has-addons">
-            <p class="control">
+            <p class="control is-expanded">
               <input type="number" name="interest_rate" id="interest_rate" class="input" required placeholder="Interest Rate" max="100" required>
             </p>
             <p class="control">
@@ -89,7 +89,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="column is-fullwidth">
           <label for="charges" class="label">Late Repayment Charges*</label>
           <div class="field has-addons">
-            <p class="control">
+            <p class="control is-expanded">
               <input type="number" name="charges" id="charges" class="input" required placeholder="Charges" max="100" required>
             </p>
             <p class="control">
