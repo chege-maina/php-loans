@@ -61,25 +61,11 @@
                     <!--/.bg-holder-->
 
                     <div class="z-index-1 position-relative">
-                      <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="../index.html">falcon</a>
+                      <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="../index.php">Qubes</a>
                       <p class="opacity-75 text-white">
-                        With the power of Falcon, you can now focus only on
-                        functionaries for your digital products, while leaving
-                        the UI design on us!
+                        Simply delivered. Get more done in less time
                       </p>
                     </div>
-                  </div>
-                  <div class="mt-3 mb-4 mt-md-4 mb-md-5 light">
-                    <p class="text-white">
-                      Don't have an account?<br /><a class="text-decoration-underline link-light" href="../authentication/card/register.html">Get started!</a>
-                    </p>
-                    <p class="mb-0 mt-4 mt-md-5 fs--1 fw-semi-bold text-white opacity-75">
-                      Read our
-                      <a class="text-decoration-underline text-white" href="#!">terms</a>
-                      and
-                      <a class="text-decoration-underline text-white" href="#!">conditions
-                      </a>
-                    </p>
                   </div>
                 </div>
                 <div class="col-md-7 d-flex flex-center">
@@ -96,7 +82,7 @@
                       </div>
                       <div class="mb-3">
                         <div class="d-flex justify-content-between">
-                          <label class="form-label" for="card-password">Password</label><a class="fs--1" href="../authentication/card/forgot-password.html">Forgot Password?</a>
+                          <label class="form-label" for="card-password">Password</label>
                         </div>
                         <input class="form-control" id="card-password" type="password" />
                       </div>
