@@ -1567,7 +1567,7 @@ var component = normalizeComponent(
 
 
 
-window.customElements.define('datatable-list', vue_wc_wrapper(external_Vue_default.a, DataTableListshadow))
+window.customElements.define('payschedule-list', vue_wc_wrapper(external_Vue_default.a, DataTableListshadow))
 
 /***/ }),
 
@@ -2572,7 +2572,7 @@ if(content.locals) module.exports = content.locals;
 // add CSS to Shadow Root
 var add = __webpack_require__("dd96").default
 module.exports.__inject__ = function (shadowRoot) {
-  add("05c8a8b3", content, shadowRoot)
+  add("4afd23bc", content, shadowRoot)
 };
 
 /***/ }),
@@ -4005,4 +4005,4 @@ $({ target: 'Number', proto: true, forced: FORCED }, {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=datatable-list.js.map
+//# sourceMappingURL=payschedule-list.js.map
