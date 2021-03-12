@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-background-light">
 
 <head>
   <meta charset="UTF-8">
@@ -134,7 +134,7 @@
 
 </head>
 
-<body>
+<body class="has-background-link-light mt-0 pt-0">
 
   <div class="container mt-5" style="min-height: 100vh; display: flex; justify-content: center; align-items: center;">
     <div style="min-height:10vh; min-width: 30vw;">
@@ -183,7 +183,7 @@
           } else {
             showSuccessAlert("Logged in successfuly");
             window.setTimeout(() => {
-              window.location.replace("base_page/base_page.php");
+              window.location.replace("dashboards/main.php");
             }, 1500);
           }
         })
