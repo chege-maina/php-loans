@@ -1,6 +1,6 @@
 <nav class="navbar is-fixed-top has-background-info-light " role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item is-size-3" href="https://bulma.io">
+    <a class="navbar-item is-size-3" href="../dashboards/main.php">
       <h1 clas="">Qubes</h1>
     </a>
 
@@ -14,41 +14,34 @@
   <div id="navbarBasicExample" class="navbar-menu has-background-info-light">
     <div class="navbar-start">
       <a class="navbar-item" href="../dashboards/main.php">
-        Home
+        Dashboard Analytics
       </a>
 
       <!-- ============================================================================= -->
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          Banks
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="../banks/add_bank.php">
-            Add Bank
-          </a>
-          <a class="navbar-item" href="../banks/list_banks.php">
-            Manage Banks
-          </a>
-        </div>
-      </div>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          Company Profile
+          Company Settings
         </a>
 
         <div class="navbar-dropdown">
           <a class="navbar-item" href="../company_profile/profile.php">
-            Profile
+            Create Company
           </a>
           <a class="navbar-item" href="../company_profile/list_profiles.php">
-            View Profile
+            View Company
+          </a>
+          <hr class="dropdown-divider">
+          <a class="navbar-item" href="../banks/add_bank.php">
+            Create Lenders
+          </a>
+          <a class="navbar-item" href="../banks/list_banks.php">
+            Manage Lenders
           </a>
         </div>
       </div>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          Suppliers
+          Business Patners
         </a>
 
         <div class="navbar-dropdown">
@@ -58,14 +51,7 @@
           <a class="navbar-item" href="../supplier/list_supplier.php">
             Manage Suppliers
           </a>
-        </div>
-      </div>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          Customers
-        </a>
-
-        <div class="navbar-dropdown">
+          <hr class="dropdown-divider">
           <a class="navbar-item" href="../customer/add_customer_ui.php">
             Add Customer
           </a>
@@ -76,62 +62,48 @@
       </div>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          Transactions
+          Bank Transactions
         </a>
 
         <div class="navbar-dropdown">
           <a class="navbar-item" href="../payments/make_payment.php">
-            Payments
+            Add Payments
           </a>
           <a class="navbar-item" href="../payments/list_payments.php">
-            Payments List
+            Manage Payments
           </a>
           <hr class="dropdown-divider">
           <a class="navbar-item" href="../receipts/receive_payment.php">
-            Receipts
+            Add Receipts
           </a>
           <a class="navbar-item" href="../receipts/list_receipts.php">
-            Receipts List
+            Manage Receipts
           </a>
-        </div>
-      </div>
-
-      <!-- ============================================================================= -->
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          Bank Book
-        </a>
-        <div class="navbar-dropdown">
-
+          <hr class="dropdown-divider">
           <a class="navbar-item" href="../payments/overdraft_mngt1.php">
-            Post Daily Transactions
+            Post Bank Positions
           </a>
           <a class="navbar-item" href="../payments/overdraft_mngt.php">
-            Overdraft Management
+            Bank Overdraft Management
           </a>
-          <a class="navbar-item" href="../payments/payment_schedule.php">
-            Cheques Banked
-          </a>
-        </div>
-      </div>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          Loans
-        </a>
-
-        <div class="navbar-dropdown">
+          <hr class="dropdown-divider">
           <a class="navbar-item" href="../loans/create_loan.php">
-            Create New Loan
+            Create Loan
+          </a>
+          <a class="navbar-item" href="../payments/loan_repayment.php">
+            Manage Loans
           </a>
           <a class="navbar-item" href="../payments/loan_repayment.php">
             Pay Loan
           </a>
           <a class="navbar-item" href="../payments/payment_schedule.php">
-            Loan Payment Schedule
+            View Loan Payment Schedule
           </a>
+
         </div>
       </div>
+
+      <!-- ============================================================================= -->
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
