@@ -158,6 +158,9 @@ export default {
         return x;
       }
       var parts = x.toString().split(".");
+      if (parts.length < 2) {
+        parts[1] = "00";
+      }
       parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       return parts.join(".");
     },
