@@ -20,7 +20,7 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
       </div>
       <div class="column">
-        <label for="loan_amt" class="label">Loan Amount</label>
+        <label for="loan_amt" class="label">Disbursed Loan Amount</label>
         <div class="field has-addons is-fullwidth">
           <p class="control is-expanded">
             <input type="number" name="loan_amt" id="loan_amt" class="input has-background-light" required placeholder="Loan Amount" readonly>
@@ -33,7 +33,7 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
       </div>
       <div class="column">
-        <label for="balance" class="label">Balance</label>
+        <label for="balance" class="label">Principle Loan Outstanding</label>
         <div class="field has-addons">
           <p class="control is-expanded">
             <input type="number" name="balance" id="balance" class="input has-background-light" required placeholder="Balance" readonly>
@@ -50,7 +50,7 @@ include "../includes/base_page/shared_top_tags.php"
     <div class="columns">
       <div class="column">
         <div class="field">
-          <label class="label">Next Repayment Date</label>
+          <label class="label">Repayment Date</label>
           <div class="control">
             <input class="input has-background-light" type="date" id="next_repayment_date" readonly required placeholder="Next Repayment Date">
           </div>
@@ -107,7 +107,7 @@ include "../includes/base_page/shared_top_tags.php"
 
       <div class="column">
         <div class="field">
-          <label class="label">Installment</label>
+          <label class="label">Repayment Amount</label>
           <div class="control">
             <input class="input has-background-light" type="text" id="installment" required readonly placeholder="Installment">
           </div>
