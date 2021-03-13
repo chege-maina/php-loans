@@ -104,20 +104,6 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
       </div>
 
-      <div class="column is-fullwidth">
-        <label for="late_payment_charges" class="label">Late Payment Charges</label>
-        <div class="field has-addons is-fullwidth">
-          <p class="control is-expanded">
-            <input type="number" name="late_payment_charges" id="late_payment_charges" class="input" required placeholder="Late payment charges" max="100">
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">%</a>
-            </a>
-          </p>
-        </div>
-      </div>
-
       <div class="column">
         <label for="overdraft_limit" class="label">Overdraft Limit</label>
         <div class="control">
@@ -149,7 +135,6 @@ include "../includes/base_page/shared_top_tags.php"
   const overdraft_interest = document.querySelector("#overdraft_interest");
   const overlimit_interest = document.querySelector("#overlimit_interest");
   const overdraft_limit = document.querySelector("#overdraft_limit");
-  const late_payment_charges = document.querySelector("#late_payment_charges");
   const p_date = document.querySelector("#p_date");
 
 
@@ -170,7 +155,8 @@ include "../includes/base_page/shared_top_tags.php"
     formData.append("over_limit", overlimit_interest.value);
     formData.append("branch", branch_name.value);
     formData.append("date", p_date.value);
-    formData.append("late_charges", late_payment_charges.value);
+    // TODO: Remove this from the accompanying php
+    formData.append("late_charges", "");
 
     fetch('../includes/add_bank.php', {
         method: 'POST',

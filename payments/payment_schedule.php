@@ -76,7 +76,7 @@ include "../includes/base_page/shared_top_tags.php"
 
 <div class="card mt-1">
   <script src="../external/vue"></script>
-  <script src="../components/datatable-listing/dist/datatable-list.min.js"></script>
+  <script src="../components/payschedule-list/dist/payschedule-list.min.js"></script>
   <div id="datatable" class="p-2">
   </div>
 </div>
@@ -160,7 +160,7 @@ include "../includes/base_page/shared_top_tags.php"
     if (data.length <= 0) {
       return;
     }
-    const elem = document.createElement("datatable-list");
+    const elem = document.createElement("payschedule-list");
     elem.setAttribute("json_header", JSON.stringify(getHeaders(data)));
     elem.setAttribute("json_items", JSON.stringify(getItems(data)));
     // elem.setAttribute("managing", true);
