@@ -6,7 +6,6 @@ include_once '../includes/dbconnect.php';
 
 $date = date("Y-m-d");
 $open_date = date('Y-m-d', strtotime($date . ' - 1 days'));
-//echo "Today is " . date("Y-m-d") . "<br>";
 $day = date("l", strtotime($open_date));
 $query2 = "SELECT opening_bal, bank_name FROM tbl_bank";
 $result2 = mysqli_query($conn, $query2);
