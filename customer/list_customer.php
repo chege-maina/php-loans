@@ -87,6 +87,10 @@ include "../includes/base_page/shared_top_tags.php"
 
 
   function filterRequisitions() {
+    if (!customer_name.validity.valid) {
+      customer_name.focus();
+      return;
+    }
     const formData = new FormData();
     formData.append("customer", customer_name.value);
 
