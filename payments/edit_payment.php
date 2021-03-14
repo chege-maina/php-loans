@@ -2,72 +2,64 @@
 include "../includes/base_page/shared_top_tags.php"
 ?>
 
-<div class="block title">
-  Manage Payment
-</div>
+<h4>
+  Edit Payment
+</h4>
+
 <form onsubmit="return submitForm();">
   <div class="card">
 
-    <div class="card-content">
+    <div class="card-body">
       <!-- Content is to start here -->
-      <div class="columns">
-        <div class="column">
-          <label for="supplier" class="label">Select Supplier</label>
-          <div class="select is-fullwidth  ">
-            <div class="control">
-              <select id="supplier" required>
-              </select>
-            </div>
-          </div>
+      <div class="row">
+        <div class="col">
+          <label for="supplier" class="form-label">Select Supplier</label>
+          <select class="form-select" id="supplier" required>
+          </select>
         </div>
-        <div class="column">
-          <label for="bank" class="label">Select Bank</label>
-          <div class="select is-fullwidth required">
-            <div class="control">
-              <select id="bank" required>
-              </select>
-            </div>
-          </div>
+        <div class="col">
+          <label for="bank" class="form-label">Select Bank</label>
+          <select id="bank" class="form-select" required>
+          </select>
         </div>
-        <div class="column">
-          <label for="date" class="label">Select Payment Date</label>
+        <div class="col">
+          <label for="date" class="form-label">Select Payment Date</label>
           <!-- autofill current date  -->
           <div class="control">
-            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="p_date" class="input" required>
+            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="p_date" class="form-control" required>
           </div>
         </div>
       </div>
 
       <hr>
-      <div class="columns">
-        <div class="column">
-          <label for="cheque_number" class="label">Enter Cheque Number</label>
+      <div class="row">
+        <div class="col">
+          <label for="cheque_number" class="form-label">Enter Cheque Number</label>
           <div class="control">
-            <input type="number" name="cheque_number" id="cheque_number" class="input" required placeholder="Cheque Number" required>
+            <input type="number" name="cheque_number" id="cheque_number" class="form-control" required placeholder="Cheque Number" required>
           </div>
         </div>
 
-        <div class="column">
-          <label for="amount_paid" class="label">Amount Paid</label>
+        <div class="col">
+          <label for="amount_paid" class="form-label">Amount Paid</label>
           <div class="control">
-            <input type="number" name="amount_paid" id="amount_paid" class="input" required placeholder="Amount Paid" required>
+            <input type="number" name="amount_paid" id="amount_paid" class="form-control" required placeholder="Amount Paid" required>
           </div>
         </div>
 
-        <div class="column">
-          <label for="payment_type" class="label">Select Cheque Type</label>
-          <div class="select is-fullwidth" required>
-            <select id="cheque_type" required>
-              <option value disabled selected>-- Select Cheque Type --</option>
-              <option value="inhouse">Inhouse</option>
-              <option value="interbank">Interbank</option>
-            </select>
-          </div>
+        <div class="col">
+          <label for="payment_type" class="form-label">Select Cheque Type</label>
+          <select class="form-select" id="cheque_type" required>
+            <option value disabled selected>-- Select Cheque Type --</option>
+            <option value="inhouse">Inhouse</option>
+            <option value="interbank">Interbank</option>
+          </select>
         </div>
       </div>
-      <div class="columns">
-        <div class="column">
-          <button class="button is-link">Submit</button>
+
+      <div class="row mt-2">
+        <div class="col">
+          <button class="btn btn-falcon-primary">Submit</button>
         </div>
       </div>
     </div>
