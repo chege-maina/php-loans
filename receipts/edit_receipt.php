@@ -2,41 +2,34 @@
 include "../includes/base_page/shared_top_tags.php"
 ?>
 
-<div class="block title">
+
+<h4>
   Manage Receipt
-</div>
+</h4>
 <form onsubmit="return submitForm();">
   <div class="card">
 
-    <div class="card-content">
+    <div class="card-body">
       <!-- Content is to start here -->
-      <div class="columns">
+      <div class="row">
 
-        <div class="column">
-          <label for="customer" class="label">Select Customer</label>
-          <div class="select is-fullwidth  ">
-            <div class="control">
-              <select id="customer" required>
-              </select>
-            </div>
-          </div>
+        <div class="col">
+          <label for="customer" class="form-label">Select Customer</label>
+          <select class="form-select" id="customer" required>
+          </select>
         </div>
 
-        <div class="column">
-          <label for="bank" class="label">Select Bank</label>
-          <div class="select is-fullwidth required">
-            <div class="control">
-              <select id="bank" required>
-              </select>
-            </div>
-          </div>
+        <div class="col">
+          <label for="bank" class="form-label">Select Bank</label>
+          <select class="form-select" id="bank" required>
+          </select>
         </div>
 
-        <div class="column">
-          <label for="date" class="label">Select Payment Date</label>
+        <div class="col">
+          <label for="date" class="form-label">Select Payment Date</label>
           <!-- autofill current date  -->
           <div class="control">
-            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="p_date" class="input" required>
+            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="p_date" class="form-control is-link" required>
           </div>
         </div>
 
@@ -44,41 +37,40 @@ include "../includes/base_page/shared_top_tags.php"
 
       <hr>
 
-      <div class="columns">
-        <div class="column">
-          <label for="cheque_number" class="label">Enter Cheque Number</label>
+      <div class="row">
+        <div class="col">
+          <label for="cheque_number" class="form-label">Enter Cheque Number</label>
           <div class="control">
-            <input type="number" name="cheque_number" id="cheque_number" class="input" required placeholder="Cheque Number" required>
+            <input type="number" name="cheque_number" id="cheque_number" class="form-control" required placeholder="Cheque Number" required>
           </div>
         </div>
 
-        <div class="column">
-          <label for="amount_banked" class="label">Amount Banked</label>
+        <div class="col">
+          <label for="amount_banked" class="form-label">Amount Banked</label>
           <div class="control">
-            <input type="number" name="amount_paid" id="amount_banked" class="input" required placeholder="Amount Paid" required>
+            <input type="number" name="amount_paid" id="amount_banked" class="form-control" required placeholder="Amount Paid" required>
           </div>
         </div>
 
-        <div class="column">
-          <label for="payment_type" class="label">Select Cheque Type</label>
-          <div class="select is-fullwidth" required>
-            <select id="cheque_type" required>
-              <option value disabled selected>-- Select Cheque Type --</option>
-              <option value="inhouse">Inhouse</option>
-              <option value="interbank">Interbank</option>
-            </select>
-          </div>
+        <div class="col">
+          <label for="payment_type" class="form-label">Select Cheque Type</label>
+          <select class="form-select" id="cheque_type" required>
+            <option value disabled selected>-- Select Cheque Type --</option>
+            <option value="inhouse">Inhouse</option>
+            <option value="interbank">Interbank</option>
+          </select>
         </div>
       </div>
 
-      <div class="columns">
-        <div class="column">
-          <button class="button is-link">Submit</button>
+      <div class="row mt-3">
+        <div class="col">
+          <button class="btn btn-falcon-primary">Submit</button>
         </div>
       </div>
     </div>
   </div>
 </form>
+
 
 <script>
   window.addEventListener('DOMContentLoaded', (event) => {

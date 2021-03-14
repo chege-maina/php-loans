@@ -2,46 +2,40 @@
 include "../includes/base_page/shared_top_tags.php"
 ?>
 
-<div class="block title">List Receipts</div>
+<h4>List Receipts</h4>
 <form onsubmit="return filterResults();">
   <div class="card">
-    <div class="card-content">
-      <div class="columns is-vcentered">
+    <div class="card-body">
+      <div class="row is-vcentered">
 
-        <div class="column">
+        <div class="col">
           <div class="field">
-            <label class="label">From</label>
+            <label class="form-label">From</label>
             <div class="control">
-              <input class="input" type="date" required id="from_date" onchange="updateDateValidations();">
+              <input class="form-control" type="date" required id="from_date" onchange="updateDateValidations();">
             </div>
           </div>
         </div>
 
-        <div class="column">
+        <div class="col">
           <div class="field">
-            <label class="label">To</label>
+            <label class="form-label">To</label>
             <div class="control">
-              <input class="input" type="date" required id="to_date" onchange="updateDateValidations();">
+              <input class="form-control" type="date" required id="to_date" onchange="updateDateValidations();">
             </div>
           </div>
         </div>
 
-        <div class="column">
+        <div class="col">
           <div class="field">
-            <label class="label">Bank</label>
-            <div class="control">
-              <div class="select is-fullwidth">
-                <select required id="banks">
-                </select>
-              </div>
-            </div>
+            <label class="form-label">Bank</label>
+            <select class="form-select" required id="banks">
+            </select>
           </div>
         </div>
 
-        <div class="column is-flex is-align-items-end mt-5 pb-1">
-          <div class="control">
-            <button class="button is-link">Filter</button>
-          </div>
+        <div class="col is-flex is-align-items-end mt-4 pt-1">
+          <button class="btn btn-primary">Filter</button>
         </div>
       </div>
     </div>

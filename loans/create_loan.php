@@ -3,119 +3,94 @@ include "../includes/base_page/shared_top_tags.php"
 ?>
 
 
-<div class="block title">
+<h4>
   Create Loan
-</div>
+</h4>
+
 <form onsubmit="return submitForm();">
   <div class="card">
-    <div class="card-content">
+    <div class="card-body">
       <!-- Content is to start here -->
-      <div class="columns ">
+      <div class="row ">
 
-        <div class="column">
-          <label for="bank" class="label">Select Bank</label>
-          <div class="select is-fullwidth required">
-            <div class="control">
-              <select id="bank" required>
-              </select>
-            </div>
+        <div class="col">
+          <label for="bank" class="form-label">Select Bank</label>
+          <select class="form-select" id="bank" required>
+          </select>
+        </div>
+
+        <div class="col">
+          <label for="d_date" class="form-label">Date of Disbursment*</label>
+          <!-- autofill current date  -->
+          <div class="control">
+            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="d_date" class="form-control" required>
           </div>
         </div>
 
-        <div class="column">
-          <label for="d_date" class="label">Date of Disbursment*</label>
+        <div class="col">
+          <label for="r_date" class="form-label">First Repayment Date*</label>
           <!-- autofill current date  -->
           <div class="control">
-            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="d_date" class="input" required>
-          </div>
-        </div>
-
-        <div class="column">
-          <label for="r_date" class="label">First Repayment Date*</label>
-          <!-- autofill current date  -->
-          <div class="control">
-            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="r_date" class="input" required>
+            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="r_date" class="form-control" required>
           </div>
         </div>
       </div>
 
       <hr>
 
-      <div class="columns">
-        <div class="column">
-          <label for="amt_dis" class="label">Amount Disbursed*</label>
-          <input name="amt_dis" id="amt_dis" class="input" type="number" placeholder="Amount Disbursed" required>
+      <div class="row">
+        <div class="col">
+          <label for="amt_dis" class="form-label">Amount Disbursed*</label>
+          <input name="amt_dis" id="amt_dis" class="form-control" type="number" placeholder="Amount Disbursed" required>
         </div>
-        <div class="column is-fullwidth">
-          <label for="payment_period" class="label">Payment Period*</label>
-          <div class="field has-addons">
-            <p class="control">
-              <input type="number" name="payment_period" id="payment_period" class="input" required placeholder="Payment Period" max="100" required>
-            </p>
-            <p class="control">
-              <a>
-                <a class="button is-static">Months</a>
-              </a>
-            </p>
+        <div class="col is-fullwidth">
+          <label for="payment_period" class="form-label">Payment Period*</label>
+          <div class="input-group">
+            <input type="number" name="payment_period" id="payment_period" class="form-control" required placeholder="Payment Period" max="100" required>
+            <span class="input-group-text">Months</span>
           </div>
         </div>
-        <div class="column">
-          <label for="repayment_amount" class="label">Fixed Repayment amount*</label>
-          <input name="repayment_amount" id="repayment_amount" class="input" type="number" placeholder="Repayment Amount" required>
+        <div class="col">
+          <label for="repayment_amount" class="form-label">Fixed Repayment amount*</label>
+          <input name="repayment_amount" id="repayment_amount" class="form-control" type="number" placeholder="Repayment Amount" required>
         </div>
-        <div class="column">
-          <label for="next_payment" class="label">Next Payment Installment*</label>
-          <input name="next_payment" id="next_payment" class="input" type="number" placeholder="Next Payment" required>
+        <div class="col">
+          <label for="next_payment" class="form-label">Next Payment Installment*</label>
+          <input name="next_payment" id="next_payment" class="form-control" type="number" placeholder="Next Payment" required>
         </div>
       </div>
 
       <hr>
 
-      <div class="columns">
-        <div class="column is-fullwidth">
-          <label for="interest_rate" class="label">Interest Rate %pa*</label>
-          <div class="field has-addons">
-            <p class="control is-expanded">
-              <input type="number" name="interest_rate" id="interest_rate" class="input" required placeholder="Interest Rate" max="100" required>
-            </p>
-            <p class="control">
-              <a>
-                <a class="button is-static">%</a>
-              </a>
-            </p>
+      <div class="row">
+        <div class="col is-fullwidth">
+          <label for="interest_rate" class="form-label">Interest Rate %pa*</label>
+          <div class="input-group">
+            <input type="number" name="interest_rate" id="interest_rate" class="form-control" required placeholder="Interest Rate" max="100" required>
+            <span class="input-group-text">%</span>
           </div>
         </div>
 
-        <div class="column is-fullwidth">
-          <label for="charges" class="label">Late Repayment Charges*</label>
-          <div class="field has-addons">
-            <p class="control is-expanded">
-              <input type="number" name="charges" id="charges" class="input" required placeholder="Charges" max="100" required>
-            </p>
-            <p class="control">
-              <a>
-                <a class="button is-static">%</a>
-              </a>
-            </p>
+        <div class="col is-fullwidth">
+          <label for="charges" class="form-label">Late Repayment Charges*</label>
+          <div class="input-group">
+            <input type="number" name="charges" id="charges" class="form-control" required placeholder="Charges" max="100" required>
+            <span class="input-group-text">%</span>
           </div>
         </div>
 
-        <div class="column">
-          <label for="loan_category" class="label">Loan Category*</label>
-          <div class="select is-fullwidth required">
-            <div class="control">
-              <select id="loan_category" required>
-                <option value="Reducing Balance">Reducing Balance</option>
-                <option value="Straight">Straight</option>
-              </select>
-            </div>
-          </div>
+        <div class="col">
+          <label for="loan_category" class="form-label">Loan Category*</label>
+          <select class="form-select" id="loan_category" required>
+            <option value="Reducing Balance">Reducing Balance</option>
+            <option value="Straight">Straight</option>
+          </select>
         </div>
       </div>
 
-      <div class="columns">
-        <div class="column">
-          <button class="button is-link">Submit</button>
+      <div class="row mt-2">
+        <div class="col">
+          <button class="btn btn-falcon-primary">Submit</button>
         </div>
       </div>
 

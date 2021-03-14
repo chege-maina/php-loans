@@ -2,123 +2,114 @@
 include "../includes/base_page/shared_top_tags.php"
 ?>
 
-<div class="block title">
+<h4>
   Add New Bank
-</div>
-<div class="box">
+</h4>
 
-  <form id="form_tag" onsubmit="return submitForm();">
-    <div class="columns">
+<div class="card">
+  <div class="card-body">
 
-      <div class="column">
-        <label for="bank_name" class="label">Name</label>
-        <div class="control">
-          <input type="text" name="bank_name" id="bank_name" class="input" required placeholder="Bank name">
+    <form id="form_tag" onsubmit="return submitForm();">
+      <div class="row">
+
+        <div class="col">
+          <label for="bank_name" class="form-label">Name</label>
+          <div class="control">
+            <input type="text" name="bank_name" id="bank_name" class="form-control" required placeholder="Bank name">
+          </div>
         </div>
-      </div>
 
-      <div class="column">
-        <label for="branch_name" class="label">Branch</label>
-        <div class="control">
-          <input type="text" name="branch_name" id="branch_name" class="input" required placeholder="Branch name">
+        <div class="col">
+          <label for="branch_name" class="form-label">Branch</label>
+          <div class="control">
+            <input type="text" name="branch_name" id="branch_name" class="form-control" required placeholder="Branch name">
+          </div>
         </div>
-      </div>
 
-      <div class="column">
-        <label for="account_number" class="label">Account Number</label>
-        <div class="control">
-          <input type="number" class="input" id="account_number" required placeholder="Account number">
+        <div class="col">
+          <label for="account_number" class="form-label">Account Number</label>
+          <div class="control">
+            <input type="number" class="form-control" id="account_number" required placeholder="Account number">
+          </div>
         </div>
-      </div>
 
-      <div class="column">
-        <label for="account_number" class="label">Account Name</label>
-        <div class="control">
-          <input type="text" name="account_name" id="account_name" class="input" required placeholder="Account name">
+        <div class="col">
+          <label for="account_number" class="form-label">Account Name</label>
+          <div class="control">
+            <input type="text" name="account_name" id="account_name" class="form-control" required placeholder="Account name">
+          </div>
         </div>
-      </div>
 
-    </div>
-    <hr>
-    <div class="columns">
+      </div>
+      <hr>
+      <div class="row">
 
-      <div class="column">
-        <label for="opening_balance" class="label">Opening Balance</label>
-        <div class="control commify">
-          <input type="text" class="input" required placeholder="Opening balance" data-commify="opening_balance">
+        <div class="col">
+          <label for="opening_balance" class="form-label">Opening Balance</label>
+          <div class="control commify">
+            <input type="text" class="form-control" required placeholder="Opening balance" data-commify="opening_balance">
+          </div>
         </div>
-      </div>
-      <div class="column">
-        <label for="date" class="label"> As of Date</label>
-        <!-- autofill current date  -->
-        <div class="control">
-          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="p_date" class="input" required>
+        <div class="col">
+          <label for="date" class="form-label"> As of Date</label>
+          <!-- autofill current date  -->
+          <div class="control">
+            <input type="date" value="<?php echo date("Y-m-d"); ?>" id="p_date" class="form-control" required>
+          </div>
         </div>
-      </div>
-      <div class="column">
-        <label for="currency" class="label">Currency</label>
-        <div class="control">
-          <div class="select is-fullwidth">
-            <select id="currency" name="currency">
+        <div class="col">
+          <label for="currency" class="form-label">Currency</label>
+          <div class="control">
+            <select id="currency" class="form-select" name="currency">
             </select>
+          </div>
+
+        </div>
+
+        <div class="col">
+          <label for="cheque_clear_days" class="form-label">Cheque Clear Days</label>
+          <div class="control">
+            <input type="number" name="cheque_clear_days" id="cheque_clear_days" class="form-control" required placeholder="Cheque clear days" max="15">
+          </div>
+        </div>
+
+      </div>
+      <hr>
+      <div class="row">
+
+        <div class="col">
+          <label for="overdraft_interest" class="form-label">Overdraft Interest</label>
+          <div class="input-group">
+            <input type="number" name="overdraft_interest" id="overdraft_interest" class="form-control" required placeholder="Overdraft interest" max="100">
+            <span class="input-group-text is-static">%</span>
+          </div>
+        </div>
+
+
+        <div class="col is-fullwidth">
+          <label for="overlimit_interest" class="form-label">Overdraft Limit Interest</label>
+          <div class="input-group">
+            <input type="number" name="overlimit_interest" id="overlimit_interest" class="form-control" required placeholder="Overdraft Limit interest" max="100">
+            <span class="input-group-text is-static">%</span>
+          </div>
+        </div>
+
+        <div class="col">
+          <label for="overdraft_limit" class="form-label">Overdraft Limit</label>
+          <div class="control">
+            <input type="number" name="overdraft_limit" id="overdraft_limit" class="form-control" required placeholder="Overdraft charges">
           </div>
         </div>
 
       </div>
 
-      <div class="column">
-        <label for="cheque_clear_days" class="label">Cheque Clear Days</label>
-        <div class="control">
-          <input type="number" name="cheque_clear_days" id="cheque_clear_days" class="input" required placeholder="Cheque clear days" max="15">
+      <div class="row mt-2">
+        <div class="col">
+          <button class="btn btn-falcon-primary">Submit</button>
         </div>
       </div>
-
-    </div>
-    <hr>
-    <div class="columns">
-
-      <div class="column">
-        <label for="overdraft_interest" class="label">Overdraft Interest</label>
-        <div class="field has-addons is-fullwidth">
-          <p class="control is-expanded">
-            <input type="number" name="overdraft_interest" id="overdraft_interest" class="input" required placeholder="Overdraft interest" max="100">
-          </p>
-          <p class="control">
-            <a class="button is-static">%</a>
-          </p>
-        </div>
-      </div>
-
-
-      <div class="column is-fullwidth">
-        <label for="overlimit_interest" class="label">Overdraft Limit Interest</label>
-        <div class="field has-addons is-fullwidth">
-          <p class="control is-expanded">
-            <input type="number" name="overlimit_interest" id="overlimit_interest" class="input" required placeholder="Overdraft Limit interest" max="100">
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">%</a>
-            </a>
-          </p>
-        </div>
-      </div>
-
-      <div class="column">
-        <label for="overdraft_limit" class="label">Overdraft Limit</label>
-        <div class="control">
-          <input type="number" name="overdraft_limit" id="overdraft_limit" class="input" required placeholder="Overdraft charges">
-        </div>
-      </div>
-
-    </div>
-
-    <div class="field is-grouped">
-      <div class="control">
-        <button class="button is-link">Submit</button>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
 
 <script>

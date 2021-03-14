@@ -3,54 +3,43 @@ include "../includes/base_page/shared_top_tags.php"
 ?>
 
 
-<div class="block title">
+<h4>
   Post Daily Transactions
-</div>
+</h4>
 
 <div class="card">
-  <div class="card-content">
+  <div class="card-body">
     <!-- Content is to start here -->
-    <div class="columns ">
-      <div class="column is-4">
-        <label for="bank_name" class="label">Select Bank Name</label>
-        <div class="select is-fullwidth">
-          <div class="control">
-            <select id="bank_name" required>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="column-auto pt-5">
-        <div class="control">
-          <div class="column">
-            <label for="bank" class="label"> </label>
-            <button class="button is-info" onclick="filterRequisitions()">Filter</button>
-          </div>
+    <div class="row ">
+      <div class="col col-md-4">
+        <label for="bank_name" class="form-label">Select Bank Name</label>
+        <div class="input-group">
+          <select class="form-select" id="bank_name" required>
+          </select>
+          <button class="btn btn-primary" onclick="filterRequisitions()">Filter</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="card mt-1">
-  <div class="card-content">
+  <div class="card-body">
     <hr>
-    <div class="table-container">
-      <table class="table is-hoverable is-fullwidth is-striped">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Pending Transactions</th>
-            <th>Bank Name</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody id="table_body">
-        </tbody>
-        <tfoot id="table_foot">
-        </tfoot>
-      </table>
-      <!-- Content ends here -->
-    </div>
+    <table class="table table-sm is-hoverable is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Pending Transactions</th>
+          <th>Bank Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="table_body">
+      </tbody>
+      <tfoot id="table_foot">
+      </tfoot>
+    </table>
   </div>
 </div>
 
@@ -88,7 +77,7 @@ include "../includes/base_page/shared_top_tags.php"
       }
       i++;
       btn.appendChild(document.createTextNode("Manage"));
-      btn.classList.add("button", "is-small", "is-info");
+      btn.classList.add("btn", "btn-sm", "btn-primary");
       req_actions.appendChild(btn);
 
       this_row.append(date, trans, bank, req_actions);

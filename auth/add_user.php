@@ -2,96 +2,92 @@
 include "../includes/base_page/shared_top_tags.php"
 ?>
 
-<h3 class="subtitle is-3">
+<h4>
   Add User
-</h3>
-<div class="box">
-  <form onsubmit="return submitForm();" id="user_form">
-    <div class="columns">
-      <div class="column">
-        <div class="field">
-          <label class="label">First Name</label>
-          <div class="control">
-            <input class="input" type="text" id="first_name" required placeholder="First Name">
+</h4>
+<div class="card">
+  <div class="card-body">
+    <form onsubmit="return submitForm();" id="user_form">
+      <div class="row">
+        <div class="col">
+          <div class="field">
+            <label class="form-label">First Name</label>
+            <div class="control">
+              <input class="form-control" type="text" id="first_name" required placeholder="First Name">
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="field">
+            <label class="form-label">Last Name</label>
+            <div class="control">
+              <input class="form-control" type="text" id="last_name" required placeholder="Last Name">
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="column">
-        <div class="field">
-          <label class="label">Last Name</label>
-          <div class="control">
-            <input class="input" type="text" id="last_name" required placeholder="Last Name">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="field">
-          <label class="label">Email</label>
-          <div class="control">
-            <input class="input" type="email" id="email" required placeholder="email@provider.com">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="field">
-          <label class="label">Password</label>
-          <div class="control">
-            <input class="input" type="password" id="password" required placeholder="Password">
+      <div class="row">
+        <div class="col">
+          <div class="field">
+            <label class="form-label">Email</label>
+            <div class="control">
+              <input class="form-control" type="email" id="email" required placeholder="email@provider.com">
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="column">
-        <div class="field">
-          <label class="label">Repeat Password</label>
-          <div class="control">
-            <input class="input" type="password" id="repeat_password" required placeholder="Repeat Password">
+      <div class="row">
+        <div class="col">
+          <div class="field">
+            <label class="form-label">Password</label>
+            <div class="control">
+              <input class="form-control" type="password" id="password" required placeholder="Password">
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="field">
+            <label class="form-label">Repeat Password</label>
+            <div class="control">
+              <input class="form-control" type="password" id="repeat_password" required placeholder="Repeat Password">
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="columns">
-      <div class="column">
-        <div class="field">
-          <label class="label">Designation</label>
-          <div class="control">
-            <input class="input" type="text" id="designation" required placeholder="Designation">
+      <div class="row">
+        <div class="col">
+          <div class="field">
+            <label class="form-label">Designation</label>
+            <div class="control">
+              <input class="form-control" type="text" id="designation" required placeholder="Designation">
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="field">
+            <label class="form-label">Branch</label>
+            <div class="control">
+              <input class="form-control" type="text" id="branch" required placeholder="Branch">
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="column">
-        <div class="field">
-          <label class="label">Branch</label>
-          <div class="control">
-            <input class="input" type="text" id="branch" required placeholder="Branch">
-          </div>
+      <div class="row mt-3">
+        <div class="col col-auto">
+          <button class="btn btn-falcon-primary">Submit</button>
+          <button type="button" class="btn btn-falcon-default ml-2" onclick="clearForm();">Cancel</button>
         </div>
       </div>
-    </div>
 
-    <div class="columns">
-      <div class="column">
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-info">Submit</button>
-          </div>
-          <div class="control">
-            <button type="button" class="button is-info is-light" onclick="clearForm();">Cancel</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </form>
+    </form>
+  </div>
 </div>
 
 <script>

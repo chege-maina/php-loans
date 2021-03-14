@@ -2,62 +2,125 @@
 include "../includes/base_page/shared_top_tags.php"
 ?>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <div class="container">
-  <h1 class="subtitle is-6 mb-0">Primary</h1>
-  <h1 class="subtitle is-4 mt-0">Dashboard</h1>
-  <div class="tile is-ancestor">
-    <div class="tile is-vertical is-8">
-      <div class="tile">
-        <div class="tile is-parent is-vertical">
-          <article class="tile is-child notification is-info is-light">
-            <p class="title">Start Balance</p>
-            <p class="subtitle">Date</p>
-            <p class="">Total Receipts Cleared</p>
-            <p class="">Total Payments Cleeared</p>
-            <p class="">End Balance</p>
-          </article>
-          <article class="tile is-child notification is-warning is-light">
-            <p class="title">...tiles</p>
-            <p class="subtitle">Bottom tile</p>
-          </article>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child notification is-info is-light">
-            <p class="title">Middle tile</p>
-            <p class="subtitle">With an image</p>
-            <figure class="image is-4by3">
-            </figure>
-          </article>
-        </div>
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child notification is-danger is-light">
-          <p class="title">Wide tile</p>
-          <p class="subtitle">Aligned with the right tile</p>
-          <div class="content">
-            <!-- Content -->
-          </div>
-        </article>
-      </div>
-    </div>
-    <div class="tile is-parent">
-      <article class="tile is-child notification is-success is-light">
-        <div class="content">
-          <p class="title">Tall tile</p>
-          <p class="subtitle">With even more content
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.
-
-            Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum, nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim turpis. Sed eget varius ligula, at volutpat tortor.
-
-            Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta. Aliquam ut aliquet lacus, quis faucibus libero. Quisque non semper leo.
-          </p>
-          <div class="content">
-            <!-- Content -->
-          </div>
-        </div>
-      </article>
-    </div>
+  <h4>Dashboard</h4>
+  <div class="card p-2">
+    <canvas id="closing_bal" width="200" height="50"></canvas>
   </div>
+  <div class="card mt-2 p-2">
+    <canvas id="opening_bal" width="200" height="50"></canvas>
+  </div>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      fetch('./dashboard_od_closingbal.php')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          let headers = data.map(row => row.bank + "\n" + row.date);
+          let values = data.map(row => row["closing balance"]);
+          console.log(headers, values);
+          drawClosingBalances(headers, values);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+
+      fetch('./dashboard_od_openingbal.php')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          let headers = data.map(row => row.bank + "\n" + row.date);
+          let values = data.map(row => row["opening balance"]);
+          console.log(headers, values);
+          drawOpeningBal(headers, values);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    });
+
+    function drawOpeningBal(headers, values) {
+      var ctx = document.getElementById('opening_bal').getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: headers,
+          datasets: [{
+            label: 'opening Balance',
+            data: values,
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+    }
+
+
+    function drawClosingBalances(headers, values) {
+      var ctx = document.getElementById('closing_bal').getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: headers,
+          datasets: [{
+            label: 'Closing Balance',
+            data: values,
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+    }
+  </script>
 </div>
 
 <?php

@@ -5,19 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Qubes</title>
-  <!--
-  <link href="external/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <script src="external/bootstrap/bootstrap.bundle.min.js"></script>
-  -->
+
   <script src="../external/autoNumeric/autoNumeric.min.js"></script>
-  <link rel="stylesheet" href="../external/bulma/bulma.min.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
 
   <script src="../external/datatable/jquery-3.5.1.js"></script>
-  <link rel="stylesheet" href="../external/datatable/dataTables.bulma.min.css">
   <script src="../external/datatable/jquery.dataTables.min.js"></script>
-  <script src="../external/datatable/dataTables.bulma.min.js"></script>
+
+
+  <script src="../assets/js/config.js"></script>
+  <link href="../assets/css/theme-rtl.min.css" rel="stylesheet" id="style-rtl" />
+  <link href="../assets/css/theme.min.css" rel="stylesheet" id="style-default" />
+
   <style>
     .hide-this {
       display: none;
@@ -62,10 +62,8 @@
     function showSuccessAlert(message) {
       const alert_div = document.querySelector("#alert-div");
       let text = `
-<article class="message is-success mt-3">
-  <div class="message-body">
+<article class="alert alert-success mt-3">
   <strong>Success: </strong> ${message}
-  </div>
 </article>
 `
       alert_div.innerHTML = text
@@ -79,10 +77,8 @@
 
     function showDangerAlert(message) {
       let text = `
-<article class="message is-danger mt-3">
-  <div class="message-body">
+<article class="alert alert-danger mt-3">
   <strong>Error: </strong> ${message}
-  </div>
 </article>
 `
       alert_div.innerHTML = text
@@ -90,10 +86,8 @@
 
     function showInfoAlert(message) {
       let text = `
-<article class="message is-warning mt-3">
-  <div class="message-body">
+<article class="alert alert-warning mt-3">
   <strong>Error: </strong> ${message}
-  </div>
 </article>
 `
       alert_div.innerHTML = text
@@ -205,4 +199,8 @@
       parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       return parts.join(".");
     }
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+      window.localStorage.setItem("theme", "light");
+    });
   </script>

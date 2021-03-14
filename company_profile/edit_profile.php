@@ -1,53 +1,55 @@
 <?php
 include "../includes/base_page/shared_top_tags.php"
 ?>
-<div class="block title">
+
+<h4>
   Edit Profile
-</div>
+</h4>
+
 <form onsubmit="return submitForm();">
   <div class="card">
-    <div class="card-content">
-      <div class="columns">
+    <div class="card-body">
+      <div class="row">
 
-        <div class="column">
-          <label for="company_name" class="label">Name*</label>
+        <div class="col">
+          <label for="company_name" class="form-label">Name*</label>
           <div class="field">
             <div class="control">
-              <input class="input" type="text" id="company_name" name="company_name" placeholder="Name" required>
+              <input class="form-control" type="text" id="company_name" name="company_name" placeholder="Name" required>
             </div>
           </div>
         </div>
 
-        <div class="column">
-          <label for="email" class="label">Email*</label>
+        <div class="col">
+          <label for="email" class="form-label">Email*</label>
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="email" id="email" name="email" required placeholder="Email">
-              <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-              </span>
+              <input class="form-control" type="email" id="email" name="email" required placeholder="Email">
             </p>
           </div>
         </div>
 
-        <div class="column">
-          <label for="tel_no" class="label">Telephone Number*</label>
-          <input name="tel_no" class="input" type="tel" placeholder="Tel No" id="tel" required>
+        <div class="col">
+          <label for="tel_no" class="form-label">Telephone Number*</label>
+          <input name="tel_no" class="form-control" type="tel" placeholder="Tel No" id="tel" required>
         </div>
       </div>
 
-      <div class="columns mt-2">
-        <div class="column">
-          <label for="postal_address" class="label">Postal Address*</label>
-          <input name="postal_address" id="sup_postal" class="input" type="text" placeholder="Postal Address" required>
+      <div class="row mt-2">
+        <div class="col">
+          <label for="postal_address" class="form-label">Postal Address*</label>
+          <input name="postal_address" id="sup_postal" class="form-control" type="text" placeholder="Postal Address" required>
         </div>
-        <div class="column">
-          <label for="physical_address" class="label">Physical Address*</label>
-          <input name="physical_address" id="sup_physical_address" class="input" type="text" placeholder="Physical Address" required>
+        <div class="col">
+          <label for="physical_address" class="form-label">Physical Address*</label>
+          <input name="physical_address" id="sup_physical_address" class="form-control" type="text" placeholder="Physical Address" required>
         </div>
       </div>
-      <div class="column">
-        <button class="button is-link">Submit</button>
+
+      <div class="row mt-2">
+        <div class="col">
+          <button class="btn btn-falcon-primary">Submit</button>
+        </div>
       </div>
     </div>
   </div>
