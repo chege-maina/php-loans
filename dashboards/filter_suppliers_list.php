@@ -2,7 +2,7 @@
 
 header("Content-type:application/json");
 
-include_once 'dbconnect.php';
+include_once '../includes/dbconnect.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $supplier = $_POST["supplier"];
 

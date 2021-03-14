@@ -40,8 +40,11 @@ include "../includes/base_page/shared_top_tags.php"
 </div>
 
 <script>
+  const supplier_name = document.querySelector("#supplier_name");
+
   let updateTable = (data) => {
     const datatable = document.querySelector("#datatable");
+
     datatable.innerHTML = "";
     if (data.length <= 0) {
       return;
@@ -75,10 +78,14 @@ include "../includes/base_page/shared_top_tags.php"
 
 
   function filterRequisitions() {
+    if (!supplier_name.validity.valid) {
+      supplier_name.focus();
+      return;
+    }
     const formData = new FormData();
+    formData.append("supplier", supplier_name.value);
 
-    formData.append("bank", bank_name.value);
-    fetch('../includes/#.php', {
+    fetch('../dashboards/filter_suppliers_list.php', {
         method: 'POST',
         body: formData
       })
