@@ -88,29 +88,17 @@ include "../includes/base_page/shared_top_tags.php"
 
   function filterRequisitions() {
     const formData = new FormData();
+    formData.append("customer", customer_name.value);
 
-    formData.append("bank", bank_name.value);
-    fetch('../includes/#.php', {
+    fetch('../dashboards/filter_custmers_list.php', {
         method: 'POST',
         body: formData
       })
       .then(response => response.json())
-      .then(result => {
-        table_items = result;
-        updateTable(result);
-        createHeaders(result);
-        createItems(result);
-        updateTable(result);
-        const datatable = document.querySelector("#datatable");
-        const elem = document.createElement("datatable-list");
-        elem.setAttribute("json_header", JSON.stringify(table_headers));
-        elem.setAttribute("json_items", JSON.stringify(table_items_c));
-        elem.setAttribute("manage", "code");
-        elem.setAttribute("redirect", getBaseUrl() + "/customer/edit_customer.php");
-        elem.classList.add("is-fullwidth");
-        datatable.appendChild(elem);
-
-
+      .then(data => {
+        console.log(data);
+        table_items = data
+        updateTable(data);
       })
       .catch(error => {
         console.error('Error:', error);
