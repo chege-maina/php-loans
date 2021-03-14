@@ -3,29 +3,20 @@ include "../includes/base_page/shared_top_tags.php"
 ?>
 
 
-<div class="block title">
+<h4>
   View Customer
-</div>
+</h4>
 
 <div class="card">
-  <div class="card-content">
+  <div class="card-body">
     <!-- Content is to start here -->
-    <div class="columns ">
-      <div class="column is-4">
-        <label for="customer_name" class="label">Select Customer Name</label>
-        <div class="select is-fullwidth">
-          <div class="control">
-            <select id="customer_name" required>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="column-auto pt-5">
-        <div class="control">
-          <div class="column">
-            <label for="customer" class="label"> </label>
-            <button class="button is-info" onclick="filterRequisitions()">Filter</button>
-          </div>
+    <div class="row ">
+      <div class="col col-md-3">
+        <label for="customer_name" class="form-label">Select Customer Name</label>
+        <div class="input-group">
+          <select class="form-select" id="customer_name" required>
+          </select>
+          <button class="btn btn-primary" onclick="filterRequisitions()">Filter</button>
         </div>
       </div>
     </div>
