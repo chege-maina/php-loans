@@ -62,10 +62,8 @@
     function showSuccessAlert(message) {
       const alert_div = document.querySelector("#alert-div");
       let text = `
-<article class="message is-success mt-3">
-  <div class="message-body">
+<article class="alert alert-success mt-3">
   <strong>Success: </strong> ${message}
-  </div>
 </article>
 `
       alert_div.innerHTML = text
@@ -79,10 +77,8 @@
 
     function showDangerAlert(message) {
       let text = `
-<article class="message is-danger mt-3">
-  <div class="message-body">
+<article class="alert alert-danger mt-3">
   <strong>Error: </strong> ${message}
-  </div>
 </article>
 `
       alert_div.innerHTML = text
@@ -90,10 +86,8 @@
 
     function showInfoAlert(message) {
       let text = `
-<article class="message is-warning mt-3">
-  <div class="message-body">
+<article class="alert alert-warning mt-3">
   <strong>Error: </strong> ${message}
-  </div>
 </article>
 `
       alert_div.innerHTML = text
