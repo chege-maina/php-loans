@@ -3,24 +3,24 @@ include "../includes/base_page/shared_top_tags.php"
 ?>
 
 
-<div class="block title">
+<h4>
   Overdraft Management
-</div>
+</h4>
 
 <div class="card">
-  <div class="card-content">
-    <div class="columns">
-      <div class="column">
-        <label for="r_date" class="label">Date</label>
-        <input type="date" id="r_date" class="input has-background-info-light" readonly>
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <label for="r_date" class="form-label">Date</label>
+        <input type="date" id="r_date" class="form-control has-background-info-light" readonly>
       </div>
-      <div class="column">
-        <label for="bank_name" class="label">Bank</label>
-        <input name="bank_name" id="bank_name" class="input has-background-info-light" type="text" placeholder="Bank Name" required readonly>
+      <div class="col">
+        <label for="bank_name" class="form-label">Bank</label>
+        <input name="bank_name" id="bank_name" class="form-control has-background-info-light" type="text" placeholder="Bank Name" required readonly>
       </div>
-      <div class="column">
-        <label for="opening_balance" class="label">Opening Balance</label>
-        <input name="opening_balance" id="opening_balance" class="input has-background-info-light" type="text" placeholder="Opening Balance" required readonly>
+      <div class="col">
+        <label for="opening_balance" class="form-label">Opening Balance</label>
+        <input name="opening_balance" id="opening_balance" class="form-control has-background-info-light" type="text" placeholder="Opening Balance" required readonly>
       </div>
     </div>
     <hr>
@@ -45,9 +45,9 @@ include "../includes/base_page/shared_top_tags.php"
       </table>
       <!-- Content ends here -->
     </div>
-    <div class="columns">
-      <div class="column ">
-        <button class="button is-link" onclick="submitForm();">Submit</button>
+    <div class="row">
+      <div class="col ">
+        <button class="btn btn-falcon-primary" onclick="submitForm();">Submit</button>
       </div>
     </div>
   </div>
@@ -199,13 +199,13 @@ include "../includes/base_page/shared_top_tags.php"
 
       let closing_label = document.createElement("th");
       closing_label.setAttribute("colspan", 7);
-      closing_label.classList.add("has-text-right");
+      closing_label.classList.add("text-right");
       closing_label.appendChild(document.createTextNode("Closing Balance"));
 
       let closing_amt = document.createElement("th");
-      closing_amt.classList.add("has-text-right");
+      closing_amt.classList.add("text-justified", "pl-4");
       closing_amt.appendChild(document.createTextNode(closing_bal));
-      table_foot.append(closing_label, closing_amt);
+      table_body.append(closing_label, closing_amt);
     }
   });
 </script>
