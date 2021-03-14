@@ -199,4 +199,8 @@
       parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       return parts.join(".");
     }
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+      window.localStorage.setItem("theme", "light");
+    });
   </script>
