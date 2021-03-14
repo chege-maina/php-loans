@@ -3,7 +3,7 @@ include "../includes/base_page/shared_top_tags.php"
 ?>
 
 <h4>
-  Edit Payment
+  Manage Payment
 </h4>
 
 <form onsubmit="return submitForm();">
