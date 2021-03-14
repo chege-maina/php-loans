@@ -3,70 +3,58 @@ include "../includes/base_page/shared_top_tags.php"
 ?>
 
 
-<div class="block title">
+<h4>
   Loan Payment Schedule
-</div>
+</h4>
 
 <div class="card">
-  <div class="card-content ">
+  <div class="card-body ">
     <!-- Content is to start here -->
-    <div class="columns ">
-      <div class="column is-4">
-        <label for=" branch_name" class="label">Select Bank</label>
-        <div class="field has-addons">
-          <div class="control is-expanded">
-            <div class="select is-fullwidth">
-              <select name="bank_name" id="bank_name" required>
-              </select>
-            </div>
-          </div>
-          <div class="control">
-            <button type="button" class="button is-info" onclick="selectBank()">Select</button>
-          </div>
+    <div class="row ">
+      <div class="col col-md-4">
+        <label for=" branch_name" class="form-label">Select Bank</label>
+        <div class="input-group">
+          <select class="form-select" name="bank_name" id="bank_name" required>
+          </select>
+          <button class="btn btn-primary" type="button" onclick="selectBank()">Select</button>
         </div>
       </div>
     </div>
 
     <hr>
-    <div class="columns">
-      <div class="column is-4">
-        <label for=" branch_name" class="label">Select Loan Disbursement Date</label>
-        <div class="field has-addons">
-          <div class="control is-expanded">
-            <div class="select is-fullwidth">
-              <select id="disbursment_date" required>
-              </select>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col is-4">
+        <label for=" branch_name" class="form-label">Select Loan Disbursement Date</label>
+        <div class="input-group">
+          <select class="form-select" id="disbursment_date" required>
+          </select>
+          <button type="button" class="btn btn-primary" onclick="selectDisbursment()">Select</button>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="field">
+          <label class="form-label">Balance</label>
           <div class="control">
-            <button type="button" class="button is-info" onclick="selectDisbursment()">Select</button>
+            <input class="form-control" type="text" id="balance" readonly>
           </div>
         </div>
       </div>
 
-      <div class="column">
+      <div class="col">
         <div class="field">
-          <label class="label">Balance</label>
+          <label class="form-label">Next Payment Date</label>
           <div class="control">
-            <input class="input" type="text" id="balance" readonly>
+            <input class="form-control" type="date" id="payment_date" readonly>
           </div>
         </div>
       </div>
 
-      <div class="column">
+      <div class="col">
         <div class="field">
-          <label class="label">Next Payment Date</label>
+          <label class="form-label">Next Installment</label>
           <div class="control">
-            <input class="input" type="date" id="payment_date" readonly>
-          </div>
-        </div>
-      </div>
-
-      <div class="column">
-        <div class="field">
-          <label class="label">Next Installment</label>
-          <div class="control">
-            <input class="input" type="text" id="installment" readonly>
+            <input class="form-control" type="text" id="installment" readonly>
           </div>
         </div>
       </div>
