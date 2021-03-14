@@ -3,209 +3,158 @@ include "../includes/base_page/shared_top_tags.php"
 ?>
 
 
-<div class="block title">
+<h4>
   Loan Repayment
-</div>
+</h4>
 
 <div class="card">
-  <div class="card-content ">
+  <div class="card-body ">
     <!-- Content is to start here -->
-    <div class="columns">
-      <div class="column">
+    <div class="row">
+      <div class="col">
         <div class="field">
-          <label class="label">Bank</label>
+          <label class="form-label">Bank</label>
           <div class="control">
-            <input class="input has-background-light" type="text" id="bank" required readonly placeholder="Bank">
+            <input class="form-control has-background-light" type="text" id="bank" required readonly placeholder="Bank">
           </div>
         </div>
       </div>
-      <div class="column">
-        <label for="loan_amt" class="label">Disbursed Loan Amount</label>
-        <div class="field has-addons is-fullwidth">
-          <p class="control is-expanded">
-            <input type="number" name="loan_amt" id="loan_amt" class="input has-background-light" required placeholder="Loan Amount" readonly>
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">KES</a>
-            </a>
-          </p>
+      <div class="col">
+        <label for="loan_amt" class="form-label">Disbursed Loan Amount</label>
+        <div class="input-group">
+          <input type="number" name="loan_amt" id="loan_amt" class="form-control has-background-light" required placeholder="Loan Amount" readonly>
+          <span class="input-group-text">KES</span>
         </div>
       </div>
-      <div class="column">
-        <label for="balance" class="label">Principle Loan Outstanding</label>
-        <div class="field has-addons">
-          <p class="control is-expanded">
-            <input type="number" name="balance" id="balance" class="input has-background-light" required placeholder="Balance" readonly>
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">KES</a>
-            </a>
-          </p>
+      <div class="col">
+        <label for="balance" class="form-label">Principle Loan Outstanding</label>
+        <div class="input-group">
+          <input type="number" name="balance" id="balance" class="form-control has-background-light" required placeholder="Balance" readonly>
+          <span class="input-group-text">KES</span>
         </div>
       </div>
     </div>
     <hr>
-    <div class="columns">
-      <div class="column">
+    <div class="row">
+      <div class="col">
         <div class="field">
-          <label class="label">Repayment Date</label>
+          <label class="form-label">Repayment Date</label>
           <div class="control">
-            <input class="input has-background-light" type="date" id="next_repayment_date" readonly required placeholder="Next Repayment Date">
+            <input class="form-control has-background-light" type="date" id="next_repayment_date" readonly required placeholder="Next Repayment Date">
           </div>
         </div>
       </div>
 
-      <div class="column">
+      <div class="col">
         <div class="field">
-          <label class="label">Disbursement Date</label>
+          <label class="form-label">Disbursement Date</label>
           <div class="control">
-            <input class="input has-background-light" type="date" id="disbursment_date" required readonly placeholder="Disbursement Date">
+            <input class="form-control has-background-light" type="date" id="disbursment_date" required readonly placeholder="Disbursement Date">
           </div>
         </div>
       </div>
 
-      <div class="column">
-        <label for="principle" class="label">Principle</label>
-        <div class="field has-addons">
-          <p class="control is-expanded">
-            <input type="number" name="principle" id="principle" class="input has-background-light" required placeholder="Principle" readonly>
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">KES</a>
-            </a>
-          </p>
+      <div class="col">
+        <label for="principle" class="form-label">Principle</label>
+        <div class="input-group">
+          <input type="number" name="principle" id="principle" class="form-control has-background-light" required placeholder="Principle" readonly>
+          <span class="input-group-text">KES</span>
         </div>
       </div>
     </div>
 
-    <div class="columns">
-      <div class="column">
-        <label for="interest" class="label">Interest</label>
-        <div class="field has-addons">
-          <p class="control is-expanded">
-            <input type="number" name="interest" id="interest" class="input has-background-light" required placeholder="Interest" readonly>
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">KES</a>
-            </a>
-          </p>
+    <div class="row mt-2">
+      <div class="col">
+        <label for="interest" class="form-label">Interest</label>
+        <div class="input-group">
+          <input type="number" name="interest" id="interest" class="form-control has-background-light" required placeholder="Interest" readonly>
+          <span class="input-group-text">KES</span>
         </div>
       </div>
 
-      <div class="column">
+      <div class="col">
         <div class="field">
-          <label class="label">Installment No</label>
+          <label class="form-label">Installment No</label>
           <div class="control">
-            <input class="input has-background-light" type="text" id="installment_no" readonly required placeholder="Installment No">
+            <input class="form-control has-background-light" type="text" id="installment_no" readonly required placeholder="Installment No">
           </div>
         </div>
       </div>
 
-      <div class="column">
+      <div class="col">
         <div class="field">
-          <label class="label">Repayment Amount</label>
+          <label class="form-label">Repayment Amount</label>
           <div class="control">
-            <input class="input has-background-light" type="text" id="installment" required readonly placeholder="Installment">
+            <input class="form-control has-background-light" type="text" id="installment" required readonly placeholder="Installment">
           </div>
         </div>
       </div>
     </div>
 
     <hr>
-    <div class="columns ">
-      <div class="column">
-        <label for="tr_date" class="label">Select Transaction Date</label>
+    <div class="row ">
+      <div class="col">
+        <label for="tr_date" class="form-label">Select Transaction Date</label>
         <div class="control">
-          <input class="input" type="date" id="tr_date" onchange="setDateDifference(this.value);">
+          <input class="form-control" type="date" id="tr_date" onchange="setDateDifference(this.value);">
         </div>
       </div>
-      <div class="column">
+      <div class="col">
         <div class="field">
-          <label class="label">Days In Arrears</label>
+          <label class="form-label">Days In Arrears</label>
           <div class="control">
-            <input class="input has-background-light" type="number" id="arrears" readonly>
+            <input class="form-control has-background-light" type="number" id="arrears" readonly>
           </div>
         </div>
       </div>
 
-      <div class="column">
-        <label for="late_charges" class="label">Late Charges</label>
-        <div class="field has-addons">
-          <p class="control is-expanded">
-            <input type="number" name="late_charges" id="late_charges" class="input has-background-light" required placeholder="Late Charges" readonly>
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">KES</a>
-            </a>
-          </p>
+      <div class="col">
+        <label for="late_charges" class="form-label">Late Charges</label>
+        <div class="input-group">
+          <input type="number" name="late_charges" id="late_charges" class="form-control has-background-light" required placeholder="Late Charges" readonly>
+          <span class="input-group-text">KES</span>
         </div>
       </div>
 
-      <div class="column is-fullwidth">
-        <label for="total" class="label">Total Amount</label>
-        <div class="field has-addons">
-          <p class="control is-expanded">
-            <input type="number" name="total" id="total" class="input has-background-light" required readonly placeholder="Total Amount">
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">KES</a>
-            </a>
-          </p>
+      <div class="col is-fullwidth">
+        <label for="total" class="form-label">Total Amount</label>
+        <div class="input-group">
+          <input type="number" name="total" id="total" class="form-control has-background-light" required readonly placeholder="Total Amount">
+          <span class="input-group-text">KES</span>
         </div>
+      </div>
+
+    </div>
+
+    <div class="row mt-3">
+
+
+      <div class="col is-fullwidth">
+        <label for="paid" class="form-label">Amount Paid</label>
+        <div class="input-group">
+          <input type="number" name="paid" id="paid" class="form-control" required placeholder="Amount Paid">
+          <span class="input-group-text">KES</span>
+        </div>
+      </div>
+
+      <div class="col">
+        <label for="early" class="form-label">Early Payment</label>
+        <div class="input-group">
+          <input type="number" name="early" id="early" class="form-control" required placeholder="Early Payment" readonly>
+          <span class="input-group-text">KES</span>
+        </div>
+      </div>
+
+      <div class="col">
+        <label for="payment_method" class="form-label">Select Payment Method</label>
+        <select class="form-select" name="payment_method" id="payment_method">
+        </select>
       </div>
     </div>
-    <div class="columns">
 
-
-      <div class="column is-fullwidth">
-        <label for="paid" class="label">Amount Paid</label>
-        <div class="field has-addons">
-          <p class="control is-expanded">
-            <input type="number" name="paid" id="paid" class="input" required placeholder="Amount Paid">
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">KES</a>
-            </a>
-          </p>
-        </div>
-      </div>
-
-      <div class="column">
-        <label for="early" class="label">Early Payment</label>
-        <div class="field has-addons">
-          <p class="control is-expanded">
-            <input type="number" name="early" id="early" class="input" required placeholder="Early Payment" readonly>
-          </p>
-          <p class="control">
-            <a>
-              <a class="button is-static">KES</a>
-            </a>
-          </p>
-        </div>
-      </div>
-
-      <div class="column">
-        <label for="payment_method" class="label">Select Payment Method</label>
-        <div class="field has-addons">
-          <div class="control is-expanded">
-            <div class="select is-fullwidth">
-              <select name="payment_method" id="payment_method">
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column">
-        <button class="button is-link">Submit</button>
+    <div class="row mt-2">
+      <div class="col">
+        <button class="btn btn-falcon-primary">Submit</button>
       </div>
     </div>
   </div>

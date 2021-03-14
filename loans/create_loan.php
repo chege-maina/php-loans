@@ -88,9 +88,9 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
       </div>
 
-      <div class="row">
+      <div class="row mt-2">
         <div class="col">
-          <button class="button is-link">Submit</button>
+          <button class="btn btn-falcon-primary">Submit</button>
         </div>
       </div>
 
