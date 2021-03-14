@@ -35,9 +35,7 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
 
         <div class="col is-flex is-align-items-end mt-4 pt-1">
-          <div class="control">
-            <button class="btn btn-primary">Filter</button>
-          </div>
+          <button class="btn btn-primary">Filter</button>
         </div>
       </div>
     </div>
