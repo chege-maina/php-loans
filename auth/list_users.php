@@ -2,7 +2,7 @@
 include "../includes/base_page/shared_top_tags.php"
 ?>
 
-<div class="block title">List Users</div>
+<h4>List Users</h4>
 <div class="card mt-1">
   <script src="../external/vue"></script>
   <script src="../components/datatable-listing/dist/datatable-list.min.js"></script>
