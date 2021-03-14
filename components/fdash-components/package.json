@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "dev": "sed -i -f dev.sed src/components/*.vue",
-    "prod": "sed -i -f prod.sed src/components/*.vue"
+    "prod": "sed -i -f prod.sed src/components/*.vue",
+    "gen-component": "vue-cli-service build --target wc --name fdash 'src/components/*.vue'"
   },
   "dependencies": {
     "core-js": "^3.6.5",
