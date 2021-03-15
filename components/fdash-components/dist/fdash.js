@@ -1518,12 +1518,12 @@ function normalizeComponent (
   }
 }
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"c26fef6a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CountUpCyan.vue?vue&type=template&id=3c45d87a&shadow
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"c26fef6a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CountUpCyan.vue?vue&type=template&id=e7d39c1e&shadow
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card overflow-hidden",staticStyle:{"min-width":"12rem"}},[_c('div',{staticClass:"bg-holder bg-card",staticStyle:{"background-image":"url(https://qonsolidated-solutions.github.io/falcon-assets/assets/img/illustrations/corner-2.png)"}}),_c('div',{staticClass:"card-body position-relative"},[_c('h6',[_vm._v(" "+_vm._s(_vm.title)+" "),_c('span',{staticClass:"badge badge-soft-info rounded-pill ml-2"},[_vm._v(" "+_vm._s(_vm.title_chip)+" ")])]),_c('div',{staticClass:"display-4 fs-4 mb-2 fw-normal font-sans-serif text-info",attrs:{"data-countup":_vm.countup_json}},[_vm._v(" "+_vm._s(_vm.prefix)+" "+_vm._s(_vm.end_value)+" ")]),_c('a',{staticClass:"fw-semi-bold fs--1 text-nowrap"},[_vm._v(_vm._s(_vm.footer)+" » ")])])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/CountUpCyan.vue?vue&type=template&id=3c45d87a&shadow
+// CONCATENATED MODULE: ./src/components/CountUpCyan.vue?vue&type=template&id=e7d39c1e&shadow
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
@@ -1589,34 +1589,6 @@ var es_number_constructor = __webpack_require__("a9e3");
       };
       return JSON.stringify(tmp);
     }
-  },
-  mounted: function mounted() {
-    var falcon_js = document.createElement("script");
-    falcon_js.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/assets/js/theme.min.js");
-    var anchor_js = document.createElement("script");
-    anchor_js.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/anchorjs/anchor.min.js");
-    var popper = document.createElement("script");
-    popper.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/popper/popper.min.js");
-    var bootstrap = document.createElement("script");
-    bootstrap.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/bootstrap/bootstrap.min.js");
-    var is_js = document.createElement("script");
-    is_js.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/is/is.min.js");
-    var prism = document.createElement("script");
-    prism.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/prism/prism.js");
-    var fontawesome = document.createElement("script");
-    fontawesome.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/fontawesome/all.min.js");
-    var lodash = document.createElement("script");
-    lodash.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/lodash/lodash.min.js");
-    var polyfill = document.createElement("script");
-    polyfill.setAttribute("src", "https://polyfill.io/v3/polyfill.min.js?features,window.scroll");
-    var list_js = document.createElement("script");
-    list_js.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/list.js/list.min.js");
-    var config_js = document.createElement("script");
-    config_js.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/assets/js/config.js");
-    var countup = document.createElement("script");
-    countup.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/countup/countUp.umd.js");
-    this.$el.prepend(config_js);
-    this.$el.append(countup, anchor_js, popper, bootstrap, is_js, prism, fontawesome, lodash, polyfill, list_js, falcon_js);
   }
 });
 // CONCATENATED MODULE: ./src/components/CountUpCyan.vue?vue&type=script&lang=js&shadow
@@ -1646,12 +1618,12 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var CountUpCyanshadow = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"c26fef6a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CountUpGreen.vue?vue&type=template&id=3e610bbb&shadow
-var CountUpGreenvue_type_template_id_3e610bbb_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card mb-3 overflow-hidden",staticStyle:{"min-width":"12rem"}},[_c('div',{staticClass:"bg-holder bg-card",staticStyle:{"background-image":"url(https://qonsolidated-solutions.github.io/falcon-assets/assets/img/illustrations/corner-3.png)"}}),_c('div',{staticClass:"card-body position-relative"},[_c('h6',[_vm._v(" "+_vm._s(_vm.title)+" "),_c('span',{staticClass:"badge badge-soft-success rounded-pill ml-2"},[_vm._v(_vm._s(_vm.title_chip))])]),_c('div',{staticClass:"display-4 fs-4 mb-2 fw-normal font-sans-serif",attrs:{"data-countup":_vm.countup_json}},[_vm._v(" "+_vm._s(_vm.prefix)+" "+_vm._s(_vm.end_value)+" ")]),_c('a',{staticClass:"fw-semi-bold fs--1 text-nowrap"},[_vm._v(_vm._s(_vm.footer)+" » ")])])])}
-var CountUpGreenvue_type_template_id_3e610bbb_shadow_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"c26fef6a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CountUpGreen.vue?vue&type=template&id=685195b8&shadow
+var CountUpGreenvue_type_template_id_685195b8_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card mb-3 overflow-hidden",staticStyle:{"min-width":"12rem"}},[_c('div',{staticClass:"bg-holder bg-card",staticStyle:{"background-image":"url(https://qonsolidated-solutions.github.io/falcon-assets/assets/img/illustrations/corner-3.png)"}}),_c('div',{staticClass:"card-body position-relative"},[_c('h6',[_vm._v(" "+_vm._s(_vm.title)+" "),_c('span',{staticClass:"badge badge-soft-success rounded-pill ml-2"},[_vm._v(_vm._s(_vm.title_chip))])]),_c('div',{staticClass:"display-4 fs-4 mb-2 fw-normal font-sans-serif",attrs:{"data-countup":_vm.countup_json}},[_vm._v(" "+_vm._s(_vm.prefix)+" "+_vm._s(_vm.end_value)+" ")]),_c('a',{staticClass:"fw-semi-bold fs--1 text-nowrap"},[_vm._v(_vm._s(_vm.footer)+" » ")])])])}
+var CountUpGreenvue_type_template_id_685195b8_shadow_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/CountUpGreen.vue?vue&type=template&id=3e610bbb&shadow
+// CONCATENATED MODULE: ./src/components/CountUpGreen.vue?vue&type=template&id=685195b8&shadow
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/CountUpGreen.vue?vue&type=script&lang=js&shadow
 
@@ -1714,34 +1686,6 @@ var CountUpGreenvue_type_template_id_3e610bbb_shadow_staticRenderFns = []
       };
       return JSON.stringify(tmp);
     }
-  },
-  mounted: function mounted() {
-    var falcon_js = document.createElement("script");
-    falcon_js.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/assets/js/theme.min.js");
-    var anchor_js = document.createElement("script");
-    anchor_js.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/anchorjs/anchor.min.js");
-    var popper = document.createElement("script");
-    popper.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/popper/popper.min.js");
-    var bootstrap = document.createElement("script");
-    bootstrap.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/bootstrap/bootstrap.min.js");
-    var is_js = document.createElement("script");
-    is_js.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/is/is.min.js");
-    var prism = document.createElement("script");
-    prism.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/prism/prism.js");
-    var fontawesome = document.createElement("script");
-    fontawesome.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/fontawesome/all.min.js");
-    var lodash = document.createElement("script");
-    lodash.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/lodash/lodash.min.js");
-    var polyfill = document.createElement("script");
-    polyfill.setAttribute("src", "https://polyfill.io/v3/polyfill.min.js?features,window.scroll");
-    var list_js = document.createElement("script");
-    list_js.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/list.js/list.min.js");
-    var config_js = document.createElement("script");
-    config_js.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/assets/js/config.js");
-    var countup = document.createElement("script");
-    countup.setAttribute("src", "https://qonsolidated-solutions.github.io/falcon-assets/vendors/countup/countUp.umd.js");
-    this.$el.prepend(config_js);
-    this.$el.append(countup, anchor_js, popper, bootstrap, is_js, prism, fontawesome, lodash, polyfill, list_js, falcon_js);
   }
 });
 // CONCATENATED MODULE: ./src/components/CountUpGreen.vue?vue&type=script&lang=js&shadow
@@ -1761,8 +1705,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var CountUpGreenshadow_component = normalizeComponent(
   components_CountUpGreenvue_type_script_lang_js_shadow,
-  CountUpGreenvue_type_template_id_3e610bbb_shadow_render,
-  CountUpGreenvue_type_template_id_3e610bbb_shadow_staticRenderFns,
+  CountUpGreenvue_type_template_id_685195b8_shadow_render,
+  CountUpGreenvue_type_template_id_685195b8_shadow_staticRenderFns,
   false,
   CountUpGreenshadow_injectStyles,
   null,

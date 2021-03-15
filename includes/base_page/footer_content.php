@@ -2,6 +2,7 @@
 <!-- ===============================================-->
 <!--    JavaScripts-->
 <!-- ===============================================-->
+<script src="https://qonsolidated-solutions.github.io/falcon-assets/vendors/countup/countUp.umd.js"></script>
 <script src="../vendors/popper/popper.min.js"></script>
 <script src="../vendors/bootstrap/bootstrap.min.js"></script>
 <script src="../vendors/anchorjs/anchor.min.js"></script>

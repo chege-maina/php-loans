@@ -3,19 +3,28 @@ include "../includes/base_page/shared_top_tags.php"
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
 <script src="https://unpkg.com/vue"></script>
 <script src="../components/fdash-components/dist/fdash.js"></script>
 
 <h4>Dashboard</h4>
-<div class="row">
+<div class="row mb-2">
+  <!--
   <div class="col">
     <fdash-count-up-cyan></fdash-count-up-cyan>
   </div>
+-->
   <div class="col">
     <fdash-count-up-green></fdash-count-up-green>
   </div>
   <div class="col">
-    <fdash-count-up-orangey></fdash-count-up-orangey>
+    <div id="orangey"></div>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        const cOrangey = document.createElement("fdash-count-up-cyan");
+        document.querySelector("#orangey").appendChild(cOrangey);
+      });
+    </script>
   </div>
 </div>
 
