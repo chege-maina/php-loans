@@ -103,12 +103,6 @@
             <a class="dropdown-item" href="../loans/create_loan.php">
               Create Loan
             </a>
-            <a class="dropdown-item" href="../payments/loan_repayment.php">
-              Manage Loans
-            </a>
-            <a class="dropdown-item" href="../payments/loan_repayment.php">
-              Pay Loan
-            </a>
             <a class="dropdown-item" href="../payments/payment_schedule.php">
               View Loan Payment Schedule
             </a>
