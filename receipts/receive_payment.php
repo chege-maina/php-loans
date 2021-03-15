@@ -57,6 +57,7 @@ include "../includes/base_page/shared_top_tags.php"
             <option value disabled selected>-- Select Cheque Type --</option>
             <option value="inhouse">Inhouse</option>
             <option value="interbank">Interbank</option>
+            <option value="inhouse">RTGS</option>
           </select>
         </div>
       </div>
