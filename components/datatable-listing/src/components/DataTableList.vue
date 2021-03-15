@@ -36,7 +36,7 @@
                 computeField(header_object[key].operation, item.key, key)
               )
             }}</span>
-            <span v-else>{{ numberWithCommas(value) }}</span>
+            <span v-else>{{ value }}</span>
           </td>
         </template>
 
