@@ -170,10 +170,10 @@
 
                     <form onsubmit="return submitForm();">
                       <label class="form-label" for="email">Email</label>
-                      <input type="email" name="email" id="email" class="form-control">
+                      <input type="email" name="email" id="email" class="form-control" required>
                       <div class="field mt-2">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" id="password" class="form-control">
+                        <input type="password" name="password" id="password" class="form-control" required>
                       </div>
                       <div class="field mt-3">
                         <button id="submit" class="btn btn-falcon-primary" type="submit">Log In</button>
@@ -197,6 +197,13 @@
 
 
     function submitForm() {
+      if (!email.validity.valid) {
+        email.focus();
+        return false;
+      } else if (!password.validity.valid) {
+        password.focus();
+        return false;
+      }
       const formData = new FormData();
       formData.append("email", email.value);
       formData.append("password", password.value);
