@@ -9,11 +9,9 @@ include "../includes/base_page/shared_top_tags.php"
 
 <h4>Dashboard</h4>
 <div class="row mb-2">
-  <!--
   <div class="col">
     <fdash-count-up-cyan></fdash-count-up-cyan>
   </div>
--->
   <div class="col">
     <fdash-count-up-green></fdash-count-up-green>
   </div>
@@ -21,7 +19,7 @@ include "../includes/base_page/shared_top_tags.php"
     <div id="orangey"></div>
     <script>
       window.addEventListener('DOMContentLoaded', (event) => {
-        const cOrangey = document.createElement("fdash-count-up-cyan");
+        const cOrangey = document.createElement("fdash-count-up-orangey");
         document.querySelector("#orangey").appendChild(cOrangey);
       });
     </script>
