@@ -40,7 +40,8 @@
         const real_input = document.createElement("input");
         real_input.setAttribute("type", "number");
         real_input.setAttribute("id", element.childNodes[1].dataset.commify);
-        real_input.setAttribute("type", "number");
+        real_input.setAttribute("type", "text");
+        real_input.setAttribute("name", "ctrl_" + String((Math.random() * 100000).toFixed(0)));
         real_input.classList.add("hide-this");
         element.appendChild(real_input);
 
