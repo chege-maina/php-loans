@@ -3,42 +3,42 @@ include "../includes/base_page/shared_top_tags.php"
 ?>
 
 
-<div class="block title">
+<h4>
   Overdraft Management
-</div>
+</h4>
 
 <div class="card">
-  <div class="card-content">
+  <div class="card-body">
     <!-- Content is to start here -->
-    <div class="columns ">
-      <div class="column">
-        <label for="date" class="label">From</label>
+    <div class="row ">
+      <div class="col">
+        <label for="date" class="form-label">From</label>
         <!-- autofill current date  -->
         <div class="control">
-          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date_from" class="input">
+          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date_from" class="form-control">
         </div>
       </div>
-      <div class="column">
-        <label for="date" class="label">To</label>
+      <div class="col">
+        <label for="date" class="form-label">To</label>
         <!-- autofill current date  -->
         <div class="control">
-          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date_to" class="input">
+          <input type="date" value="<?php echo date("Y-m-d"); ?>" id="date_to" class="form-control">
         </div>
       </div>
-      <div class="column">
-        <label for="branch_name" class="label">Select Bank Name</label>
+      <div class="col">
+        <label for="branch_name" class="form-label">Select Bank Name</label>
         <div class="select is-fullwidth">
           <div class="control">
-            <select id="bank_name" required>
+            <select id="bank_name" required class="form-select">
             </select>
           </div>
         </div>
       </div>
-      <div class="column-auto py-5">
+      <div class="col-auto pt-4">
         <div class="control">
-          <div class="column">
-            <label for="branch" class="label"> </label>
-            <button class="button is-info" onclick="getOverDrafts()">Search</button>
+          <div class="col">
+            <label for="branch" class="form-label"> </label>
+            <button class="btn btn-primary" onclick="getOverDrafts()">Search</button>
           </div>
         </div>
       </div>
@@ -46,19 +46,19 @@ include "../includes/base_page/shared_top_tags.php"
   </div>
 </div>
 <div class="card mt-1">
-  <div class="card-content">
-    <div class="columns">
-      <div class="column">
-        <label for="bank_name" class="label">Bank Name*</label>
-        <input name="bank_name" id="bank_name_data" class="input" type="text" placeholder="bank name" required readonly>
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <label for="bank_name" class="form-label">Bank Name*</label>
+        <input name="bank_name" id="bank_name_data" class="form-control" type="text" placeholder="bank name" required readonly>
       </div>
-      <div class="column">
-        <label for="acc_name" class="label">Account Name*</label>
-        <input name="acc_name" id="acc_name" class="input" type="text" placeholder="account name" required readonly>
+      <div class="col">
+        <label for="acc_name" class="form-label">Account Name*</label>
+        <input name="acc_name" id="acc_name" class="form-control" type="text" placeholder="account name" required readonly>
       </div>
-      <div class="column">
-        <label for="acc_number" class="label">Account Number*</label>
-        <input name="acc_number" id="acc_number" class="input" type="text" placeholder="account number" required readonly>
+      <div class="col">
+        <label for="acc_number" class="form-label">Account Number*</label>
+        <input name="acc_number" id="acc_number" class="form-control" type="text" placeholder="account number" required readonly>
       </div>
     </div>
     <hr>
@@ -79,11 +79,11 @@ include "../includes/base_page/shared_top_tags.php"
         </tfoot>
       </table>
       <!--
-      <div class="column">
+      <div class="col">
         <div class="field has-addons has-addons-centered is-grouped is-grouped-right">
 
           <p class="control">
-            <input type="number" class="input" name="total" id="total" required>
+            <input type="number" class="form-control" name="total" id="total" required>
           </p>
           <p class="control">
             <a class="button is-info">
