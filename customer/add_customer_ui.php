@@ -20,7 +20,7 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
 
         <div class="col">
-          <label for="email" class="form-label">Email*</label>
+          <label for="email" class="form-label">Email</label>
           <div class="field">
             <p class="control has-icons-left">
               <input class="form-control" type="email" id="c_email" name="email" placeholder="Email">
@@ -29,18 +29,18 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
 
         <div class="col">
-          <label for="tel_no" class="form-label">Telephone Number*</label>
+          <label for="tel_no" class="form-label">Telephone Number</label>
           <input name="tel_no" class="form-control" type="tel" placeholder="Tel No" id="customer_tel">
         </div>
       </div>
 
       <div class="row">
         <div class="col">
-          <label for="postal_address" class="form-label">Postal Address*</label>
+          <label for="postal_address" class="form-label">Postal Address</label>
           <input name="postal_address" id="customer_postal" class="form-control" type="text" placeholder="Postal Address">
         </div>
         <div class="col">
-          <label for="physical_address" class="form-label">Physical Address*</label>
+          <label for="physical_address" class="form-label">Physical Address</label>
           <input name="physical_address" id="customer_physical_address" class="form-control" type="text" placeholder="Physical Address">
         </div>
       </div>
