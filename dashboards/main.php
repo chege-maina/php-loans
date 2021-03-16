@@ -8,7 +8,6 @@ include "../includes/base_page/shared_top_tags.php"
 <script src="../components/fdash-components/dist/fdash.js"></script>
 
 <h4>Dashboard</h4>
-<!--
 <div class="row mb-2">
   <div class="col">
     <fdash-count-up-cyan></fdash-count-up-cyan>
@@ -26,7 +25,6 @@ include "../includes/base_page/shared_top_tags.php"
     </script>
   </div>
 </div>
--->
 
 <div class="row">
   <div class="col">
