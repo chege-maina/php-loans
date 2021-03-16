@@ -103,12 +103,6 @@
             <a class="dropdown-item" href="../loans/create_loan.php">
               Create Loan
             </a>
-            <a class="dropdown-item" href="../payments/loan_repayment.php">
-              Manage Loans
-            </a>
-            <a class="dropdown-item" href="../payments/loan_repayment.php">
-              Pay Loan
-            </a>
             <a class="dropdown-item" href="../payments/payment_schedule.php">
               View Loan Payment Schedule
             </a>
@@ -142,5 +136,27 @@
       <!-- ============================================================================= -->
 
     </div>
+
+    <!-- ============================================================================= -->
+    <!-- Right Aligned -->
+    <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="it505" role="button" data-toggle="dropdown" aria-expanded="false">
+        My Account
+      </a>
+      <div class="dropdown-menu py-0" aria-labelledby="it505">
+        <div class="bg-white dark__bg-1000 py-2 rounded-3">
+
+          <a class="dropdown-item" href="../includes/logout.php">
+            Log Out
+          </a>
+
+        </div>
+      </div>
+    </div>
+    <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
+    <!-- ============================================================================= -->
+
+
   </div>
 </nav>

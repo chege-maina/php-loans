@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2021 at 08:20 PM
+-- Generation Time: Mar 16, 2021 at 12:54 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -102,21 +102,13 @@ INSERT INTO `tbl_currency` (`currency_unit`) VALUES
 --
 
 CREATE TABLE `tbl_customer` (
+  `id` int(11) NOT NULL,
+  `email` varchar(200) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
   `physical_address` varchar(100) NOT NULL,
   `postal_address` varchar(100) NOT NULL,
   `tel_no` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_customer`
---
-
-INSERT INTO `tbl_customer` (`name`, `email`, `physical_address`, `postal_address`, `tel_no`) VALUES
-('Bo Mejia', 'xadywyzo@mailinator.com', 'Laborum Deleniti sa', 'Tempora aliquip eu e', '+1 (429) 739-3701'),
-('Byron Mcmillan', 'pahu@mailinator.com', 'Quae non cillum a et', 'Cum dolorem facilis', '+1 (436) 351-2876'),
-('Dieter Davis', 'lariwodeko@mailinator.com', 'Ut exercitationem ea', 'Ex cumque dolores qu', '+1 (865) 348-8737');
 
 -- --------------------------------------------------------
 
@@ -205,28 +197,10 @@ CREATE TABLE `tbl_od_transactions` (
 
 INSERT INTO `tbl_od_transactions` (`cheque_no`, `bank_name`, `details`, `banking_date`, `value_date`, `dr`, `cr`, `balance`, `opening_bal`, `closing_bal`, `status`) VALUES
 ('0', 'Chase Boyd', 'NONE', '2021-02-23', '2021-02-23', '0', '0', '-10000', '-10000', '-10000', 'pending'),
-('0', 'Chase Boyd', 'NONE', '2021-02-24', '2021-02-24', '0', '0', '-10000', '-10000', '-10000', 'pending'),
-('0', 'Chase Boyd', 'NONE', '2021-02-25', '2021-02-25', '0', '0', '-10000', '-10000', '-10000', 'pending'),
-('0', 'EQUITY BANK', 'NONE', '2021-02-07', '2021-02-07', '0', '0', '20', '20', '20', 'pending'),
-('0', 'EQUITY BANK', 'NONE', '2021-02-08', '2021-02-08', '0', '0', '20', '20', '20', 'pending'),
-('0', 'EQUITY BANK', 'NONE', '2021-02-09', '2021-02-09', '0', '0', '20', '20', '20', 'pending'),
-('0', 'EQUITY BANK', 'NONE', '2021-02-10', '2021-02-10', '0', '0', '20', '20', '20', 'pending'),
-('0', 'EQUITY BANK', 'NONE', '2021-02-11', '2021-02-11', '0', '0', '20', '20', '20', 'pending'),
 ('0', 'KCB', 'NONE', '2021-02-20', '2021-02-20', '0', '0', '1000', '1000', '1000', 'pending'),
 ('0', 'KCB', 'NONE', '2021-02-21', '2021-02-21', '0', '0', '1000', '1000', '1000', 'pending'),
-('0', 'KCB', 'NONE', '2021-02-23', '2021-02-23', '0', '0', '-99000', '-99000', '-99000', 'pending'),
-('0', 'KCB', 'NONE', '2021-02-24', '2021-02-24', '0', '0', '-99000', '-99000', '-99000', 'pending'),
-('0', 'Mannix Merrill', 'NONE', '2021-02-26', '2021-02-26', '0', '0', '1000', '1000', '1000', 'pending'),
-('0', 'Mannix Merrill', 'NONE', '2021-02-27', '2021-02-27', '0', '0', '1000', '1000', '1000', 'pending'),
-('0', 'Mannix Merrill', 'NONE', '2021-02-28', '2021-02-28', '0', '0', '1000', '1000', '1000', 'pending'),
-('3', 'Mannix Merrill', 'Byron Mcmillan', '2021-03-01', '2021-03-01', '4000', '0', '5500', '1000', '-5600', 'pending'),
-('3556', 'Mannix Merrill', 'Gail Mccall', '2021-03-01', '2021-03-03', '0', '5000', '900', '1000', '-5600', 'pending'),
-('4356', 'Mannix Merrill', 'Hyatt Butler', '2021-03-01', '2021-03-01', '0', '3000', '-2100', '1000', '-5600', 'pending'),
 ('6666', 'KCB', 'Bo Mejia', '2021-02-22', '2021-02-22', '850000', '0', '851000', '1000', '-99000', 'pending'),
-('7', 'KCB', 'Rajah Velasquez', '2021-02-22', '2021-02-24', '0', '950000', '-99000', '1000', '-99000', 'pending'),
-('7778', 'Mannix Merrill', 'Bo Mejia', '2021-03-01', '2021-03-03', '500', '0', '1500', '1000', '-5600', 'pending'),
-('788', 'Mannix Merrill', 'Rajah Velasquez', '2021-03-01', '2021-03-03', '0', '3500', '-5600', '1000', '-5600', 'pending'),
-('8', 'Mannix Merrill', 'Dieter Davis', '2021-03-01', '2021-03-03', '400', '0', '5900', '1000', '-5600', 'pending');
+('7', 'KCB', 'Rajah Velasquez', '2021-02-22', '2021-02-24', '0', '950000', '-99000', '1000', '-99000', 'pending');
 
 -- --------------------------------------------------------
 
@@ -270,21 +244,13 @@ INSERT INTO `tbl_payments` (`supplier_name`, `bank_name`, `cheque_no`, `amount`,
 --
 
 CREATE TABLE `tbl_supplier` (
+  `id` int(11) NOT NULL,
+  `email` varchar(200) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `tel_no` varchar(100) NOT NULL,
-  `postal_address` varchar(50) NOT NULL,
-  `physical_address` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_supplier`
---
-
-INSERT INTO `tbl_supplier` (`name`, `email`, `tel_no`, `postal_address`, `physical_address`) VALUES
-('Rajah Velasquez', 'zeryg@mailinator.com', '+1 (117) 557-9511', 'Non rerum officia is', 'Cumque amet possimu'),
-('Hyatt Butler', 'zuqolipano@mailinator.com', '+1 (392) 516-3484', 'Dolor aute ipsa qui', 'Doloremque necessita'),
-('Gail Mccall', 'byrejaryhu@mailinator.com', '+1 (705) 244-1687', 'Enim eum impedit in', 'Laboris rem sunt est');
+  `physical_address` varchar(100) NOT NULL,
+  `postal_address` varchar(100) NOT NULL,
+  `tel_no` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -341,7 +307,7 @@ ALTER TABLE `tbl_currency`
 -- Indexes for table `tbl_customer`
 --
 ALTER TABLE `tbl_customer`
-  ADD PRIMARY KEY (`name`,`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_loans`
@@ -371,15 +337,29 @@ ALTER TABLE `tbl_payments`
 -- Indexes for table `tbl_supplier`
 --
 ALTER TABLE `tbl_supplier`
-  ADD PRIMARY KEY (`name`,`email`),
-  ADD UNIQUE KEY `name` (`name`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_customer`
+--
+ALTER TABLE `tbl_customer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_supplier`
+--
+ALTER TABLE `tbl_supplier`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

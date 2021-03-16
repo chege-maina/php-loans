@@ -21,28 +21,28 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
 
         <div class="col">
-          <label for="email" class="form-label">Email*</label>
+          <label for="email" class="form-label">Email</label>
           <div class="field">
             <p class="control has-icons-left">
-              <input class="form-control" type="email" id="email" name="email" required placeholder="Email">
+              <input class="form-control" type="email" id="email" name="email" placeholder="Email">
             </p>
           </div>
         </div>
 
         <div class="col">
-          <label for="tel_no" class="form-label">Telephone Number*</label>
-          <input name="tel_no" class="form-control" type="tel" placeholder="Tel No" id="sup_tel" required>
+          <label for="tel_no" class="form-label">Telephone Number</label>
+          <input name="tel_no" class="form-control" type="tel" placeholder="Tel No" id="sup_tel">
         </div>
       </div>
 
       <div class="row mt-2">
         <div class="col">
-          <label for="postal_address" class="form-label">Postal Address*</label>
-          <input name="postal_address" id="sup_postal" class="form-control" type="text" placeholder="Postal Address" required>
+          <label for="postal_address" class="form-label">Postal Address</label>
+          <input name="postal_address" id="sup_postal" class="form-control" type="text" placeholder="Postal Address">
         </div>
         <div class="col">
-          <label for="physical_address" class="form-label">Physical Address*</label>
-          <input name="physical_address" id="sup_physical_address" class="form-control" type="text" placeholder="Physical Address" required>
+          <label for="physical_address" class="form-label">Physical Address</label>
+          <input name="physical_address" id="sup_physical_address" class="form-control" type="text" placeholder="Physical Address">
         </div>
       </div>
 
