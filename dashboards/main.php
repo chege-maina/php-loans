@@ -62,7 +62,7 @@ include "../includes/base_page/shared_top_tags.php"
     elem.setAttribute("title_chip", data.date);
     elem.setAttribute("end_value", data[key]);
     elem.setAttribute("prefix", "KSh. ");
-    elem.setAttribute("footer", key.replaceAll("_", " ").trim());
+    elem.setAttribute("footer", key.replaceAll("_", " ").trim().toLowerCase());
     document.querySelector("#orangey").appendChild(elem);
   }
 
@@ -72,7 +72,7 @@ include "../includes/base_page/shared_top_tags.php"
     elem.setAttribute("title_chip", data.date);
     elem.setAttribute("end_value", data[key]);
     elem.setAttribute("prefix", "KSh. ");
-    elem.setAttribute("footer", key.replaceAll("_", " ").trim());
+    elem.setAttribute("footer", key.replaceAll("_", " ").trim().toLowerCase());
     document.querySelector("#cyaney").appendChild(elem);
   }
 
@@ -82,7 +82,7 @@ include "../includes/base_page/shared_top_tags.php"
     elem.setAttribute("title_chip", data.date);
     elem.setAttribute("end_value", data[key]);
     elem.setAttribute("prefix", "KSh. ");
-    elem.setAttribute("footer", key.replaceAll("_", " ").trim());
+    elem.setAttribute("footer", key.replaceAll("_", " ").trim().toLowerCase());
     document.querySelector("#greeney").appendChild(elem);
   }
 
@@ -171,7 +171,7 @@ include "../includes/base_page/shared_top_tags.php"
       data: {
         labels: headers,
         datasets: [{
-          label: 'opening balance',
+          label: 'running balance',
           data: values,
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
           borderColor: 'rgba(255, 99, 132, 1)',
