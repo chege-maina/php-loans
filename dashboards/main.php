@@ -10,18 +10,14 @@ include "../includes/base_page/shared_top_tags.php"
 <h4>Dashboard</h4>
 <div class="row mb-2">
   <div class="col">
-    <fdash-count-up-cyan></fdash-count-up-cyan>
+    <div id="cyaney"></div>
   </div>
   <div class="col">
-    <fdash-count-up-green></fdash-count-up-green>
+    <div id="greeney"></div>
   </div>
   <div class="col">
     <div id="orangey"></div>
     <script>
-      window.addEventListener('DOMContentLoaded', (event) => {
-        const cOrangey = document.createElement("fdash-count-up-orangey");
-        document.querySelector("#orangey").appendChild(cOrangey);
-      });
     </script>
   </div>
 </div>
@@ -60,10 +56,46 @@ include "../includes/base_page/shared_top_tags.php"
   </div>
 </div>
 <script>
+  function addCountUpOrangey(data, key) {
+    const elem = document.createElement("fdash-count-up-orangey");
+    elem.setAttribute("title", data.bank);
+    elem.setAttribute("title_chip", data.date);
+    elem.setAttribute("end_value", data[key]);
+    elem.setAttribute("prefix", "KSh. ");
+    elem.setAttribute("footer", key.replaceAll("_", " ").trim());
+    document.querySelector("#orangey").appendChild(elem);
+  }
+
+  function addCountUpCyaney(data, key) {
+    const elem = document.createElement("fdash-count-up-cyan");
+    elem.setAttribute("title", data.bank);
+    elem.setAttribute("title_chip", data.date);
+    elem.setAttribute("end_value", data[key]);
+    elem.setAttribute("prefix", "KSh. ");
+    elem.setAttribute("footer", key.replaceAll("_", " ").trim());
+    document.querySelector("#cyaney").appendChild(elem);
+  }
+
+  function addCountUpGreeney(data, key) {
+    const elem = document.createElement("fdash-count-up-green");
+    elem.setAttribute("title", data.bank);
+    elem.setAttribute("title_chip", data.date);
+    elem.setAttribute("end_value", data[key]);
+    elem.setAttribute("prefix", "KSh. ");
+    elem.setAttribute("footer", key.replaceAll("_", " ").trim());
+    document.querySelector("#greeney").appendChild(elem);
+  }
+
+
   window.addEventListener('DOMContentLoaded', (event) => {
     fetch('./dashboard_od_closingbal.php')
       .then(response => response.json())
       .then(data => {
+
+        let i = (Math.random() * (data.length - 1)).toFixed(0);
+        const rand_row = data[i];
+        addCountUpOrangey(rand_row, "closing balance");
+
         let headers = data.map(row => row.bank + "\n" + row.date);
         let values = data.map(row => row["closing balance"]);
         drawClosingBalances(headers, values);
@@ -75,6 +107,12 @@ include "../includes/base_page/shared_top_tags.php"
     fetch('./dashboard_od_openingbal.php')
       .then(response => response.json())
       .then(data => {
+
+        let i = (Math.random() * (data.length - 1)).toFixed(0);
+        const rand_row = data[i];
+        addCountUpCyaney(rand_row, "opening balance");
+
+        console.log(data);
         let headers = data.map(row => row.bank + "\n" + row.date);
         let values = data.map(row => row["opening balance"]);
         drawOpeningBal(headers, values);
@@ -86,18 +124,14 @@ include "../includes/base_page/shared_top_tags.php"
     fetch('./dashboard_od_stuff.php')
       .then(response => response.json())
       .then(data => {
+
+        let i = (Math.random() * (data.length - 1)).toFixed(0);
+        const rand_row = data[i];
+        addCountUpGreeney(rand_row, "Running_balance");
+
         let headers = data.map(row => row.bank + "\n" + row.date);
         let values = data.map(row => row["Running_balance"]);
         drawRunningBal(headers, values);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-
-    fetch('./dashboard_od_totaltransactions.php')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
       })
       .catch((error) => {
         console.error('Error:', error);
