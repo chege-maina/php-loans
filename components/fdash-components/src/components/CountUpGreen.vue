@@ -19,7 +19,7 @@
         class="display-4 fs-4 mb-2 fw-normal font-sans-serif"
         v-bind:data-countup="countup_json"
       >
-        {{ prefix }} {{ end_value }}
+        {{ prefix }} {{ end_val_commified }}
       </div>
       <a class="fw-semi-bold fs--1 text-nowrap">{{ footer }} &raquo; </a>
     </div>
@@ -43,9 +43,23 @@ export default {
       };
       return JSON.stringify(tmp);
     },
+    end_val_commified: function () {
+      return this.numberWithCommas(this.end_value);
+    },
+  },
+  methods: {
+    numberWithCommas: function (x) {
+      if (isNaN(x)) {
+        return x;
+      }
+      var parts = x.toString().split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts.join(".");
+    },
   },
 };
 </script>
+
 <style>
 @import "https://qonsolidated-solutions.github.io/falcon-assets/assets/css/theme.min.css";
 </style>
