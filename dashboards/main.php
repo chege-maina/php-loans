@@ -3,6 +3,7 @@ include "../includes/base_page/shared_top_tags.php"
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.0.2/dist/echarts.min.js"></script>
 
 <script src="https://unpkg.com/vue"></script>
 <script src="../components/fdash-components/dist/fdash.js"></script>
@@ -23,11 +24,12 @@ include "../includes/base_page/shared_top_tags.php"
 </div>
 
 <div class="row">
+  <div class="col col-md-2">
+  </div>
   <div class="col">
     <div class="card">
-      <h6 class="card-header bg-light">Opening Balance</h6>
       <div class=" card-body position-relative">
-        <canvas id="opening_bal" width="200" height="50"></canvas>
+        <div id="opening_bal" style="height:400px;" data-echart-responsive="true"></div>
       </div>
     </div>
   </div>
@@ -36,25 +38,28 @@ include "../includes/base_page/shared_top_tags.php"
 <div class="row mt-2">
   <div class="col">
     <div class="card">
-      <h6 class="card-header bg-light">Closing Balance</h6>
       <div class=" card-body position-relative">
-        <canvas id="closing_bal" width="150" height="40"></canvas>
+        <div id="running_bal" style="height:400px;" data-echart-responsive="true"></div>
       </div>
     </div>
   </div>
+  <div class="col col-md-2">
+  </div>
 </div>
-
 
 <div class="row mt-2">
+  <div class="col col-md-2">
+  </div>
   <div class="col">
     <div class="card">
-      <h6 class="card-header bg-light">Running Balance</h6>
       <div class=" card-body position-relative">
-        <canvas id="running_bal" width="200" height="50"></canvas>
+        <!-- prepare a DOM container with width and height -->
+        <div id="closing_chart" style="height:400px;" data-echart-responsive="true"></div>
       </div>
     </div>
   </div>
 </div>
+
 <script>
   function addCountUpOrangey(data, key) {
     const elem = document.createElement("fdash-count-up-orangey");
@@ -87,6 +92,36 @@ include "../includes/base_page/shared_top_tags.php"
   }
 
 
+
+  let createEchart = (id, headers, values, title, legend) => {
+    var myChart = echarts.init(document.getElementById(id));
+
+    // specify chart configuration item and data
+    var option = {
+      title: {
+        text: title,
+      },
+      tooltip: {},
+      legend: {
+        data: [legend]
+      },
+      xAxis: {
+        data: headers,
+      },
+      yAxis: {},
+      series: [{
+        name: legend,
+        type: 'bar',
+        data: values,
+      }]
+    };
+
+    // use configuration item and data specified to show chart
+    myChart.setOption(option);
+
+  };
+
+
   window.addEventListener('DOMContentLoaded', (event) => {
     fetch('./dashboard_od_closingbal.php')
       .then(response => response.json())
@@ -98,7 +133,7 @@ include "../includes/base_page/shared_top_tags.php"
 
         let headers = data.map(row => row.bank + "\n" + row.date);
         let values = data.map(row => row["closing balance"]);
-        drawClosingBalances(headers, values);
+        createEchart('closing_chart', headers, values, "Closing Balance", "closing balance");
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -115,7 +150,7 @@ include "../includes/base_page/shared_top_tags.php"
         console.log(data);
         let headers = data.map(row => row.bank + "\n" + row.date);
         let values = data.map(row => row["opening balance"]);
-        drawOpeningBal(headers, values);
+        createEchart('opening_bal', headers, values, "Opening Balance", "opening balance");
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -131,92 +166,16 @@ include "../includes/base_page/shared_top_tags.php"
 
         let headers = data.map(row => row.bank + "\n" + row.date);
         let values = data.map(row => row["Running_balance"]);
-        drawRunningBal(headers, values);
+        createEchart('running_bal', headers, values, "Running Balance", "running balance");
+        createEchart('running_bal', headers, values, "Running Balance", "running balance");
       })
       .catch((error) => {
         console.error('Error:', error);
       });
   });
-
-  function drawOpeningBal(headers, values) {
-    var ctx = document.getElementById('opening_bal').getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: headers,
-        datasets: [{
-          label: 'opening balance',
-          data: values,
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-  }
-
-  function drawRunningBal(headers, values) {
-    var ctx = document.getElementById('running_bal').getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: headers,
-        datasets: [{
-          label: 'running balance',
-          data: values,
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-  }
-
-
-  function drawClosingBalances(headers, values) {
-    var ctx = document.getElementById('closing_bal').getContext('2d');
-    var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: headers,
-        datasets: [{
-          label: 'Closing Balance',
-          data: values,
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-  }
 </script>
+
+
 
 <?php
 include "../includes/base_page/shared_bottom_tags.php"
