@@ -24,8 +24,15 @@ include "../includes/base_page/shared_top_tags.php"
 </div>
 
 <div class="row">
-  <div class="col col-md-2">
+  <div class="col col-md-3 ml-0">
+    <div class="card">
+      <div class="card-body position-relative">
+        <div id="ob_rose" style="height: 400px" data-echart-responsive="true">
+        </div>
+      </div>
+    </div>
   </div>
+
   <div class="col">
     <div class="card">
       <div class=" card-body position-relative">
@@ -43,12 +50,25 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
     </div>
   </div>
-  <div class="col col-md-2">
+
+  <div class="col col-md-3 ml-0">
+    <div class="card">
+      <div class="card-body position-relative">
+        <div id="rb_pie" style="height: 400px" data-echart-responsive="true">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="row mt-2">
-  <div class="col col-md-2">
+  <div class="col col-md-3 ml-0">
+    <div class="card">
+      <div class="card-body position-relative">
+        <div id="cl_pie" style="height: 400px" data-echart-responsive="true">
+        </div>
+      </div>
+    </div>
   </div>
   <div class="col">
     <div class="card">
@@ -94,10 +114,10 @@ include "../includes/base_page/shared_top_tags.php"
 
 
   let createEchart = (id, headers, values, title, legend) => {
-    var myChart = echarts.init(document.getElementById(id));
+    let myChart = echarts.init(document.getElementById(id));
 
     // specify chart configuration item and data
-    var option = {
+    let option = {
       title: {
         text: title,
       },
@@ -122,6 +142,55 @@ include "../includes/base_page/shared_top_tags.php"
   };
 
 
+  // let createRose = (id, headers, values, title, legend) => {
+  let createRose = (id, data) => {
+    let myChart = echarts.init(document.getElementById(id));
+    // let myChart = echarts.init(document.getElementById("ob_rose"));
+    let option = {
+      legend: {
+        top: 'bottom'
+      },
+      tooltip: {},
+      toolbox: {
+        show: true,
+        feature: {
+          mark: {
+            show: true
+          },
+          dataView: {
+            show: true,
+            readOnly: false
+          },
+          restore: {
+            show: true
+          },
+          saveAsImage: {
+            show: true
+          }
+        }
+      },
+      series: [{
+        name: '面积模式',
+        type: 'pie',
+        radius: [30, 100],
+        center: ['50%', '50%'],
+        roseType: 'area',
+        itemStyle: {
+          borderRadius: 8
+        },
+        data: data,
+      }]
+    };
+    // use configuration item and data specified to show chart
+    myChart.setOption(option);
+
+  };
+
+  function nbrSign(val) {
+    return val < 0 ? "-" : "+";
+  }
+
+
   window.addEventListener('DOMContentLoaded', (event) => {
     fetch('./dashboard_od_closingbal.php')
       .then(response => response.json())
@@ -134,6 +203,16 @@ include "../includes/base_page/shared_top_tags.php"
         let headers = data.map(row => row.bank + "\n" + row.date);
         let values = data.map(row => row["closing balance"]);
         createEchart('closing_chart', headers, values, "Closing Balance", "closing balance");
+
+        let p_headers = data.map(row => row.bank);
+        let pie_data = [];
+        for (let i = 0; i < headers.length; i++) {
+          pie_data.push({
+            value: Math.abs(values[i]),
+            name: p_headers[i] + ` (${nbrSign(values[i])})`
+          })
+        }
+        createRose("cl_pie", pie_data);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -151,6 +230,17 @@ include "../includes/base_page/shared_top_tags.php"
         let headers = data.map(row => row.bank + "\n" + row.date);
         let values = data.map(row => row["opening balance"]);
         createEchart('opening_bal', headers, values, "Opening Balance", "opening balance");
+
+        let p_headers = data.map(row => row.bank);
+        let pie_data = [];
+        for (let i = 0; i < headers.length; i++) {
+          pie_data.push({
+            value: Math.abs(values[i]),
+            name: p_headers[i] + ` (${nbrSign(values[i])})`
+          })
+        }
+        createRose("ob_rose", pie_data);
+
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -167,7 +257,18 @@ include "../includes/base_page/shared_top_tags.php"
         let headers = data.map(row => row.bank + "\n" + row.date);
         let values = data.map(row => row["Running_balance"]);
         createEchart('running_bal', headers, values, "Running Balance", "running balance");
-        createEchart('running_bal', headers, values, "Running Balance", "running balance");
+
+        let p_headers = data.map(row => row.bank);
+        let pie_data = [];
+        for (let i = 0; i < headers.length; i++) {
+          pie_data.push({
+            value: Math.abs(values[i]),
+            name: p_headers[i] + ` (${nbrSign(values[i])})`
+          })
+        }
+        createRose("rb_pie", pie_data);
+
+
       })
       .catch((error) => {
         console.error('Error:', error);
