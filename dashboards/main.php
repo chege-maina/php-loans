@@ -143,9 +143,8 @@ include "../includes/base_page/shared_top_tags.php"
 
 
   // let createRose = (id, headers, values, title, legend) => {
-  let createRose = (id, data) => {
+  let createRose = (id, data, legend) => {
     let myChart = echarts.init(document.getElementById(id));
-    // let myChart = echarts.init(document.getElementById("ob_rose"));
     let option = {
       legend: {
         top: 'bottom'
@@ -170,7 +169,7 @@ include "../includes/base_page/shared_top_tags.php"
         }
       },
       series: [{
-        name: '面积模式',
+        name: legend,
         type: 'pie',
         radius: [30, 100],
         center: ['50%', '50%'],
@@ -212,7 +211,7 @@ include "../includes/base_page/shared_top_tags.php"
             name: p_headers[i] + ` (${nbrSign(values[i])})`
           })
         }
-        createRose("cl_pie", pie_data);
+        createRose("cl_pie", pie_data, "closing balance");
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -239,7 +238,7 @@ include "../includes/base_page/shared_top_tags.php"
             name: p_headers[i] + ` (${nbrSign(values[i])})`
           })
         }
-        createRose("ob_rose", pie_data);
+        createRose("ob_rose", pie_data, "opening balance");
 
       })
       .catch((error) => {
@@ -266,7 +265,7 @@ include "../includes/base_page/shared_top_tags.php"
             name: p_headers[i] + ` (${nbrSign(values[i])})`
           })
         }
-        createRose("rb_pie", pie_data);
+        createRose("rb_pie", pie_data, "running balance");
 
 
       })
