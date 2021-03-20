@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pay_dateadd = $row2['pay_date'];
     $balanceadd = $row2['balance'];
     $principleadd = $row2['principle'];
-    $ourbalance = $principleadd + $balanceadd;
+    $ourbalance = round($principleadd + $balanceadd, 2);
 
     $result = mysqli_query($conn, $query);
     $response = array();
