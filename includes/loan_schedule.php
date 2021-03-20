@@ -84,10 +84,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     while ($row = mysqli_fetch_assoc($result)) {
       $pay_number = $row['pay_no'];
       $pay_date = $row['pay_date'];
-      $principledd = $row['principle'];
+      $principledd = round($row['principle'], 2);
       $interestdd = round($row['interest'], 2);
       $installmentdd = round($row['installment'], 2);
-      $balance = $row['balance'];
+      $balance = round($row['balance'], 2);
       $status = $row['status'];
 
       array_push(
