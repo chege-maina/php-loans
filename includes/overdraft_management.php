@@ -43,6 +43,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cr = $row3['sum(cr)'];
         $dr = $row3['sum(dr)'];
       }
+      if (is_null($cr)) {
+        $cr = 0;
+      }
+      if (is_null($dr)) {
+        $dr = 0;
+      }
       $balance = ($balance + $dr) - $cr;
 
       if ($balance < 0) {
