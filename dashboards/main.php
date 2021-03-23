@@ -17,9 +17,14 @@ include "../includes/base_page/shared_top_tags.php"
     <div id="greeney"></div>
   </div>
   <div class="col">
-    <div id="orangey"></div>
-    <script>
-    </script>
+    <div class="row">
+      <div class="col">
+        <div id="orangey"></div>
+      </div>
+      <div class="col">
+        <div id="receipts"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -111,6 +116,26 @@ include "../includes/base_page/shared_top_tags.php"
     document.querySelector("#greeney").appendChild(elem);
   }
 
+  function addCountUpOrangeyPay(data) {
+    const elem = document.createElement("fdash-count-up-orangey");
+    elem.setAttribute("title", "Payments");
+    elem.setAttribute("title_chip", "pending");
+    elem.setAttribute("end_value", data);
+    elem.setAttribute("prefix", "");
+    elem.setAttribute("footer", "payments");
+    document.querySelector("#orangey").appendChild(elem);
+  }
+
+  function addCountUpReceipts(data) {
+    console.log("here")
+    const elem = document.createElement("fdash-count-up-cyan");
+    elem.setAttribute("title", "Receipts");
+    elem.setAttribute("title_chip", "pending");
+    elem.setAttribute("end_value", data);
+    elem.setAttribute("prefix", "");
+    elem.setAttribute("footer", "receipts");
+    document.querySelector("#receipts").appendChild(elem);
+  }
 
 
   let createEchart = (id, headers, values, title, legend) => {
@@ -197,7 +222,7 @@ include "../includes/base_page/shared_top_tags.php"
 
         let i = (Math.random() * (data.length - 1)).toFixed(0);
         const rand_row = data[i];
-        addCountUpOrangey(rand_row, "closing balance");
+        // addCountUpOrangey(rand_row, "closing balance");
 
         let headers = data.map(row => row.bank + "\n" + row.date);
         let values = data.map(row => row["closing balance"]);
@@ -268,6 +293,16 @@ include "../includes/base_page/shared_top_tags.php"
         createRose("rb_pie", pie_data, "running balance");
 
 
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
+    fetch('./get_single_value_dict.php')
+      .then(response => response.json())
+      .then(data => {
+        addCountUpOrangeyPay(data[0].count);
+        addCountUpReceipts(data[1].count);
       })
       .catch((error) => {
         console.error('Error:', error);
