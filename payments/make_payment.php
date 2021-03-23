@@ -18,6 +18,12 @@ include "../includes/base_page/shared_top_tags.php"
           </select>
         </div>
         <div class="col">
+          <label for="expense" class="form-label">Add Expense</label>
+          <div class="control">
+            <input type="text" name="expense" id="expense" class="form-control" placeholder="Expense" onkeyup="checkIfEmpty(this.value)" required>
+          </div>
+        </div>
+        <div class="col">
           <label for="bank" class="form-label">Select Bank</label>
           <select id="bank" class="form-select" required>
           </select>
@@ -69,6 +75,7 @@ include "../includes/base_page/shared_top_tags.php"
 
 <script>
   const supplier = document.querySelector("#supplier");
+  const expense = document.querySelector("#expense");
   const bank = document.querySelector("#bank");
   const p_date = document.querySelector("#p_date");
   const cheque_number = document.querySelector("#cheque_number");
@@ -91,7 +98,11 @@ include "../includes/base_page/shared_top_tags.php"
     console.log("amount", amount_paid.value);
     console.log("====================================");
 
-    formData.append("supplier_name", supplier.value);
+    formData.append("supplier_name",
+      supplier.disabled ?
+      expense.value :
+      supplier.value
+    );
     formData.append("bank_name", bank.value);
     formData.append("date", p_date.value);
     formData.append("cheque_type", cheque_type.value);
@@ -122,6 +133,17 @@ include "../includes/base_page/shared_top_tags.php"
       });
 
     return false;
+  }
+
+  function checkIfEmpty(val) {
+    if (val.trim() != "") {
+
+      supplier.disabled = true;
+    } else {
+
+      supplier.disabled = false;
+    }
+
   }
 
   window.addEventListener('DOMContentLoaded', (event) => {
