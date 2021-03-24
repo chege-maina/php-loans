@@ -126,6 +126,7 @@ include "../includes/base_page/shared_bottom_tags.php"
     const formData = new FormData();
 
     console.log("====================================");
+    console.log("loan_acc", account.value);
     console.log("bank_name", bank.value);
     console.log("dis_date", d_date.value);
     console.log("first_date", r_date.value);
@@ -138,6 +139,7 @@ include "../includes/base_page/shared_bottom_tags.php"
     console.log("loan_category", loan_category.value);
     console.log("====================================");
 
+    formData.append("loan_acc", account.value);
     formData.append("bank_name", bank.value);
     formData.append("dis_date", d_date.value);
     formData.append("first_date", r_date.value);
