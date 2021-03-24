@@ -107,6 +107,7 @@ include "../includes/base_page/shared_bottom_tags.php"
 
 <script>
   const bank = document.querySelector("#bank");
+  const account = document.querySelector("#account");
   const d_date = document.querySelector("#d_date");
   const r_date = document.querySelector("#r_date");
   const amt_dis = document.querySelector("#amt_dis");
