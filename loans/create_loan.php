@@ -18,7 +18,10 @@ include "../includes/base_page/shared_top_tags.php"
           <select class="form-select" id="bank" required>
           </select>
         </div>
-
+        <div class="col">
+          <label for="account" class="form-label">Loan Account*</label>
+          <input name="account" id="account" class="form-control" type="number" placeholder="Loan Account" required>
+        </div>
         <div class="col">
           <label for="d_date" class="form-label">Date of Disbursment*</label>
           <!-- autofill current date  -->
