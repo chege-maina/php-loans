@@ -23,7 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $installment = sanitize_input($_POST["installment"]);
   $next_installment = sanitize_input($_POST["next_installment"]);
   $interest = sanitize_input($_POST["interest"]);
-  $loan_category = sanitize_input($_POST["loan_category"]);
+  $loan_acc = sanitize_input($_POST["interest"]);
+  $loan_category = sanitize_input($_POST["loan_acc"]);
   $late_repayment = sanitize_input($_POST["late_repayment"]);
 
   if ($stmt = $con->prepare('SELECT bank_name FROM tbl_loans WHERE bank_name = ? and dis_date =?')) {
@@ -34,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->store_result();
     if ($stmt->num_rows == 0) {
       if ($stmt = $con->prepare('INSERT INTO tbl_loans (bank_name, dis_date, first_date, 
-      amount, period, installment, next_installment, interest, loan_category, late_repayment) VALUES (?,?,?,?,?,?,?,?,?,?)')) {
-        $stmt->bind_param('ssssssssss', $bank_name, $dis_date, $first_date, $amount, $period, $installment, $next_installment, $interest, $loan_category, $late_repayment);
+      amount, period, installment, next_installment, interest, loan_category, late_repayment, loan_acc) VALUES (?,?,?,?,?,?,?,?,?,?,?)')) {
+        $stmt->bind_param('sssssssssss', $bank_name, $dis_date, $first_date, $amount, $period, $installment, $next_installment, $interest, $loan_category, $late_repayment, $loan_acc);
 
         if ($stmt->execute()) {
           $responseArray = array(
