@@ -88,6 +88,7 @@ include "../includes/base_page/shared_top_tags.php"
   const bank_name = document.querySelector('#bank_name');
   const balance = document.querySelector('#balance');
   const payment_date = document.querySelector('#payment_date');
+  const dis_date = document.querySelector('#dis_date');
   const installment = document.querySelector('#installment');
 
   function selectBank() {
@@ -142,6 +143,7 @@ include "../includes/base_page/shared_top_tags.php"
         data = data[0];
         balance.value = numberWithCommas(data.balance_dd);
         payment_date.value = data.paymentdate_dd;
+        dis_date.value = data.disbur_date;
         installment.value = numberWithCommas(data.installment_dd);
         console.log(data);
         updateTable(data.table_items);
