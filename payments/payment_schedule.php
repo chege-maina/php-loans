@@ -105,7 +105,7 @@ include "../includes/base_page/shared_top_tags.php"
       })
       .then(response => response.json())
       .then(result => {
-        initSelectElement("#disbursment_date", "-- Select Loan Account --");
+        initSelectElement("#disbursment_date", "-- Select Loan Account  --");
         result.forEach((value) => {
           let opt = document.createElement("option");
           opt.appendChild(document.createTextNode(value["disbursment_date"]));
