@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2021 at 01:14 PM
+-- Generation Time: Mar 25, 2021 at 10:51 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -24,21 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_od_transactions`
+-- Table structure for table `tbl_loan_schedule`
 --
 
-CREATE TABLE `tbl_od_transactions` (
-  `cheque_no` varchar(254) NOT NULL,
-  `bank_name` varchar(100) NOT NULL,
-  `details` varchar(254) NOT NULL,
-  `banking_date` date NOT NULL,
-  `value_date` date NOT NULL,
-  `dr` varchar(100) NOT NULL,
-  `cr` varchar(100) NOT NULL,
+CREATE TABLE `tbl_loan_schedule` (
+  `bank` varchar(100) NOT NULL,
+  `dis_date` date NOT NULL,
+  `pay_date` date NOT NULL,
   `balance` varchar(100) NOT NULL,
-  `opening_bal` varchar(100) NOT NULL,
-  `closing_bal` varchar(100) NOT NULL,
-  `status` varchar(15) NOT NULL DEFAULT 'pending'
+  `installment` varchar(100) NOT NULL,
+  `pay_no` varchar(100) NOT NULL,
+  `principle` varchar(100) NOT NULL,
+  `interest` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL DEFAULT 'pending',
+  `loan_acc` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -46,10 +45,10 @@ CREATE TABLE `tbl_od_transactions` (
 --
 
 --
--- Indexes for table `tbl_od_transactions`
+-- Indexes for table `tbl_loan_schedule`
 --
-ALTER TABLE `tbl_od_transactions`
-  ADD PRIMARY KEY (`cheque_no`,`bank_name`,`details`);
+ALTER TABLE `tbl_loan_schedule`
+  ADD PRIMARY KEY (`bank`,`dis_date`,`pay_date`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'paymentdate_dd' => $pay_dateadd,
         'installment_dd' => $installmentadd,
         'balance_dd' => $ourbalance,
-        'disburbuse_date' => $dismb_date,
+        'disbur_date' => $dismb_date,
         'table_items' => $response
       )
     );
