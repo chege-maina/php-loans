@@ -11,7 +11,7 @@ include "../includes/base_page/shared_top_tags.php"
   <div class="card-body ">
     <!-- Content is to start here -->
     <div class="row ">
-      <div class="col col-md-4">
+      <div class="col">
         <label for=" branch_name" class="form-label">Select Bank</label>
         <div class="input-group">
           <select class="form-select" name="bank_name" id="bank_name" required>
@@ -19,16 +19,25 @@ include "../includes/base_page/shared_top_tags.php"
           <button class="btn btn-primary" type="button" onclick="selectBank()">Select</button>
         </div>
       </div>
-    </div>
-
-    <hr>
-    <div class="row">
-      <div class="col is-4">
-        <label for=" branch_name" class="form-label">Select Loan Disbursement Date</label>
+      <div class="col">
+        <label for=" branch_name" class="form-label">Select Loan Account</label>
         <div class="input-group">
           <select class="form-select" id="disbursment_date" required>
           </select>
           <button type="button" class="btn btn-primary" onclick="selectDisbursment()">Select</button>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+
+      <div class="col">
+        <div class="field">
+          <label class="form-label">Loan Disbursement Date</label>
+          <div class="control">
+            <input class="form-control" type="date" id="dis_date" readonly>
+          </div>
         </div>
       </div>
 
@@ -95,7 +104,7 @@ include "../includes/base_page/shared_top_tags.php"
       })
       .then(response => response.json())
       .then(result => {
-        initSelectElement("#disbursment_date", "-- Select Disbursment --");
+        initSelectElement("#disbursment_date", "-- Select Loan Account --");
         result.forEach((value) => {
           let opt = document.createElement("option");
           opt.appendChild(document.createTextNode(value["disbursment_date"]));
