@@ -24,18 +24,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $period = $row['period'];
       $dismb_date = $row['dis_date'];
       $first_date = $row['first_date'];
-      $loan_bal = $amount_dis;
+      $loan_bal = round($amount_dis, 2);
       $count = 1;
       $open_date = $first_date;
-      $principle = $amount_dis / $period;
+      $principle = round(($amount_dis / $period), 2);
 
 
       while ($period >= $count) {
 
 
-        $interest_amt = $loan_bal / 100 * $interest / 12;
-        $installment = $principle + $interest_amt;
-        $loan_bal = $loan_bal - $principle;
+        $interest_amt = round(($loan_bal / 100 * $interest / 12), 2);
+        $installment = round(($principle + $interest_amt), 2);
+        $loan_bal = round(($loan_bal - $principle), 2);
 
         $mysql = "INSERT INTO tbl_loan_schedule (bank, dis_date, pay_date, balance, installment, pay_no,
     principle, interest, loan_acc) VALUES('" . $bank . "','" . $dismb_date . "','" . $open_date . "','" . $loan_bal . "',
@@ -56,12 +56,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $day = date("D", strtotime($checkdate));
         if (strcmp($day, 'Sun') == 0) {
           $checkdate = date('Y-m-d', strtotime($checkdate . ' - 2 days'));
-          $sql = "UPDATE tbl_loan_schedule SET pay_date = '$checkdate' WHERE pay_date = '$realdate ' and bank ='$bank' and dis_date='$dis_date'";
+          $sql = "UPDATE tbl_loan_schedule SET pay_date = '$checkdate' WHERE pay_date = '$realdate ' and bank ='$bank' and loan_acc='$dis_date'";
           mysqli_query($conn, $sql);
         }
         if (strcmp($day, 'Sat') == 0) {
           $checkdate = date('Y-m-d', strtotime($checkdate . ' - 1 days'));
-          $sql = "UPDATE tbl_loan_schedule SET pay_date = '$checkdate' WHERE pay_date = '$realdate ' and bank ='$bank' and dis_date='$dis_date'";
+          $sql = "UPDATE tbl_loan_schedule SET pay_date = '$checkdate' WHERE pay_date = '$realdate ' and bank ='$bank' and loan_acc='$dis_date'";
           mysqli_query($conn, $sql);
         }
       }
