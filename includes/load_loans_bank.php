@@ -16,7 +16,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     array_push(
         $response,
         array(
-            'disbursment_date' => $row['dis_date']
+            'disbursment_date' => $row['loan_acc']
         )
     );
 }
