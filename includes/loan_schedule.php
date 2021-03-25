@@ -7,14 +7,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $dis_date = $_POST["disbursment_date"];
   $stats = 'pending';
 
-  $query2 = "SELECT count(bank) FROM tbl_loan_schedule WHERE bank ='$bank' and dis_date='$dis_date' and status='$stats'";
+  $query2 = "SELECT count(bank) FROM tbl_loan_schedule WHERE bank ='$bank' and loan_acc='$dis_date' and status='$stats'";
   $result2 = mysqli_query($conn, $query2);
   $row2 = mysqli_fetch_assoc($result2);
   $counter = $row2['count(bank)'];
   if ($counter == 0) {
 
 
-    $query = "SELECT * FROM tbl_loans WHERE bank_name ='$bank' and dis_date='$dis_date' and status='$stats'";
+    $query = "SELECT * FROM tbl_loans WHERE bank_name ='$bank' and loan_acc='$dis_date' and status='$stats'";
     $result = mysqli_query($conn, $query);
 
     if ($row = mysqli_fetch_assoc($result)) {
@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $amount_dis = $row['amount'];
       $interest = $row['interest'];
       $period = $row['period'];
+      $dismb_date = $row['dis_date'];
       $first_date = $row['first_date'];
       $loan_bal = $amount_dis;
       $count = 1;
@@ -37,14 +38,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $loan_bal = $loan_bal - $principle;
 
         $mysql = "INSERT INTO tbl_loan_schedule (bank, dis_date, pay_date, balance, installment, pay_no,
-    principle, interest) VALUES('" . $bank . "','" . $dis_date . "','" . $open_date . "','" . $loan_bal . "',
-    '" . $installment . "', '" . $count . "','" . $principle . "','" . $interest_amt . "')";
+    principle, interest, loan_acc) VALUES('" . $bank . "','" . $dismb_date . "','" . $open_date . "','" . $loan_bal . "',
+    '" . $installment . "', '" . $count . "','" . $principle . "','" . $interest_amt . "' ,'" . $dis_date . "')";
         mysqli_query($conn, $mysql);
 
         $open_date = date('Y-m-d', strtotime($open_date . ' + 1 months'));
         $count++;
       }
-      $query = "SELECT pay_date FROM tbl_loan_schedule WHERE bank ='$bank' and dis_date='$dis_date'";
+      $query = "SELECT pay_date FROM tbl_loan_schedule WHERE bank ='$bank' and loan_acc='$dis_date'";
 
       $result = mysqli_query($conn, $query);
       $response = array();
@@ -66,8 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
     }
   }
-  $query2 = "SELECT * FROM tbl_loan_schedule WHERE bank ='$bank' and dis_date='$dis_date' and status='pending' ORDER BY pay_date ASC LIMIT 1";
-  $query = "SELECT * FROM tbl_loan_schedule WHERE bank ='$bank' and dis_date='$dis_date'";
+  $query2 = "SELECT * FROM tbl_loan_schedule WHERE bank ='$bank' and loan_acc='$dis_date' and status='pending' ORDER BY pay_date ASC LIMIT 1";
+  $query = "SELECT * FROM tbl_loan_schedule WHERE bank ='$bank' and loan_acc='$dis_date'";
 
   $result2 = mysqli_query($conn, $query2);
   $response2 = array();
@@ -109,6 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'paymentdate_dd' => $pay_dateadd,
         'installment_dd' => $installmentadd,
         'balance_dd' => $ourbalance,
+        'disburbuse_date' => $dismb_date,
         'table_items' => $response
       )
     );
