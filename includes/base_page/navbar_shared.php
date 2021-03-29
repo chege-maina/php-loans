@@ -93,6 +93,10 @@
               Manage Receipts
             </a>
             <hr class="dropdown-divider">
+            <a class="dropdown-item" href="../receipts/interbank.php">
+              Interbank Transfer
+            </a>
+            <hr class="dropdown-divider">
             <a class="dropdown-item" href="../payments/overdraft_mngt1.php">
               Post Bank Positions
             </a>
