@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2021 at 10:51 AM
+-- Generation Time: Mar 31, 2021 at 07:14 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -37,7 +37,8 @@ CREATE TABLE `tbl_loan_schedule` (
   `principle` varchar(100) NOT NULL,
   `interest` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL DEFAULT 'pending',
-  `loan_acc` varchar(100) NOT NULL
+  `loan_acc` varchar(100) NOT NULL,
+  `id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -48,7 +49,17 @@ CREATE TABLE `tbl_loan_schedule` (
 -- Indexes for table `tbl_loan_schedule`
 --
 ALTER TABLE `tbl_loan_schedule`
-  ADD PRIMARY KEY (`bank`,`dis_date`,`pay_date`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tbl_loan_schedule`
+--
+ALTER TABLE `tbl_loan_schedule`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
