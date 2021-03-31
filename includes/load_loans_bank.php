@@ -4,7 +4,7 @@ header("Content-type:application/json");
 
 include_once 'dbconnect.php';
 session_start();
-$bank = $_POST["bank"];
+$bank = "EQUITY BANK"; //$_POST["bank"];
 
 $query = "SELECT * FROM tbl_loans WHERE bank_name = '$bank' and status='pending'";
 

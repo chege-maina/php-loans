@@ -23,13 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $installment = sanitize_input($_POST["installment"]);
   $next_installment = sanitize_input($_POST["next_installment"]);
   $interest = sanitize_input($_POST["interest"]);
-  $loan_acc = sanitize_input($_POST["interest"]);
-  $loan_category = sanitize_input($_POST["loan_acc"]);
+  $loan_acc = sanitize_input($_POST["loan_acc"]);
+  $loan_category = sanitize_input($_POST["loan_category"]);
   $late_repayment = sanitize_input($_POST["late_repayment"]);
 
-  if ($stmt = $con->prepare('SELECT bank_name FROM tbl_loans WHERE bank_name = ? and dis_date =?')) {
+  if ($stmt = $con->prepare('SELECT bank_name FROM tbl_loans WHERE bank_name = ? and dis_date =? and loan_acc =?')) {
     // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
-    $stmt->bind_param('ss', $bank_name, $dis_date);
+    $stmt->bind_param('sss', $bank_name, $dis_date, $loan_acc);
     $stmt->execute();
     // Store the result so we can check if the account exists in the database.
     $stmt->store_result();
