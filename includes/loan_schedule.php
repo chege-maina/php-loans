@@ -76,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $installmentadd = round($row2['installment'], 2);
     $pay_dateadd = $row2['pay_date'];
     $balanceadd = $row2['balance'];
+    $dismb_date = $row2['dis_date'];
     $principleadd = $row2['principle'];
     $ourbalance = round($principleadd + $balanceadd, 2);
 
