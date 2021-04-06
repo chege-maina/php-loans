@@ -55,7 +55,7 @@ include "../includes/base_page/shared_top_tags.php"
         </div>
         <div class="col" style="display:none">
           <label for="repayment_amount" class="form-label">Fixed Repayment amount*</label>
-          <input name="repayment_amount" id="repayment_amount" class="form-control" type="number" placeholder="Repayment Amount" required value="null">
+          <input name="repayment_amount" id="repayment_amount" class="form-control" type="text" placeholder="Repayment Amount" required value="null">
         </div>
         <div class="col">
           <label for="next_payment" class="form-label">Next Payment Installment*</label>
