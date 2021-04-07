@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $amount_dis = $row['amount'];
       $interest = $row['interest'];
       $period = $row['period'];
+      $nexts = $row['next_installment'];
       $dismb_date = $row['dis_date'];
       $first_date = $row['first_date'];
       $loan_bal = round($amount_dis, 2);
@@ -45,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $open_date = date('Y-m-d', strtotime($open_date . ' + 1 months'));
         $count++;
       }
-      $query = "SELECT pay_date FROM tbl_loan_schedule WHERE bank ='$bank' and loan_acc='$dis_date'";
+      $query = "SELECT pay_date, pay_no FROM tbl_loan_schedule WHERE bank ='$bank' and loan_acc='$dis_date'";
 
       $result = mysqli_query($conn, $query);
       $response = array();
@@ -53,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       while ($row = mysqli_fetch_assoc($result)) {
         $checkdate = $row['pay_date'];
         $realdate = $row['pay_date'];
+        $pay_num = $row['pay_no'];
         $day = date("D", strtotime($checkdate));
         if (strcmp($day, 'Sun') == 0) {
           $checkdate = date('Y-m-d', strtotime($checkdate . ' - 2 days'));
@@ -64,11 +66,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $sql = "UPDATE tbl_loan_schedule SET pay_date = '$checkdate' WHERE pay_date = '$realdate ' and bank ='$bank' and loan_acc='$dis_date'";
           mysqli_query($conn, $sql);
         }
+        if ($pay_num < $nexts) {
+          $sql = "UPDATE tbl_loan_schedule SET status = 'paid' WHERE pay_no = '$pay_num ' and bank ='$bank' and loan_acc='$dis_date'";
+          mysqli_query($conn, $sql);
+        }
       }
     }
   }
   $query2 = "SELECT * FROM tbl_loan_schedule WHERE bank ='$bank' and loan_acc='$dis_date' and status='pending' ORDER BY pay_date ASC LIMIT 1";
-  $query = "SELECT * FROM tbl_loan_schedule WHERE bank ='$bank' and loan_acc='$dis_date'";
+  $query = "SELECT * FROM tbl_loan_schedule WHERE bank ='$bank' and loan_acc='$dis_date' and status='pending'";
 
   $result2 = mysqli_query($conn, $query2);
   $response2 = array();
