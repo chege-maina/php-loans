@@ -1,104 +1,57 @@
 <?php
-session_start();
-// If the user is not logged in redirect to the login page...
-if (!isset($_SESSION['loggedin'])) {
-  header('Location: ../index.php');
-  exit();
-}
-
+include "../includes/base_page/shared_top_tags.php"
 ?>
-
-<!DOCTYPE html>
-<html lang="en-US" dir="ltr">
-<?php
-include_once '../includes/dbconnect.php';
-include '../includes/base_page/head.php';
-?>
+<h5 class="p-2">NHIF Rates</h5>
+<div class="card">
 
 
+  <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url(../assets/img/illustrations/corner-4.png);">
+  </div>
+  <!--/.bg-holder-->
 
-<body>
-  <!-- ===============================================-->
-  <!--    Main Content-->
-  <!-- ===============================================-->
+  <div class="card-body fs--1 p-4 position-relative">
 
-  <main class="main" id="top">
-    <div class="container" data-layout="container">
-      <!--nav starts here -->
-      <?php
-      include '../includes/base_page/nav.php';
-      ?>
+    <div class="row justify-content-between">
 
-      <div class="content">
-        <?php
-        include '../navbar-shared.php';
-        ?>
-
-        <!-- =========================================================== -->
-        <!-- body begins here -->
-        <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
-        <div id="alert-div"></div>
-        <h5 class="p-2">NHIF Rates</h5>
-        <div class="card">
-
-
-          <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url(../assets/img/illustrations/corner-4.png);">
-          </div>
-          <!--/.bg-holder-->
-
-          <div class="card-body fs--1 p-4 position-relative">
-
-            <div class="row justify-content-between">
-
-              <div class="col col-md-2">
-                <label for="#" class="form-label">Insert Year</label>
-                <input type="number" name="adv_year" id="adv_year" class="form-control" required>
-                <div class="invalid-feedback">This field cannot be left blank.</div>
-              </div>
-              <div class="col-auto ml-auto p-2 my-4">
-                <button type="button" class="form-control btn btn-sm btn-primary" onclick="addItem();">
-                  Add Row
-                </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <table class="table table-striped" id="data_table">
-                  <thead>
-                    <tr>
-                      <th scope="col">From</th>
-                      <th scope="col">To</th>
-                      <th scope="col">Rate(%)</th>
-                      <th scope="col" class="col-md-2">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody id="c_table_body">
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card mt-1">
-          <div class="card-body fs--1 p-1">
-            <div class="d-flex flex-row-reverse">
-              <button class="btn btn-falcon-primary btn-sm m-2" id="submit" onclick="submitForm();">
-                Submit
-              </button>
-            </div>
-          </div>
-        </div>
-        <!-- Content ends here -->
+      <div class="col col-md-2">
+        <label for="#" class="form-label">Insert Year</label>
+        <input type="number" name="adv_year" id="adv_year" class="form-control" required>
+        <div class="invalid-feedback">This field cannot be left blank.</div>
       </div>
-
-      <?php
-      include '../includes/base_page/footer.php';
-      ?>
-
+      <div class="col-auto ml-auto p-2 my-4">
+        <button type="button" class="form-control btn btn-sm btn-primary" onclick="addItem();">
+          Add Row
+        </button>
+      </div>
     </div>
-  </main>
-</body>
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped" id="data_table">
+          <thead>
+            <tr>
+              <th scope="col">From</th>
+              <th scope="col">To</th>
+              <th scope="col">Rate(%)</th>
+              <th scope="col" class="col-md-2">Action</th>
+            </tr>
+          </thead>
+          <tbody id="c_table_body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mt-1">
+  <div class="card-body fs--1 p-1">
+    <div class="d-flex flex-row-reverse">
+      <button class="btn btn-falcon-primary btn-sm m-2" id="submit" onclick="submitForm();">
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
 
 <script>
   const items_in_table = {};
@@ -298,3 +251,7 @@ include '../includes/base_page/head.php';
       });
   }
 </script>
+
+<?php
+include "../includes/base_page/shared_bottom_tags.php"
+?>
