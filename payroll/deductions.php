@@ -24,7 +24,7 @@ include "../includes/base_page/shared_top_tags.php"
           <button type="button" class="btn btn-primary input-group-btn" data-toggle="modal" data-target="#addBenefit">
             Add
           </button>
-          <select class="form-select" name="branch" id="benefit_select">
+          <select class="form-select" name="branch" id="benefit_select" required>
             <option value disabled selected>
               -- Select Deduction --
             </option>
@@ -72,7 +72,7 @@ include "../includes/base_page/shared_top_tags.php"
   <div class="modal-dialog" role="document">
 
     <div class="modal-content border-0">
-      <div class="position-absolute top-0 right-0 mt-3 mr-3 z-index-1">
+      <div class="position-relative top-0 right-0 mt-3 mr-3 z-index-1">
         <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-0">
@@ -302,6 +302,10 @@ include "../includes/base_page/shared_top_tags.php"
   }
 
   function submitForm() {
+
+    if (!employee_name.value) {
+      return;
+    }
     let tmp_obj = getItems();
 
     const formData = new FormData();
