@@ -9,7 +9,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLightExample" aria-controls="navbar_content" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
     <div class="collapse navbar-collapse" id="navbar_content">
-      <div class="dropdown-item">
+      <div class="nav-item">
         <a href="../dashboards/main.php" class="nav-link">
           Dashboard Analytics
         </a>
@@ -17,7 +17,7 @@
 
       <!-- ============================================================================= -->
       <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
-      <div class="dropdown-item dropdown">
+      <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="it002" role="button" data-toggle="dropdown" aria-expanded="false">
           Company Settings
         </a>
@@ -44,7 +44,7 @@
 
       <!-- ============================================================================= -->
       <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
-      <div class="dropdown-item dropdown">
+      <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="it003" role="button" data-toggle="dropdown" aria-expanded="false">
           Business Patners
         </a>
@@ -72,7 +72,7 @@
 
       <!-- ============================================================================= -->
       <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
-      <div class="dropdown-item dropdown">
+      <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="it004" role="button" data-toggle="dropdown" aria-expanded="false">
           Bank Transactions
         </a>
@@ -119,7 +119,7 @@
 
       <!-- ============================================================================= -->
       <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
-      <div class="dropdown-item dropdown">
+      <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="it005" role="button" data-toggle="dropdown" aria-expanded="false">
           Users
         </a>
@@ -139,8 +139,7 @@
       <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
       <!-- ============================================================================= -->
 
-      <!--
-      <div class="dropdown-item dropdown">
+      <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="it600" role="button" data-toggle="dropdown" aria-expanded="false">
           Payroll
         </a>
@@ -176,39 +175,38 @@
       </div>
 
     </div>
--->
 
-      <!-- ============================================================================= -->
-      <!-- Right Aligned -->
-      <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
-      <div class="dropdown-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="it505" role="button" data-toggle="dropdown" aria-expanded="false">
-          My Account
-        </a>
-        <div class="dropdown-menu py-0" aria-labelledby="it505">
-          <div class="bg-white dark__bg-1000 py-2 rounded-3">
+    <!-- ============================================================================= -->
+    <!-- Right Aligned -->
+    <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="it505" role="button" data-toggle="dropdown" aria-expanded="false">
+        My Account
+      </a>
+      <div class="dropdown-menu py-0" aria-labelledby="it505">
+        <div class="bg-white dark__bg-1000 py-2 rounded-3">
 
-            <a class="dropdown-item" href="../includes/logout.php">
-              Log Out
-            </a>
-            <hr class="dropdown-divider">
-            <div class="dropdown-item">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
-                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
-              </svg>
-              +254 737 528 000
-            </div>
-            <a class="dropdown-item" href="mailto:qonsolidatedsolutions@gmail.com">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
-              </svg> E-mail support
-            </a>
+          <a class="dropdown-item" href="../includes/logout.php">
+            Log Out
+          </a>
+          <hr class="dropdown-divider">
+          <div class="dropdown-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+              <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+            </svg>
+            +254 737 528 000
           </div>
+          <a class="dropdown-item" href="mailto:qonsolidatedsolutions@gmail.com">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
+            </svg> E-mail support
+          </a>
         </div>
       </div>
-      <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
-      <!-- ============================================================================= -->
-
-
     </div>
+    <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
+    <!-- ============================================================================= -->
+
+
+  </div>
 </nav>
