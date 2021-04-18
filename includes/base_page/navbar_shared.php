@@ -144,7 +144,7 @@
           Payroll
         </a>
         <div class="dropdown-menu py-0" aria-labelledby="it600">
-          <div class="bg-white dark__bg-1000 py-2 rounded-3">
+          <div class="bg-white dark__bg-1000 py-2 rounded-3" style="width: 200px;">
             <a class="dropdown-item" href="../payroll/create_employee.php">
               Employee Settings
             </a>
