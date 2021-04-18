@@ -84,8 +84,9 @@ include '../base_page/data_list_select.php';
     <div class="row mt-3">
       <div class="col">
         <label for="report_to" class="form-label">Report To</label>
-        <select name="report_to" id="report_to" class="form-select">
-          <option value="all">-- SELECT MANAGER --</option>
+        <select name="report_to" id="report_to" class="form-select" required>
+          <option value="" disabled selected>-- SELECT MANAGER --</option>
+          <option value="all">All</option>
         </select>
       </div>
       <div class="col">
@@ -101,7 +102,7 @@ include '../base_page/data_list_select.php';
   <div class="modal-dialog" role="document">
 
     <div class="modal-content border-0">
-      <div class="position-absolute top-0 right-0 mt-3 mr-3 z-index-1">
+      <div class="position-relative top-0 right-0 mt-3 mr-3 z-index-1">
         <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-0">
