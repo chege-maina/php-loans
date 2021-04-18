@@ -75,7 +75,7 @@ include "../includes/base_page/shared_top_tags.php"
   <div class="modal-dialog" role="document">
 
     <div class="modal-content border-0">
-      <div class="position-absolute top-0 right-0 mt-3 mr-3 z-index-1">
+      <div class="position-relative top-0 right-0 mt-3 mr-3 z-index-1">
         <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-0">
