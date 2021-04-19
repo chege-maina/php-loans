@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2021 at 03:37 PM
+-- Generation Time: Apr 19, 2021 at 07:56 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -153,6 +153,13 @@ CREATE TABLE `tbl_bene_deduct` (
   `status` varchar(15) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_bene_deduct`
+--
+
+INSERT INTO `tbl_bene_deduct` (`benefit`, `b_month`, `b_year`, `emp_no`, `name`, `fixed`, `qty`, `rate`, `total`, `type`, `status`) VALUES
+('Cars', 'July', '1976', '821', 'Eric Bird', '10000', '0', '0', '10000', 'benefit', 'pending');
+
 -- --------------------------------------------------------
 
 --
@@ -271,6 +278,28 @@ CREATE TABLE `tbl_deduction` (
 INSERT INTO `tbl_deduction` (`deduction`) VALUES
 ('NHIF'),
 ('NSSF');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_department`
+--
+
+CREATE TABLE `tbl_department` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_department`
+--
+
+INSERT INTO `tbl_department` (`id`, `name`) VALUES
+(2, 'ACCOUNTANT'),
+(4, 'Cars'),
+(1, 'DRIVER'),
+(5, 'HR'),
+(3, 'SALES REP');
 
 -- --------------------------------------------------------
 
@@ -545,7 +574,9 @@ CREATE TABLE `tbl_shift` (
 
 INSERT INTO `tbl_shift` (`shift_id`, `shift_name`, `start_time`, `end_time`, `work_hours`, `non_work`) VALUES
 (4, 'Brendan Case', '15:44', '16:54', '81', '72'),
-(5, 'Hector Short', '22:29', '09:04', '62', '55');
+(5, 'Hector Short', '22:29', '09:04', '62', '55'),
+(6, 'Gloria Hurst', '05:08', '11:04', '7', '80'),
+(7, 'Logan Barnes', '02:03', '07:29', '93', '77');
 
 -- --------------------------------------------------------
 
@@ -575,14 +606,14 @@ CREATE TABLE `tbl_staff` (
   `county` varchar(50) NOT NULL,
   `postal_code` varchar(50) NOT NULL,
   `job_no` varchar(50) NOT NULL,
-  `employ_date` date NOT NULL,
+  `account_no` varchar(50) NOT NULL,
   `begin_date` date NOT NULL,
+  `employ_date` date NOT NULL,
   `duration` varchar(16) NOT NULL,
   `end_date` date NOT NULL,
   `job_title` varchar(50) NOT NULL,
   `department` varchar(50) NOT NULL,
   `report_to` varchar(50) NOT NULL,
-  `branch` varchar(50) NOT NULL,
   `head_of` varchar(50) NOT NULL,
   `region` varchar(50) NOT NULL,
   `currency` varchar(50) NOT NULL,
@@ -595,13 +626,13 @@ CREATE TABLE `tbl_staff` (
   `deduct_nhif` varchar(50) NOT NULL,
   `deduct_nssf` varchar(50) NOT NULL,
   `account_name` varchar(50) NOT NULL,
-  `account_no` varchar(50) NOT NULL,
   `bank_name` varchar(50) NOT NULL,
   `sort_code` varchar(50) NOT NULL,
   `s_mobile_no` varchar(50) NOT NULL,
   `s_bank_branch` varchar(50) NOT NULL,
   `s_payment` int(11) NOT NULL,
-  `status` varchar(15) NOT NULL DEFAULT 'pending'
+  `status` varchar(15) NOT NULL DEFAULT 'pending',
+  `branch` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
@@ -623,7 +654,8 @@ CREATE TABLE `tbl_staff_items` (
 --
 
 INSERT INTO `tbl_staff_items` (`id`, `name`, `email`, `phone`, `relation`) VALUES
-(1, 'Animi non qui quia', '+1 (419) 354-9206', '+1 (419) 354-9206', 'Enim officiis ex qui');
+(1, 'Animi non qui quia', '+1 (419) 354-9206', '+1 (419) 354-9206', 'Enim officiis ex qui'),
+(2, 'Sed ipsum fugiat fac', '+1 (991) 133-2316', '+1 (991) 133-2316', 'Sunt itaque porro as');
 
 -- --------------------------------------------------------
 
@@ -729,6 +761,13 @@ ALTER TABLE `tbl_deduction`
   ADD PRIMARY KEY (`deduction`);
 
 --
+-- Indexes for table `tbl_department`
+--
+ALTER TABLE `tbl_department`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
 -- Indexes for table `tbl_emp_benefit`
 --
 ALTER TABLE `tbl_emp_benefit`
@@ -802,6 +841,12 @@ ALTER TABLE `tbl_shift`
   ADD UNIQUE KEY `shift_name` (`shift_name`);
 
 --
+-- Indexes for table `tbl_staff`
+--
+ALTER TABLE `tbl_staff`
+  ADD UNIQUE KEY `nat_id` (`nat_id`,`pin_no`,`nssf_no`,`nhif_no`,`job_no`,`account_no`);
+
+--
 -- Indexes for table `tbl_staff_items`
 --
 ALTER TABLE `tbl_staff_items`
@@ -842,6 +887,12 @@ ALTER TABLE `tbl_customer`
   MODIFY `id` bigint(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tbl_department`
+--
+ALTER TABLE `tbl_department`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `tbl_emp_benefit`
 --
 ALTER TABLE `tbl_emp_benefit`
@@ -863,13 +914,13 @@ ALTER TABLE `tbl_leavecat`
 -- AUTO_INCREMENT for table `tbl_shift`
 --
 ALTER TABLE `tbl_shift`
-  MODIFY `shift_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `shift_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_staff_items`
 --
 ALTER TABLE `tbl_staff_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_supplier`

@@ -305,6 +305,10 @@ include "../includes/base_page/shared_top_tags.php"
   }
 
   function submitForm() {
+    if (!employee_name.value) {
+      return;
+    }
+
     let tmp_obj = getItems();
 
     const formData = new FormData();
