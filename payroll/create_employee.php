@@ -114,6 +114,8 @@ include "../includes/base_page/shared_top_tags.php"
       })
       .then(response => response.text())
       .then(result => {
+        console.log("hey", result);
+        return;
         console.log('Success:', result);
       })
       .catch(error => {
