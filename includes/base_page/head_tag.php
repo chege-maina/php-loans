@@ -223,4 +223,8 @@ if (!isset($_SESSION['loggedin'])) {
     window.addEventListener('DOMContentLoaded', (event) => {
       window.localStorage.setItem("theme", "light");
     });
+
+    window.addEventListener('beforeunload', (event) => {
+      window.sessionStorage.clear();
+    });
   </script>
