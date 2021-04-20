@@ -129,7 +129,8 @@ include "../includes/base_page/shared_top_tags.php"
       return;
     }
 
-    sessionStorage.setItem("disbursment_date", disbursment_date.value);
+    sessionStorage.clear();
+    sessionStorage.setItem("loan_account", disbursment_date.value);
     sessionStorage.setItem("bank_name", bank_name.value);
     const formData = new FormData();
     formData.append("bank", bank_name.value);
