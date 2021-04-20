@@ -146,8 +146,12 @@ include "../includes/base_page/shared_top_tags.php"
       </div>
 
       <div class="col">
-        <label for="payment_method" class="form-label">Select Payment Method</label>
+        <label for="payment_method" class="form-label">Select Cheque Type</label>
         <select class="form-select" name="payment_method" id="payment_method">
+          <option value disabled selected>-- Select Cheque Type --</option>
+          <option value="inhouse">Inhouse</option>
+          <option value="interbank">Interbank</option>
+          <option value="inhouse">RTGS</option>
         </select>
       </div>
     </div>
@@ -217,6 +221,7 @@ include "../includes/base_page/shared_top_tags.php"
         balance.value = result.balance;
         principle.value = result.principle;
         interest.value = result.interest;
+        disbursment_date.value = result.dis_date;
         installment.value = result.installment;
         lc = result.charge_pc;
 
