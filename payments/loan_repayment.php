@@ -177,9 +177,42 @@ include "../includes/base_page/shared_top_tags.php"
   const arrears = document.querySelector('#arrears');
   const late_charges = document.querySelector('#late_charges');
   const cheque_no = document.querySelector("#cheque_no");
+  const payment_method = document.querySelector("#payment_method");
+
 
   function submitForm() {
     const formData = new FormData();
+
+
+    console.log("=================================================")
+    console.log("'''''''''''''''''''''''''''''''''''''''''''''''''");
+    console.log("pay_no", installment_no.value);
+    console.log("installment", installment.value);
+    console.log("transct_date", tr_date.value);
+    console.log("pay_date", payment_date.value);
+    console.log("loan_acc", sessionStorage.getItem("loan_account"));
+    console.log("bank", bank.value);
+    console.log("amount", loan_amt.value);
+    console.log("late_charges", late_charges.value);
+    console.log("arrear_days", arrears.value);
+    console.log("cheque_no", cheque_no.value);
+    console.log("cheque_type", payment_method.value);
+    console.log("=================================================")
+
+
+
+    formData.append("pay_no", installment_no.value);
+    formData.append("installment", installment.value);
+    formData.append("transct_date", tr_date.value);
+    formData.append("pay_date", payment_date.value);
+    formData.append("loan_acc", sessionStorage.getItem("loan_account"));
+    formData.append("bank", bank.value);
+    formData.append("amount", loan_amt.value);
+    formData.append("late_charges", late_charges.value);
+    formData.append("arrear_days", arrears.value);
+    formData.append("cheque_no", cheque_no.value);
+    formData.append("cheque_type", payment_method.value);
+
     return false;
     fetch('', {
         method: 'POST',
@@ -198,7 +231,6 @@ include "../includes/base_page/shared_top_tags.php"
 
   let lc = 0;
   const total = document.querySelector('#total');
-  const payment_method = document.querySelector('#payment_method');
 
   let setDateDifference = val => {
     const diff = ((new Date(val)).getTime() - (new Date(payment_date.value)).getTime()) / (1000 * 60 * 60 * 24)
