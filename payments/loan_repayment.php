@@ -140,7 +140,7 @@ include "../includes/base_page/shared_top_tags.php"
 
         <div class="col">
           <label for="cheque_no" class="form-label">Cheque No</label>
-          <input type="text" name="cheque_no" id="cheque_no" class="form-control" required placeholder="Cheque Number" readonly>
+          <input type="text" name="cheque_no" id="cheque_no" class="form-control" required placeholder="Cheque Number">
         </div>
 
         <div class="col">
@@ -213,14 +213,14 @@ include "../includes/base_page/shared_top_tags.php"
     formData.append("cheque_no", cheque_no.value);
     formData.append("cheque_type", payment_method.value);
 
-    return false;
-    fetch('', {
+    fetch('../includes/loan_repayment.php', {
         method: 'POST',
         body: formData
       })
-      .then(response => response.json())
+      .then(response => response.text())
       .then(result => {
         console.log('Success:', result);
+        return false;
       })
       .catch(error => {
         console.error('Error:', error);
