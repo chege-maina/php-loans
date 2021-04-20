@@ -4,7 +4,7 @@ header("Content-type:application/json");
 
 include_once '../includes/dbconnect.php';
 
-$query = "SELECT * FROM tbl_staff WHERE status='approved'";
+$query = "SELECT * FROM tbl_staff";
 
 $result = mysqli_query($conn, $query);
 $response = array();
