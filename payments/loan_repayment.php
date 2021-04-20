@@ -210,7 +210,7 @@ include "../includes/base_page/shared_top_tags.php"
 
 
     formData.append("pay_no", installment_no.value);
-    formData.append("installment", total.value);
+    formData.append("installment", total_field.value);
     formData.append("transct_date", tr_date.value);
     formData.append("pay_date", payment_date.value);
     formData.append("loan_acc", sessionStorage.getItem("loan_account"));
