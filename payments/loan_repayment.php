@@ -193,14 +193,16 @@ include "../includes/base_page/shared_top_tags.php"
 
   window.addEventListener('DOMContentLoaded', (event) => {
     bank.value = sessionStorage.getItem("bank_name");
-    disbursment_date.value = sessionStorage.getItem("disbursment_date");
+    // disbursment_date.value = sessionStorage.getItem("disbursment_date");
     payment_date.value = sessionStorage.getItem("payment_date");
     installment_no.value = sessionStorage.getItem("payment_no");
 
     const formData = new FormData();
     formData.append("bank", bank.value);
+
     formData.append("dis_date", disbursment_date.value);
     formData.append("pay_date", payment_date.value);
+    formData.append("loan_acc", sessionStorage.getItem("loan_account"));
     formData.append("pay_no", installment_no.value);
 
     fetch('../includes/load_loan_payment.php', {
