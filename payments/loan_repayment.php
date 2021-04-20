@@ -252,7 +252,7 @@ include "../includes/base_page/shared_top_tags.php"
     late_charges.value = diff > 0 ?
       ((((lc) / 100) * Number(balance.value) / 365) * diff).toFixed(2) :
       0;
-    total.value = Number(late_charges.value) + Number(installment.value);
+    total.value = (Number(late_charges.value) + Number(installment.value)).toFixed(2);
   }
 
   window.addEventListener('DOMContentLoaded', (event) => {
