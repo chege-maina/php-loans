@@ -140,7 +140,7 @@ include "../includes/base_page/shared_top_tags.php"
 
         <div class="col">
           <label for="cheque_no" class="form-label">Cheque No</label>
-          <input type="text" name="cheque_no" id="cheque_no" class="form-control" required placeholder="Cheque Number">
+          <input type="number" name="cheque_no" id="cheque_no" class="form-control" required placeholder="Cheque Number">
         </div>
 
         <div class="col">
@@ -225,13 +225,24 @@ include "../includes/base_page/shared_top_tags.php"
         method: 'POST',
         body: formData
       })
-      .then(response => response.text())
+      .then(response => response.json())
       .then(result => {
         console.log('Success:', result);
+        if (result["message"] === "success") {
+          showSuccessAlert("Record stored successfuly");
+          window.setTimeout(() => {
+            location.href = "./payment_schedule.php";
+          }, 2500);
+        } else {
+          showDangerAlert("Record not saved");
+          removeAlert();
+        }
         return false;
       })
       .catch(error => {
         console.error('Error:', error);
+        showDangerAlert("Could not send data to server");
+        removeAlert();
       });
 
     return false;
