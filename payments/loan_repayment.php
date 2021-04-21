@@ -182,6 +182,7 @@ include "../includes/base_page/shared_top_tags.php"
   const paid = document.querySelector("#paid");
 
   function updatePaidAmountMin() {
+    return;
     paid.setAttribute("min", total.value);
     paid.setAttribute("max", total.value);
   }
