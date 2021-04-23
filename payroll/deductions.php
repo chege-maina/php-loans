@@ -24,14 +24,14 @@ include "../includes/base_page/shared_top_tags.php"
           <button type="button" class="btn btn-primary input-group-btn" data-toggle="modal" data-target="#addBenefit">
             Add
           </button>
-          <select class="form-select" name="branch" id="benefit_select" required>
+          <select class="form-select" name="branch" id="benefit_select" onclick="addItem();">
             <option value disabled selected>
               -- Select Deduction --
             </option>
           </select>
           <div class="invalid-tooltip">This field cannot be left blank.</div>
           <!-- Button trigger modal -->
-          <input type="button" value="+" class="btn btn-primary" onclick="addItem();">
+          <input type="button" value="+" class="btn btn-primary">
         </div>
       </div>
     </div>
