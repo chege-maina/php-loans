@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Apr 23, 2021 at 07:45 AM
+-- Generation Time: Apr 23, 2021 at 09:31 AM
 -- Server version: 10.5.8-MariaDB-1:10.5.8+maria~focal
 -- PHP Version: 7.4.16
 
@@ -24,44 +24,41 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_branch`
+-- Table structure for table `tbl_bank`
 --
 
-CREATE TABLE `tbl_branch` (
-  `branch_id` bigint(20) UNSIGNED NOT NULL,
-  `branch_name` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `tel_no` varchar(100) NOT NULL,
-  `postal_address` varchar(100) NOT NULL,
-  `physical_address` varchar(100) NOT NULL
+CREATE TABLE `tbl_bank` (
+  `bank_name` varchar(50) NOT NULL,
+  `branch_name` varchar(15) NOT NULL,
+  `acc_no` varchar(254) NOT NULL,
+  `acc_name` varchar(50) NOT NULL,
+  `currency` varchar(100) NOT NULL,
+  `opening_bal` varchar(254) NOT NULL,
+  `clear_days` varchar(50) NOT NULL,
+  `od_limit` varchar(100) NOT NULL,
+  `id_interest` varchar(100) NOT NULL,
+  `over_limit` varchar(100) NOT NULL,
+  `late_charges` varchar(100) NOT NULL,
+  `opening_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_branch`
+-- Dumping data for table `tbl_bank`
 --
 
-INSERT INTO `tbl_branch` (`branch_id`, `branch_name`, `email`, `tel_no`, `postal_address`, `physical_address`) VALUES
-(1, 'RFL', 'war2@maisha.com', '+254756473898', '567-00100', 'Ruiru,Nairobi');
+INSERT INTO `tbl_bank` (`bank_name`, `branch_name`, `acc_no`, `acc_name`, `currency`, `opening_bal`, `clear_days`, `od_limit`, `id_interest`, `over_limit`, `late_charges`, `opening_date`) VALUES
+('BANK OF BARODA', 'Thika', '95840400000115', 'Ruiru Feeds Ltd', 'KSHS', '-71761731.92', '2', '74000000', '11', '6', '', '2021-01-31'),
+('KCB Bank limited', 'Ruiru', '1102729337', 'Ruiru Feeds Ltd', 'KSHS', '282101.78', '2', '0', '0', '0', '', '2021-01-31');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbl_branch`
+-- Indexes for table `tbl_bank`
 --
-ALTER TABLE `tbl_branch`
-  ADD UNIQUE KEY `branch_id` (`branch_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tbl_branch`
---
-ALTER TABLE `tbl_branch`
-  MODIFY `branch_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `tbl_bank`
+  ADD PRIMARY KEY (`bank_name`,`acc_no`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
