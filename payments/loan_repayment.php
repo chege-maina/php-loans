@@ -216,7 +216,7 @@ include "../includes/base_page/shared_top_tags.php"
     formData.append("pay_date", payment_date.value);
     formData.append("loan_acc", sessionStorage.getItem("loan_account"));
     formData.append("bank", bank.value);
-    formData.append("amount", loan_amt.value);
+    formData.append("amount", paid.value);
     formData.append("late_charges", late_charges.value);
     formData.append("arrear_days", arrears.value);
     formData.append("cheque_no", cheque_no.value);
