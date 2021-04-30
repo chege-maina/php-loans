@@ -44,7 +44,7 @@ include "../includes/base_page/shared_top_tags.php"
         <div class="col">
           <label for="status" class="form-label">Status</label>
           <select name="status" id="status" class="form-select" required>
-            <option value="" disabled selected>Select Status</option>
+            <option value disabled selected>Select Status</option>
             <option value="present">Present</option>
             <option value="absent">Absent</option>
             <option value="onleave">On Leave</option>
@@ -70,7 +70,7 @@ include "../includes/base_page/shared_top_tags.php"
   <div class="card mt-1">
     <div class="card-body fs--1 p-1">
       <div class="d-flex flex-row-reverse">
-        <button class="btn btn-falcon-primary btn-sm m-2" id="submit">
+        <button class="btn btn-falcon-primary btn-sm m-2" id="submit" onclick="submitForm();">
           Submit
         </button>
       </div>
@@ -79,6 +79,12 @@ include "../includes/base_page/shared_top_tags.php"
 
   </div>
 </form>
+
+<!-- Additional cards can be added here -->
+</div>
+<!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
+<!-- body ends here -->
+<!-- =========================================================== -->
 
 <script>
   const employee_name = document.querySelector("#employee_name");
@@ -93,11 +99,10 @@ include "../includes/base_page/shared_top_tags.php"
 
   const all_employees = {};
 
-
   function getEmployeeDetails() {
-    let e_id = employee_name.value.split("#")[1].trim();
+    //     let e_id = employee_name.value.split("#")[1].trim();
     let tmp = {
-      employee_name: employee_name.value,
+
       att_date: att_date.value,
       employee_no: employee_no.value,
       branch: branch_name.value,
@@ -108,40 +113,6 @@ include "../includes/base_page/shared_top_tags.php"
     }
     return tmp;
   }
-
-  function submitForm() {
-
-    const formData = new FormData();
-
-    console.log("=======================================");
-    console.log("Submitting");
-    console.log("=======================================");
-
-    for (key in getEmployeeDetails()) {
-      formData.append(key, getEmployeeDetails()[key]);
-    }
-
-
-    fetch('insert_attendance.php', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.text())
-      .then(result => {
-        console.log('Success:', result);
-
-        setTimeout(function() {
-          location.reload();
-        }, 2500);
-
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-
-    return false;
-  }
-
 
   const selectEmployee = () => {
     if (!employee_name.value) {
@@ -183,9 +154,11 @@ include "../includes/base_page/shared_top_tags.php"
         result.forEach((employees) => {
           opt = document.createElement("option");
           opt.appendChild(document.createTextNode(employees["fname"] + " " + employees["lname"]));
-          opt.value = "ID No# " + employees["national_id"];
+          opt.value = "ID No#   " + employees["national_id"];
           all_employees[employees["national_id"]] = employees["fname"] + " " + employees["lname"];
           employee.appendChild(opt);
+
+          console.log("all employees", all_employees)
         });
 
       })
@@ -194,6 +167,76 @@ include "../includes/base_page/shared_top_tags.php"
       });
 
   });
+
+
+
+  function submitForm() {
+    if (!employee_name.value) {
+      employee_name.focus();
+      return;
+    }
+
+    if (!att_date.value) {
+      att_date.focus();
+      return;
+    }
+
+    if (!status.value) {
+      status.focus();
+      return;
+    }
+
+    const formData = new FormData();
+    for (let key in all_employees) {
+
+      const emp_name = all_employees[key];
+      console.log("getting the name ", emp_name)
+      formData.append("employee_name", emp_name);
+    }
+    console.log("=======================================");
+    console.log("Submitting");
+    console.log("=======================================");
+
+    for (key in getEmployeeDetails()) {
+      formData.append(key, getEmployeeDetails()[key]);
+    }
+
+    fetch('../payroll/insert_attendance.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Server says:', result);
+        if (result["message"] == "success") {
+          const alertVar =
+            `<div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>Success!</strong> Record saved.
+              <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
+              </div>`;
+          var divAlert = document.querySelector("#alert-div");
+          divAlert.innerHTML = alertVar;
+          divAlert.scrollIntoView();
+          setTimeout(function() {
+            //   location.reload();
+          }, 2500);
+        } else {
+          const alertVar =
+            `<div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Error!</strong> Could not save record.
+              <button class="btn-close" type="button" data-dismiss="alert" aria-label="Close"></button>
+              </div>`;
+          var divAlert = document.querySelector("#alert-div");
+          divAlert.innerHTML = alertVar;
+          divAlert.scrollIntoView();
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+
+      });
+
+  }
 </script>
 
 <?php
