@@ -49,10 +49,8 @@ include '../base_page/data_list_select.php';
       </div>
       <div class="col">
         <label for="branch" class="form-label">Branch</label>
-        <select name="branch" id="branch" class="form-select">
-          <option value="" disabled selected>Select Branch</option>
-          <option value="mm1">MM1</option>
-          <option value="mm2">MM2</option>
+        <select name="branch" id="branch_id" class="form-select">
+          <option value disabled selected>Select Branch</option>
         </select>
       </div>
     </div>
@@ -78,24 +76,9 @@ include '../base_page/data_list_select.php';
       <!--dkznlsknl--->
 
       <div class="col">
-        <label for="head_of" class="form-label">Head Of</label>
-        <select name="head_of" id="head_of" class="form-select">
-          <option value="all">All</option>
-        </select>
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col">
         <label for="report_to" class="form-label">Report To</label>
-        <select name="report_to" id="report_to" class="form-select" required>
-          <option value="" disabled selected>-- SELECT MANAGER --</option>
-          <option value="all">All</option>
-        </select>
-      </div>
-      <div class="col">
-        <label for="region" class="form-label">Region</label>
-        <select name="region" id="region" class="form-select">
-          <option value="Nairobi">Nairobi</option>
+        <select name="report_to" id="report_to" class="form-select">
+          <option value disabled selected>-- SELECT MANAGER --</option>
         </select>
       </div>
     </div>
@@ -105,7 +88,7 @@ include '../base_page/data_list_select.php';
   <div class="modal-dialog" role="document">
 
     <div class="modal-content border-0">
-      <div class="position-relative top-0 right-0 mt-3 mr-3 z-index-1">
+      <div class="position-absolute top-0 right-0 mt-3 mr-3 z-index-1">
         <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-0">
@@ -174,11 +157,22 @@ include '../base_page/data_list_select.php';
   const region = document.querySelector("#region");
 
 
-  let setDateDifference = val => {
-    const diff = ((new Date(val)).getTime() - (new Date(start_date.value)).getTime()) / (1000 * 60 * 60 * 24)
-    duration.value = diff;
-  }
 
+  let great = false;
+  let setDateDifference = val => {
+    const diff = (((new Date(val)).getTime() - (new Date(start_date.value)).getTime()) / (1000 * 60 * 60 * 24)) / (30)
+
+    if (diff > 0) {
+      duration.value = diff.toFixed(2);
+      great = true;
+    }
+    if (!great) {
+      document.getElementById('start_date').value = alert("Wrong Date Selection !");
+      start_date.value = "";
+      end_date.value = "";
+      return false;
+    }
+  }
 
   function getHrDetails() {
     let tmp = {
@@ -201,6 +195,8 @@ include '../base_page/data_list_select.php';
 
     initSelectElement("#departments", "-- Select Department --");
     populateSelectElement("#departments", '../payroll/load_department.php', "name");
+    populateSelectElement("#branch_id", '../payroll/load_branch_items.php', "branch");
+    populateSelectElement("#report_to", '../payroll/load_report_to.php', "name");
 
   });
 </script>

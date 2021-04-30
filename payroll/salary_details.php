@@ -4,19 +4,19 @@
       <label for="employment" class="form-label">Employment Type</label>
       <select name="employment" id="employment_type" class="form-select">
         <option value="Regular">Regular(open-ended)</option>
+        <option value="Fixed">Fixed</option>
       </select>
     </div>
     <div class="col">
       <label for="currency" class="form-label">Payment Currency</label>
       <select name="currency" id="payment_currency" class="form-select">
         <option value="KES">KES</option>
-        <option value="JPY">JPY</option>
       </select>
     </div>
     <div class="col">
       <label for="shift" class="form-label">Work Shift</label>
       <select name="shift" id="work_shift" class="form-select">
-        <option value="Regular">Regular shift</option>
+        <option value disabled selected>-- SELECT WORK SHIFT --</option>
       </select>
     </div>
   </div>
@@ -108,4 +108,9 @@
     }
     return tmp;
   }
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+
+    populateSelectElement("#work_shift", '../payroll/load_shift.php', "name");
+  });
 </script>
