@@ -138,41 +138,54 @@
       </div>
       <!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
       <!-- ============================================================================= -->
-
       <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="it600" role="button" data-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="it800" role="button" data-toggle="dropdown" aria-expanded="false">
           Payroll
         </a>
-        <div class="dropdown-menu py-0" aria-labelledby="it600">
-          <div class="bg-white dark__bg-1000 py-2 rounded-3" style="width: 200px;">
-            <a class="dropdown-item" href="../payroll/create_employee.php">
-              Employee Settings
-            </a>
+        <div class="dropdown-menu py-0" aria-labelledby="it800">
+          <div class="bg-white dark__bg-1000 py-2 rounded-3" style="width: fit-content;">
+            <a class="dropdown-item" href="../payroll/nhif.php">Define NHIF Rates</a>
+            <a class="dropdown-item" href="../payroll/paye.php">Define P.A.Y.E Rates</a>
             <a class="dropdown-item" href="../payroll/benefits.php">
               Define Benefits
             </a>
             <a class="dropdown-item" href="../payroll/deductions.php">Define Deductions</a>
+            <hr class="dropdown-divider">
+            <a class="dropdown-item" href="../payroll/advance_salary.php">Advance Salary</a>
+            <a class="dropdown-item" href="../payroll/emp_benefit.php">Earnings and Deductions</a>
+            <a class="dropdown-item" href="../payroll/payroll_muster.php">Payroll Master</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="it600" role="button" data-toggle="dropdown" aria-expanded="false">
+          HRM Settings
+        </a>
+        <div class="dropdown-menu py-0" aria-labelledby="it600">
+          <div class="bg-white dark__bg-1000 py-2 rounded-3" style="width: fit-content;">
+            <a class="dropdown-item" href="../payroll/create_employee.php">
+              Add New Employee
+            </a>
             <a class="dropdown-item" href="../payroll/employee_listing_ui.php">Employee Listing</a>
+            <a class="dropdown-item" href="../payroll/create_branch.php">Create Branch</a>
+            <a class="dropdown-item" href="../payroll/branch_listing_ui.php">Branch Listing</a>
+            <a class="dropdown-item" href="../payroll/create_shift.php">Create Shift</a>
+            <a class="dropdown-item" href="../payroll/shift_listing_ui.php">Shifts Listing</a>
+            <hr class="dropdown-divider">
             <a class="dropdown-item" href="../payroll/employee_attendance.php">Employee Attendance</a>
             <a class="dropdown-item" href="../payroll/attendance_listing_ui.php">Attendance Listing</a>
-            <a class="dropdown-item" href="../payroll/emp_benefit.php">Earnings and Deductions</a>
-            <a class="dropdown-item" href="../payroll/advance_salary.php">Advance Salary</a>
-            <a class="dropdown-item" href="../payroll/expense_mngt.php">Company Loans</a>
-            <a class="dropdown-item" href="../payroll/payroll_muster.php">Payroll Master</a>
             <a class="dropdown-item" href="../payroll/assign_leave.php">Leave Assignement</a>
             <a class="dropdown-item" href="../payroll/leave_app.php">Employee Leave Application</a>
             <a class="dropdown-item" href="../payroll/leave_assignlisting_ui.php">Manage Leave Assignment</a>
             <a class="dropdown-item" href="../payroll/leave_listing_ui.php">Manage Leave Application</a>
-            <a class="dropdown-item" href="../payroll/create_shift.php">Create Shift</a>
-            <a class="dropdown-item" href="../payroll/nhif.php">Define NHIF Rates</a>
-            <a class="dropdown-item" href="../payroll/paye.php">Define P.A.Y.E Rates</a>
-            <a class="dropdown-item" href="../payroll/shift_listing_ui.php">Shifts Listing</a>
-            <a class="dropdown-item" href="../payroll/create_branch.php">Create Branch</a>
-            <a class="dropdown-item" href="../payroll/branch_listing_ui.php">Branch Listing</a>
-
+            <a class="dropdown-item" href="../payroll/expense_mngt.php">Company Loans and Damages</a>
+            <a class="dropdown-item" href="../payroll/expense_mngt.php">Company Loans Listing</a>
           </div>
         </div>
       </div>
+
+
 
     </div>
 

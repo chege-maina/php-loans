@@ -67,13 +67,17 @@ include "../includes/base_page/shared_top_tags.php"
     <!-- Content ends here -->
   </div>
 </div>
-
+</div>
+</div>
+<!-- Additional cards can be added here -->
+</div>
+</div>
 
 <div class="modal fade" id="addBenefit" tabindex="-1" role="dialog" aria-labelledby="addCategoryLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog" role="document">
 
     <div class="modal-content border-0">
-      <div class="position-relative top-0 right-0 mt-3 mr-3 z-index-1">
+      <div class="position-absolute top-0 right-0 mt-3 mr-3 z-index-1">
         <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-0">
@@ -96,7 +100,6 @@ include "../includes/base_page/shared_top_tags.php"
 
   </div>
 </div>
-
 <script>
   //Benefit module
 
@@ -252,6 +255,7 @@ include "../includes/base_page/shared_top_tags.php"
   const employee = document.querySelector("#employee");
   const employee_name = document.querySelector("#employee_name");
   const all_employees = {};
+  let all_benefits = {};
 
   window.addEventListener('DOMContentLoaded', (event) => {
     const formData = new FormData();
@@ -268,6 +272,14 @@ include "../includes/base_page/shared_top_tags.php"
           opt.value = employees["fname"] + " " + employees["lname"];
           all_employees[employees["fname"] + " " + employees["lname"]] = employees;
           employee.appendChild(opt);
+
+          all_benefits[employees['nat'] + " " + employees['job'] + " " + employees['fname'] + " " + employees['lname']] = {
+            fname: employees.fname,
+            lname: employees.lname,
+            job: employees.job,
+            nat: employees.nat
+          }
+          console.log("meeeeeee", all_benefits);
         });
 
       })
@@ -296,13 +308,14 @@ include "../includes/base_page/shared_top_tags.php"
 
     tmp_obj["table_items"] = JSON.stringify(benefits);
     console.log("==================================");
-    console.log(tmp_obj);
+    console.log("tmp_obj", tmp_obj);
     console.log("==================================");
 
     return tmp_obj
   }
 
   function submitForm() {
+
     if (!employee_name.value) {
       return;
     }
@@ -337,6 +350,10 @@ include "../includes/base_page/shared_top_tags.php"
     return false;
   }
 </script>
+<!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
+<!-- Footer End -->
+<!-- =========================================================== -->
+</body>
 
 <?php
 include "../includes/base_page/shared_bottom_tags.php"

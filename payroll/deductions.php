@@ -5,6 +5,8 @@ include "../includes/base_page/shared_top_tags.php"
 <div id="alert-div"></div>
 <h5 class="p-2">Define Deduction</h5>
 <div class="card">
+
+
   <div class="bg-holder d-none d-lg-block bg-card" style="background-image:url(../assets/img/illustrations/corner-4.png);">
   </div>
   <!--/.bg-holder-->
@@ -24,14 +26,12 @@ include "../includes/base_page/shared_top_tags.php"
           <button type="button" class="btn btn-primary input-group-btn" data-toggle="modal" data-target="#addBenefit">
             Add
           </button>
-          <select class="form-select" name="branch" id="benefit_select" onclick="addItem();">
+          <select class="form-select" name="branch" id="benefit_select" onchange="addItem();">
             <option value disabled selected>
               -- Select Deduction --
             </option>
           </select>
           <div class="invalid-tooltip">This field cannot be left blank.</div>
-          <!-- Button trigger modal -->
-          <input type="button" value="+" class="btn btn-primary">
         </div>
       </div>
     </div>
@@ -67,12 +67,17 @@ include "../includes/base_page/shared_top_tags.php"
     <!-- Content ends here -->
   </div>
 </div>
+</div>
+</div>
+<!-- Additional cards can be added here -->
+</div>
+</div>
 
 <div class="modal fade" id="addBenefit" tabindex="-1" role="dialog" aria-labelledby="addCategoryLabel" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog" role="document">
 
     <div class="modal-content border-0">
-      <div class="position-relative top-0 right-0 mt-3 mr-3 z-index-1">
+      <div class="position-absolute top-0 right-0 mt-3 mr-3 z-index-1">
         <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-0">
@@ -247,7 +252,6 @@ include "../includes/base_page/shared_top_tags.php"
 
 <script>
   //datalist 
-
   const employee = document.querySelector("#employee");
   const employee_name = document.querySelector("#employee_name");
   const all_employees = {};
@@ -306,6 +310,9 @@ include "../includes/base_page/shared_top_tags.php"
     if (!employee_name.value) {
       return;
     }
+
+
+
     let tmp_obj = getItems();
 
     const formData = new FormData();
@@ -336,6 +343,12 @@ include "../includes/base_page/shared_top_tags.php"
     return false;
   }
 </script>
+<!-- -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- -->
+<!-- Footer End -->
+<!-- =========================================================== -->
+</body>
+
+</html>
 
 <?php
 include "../includes/base_page/shared_bottom_tags.php"
