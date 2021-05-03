@@ -220,6 +220,7 @@ include "../includes/base_page/shared_top_tags.php"
   function submitForm() {
 
     if (!adv_year.value) {
+      adv_year.focus()
       return;
     }
 
@@ -241,9 +242,9 @@ include "../includes/base_page/shared_top_tags.php"
       .then(result => {
         console.log('Success:', result);
 
-        //  setTimeout(function() {
-        //    location.reload();
-        //  }, 2500);
+        setTimeout(function() {
+          location.reload();
+        }, 2500);
 
       })
       .catch(error => {

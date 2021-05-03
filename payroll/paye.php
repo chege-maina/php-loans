@@ -230,10 +230,12 @@ include "../includes/base_page/shared_top_tags.php"
   function submitForm() {
 
     if (!adv_year.value) {
+      adv_year.focus()
       return;
     }
 
     if (!relief.value) {
+      relief.focus()
       return;
     }
 
